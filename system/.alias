@@ -6,6 +6,9 @@ alias Github='git push github'
 alias Gitlab='git push gitlab'
 
 # Directory and file navigation/editing
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ll='ls -li'
 alias la='ls -la'
 alias lsd='ls -l | grep "^d"'
