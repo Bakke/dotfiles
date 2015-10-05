@@ -13,5 +13,5 @@ cp ~/.tmux.conf ~/.tmux.conf.bak
 ln -sv "~/.dotfiles/runcom/.bash_profile" ~
 ln -sv "~/.dotfiles/git/.gitconfig" ~
 ln -sv "~/.dotfiles/vim/.vimrc" ~
-ln -sv "~/.dotfiles/timux/.tmux.conf" ~
+ln -sv "~/.dotfiles/tmux/.tmux.conf" ~
 ```
