@@ -1,17 +1,3 @@
-# Dirs
-alias dev='cd ~/Development/'
-alias www='cd ~/Development/vhost/'
-alias projects='cd ~/Development/projects/'
-alias packages-subl='cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages'
-alias pillars='cd ~/Development/projects/pillars && gup && subl .'
-alias aliases='subl ~/Dropbox/Settings/aliases/custom.aliases.bash'
-
-# Apps
-alias xcode="open -a '/Developer/Applications/Xcode.app'"
-alias photoshop='open -a Adobe\ Photoshop\ CC\ 2014'
-alias illustrator='open -a Adobe\ Illustrator\ CC\ 2014'
-alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-
 # Git push
 alias Origin='git push origin'
 alias Deploy='git push deploy'
