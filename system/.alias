@@ -30,13 +30,3 @@ alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
-
-# MySQL
-alias mysql-start="sudo mysql.server start"
-alias mysql-stop="sudo mysql.server stop"
-alias mysql-restart="mysql-stop && mysql-start"
-alias mysql-fix="sudo rm /usr/local/var/mysql/Kattekebab.local.err && mysql.server start"
-
-# Server stuff
-alias nginxd="sudo /usr/local/share/create-nginx-config-os-x/nginx"
-alias php-fpmd="sudo /usr/local/share/create-nginx-config-os-x/php-fpm"
