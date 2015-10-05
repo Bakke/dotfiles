@@ -62,10 +62,10 @@ if $SHELL_ZSH; then
 fi
 
 # Load Bash It
-source $BASH_IT/bash_it.sh
+[[ -f $BASH_IT/bash_it.sh ]] && source $BASH_IT/bash_it.sh
 
 # Load ncreate config
-source ~/.bash_ncreate_config
+[[ -f $HOME/.bash_ncreate_config ]] && source $HOME/.bash_ncreate_config
 
 # Clean up
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
