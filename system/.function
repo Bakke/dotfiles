@@ -1,0 +1,106 @@
+# Start, stop and restart local server
+function server {
+
+	case $1
+		in
+			start)
+				mysql-start
+				php-fpmd start
+				nginxd start
+				;;
+			stop)
+				mysql-stop
+				php-fpmd stop
+				nginxd stop
+				;;
+			restart)
+				mysql-restart
+				php-fpmd restart
+				nginxd restart
+				;;
+			*)
+				echo "Usage: server start|stop|restart"
+	esac
+
+}
+
+# Open customer
+kunder() {
+	CUSTOMER="$1"
+	CHARACTER=${CUSTOMER:0:1}
+	open "/Users/$USER/Documents/Kunder/$CHARACTER/$CUSTOMER";
+}
+
+# Add domain to /etc/hosts
+hostsadd() {
+	echo "127.0.0.1	$1" | sudo tee -a /etc/hosts;
+}
+
+# Get size of folder
+sizeof(){ du -hs $1 | awk '{print $1}'; }
+
+#Fetch wp uploads folder from server
+fetch_uploads() {
+	scp -r "$1".idrift.no:/home/httpd/"$2"/public_html/content/uploads .;
+}
+
+# Bower update recursively
+function bower-update {
+	CurrentDIR="$(pwd)";
+
+	prev='';
+	vendorPath="bower_components";
+	if [[ -f ".bowerrc" ]]; then
+		vendorPath=`cat ".bowerrc" | python -c "import json,sys;obj=json.load(sys.stdin);print str(obj['directory'])"`
+		if [[ "${vendorPath}" == *Traceback* ]]; then
+			vendorPath="bower_components";
+		fi
+	fi
+
+	find . -type f -iname "bower.json" -print0 | while IFS= read -r -d $'\0' bower_file_path; do
+		bowerDir="${bower_file_path//bower.json/}";
+
+		if [[ "${bowerDir}" != "${prev}${vendorPath}"* && "${bowerDir}" != "${prev}./${vendorPath}"* && "${bowerDir}" != "${vendorPath}"* && "${bowerDir}" != "./${vendorPath}"* && "${bowerDir}" != "./node_modules"* ]]; then
+			echo -e "\033[0;36mUpdating Bower in \033[1;36m${bowerDir}\033[0m"
+			cd $bowerDir;
+			bower update
+			cd $CurrentDIR;
+
+			# Filter out bad dirs
+			prev=$bowerDir;
+			if [[ -f "${bowerDir}.bowerrc" ]]; then
+				vendorPath=`cat "${bowerDir}.bowerrc" | python -c "import json,sys;obj=json.load(sys.stdin);print str(obj['directory'])"`
+				if [[ "${vendorPath}" == *Traceback* ]]; then
+					vendorPath="bower_components";
+				fi
+			fi
+		fi
+
+	done
+}
+
+# Get registrar function
+registrar() {
+
+	REGISTRAR=( $(whois $1 | grep -m 1 -i "Registrar Handle" | awk -F ":" '/: / { print $2}') );
+
+	if [ -n "$REGISTRAR" ]; then
+		whois $REGISTRAR;
+	else
+		echo 'Could not find registrar info';
+	fi
+
+}
+
+# Get legal function
+legal() {
+
+	LEGAL=( $(whois $1 | grep -m 1 -i "Legal" | awk -F ":" '/: / { print $2}') );
+
+	if [ -n "$LEGAL" ]; then
+		whois $LEGAL;
+	else
+		echo 'Could not find legal info';
+	fi
+
+}

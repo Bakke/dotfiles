@@ -1,0 +1,57 @@
+# Dirs
+alias dev='cd ~/Development/'
+alias www='cd ~/Development/vhost/'
+alias projects='cd ~/Development/projects/'
+alias packages-subl='cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages'
+alias pillars='cd ~/Development/projects/pillars && gup && subl .'
+alias aliases='subl ~/Dropbox/Settings/aliases/custom.aliases.bash'
+
+# Apps
+alias xcode="open -a '/Developer/Applications/Xcode.app'"
+alias photoshop='open -a Adobe\ Photoshop\ CC\ 2014'
+alias illustrator='open -a Adobe\ Illustrator\ CC\ 2014'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+
+# Git push
+alias Origin='git push origin'
+alias Deploy='git push deploy'
+alias Develop='git push develop'
+alias Github='git push github'
+alias Gitlab='git push gitlab'
+
+# Directory and file navigation/editing
+alias ll='ls -li'
+alias la='ls -la'
+alias lsd='ls -l | grep "^d"'
+alias fs="sizeof"
+alias rmdir='rm -rf'
+alias pwdcp='pwd | pbcopy'
+
+# Misc
+alias gls="git log --pretty=format:'%s'"
+alias php='php -c /usr/local/etc/php/current/php-cli.ini'
+alias srdb='php /usr/local/bin/Search-Replace-DB/srdb.cli.php -u root -p root -h localhost'
+alias wppermissions='sudo chown _www:staff content && sudo chmod 775 content && sudo chown -R _www:staff content/uploads && sudo chmod -R 775 content/uploads'
+alias artisan='php "$(_get_artisan_dir)/artisan" --ansi'
+alias artisanclear='artisan cache:clear && artisan clear-compiled && artisan optimize'
+# alias whois="whois -h whois-servers.net"
+
+# Fasd
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+
+# MySQL
+alias mysql-start="sudo mysql.server start"
+alias mysql-stop="sudo mysql.server stop"
+alias mysql-restart="mysql-stop && mysql-start"
+alias mysql-fix="sudo rm /usr/local/var/mysql/Kattekebab.local.err && mysql.server start"
+
+# Server stuff
+alias nginxd="sudo /usr/local/share/create-nginx-config-os-x/nginx"
+alias php-fpmd="sudo /usr/local/share/create-nginx-config-os-x/php-fpm"
