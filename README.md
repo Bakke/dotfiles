@@ -10,8 +10,8 @@ cp ~/.vimrc ~/.vimrc.bak
 cp ~/.tmux.conf ~/.tmux.conf.bak
 
 # Symlink new files
-ln -sv “~/.dotfiles/runcom/.bash_profile” ~
-ln -sv “~/.dotfiles/git/.gitconfig” ~
-ln -sv “~/.dotfiles/vim/.vimrc ~
-ln -sv “~/.dotfiles/timux/.tmux.conf ~
+ln -sv "~/.dotfiles/runcom/.bash_profile" ~
+ln -sv "~/.dotfiles/git/.gitconfig" ~
+ln -sv "~/.dotfiles/vim/.vimrc" ~
+ln -sv "~/.dotfiles/timux/.tmux.conf" ~
 ```
