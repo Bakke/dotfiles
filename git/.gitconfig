@@ -1,0 +1,9 @@
+[user]
+	name = Magnus Hauge Bakke
+	email = magnus@idrift.no
+[github]
+	user = Bakke
+[color]
+	ui = true
+[push]
+	default = simple
