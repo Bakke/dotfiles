@@ -1,0 +1,32 @@
+# Start, stop and restart local server
+function server() {
+
+	case $1
+		in
+			start)
+				mysql-start
+				php-fpmd start
+				nginxd start
+				;;
+			stop)
+				mysql-stop
+				php-fpmd stop
+				nginxd stop
+				;;
+			restart)
+				mysql-restart
+				php-fpmd restart
+				nginxd restart
+				;;
+			*)
+				echo "Usage: server start|stop|restart"
+	esac
+
+}
+
+# Open customer
+kunder() {
+	CUSTOMER="$1"
+	CHARACTER=${CUSTOMER:0:1}
+	open "/Users/$USER/Documents/Kunder/$CHARACTER/$CUSTOMER";
+}
