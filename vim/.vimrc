@@ -130,18 +130,14 @@ inoremap <C-U> <C-G>u<C-U>
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Tab navigation like firefox
-nnoremap <C-S-tab> :tabprevious<CR>
-nnoremap <C-tab>   :tabnext<CR>
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-S-tab> <Esc>:tabprevious<CR>i
-inoremap <C-tab>   <Esc>:tabnext<CR>i
-inoremap <C-t>     <Esc>:tabnew<CR>
-nnoremap <C-Insert> :tabnew<CR>
-nnoremap <C-Delete> :tabclose<CR>
-
-" extra tabnext
-nnoremap <F3>   :tabprevious<CR>
-nnoremap <F4>   :tabnext<CR>
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
+nnoremap <C-t> :tabnew<CR>
+nnoremap <C-w> :tabclose<CR>
+inoremap <C-h> <Esc>:tabprevious<CR>i
+inoremap <C-l> <Esc>:tabnext<CR>i
+inoremap <C-t> <Esc>:tabnew<CR>
+inoremap <C-w> <Esc>:tabclose<CR>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
