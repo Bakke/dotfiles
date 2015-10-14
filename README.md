@@ -21,6 +21,7 @@ rm ~/.tmux.conf
 # Symlink new files
 ln -sv "/Users/username/.dotfiles/runcom/.bash_profile" ~
 ln -sv "/Users/username/.dotfiles/git/.gitconfig" ~
+ln -sv "/Users/username/.dotfiles/vim/vundle.vim" ~/.vim/
 ln -sv "/Users/username/.dotfiles/vim/.vimrc" ~
 ln -sv "/Users/username/.dotfiles/tmux/.tmux.conf" ~
 ```
