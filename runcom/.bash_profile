@@ -38,7 +38,11 @@ fi
 # Init fasd
 if [ -d "$HOME/.fasd-git" ]; then
     PATH=$PATH:$HOME/.fasd-git
-    eval "$(fasd --init auto)"
+    if $SHELL_BASH; then
+        eval "$(fasd --init posix-alias bash-hook)"
+    else
+        eval "$(fasd --init posix-alias zsh-hook)"
+    fi
 fi
 
 # Finally we can source the dotfiles (order matters)
