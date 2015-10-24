@@ -18,9 +18,6 @@ alias pwdcp='pwd | pbcopy'
 
 # Misc
 alias gls="git log --pretty=format:'%s'"
-# alias php='php -c /usr/local/etc/php/current/php-cli.ini'
-alias srdb='php /usr/local/bin/Search-Replace-DB/srdb.cli.php -u root -p root -h localhost'
-alias wppermissions='sudo chown _www:staff content && sudo chmod 775 content && sudo chown -R _www:staff content/uploads && sudo chmod -R 775 content/uploads'
 alias artisan='php "$(_get_artisan_dir)/artisan" --ansi'
 alias artisanclear='artisan cache:clear && artisan clear-compiled && artisan optimize'
 
