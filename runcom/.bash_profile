@@ -36,8 +36,8 @@ else
 fi
 
 # Init fasd
-if [ -d "~/.fasd-git" ]; then
-    PATH=$PATH:~/.fasd-git
+if [ -d "$HOME/.fasd-git" ]; then
+    PATH=$PATH:$HOME/.fasd-git
     eval "$(fasd --init auto)"
 fi
 
