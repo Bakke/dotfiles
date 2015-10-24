@@ -1,0 +1,68 @@
+wppermissions() {
+
+    DIRNAME=${PWD##*/};
+
+    if [ -z "$1" ]; then
+        echo "You need to define a owner!"
+        return
+    fi
+
+    if [ "$DIRNAME" != 'public_html' ]; then
+        echo "You need to be in the public_html folder!"
+        return
+    fi
+
+    sudo chown "$1":adm content
+    sudo chmod 775 content
+    sudo chown -R "$1":adm content/uploads
+    sudo chmod -R 775 content/uploads
+
+}
+
+wpgit() {
+
+    if [ -n "$1" ]; then
+        cd "/home/httpd/$1/" || exit
+    fi
+
+    DIRNAME=${PWD##*/};
+
+    sudo chown -R "$USER":adm "/home/httpd/$DIRNAME/"
+    find /home/httpd/$DIRNAME -type d -exec chmod 02775 {} \;
+
+    mkdir "$DIRNAME.git"
+    cd "$DIRNAME.git"
+    git init --bare
+    git config core.bare false
+    git config core.worktree /home/httpd/$DIRNAME/public_html
+    git config receive.denycurrentbranch ignore
+    git config core.sharedrepository 1
+    git config receive.denyNonFastforwards true
+
+    ln -s /usr/local/bin/post-receive/post-receive hooks/post-receive
+    chmod +x hooks/post-receive
+
+}
+
+initgit() {
+
+    if [ -n "$1" ]; then
+        cd "/home/httpd/$1/" || exit
+    fi
+
+    DIRNAME=${PWD##*/};
+
+    sudo chown -R "$USER":adm "/home/httpd/$DIRNAME/"
+    find /home/httpd/$DIRNAME -type d -exec chmod 02775 {} \;
+
+    mkdir mkdir "$DIRNAME.git"
+    cd "$DIRNAME.git"
+    git init --bare
+    git config core.bare false
+    git config core.worktree /home/httpd/$DIRNAME
+    git config core.sharedrepository 1
+
+    ln -s /usr/local/bin/post-receive/post-receive hooks/post-receive
+    chmod +x hooks/post-receive
+
+}
