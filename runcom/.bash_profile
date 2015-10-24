@@ -1,6 +1,3 @@
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
 # Shell
 if [ -n "$ZSH_VERSION" ]; then
    SHELL_ZSH=true
