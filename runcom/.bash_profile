@@ -35,6 +35,12 @@ else
     return # `exit 1` would quit the shell itself
 fi
 
+# Init fasd
+if [ -d "~/.fasd-git" ]; then
+    PATH=$PATH:~/.fasd-git
+    eval "$(fasd --init auto)"
+fi
+
 # Finally we can source the dotfiles (order matters)
 for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,completion,grep,prompt,nvm,custom}; do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
