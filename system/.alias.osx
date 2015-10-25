@@ -3,6 +3,7 @@ alias xcode="open -a '/Developer/Applications/Xcode.app'"
 alias photoshop='open -a Adobe\ Photoshop\ CC\ 2014'
 alias illustrator='open -a Adobe\ Illustrator\ CC\ 2014'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias ss='a -e subl'
 
 # Server stuff
 alias nginxd="sudo /usr/local/share/create-nginx-config-os-x/nginx"
