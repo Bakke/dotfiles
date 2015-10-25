@@ -37,8 +37,18 @@ fi
 
 # Init fasd
 if [ -d "$HOME/.fasd-git" ]; then
+
+    # Add fasd to PATH
     PATH=$PATH:$HOME/.fasd-git
-    eval "$(fasd --init auto)"
+
+    # Init fasd
+    fasd_cache="$HOME/.fasd-init"
+    if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+        fasd --init auto >| "$fasd_cache"
+    fi
+    source "$fasd_cache"
+    unset fasd_cache
+
 fi
 
 # Finally we can source the dotfiles (order matters)
