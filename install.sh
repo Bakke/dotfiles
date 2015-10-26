@@ -23,7 +23,7 @@ ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
 # Install Vundle
 source "$DOTFILES_DIR/install/vundle.sh"
 
-# Install Vundle
+# Install fasd
 source "$DOTFILES_DIR/install/fasd.sh"
 
 # Install oh-my-zsh
