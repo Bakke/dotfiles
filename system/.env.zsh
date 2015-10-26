@@ -1,7 +1,22 @@
+# Path to oh-my-zsh installation
+export ZSH=$HOME/.oh-my-zsh
+
+# Zsh theme
+ZSH_THEME="bakke"
+
+# Disable oh-my-zsh auto updates
+DISABLE_AUTO_UPDATE="true"
+
+# Would you like to use another custom folder than $ZSH/custom?
+ZSH_CUSTOM="$DOTFILES_DIR/oh-my-zsh"
+
+# Oh-my-zsh plugins
+plugins=(git battery brew brew-cask bgnotify coffee colorize colored-man-pages grunt gulp laravel5 node npm nvm python)
+
 # Set up the prompt
-autoload -Uz promptinit
-promptinit
-prompt adam1
+# autoload -Uz promptinit
+# promptinit
+# prompt adam1
 
 setopt histignorealldups sharehistory
 
@@ -22,8 +37,6 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
@@ -34,3 +47,12 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+if whence dircolors >/dev/null; then
+    eval "$(dircolors -b)"
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+    alias ls='ls --color'
+else
+    export CLICOLOR=1
+    zstyle ':completion:*:default' list-colors ''
+fi
