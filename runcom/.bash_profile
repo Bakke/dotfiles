@@ -65,7 +65,7 @@ if $SHELL_ZSH; then
 fi
 
 # Load Bash It
-[[ -f $BASH_IT/bash_it.sh ]] && source $BASH_IT/bash_it.sh
+[[ -f $BASH_IT/bash_it.sh && $SHELL_BASH ]] && source $BASH_IT/bash_it.sh
 
 # Load ncreate config
 [[ -f $HOME/.bash_ncreate_config ]] && source $HOME/.bash_ncreate_config
