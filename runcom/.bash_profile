@@ -36,7 +36,7 @@ else
 fi
 
 # Finally we can source the dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,completion,grep,prompt,nvm,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,env,alias,completion}; do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
@@ -53,13 +53,13 @@ if [ "$OS" = "Linux" ]; then
 fi
 
 if $SHELL_BASH; then
-    for DOTFILE in "$DOTFILES_DIR"/system/.*.bash; do
+    for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function,completion}.bash; do
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
 fi
 
 if $SHELL_ZSH; then
-    for DOTFILE in "$DOTFILES_DIR"/system/.*.zsh; do
+    for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function,completion}.zsh; do
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
 fi
