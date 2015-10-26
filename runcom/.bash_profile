@@ -35,22 +35,6 @@ else
     return # `exit 1` would quit the shell itself
 fi
 
-# Init fasd
-if [ -d "$HOME/.fasd-git" ]; then
-
-    # Add fasd to PATH
-    PATH=$PATH:$HOME/.fasd-git
-
-    # Init fasd
-    fasd_cache="$HOME/.fasd-init"
-    if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-        fasd --init auto >| "$fasd_cache"
-    fi
-    source "$fasd_cache"
-    unset fasd_cache
-
-fi
-
 # Finally we can source the dotfiles (order matters)
 for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,completion,grep,prompt,nvm,custom}; do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
@@ -85,6 +69,22 @@ fi
 
 # Load ncreate config
 [[ -f $HOME/.bash_ncreate_config ]] && source $HOME/.bash_ncreate_config
+
+# Init fasd
+if [ -d "$HOME/.fasd-git" ]; then
+
+    # Add fasd to PATH
+    PATH=$PATH:$HOME/.fasd-git
+
+    # Init fasd
+    fasd_cache="$HOME/.fasd-init"
+    if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+        fasd --init auto >| "$fasd_cache"
+    fi
+    source "$fasd_cache"
+    unset fasd_cache
+
+fi
 
 # Clean up
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
