@@ -64,8 +64,11 @@ if $SHELL_ZSH; then
     done
 fi
 
+# Load oh-my-zsh
+[[ "$SHELL_ZSH" = true && -a $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
+
 # Load Bash It
-[[ -f $BASH_IT/bash_it.sh && $SHELL_BASH ]] && source $BASH_IT/bash_it.sh
+[[ "$SHELL_BASH" = true && -a $BASH_IT/bash_it.sh ]] && source $BASH_IT/bash_it.sh
 
 # Load ncreate config
 [[ -f $HOME/.bash_ncreate_config ]] && source $HOME/.bash_ncreate_config
