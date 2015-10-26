@@ -17,6 +17,7 @@ alias rmdir='rm -rf'
 alias pwdcp='pwd | pbcopy'
 
 # Misc
+alias reload="source ~/.bash_profile"
 alias gls="git log --pretty=format:'%s'"
 alias artisan='php "$(_get_artisan_dir)/artisan" --ansi'
 alias artisanclear='artisan cache:clear && artisan clear-compiled && artisan optimize'
