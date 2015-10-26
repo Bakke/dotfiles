@@ -25,3 +25,6 @@ source "$DOTFILES_DIR/install/vundle.sh"
 
 # Install Vundle
 source "$DOTFILES_DIR/install/fasd.sh"
+
+# Install oh-my-zsh
+source "$DOTFILES_DIR/install/oh-my-zsh.sh"
