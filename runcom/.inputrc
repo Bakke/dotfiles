@@ -16,5 +16,8 @@ set completion-query-items 200
 # Show extra file information when completing, like `ls -F` does
 set visible-stats on
 
+# Turn off terminal bell
+set bell-style none
+
 # Flip through autocompletion matches with Shift-Tab.
 "\e[Z": menu-complete
