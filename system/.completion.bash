@@ -13,7 +13,6 @@ _vhost_autocomplete() {
 }
 
 complete -F _vhost_autocomplete vhost
-complete -F _vhost_autocomplete hostsadd
 
 # Project completion
 _project_autocomplete() {
