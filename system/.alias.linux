@@ -1,2 +1,2 @@
 alias www='cd /home/httpd';
-alias ack='ach-grep'
+alias ack='ack-grep'
