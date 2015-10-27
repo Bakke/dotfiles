@@ -22,12 +22,10 @@ set wildmode=list:longest,full
 
 " Syntax options
 syntax on                  " syntax coloring
-" let g:solarized_termcolors=256
+let g:enable_bold_font = 1
 " set background=dark
-" colorscheme solarized
 " colorscheme material-theme
 " colorscheme inkpot
-let g:enable_bold_font = 1
 colorscheme hybrid_reverse
 
 " Powerline options
