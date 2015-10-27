@@ -4,16 +4,16 @@ PROMPT='
 $(_user_host) ${_current_dir} $(git_prompt_info) $(_ruby_version)
 → '
 
-local _current_dir="%{$fg[yellow]%}%3~%{$reset_color%} "
+local _current_dir="%{$fg[cyan]%}%3~%{$reset_color%} "
 
 function _user_host() {
   me="%n"
   host="%m"
 
   if [[ -n $SSH_CONNECTION ]]; then
-    echo "%{$fg[cyan]%}$me@$host%{$reset_color%}:"
+    echo "%{$fg[yellow]%}$me%{$reset_color%}:%{$fg[magenta]%}$host%{$reset_color%}"
   else
-    echo "%{$fg[cyan]%}$me%{$reset_color%}:"
+    echo "%{$fg[yellow]%}$me%{$reset_color%}%{$reset_color%}"
   fi
 }
 
