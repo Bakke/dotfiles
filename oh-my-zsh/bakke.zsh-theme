@@ -5,14 +5,15 @@ $(_user_host) ${_current_dir} $(git_prompt_info) $(_ruby_version)
 → '
 
 local _current_dir="%{$fg[yellow]%}%3~%{$reset_color%} "
-local _return_status="%{$fg[red]%}%(?..⍉)%{$reset_color%}"
-local _hist_no="%{$fg[grey]%}%h%{$reset_color%}"
 
 function _user_host() {
   me="%n"
   host="%m"
-  if [[ -n $me ]]; then
-    echo "%{$fg[cyan]%}$me@$host:%{$reset_color%}"
+
+  if [[ -n $SSH_CONNECTION ]]; then
+    echo "%{$fg[cyan]%}$me@$host%{$reset_color%}:"
+  else
+    echo "%{$fg[cyan]%}$me%{$reset_color%}:"
   fi
 }
 
@@ -47,6 +48,8 @@ ZSH_THEME_GIT_TIME_SINCE_COMMIT_SHORT="%{$fg[green]%}"
 ZSH_THEME_GIT_TIME_SHORT_COMMIT_MEDIUM="%{$fg[yellow]%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_LONG="%{$fg[red]%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL="%{$fg[white]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}["
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}"
 
 # LS colors, made with http://geoff.greer.fm/lscolors/
 export LSCOLORS="gxfxcxdxbxegedabagacad"
