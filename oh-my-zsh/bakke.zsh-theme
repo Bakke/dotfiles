@@ -4,7 +4,7 @@ PROMPT='
 $(_user_host) ${_current_dir} $(git_prompt_info) $(_ruby_version)
 → '
 
-local _current_dir="%{$fg[cyan]%}%3~%{$reset_color%} "
+local _current_dir="%{$fg[cyan]%}%~%{$reset_color%} "
 
 function _user_host() {
   me="%n"
