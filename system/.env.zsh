@@ -11,7 +11,7 @@ DISABLE_AUTO_UPDATE="true"
 ZSH_CUSTOM="$DOTFILES_DIR/oh-my-zsh"
 
 # Oh-my-zsh plugins
-plugins=(brew brew-cask coffee colorize colored-man-pages grunt gulp laravel5 node npm nvm python)
+plugins=(composer grunt gulp npm)
 
 # Set up the prompt
 # autoload -Uz promptinit
