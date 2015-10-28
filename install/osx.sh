@@ -19,3 +19,6 @@ sudo gem install sass
 npm install -g bower
 npm install -g grunt
 npm install -g gulp
+
+# Set osx preferences
+. "$DOTFILES_DIR/install/osx-preferences.sh"
