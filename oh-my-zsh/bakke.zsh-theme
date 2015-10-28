@@ -11,9 +11,9 @@ function _user_host() {
   host="%m"
 
   if [[ -n $SSH_CONNECTION ]]; then
-    echo "%{$fg[yellow]%}$me%{$reset_color%}:%{$fg[magenta]%}$host%{$reset_color%}"
+    echo "%{$fg[yellow]%}$me%{$reset_color%}@%{$fg[magenta]%}$host%{$reset_color%}:"
   else
-    echo "%{$fg[yellow]%}$me%{$reset_color%}%{$reset_color%}"
+    echo "%{$fg[yellow]%}$me%{$reset_color%}%{$reset_color%}:"
   fi
 }
 
