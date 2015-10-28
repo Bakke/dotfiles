@@ -20,6 +20,12 @@ ln -sfv "$DOTFILES_DIR/vim/vundle.vim" ~/.vim/
 ln -sfv "$DOTFILES_DIR/vim/.vimrc" ~
 ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
 
+if [ "$(uname)" == "Darwin" ]; then
+    if [ -f "$DOTFILES_DIR/install/osx.sh" ]; then
+        . "$DOTFILES_DIR/install/osx.sh"
+    fi
+fi
+
 # Install Vundle
 source "$DOTFILES_DIR/install/vundle.sh"
 
