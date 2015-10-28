@@ -17,6 +17,10 @@ alias lsd='ls -l | grep "^d"'
 alias fs="sizeof"
 alias pwdcp='pwd | pbcopy'
 
+# Find
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+
 # Git
 alias gs='git status'
 alias gss='git status -s'
@@ -27,6 +31,7 @@ alias gm="git merge"
 alias gp='git push'
 alias gpo='git push origin'
 alias gpu='git push --set-upstream'
+alias gl='git pull'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gls="git log --pretty=format:'%s'"
