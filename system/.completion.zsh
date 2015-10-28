@@ -13,9 +13,3 @@ _fetch_uploads() {
     _alternative "args:server:($arguments)"
 }
 compdef _fetch_uploads fetch_uploads
-
-# composer completion
-_composer() {
-    _alternative "args:composer command:( $(composer list --raw | cut -f 1 -d " " | tr "\n" " ") )"
-}
-compdef _composer composer
