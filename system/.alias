@@ -6,6 +6,8 @@ alias Github='git push github'
 alias Gitlab='git push gitlab'
 
 # Directory and file navigation/editing
+alias md='mkdir -p'
+alias rd='rmdir'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -13,7 +15,6 @@ alias ll='ls -li'
 alias la='ls -la'
 alias lsd='ls -l | grep "^d"'
 alias fs="sizeof"
-alias rmdir='rm -rf'
 alias pwdcp='pwd | pbcopy'
 
 # Git
@@ -39,9 +40,11 @@ alias gt="git tag"
 alias gta="git tag -a"
 
 # Misc
+alias q='exit'
 alias reload="source ~/.bash_profile"
 alias artisan='php "$(_get_artisan_dir)/artisan" --ansi'
 alias artisanclear='artisan cache:clear && artisan clear-compiled && artisan optimize'
+alias flush='dscacheutil -flushcache'
 
 # Fasd
 alias a='fasd -a'        # any
