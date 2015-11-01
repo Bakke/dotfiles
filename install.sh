@@ -12,7 +12,6 @@ if [[ ! -d "~/.vim" ]]; then
 fi
 
 # Bunch of symlinks
-ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
