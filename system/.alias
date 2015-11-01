@@ -47,8 +47,8 @@ alias gta="git tag -a"
 # Misc
 alias q='exit'
 alias reload="source ~/.bash_profile"
-alias artisan='php "$(_get_artisan_dir)/artisan" --ansi'
-alias artisanclear='artisan cache:clear && artisan clear-compiled && artisan optimize'
+alias artisan='php artisan'
+# alias artisanclear='artisan cache:clear && artisan clear-compiled && artisan optimize'
 alias flush='dscacheutil -flushcache'
 
 # Fasd
