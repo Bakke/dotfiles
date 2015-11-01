@@ -105,3 +105,20 @@ _gitlab-cli() {
 
 }
 compdef _gitlab-cli gitlab-cli
+
+# artisan completion
+_artisan() {
+
+    typeset -A opt_args
+    _arguments -C \
+        '2: :->command'
+
+    case $state in
+        command)
+            compadd $( php artisan --no-ansi | sed "1,/Available commands/d" | awk '/^ +[a-z]+/ { print $1 }' )
+            ;;
+    esac
+
+}
+compdef _artisan php artisan
+compdef _artisan artisan
