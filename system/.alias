@@ -39,7 +39,7 @@ alias gta="git tag -a"
 
 # Misc
 alias q='exit'
-alias reload="source ~/.bash_profile"
+alias reload="source ~/.zshrc"
 alias artisan='php artisan'
 # alias artisanclear='artisan cache:clear && artisan clear-compiled && artisan optimize'
 alias flush='dscacheutil -flushcache'
