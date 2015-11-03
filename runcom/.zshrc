@@ -21,13 +21,13 @@ for DOTFILE in "$DOTFILES_DIR"/system/.{function,env,alias,completion}; do
 done
 
 if [ "$OS" = "OSX" ]; then
-    for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}.osx; do
+    for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function,completion}.osx; do
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
 fi
 
 if [ "$OS" = "Linux" ]; then
-    for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}.linux; do
+    for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function,completion}.linux; do
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
 fi

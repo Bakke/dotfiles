@@ -1,0 +1,19 @@
+# Kunder completion
+_kunder() {
+
+	# Backup and change IFS
+	saveIFS=$IFS
+	IFS=$'\n'
+
+	# Get all customer folders
+	local customers=($(basename print -l ~/Documents/Kunder/*/*(/)))
+
+	# Add all entries as completions
+	compadd -a customers
+
+	# Restore IFS
+	IFS=$saveIFS
+
+}
+
+compdef _kunder kunder
