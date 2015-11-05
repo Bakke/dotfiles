@@ -23,10 +23,7 @@ set wildmode=list:longest,full
 " Syntax options
 syntax on                  " syntax coloring
 let g:enable_bold_font = 1
-" set background=dark
-" colorscheme material-theme
-" colorscheme inkpot
-colorscheme hybrid_reverse
+silent! colorscheme hybrid_reverse
 
 " Powerline options
 set guifont=Menlo:h12
