@@ -17,6 +17,9 @@ Plugin 'terryma/vim-multiple-cursors.git'
 " Ctrlp.vim
 Plugin 'kien/ctrlp.vim.git'
 
+" NERD Tree
+Plugin 'scrooloose/nerdtree.git'
+
 " Ack.vim
 Plugin 'mileszs/ack.vim'
 

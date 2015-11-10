@@ -12,6 +12,12 @@ let g:ctrlp_working_path_mode = 'a'
 " Vim Airline
 " let g:airline_powerline_fonts = 1
 
+" Toggle NERD Tree
+map <C-i> :NERDTreeToggle<CR>
+
+" SHow hidden files in NERD Tree
+let NERDTreeShowHidden=1
+
 " Load plugins
 "if filereadable(expand("$HOME/.vim/vundle.vim"))
   source $HOME/.vim/vundle.vim
