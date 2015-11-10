@@ -1,6 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" Use tab for emmet vim
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
 " Ctrp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -45,6 +48,9 @@ set laststatus=2
 set virtualedit=block      " select unwritten chars in visual-block mode
 set hlsearch               " syntax highlighting on last search
 set incsearch              " instant (char by char) search
+set ignorecase             " ignore case when searching
+set smartcase              " ignore case if search pattern is all lowercase,
+                           " case-sensitive otherwise
 set relativenumber	       " relative line numbers
 set background=dark        " light colors; more readable, but uglier
 set bs=2                   " allow all backspacing in insert mode
@@ -57,6 +63,19 @@ set showtabline=2
 set ruler		           " show the cursor position all the time
 set showcmd		           " display incomplete commands
 
+" Highlight whitespace
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
+" Trim trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Relaod .vimrc
+nmap <F1> :so $MYVIMRC<CR>
+
+" Set paste
+set pastetoggle=<F2>
+
 " tab/indenting options
 filetype indent on   " per file indent
 set autoindent       " new line starts indented
@@ -68,6 +87,9 @@ set expandtab        " always replace tab key with spaces
                      " if not set 2xtab makes one tab char
 autocmd BufNewFile,BufRead Makefile,Makefile.in,Makefile.am set noexpandtab
 autocmd BufNewFile,BufRead Makefile,Makefile.in,Makefile.am set softtabstop=0
+
+" Brighter line numbers
+highlight LineNr ctermfg=DarkGrey
 
 " .viminfo settings
 " read/write a .viminfo file, don't store more that 50 lines of registers
@@ -86,8 +108,11 @@ map Q gq
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+" Clear search buffer with ,/
+nmap <silent> ,/ :nohlsearch<CR>
+
+" Juse jj for esc
+inoremap jj <esc>
 
 " Tab navigation like firefox
 nnoremap <C-j> :tabprevious<CR>
@@ -98,6 +123,12 @@ inoremap <C-j> <Esc>:tabprevious<CR>i
 inoremap <C-k> <Esc>:tabnext<CR>i
 inoremap <C-t> <Esc>:tabnew<CR>
 inoremap <C-w> <Esc>:tabclose<CR>
+
+" Indention
+nnoremap ø <<
+nnoremap æ >>
+vnoremap ø <
+vnoremap æ >
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
