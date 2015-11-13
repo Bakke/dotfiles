@@ -5,6 +5,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Bracketed paste
+Plugin 'ConradIrwin/vim-bracketed-paste.git'
+
 " Vim Airline
 Plugin 'bling/vim-airline'
 
