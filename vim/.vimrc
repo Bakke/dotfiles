@@ -32,7 +32,7 @@ set wildmode=list:longest,full
 " Syntax options
 syntax on                  " syntax coloring
 let g:enable_bold_font = 1
-silent! colorscheme hybrid_reverse
+silent! colorscheme jellybeans
 
 " Powerline options
 set guifont=Menlo:h12

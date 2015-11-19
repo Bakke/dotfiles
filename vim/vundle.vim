@@ -41,8 +41,11 @@ Plugin 'kchmck/vim-coffee-script'
 " Emmet-vim
 Plugin 'mattn/emmet-vim'
 
+" Jellybeans.vim color scheme
+Plugin 'nanotech/jellybeans.vim.git'
+
 " Hybrid Reverse Theme
-Plugin 'kristijanhusak/vim-hybrid-material.git'
+" Plugin 'kristijanhusak/vim-hybrid-material.git'
 
 " Inkpot Theme
 " Plugin 'ciaranm/inkpot.git'
