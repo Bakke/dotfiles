@@ -9,11 +9,10 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
 
-" Ag.vim
-" let g:ag_working_path_mode="r"
-
 " Vim Airline
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='oceanicnext'
+let g:airline#extensions#tabline#enabled = 1
 
 " Toggle NERD Tree
 map <C-i> :NERDTreeToggle<CR>
@@ -31,16 +30,13 @@ set wildmode=list:longest,full
 
 " Syntax options
 syntax on                  " syntax coloring
-let g:enable_bold_font = 1
-silent! colorscheme jellybeans
+silent! colorscheme OceanicNext
 
 " Powerline options
 set guifont=Menlo:h12
-let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
 set termencoding=utf-8
 set laststatus=2
 
@@ -89,7 +85,7 @@ autocmd BufNewFile,BufRead Makefile,Makefile.in,Makefile.am set noexpandtab
 autocmd BufNewFile,BufRead Makefile,Makefile.in,Makefile.am set softtabstop=0
 
 " Brighter line numbers
-highlight LineNr ctermfg=DarkGrey
+highlight LineNr ctermfg=Grey
 
 " .viminfo settings
 " read/write a .viminfo file, don't store more that 50 lines of registers

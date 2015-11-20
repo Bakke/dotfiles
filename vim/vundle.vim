@@ -41,14 +41,8 @@ Plugin 'kchmck/vim-coffee-script'
 " Emmet-vim
 Plugin 'mattn/emmet-vim'
 
-" Jellybeans.vim color scheme
-Plugin 'nanotech/jellybeans.vim.git'
-
-" Hybrid Reverse Theme
-" Plugin 'kristijanhusak/vim-hybrid-material.git'
-
-" Inkpot Theme
-" Plugin 'ciaranm/inkpot.git'
+" Oceanic next color scheme
+Plugin 'mhartington/oceanic-next'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
