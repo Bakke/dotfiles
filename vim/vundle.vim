@@ -29,9 +29,6 @@ Plugin 'mileszs/ack.vim'
 " Vim Surround
 Plugin 'tpope/vim-surround'
 
-" Ag.vim
-" Plugin 'rking/ag.vim.git'
-
 " Commentary.vim
 Plugin 'tpope/vim-commentary'
 
