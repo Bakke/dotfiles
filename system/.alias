@@ -38,6 +38,7 @@ alias gt="git tag"
 alias gta="git tag -a"
 
 # Misc
+alias tm='tmux new-session -A -s main'
 alias q='exit'
 alias reload="source ~/.zshrc"
 alias artisan='php artisan'
