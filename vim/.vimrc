@@ -87,6 +87,10 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 " set list
 " set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
+" Show tabs
+set list
+set listchars=tab:>.,trail:.
+
 "If your goal is to:
 "
 "    highlight trailing whitespace in red
