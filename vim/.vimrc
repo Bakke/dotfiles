@@ -45,6 +45,7 @@ Plugin 'mhartington/oceanic-next'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Bash style tab completion
 set wildmenu
 set wildmode=list:longest,full
 
