@@ -79,6 +79,9 @@ set showtabline=2
 set ruler		           " show the cursor position all the time
 set showcmd		           " display incomplete commands
 
+" Make p in Visual mode replace the selected text with the "" register.
+vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
+
 " Highlight whitespace
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
