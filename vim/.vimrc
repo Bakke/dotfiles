@@ -84,8 +84,23 @@ set showcmd		           " display incomplete commands
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " Highlight whitespace
-set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
+" set list
+" set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
+"If your goal is to:
+"
+"    highlight trailing whitespace in red
+"    have this highlighting not appear whilst you are typing in insert mode
+"    have the highlighting of whitespace apply when you open new buffers
+"
+"then the following 6 commands are what you should put into your .vimrc. They are all listed on this page in separate sections, but this is a consolidated list of precisely what you need.
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " Trim trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
