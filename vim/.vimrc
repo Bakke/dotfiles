@@ -40,6 +40,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/emmet-vim'
 Plugin 'mhartington/oceanic-next'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -48,6 +49,9 @@ filetype plugin indent on    " required
 " Bash style tab completion
 set wildmenu
 set wildmode=list:longest,full
+
+" Enter selects completion option without creating newline
+:inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Syntax options
 syntax on                  " syntax coloring
