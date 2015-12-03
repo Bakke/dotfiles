@@ -92,8 +92,8 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 " set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 " Show tabs
-set list
-set listchars=tab:>.,trail:.
+" set list
+" set listchars=tab:>.,trail:.
 
 "If your goal is to:
 "
@@ -106,7 +106,7 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-" autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
@@ -122,7 +122,7 @@ set pastetoggle=<F2>
 " tab/indenting options
 filetype indent on   " per file indent
 set autoindent       " new line starts indented
-set cindent      " see help
+set cindent          " see help
 set tabstop=4        " display width for old tab characters
 set shiftwidth=4     " new tabs
 set softtabstop=4    " how many spaces for tab key press
