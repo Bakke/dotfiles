@@ -11,7 +11,7 @@ let g:ctrlp_working_path_mode = 'a'
 
 " Vim Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='oceanicnext'
+let g:airline_theme='oceanicnext2'
 let g:airline#extensions#tabline#enabled = 1
 
 " Toggle NERD Tree

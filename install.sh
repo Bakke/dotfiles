@@ -11,11 +11,17 @@ if [[ ! -e ~/.vim ]]; then
     mkdir ~/.vim
 fi
 
+# Create vim airline themes directory if it does not exist
+if [[ ! -e ~/.vim/autoload/airline/themes ]]; then
+    mkdir ~/.vim/autoload/airline/themes
+fi
+
 # Bunch of symlinks
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/vim/.vimrc" ~
+ln -sfv "$DOTFILES_DIR/vim/autoload/airline/themes/oceanicnext2.vim" ~/.vim/autoload/airline/themes
 ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
 
 if [ "$(uname)" == "Darwin" ]; then
