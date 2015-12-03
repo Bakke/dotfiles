@@ -20,10 +20,30 @@ map <C-i> :NERDTreeToggle<CR>
 " SHow hidden files in NERD Tree
 let NERDTreeShowHidden=1
 
-" Load plugins
-"if filereadable(expand("$HOME/.vim/vundle.vim"))
-  source $HOME/.vim/vundle.vim
-"endif
+" Vundle plugins
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Plugins
+Plugin 'ConradIrwin/vim-bracketed-paste.git'
+Plugin 'bling/vim-airline'
+Plugin 'terryma/vim-multiple-cursors.git'
+Plugin 'kien/ctrlp.vim.git'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mattn/emmet-vim'
+Plugin 'mhartington/oceanic-next'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 set wildmenu
 set wildmode=list:longest,full
