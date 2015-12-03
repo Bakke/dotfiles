@@ -72,7 +72,7 @@ set incsearch              " instant (char by char) search
 set ignorecase             " ignore case when searching
 set smartcase              " ignore case if search pattern is all lowercase,
                            " case-sensitive otherwise
-set relativenumber	       " relative line numbers
+set relativenumber         " relative line numbers
 set background=dark        " light colors; more readable, but uglier
 set bs=2                   " allow all backspacing in insert mode
 set wildmode=longest,list  " bash-style tab-completion
@@ -81,8 +81,8 @@ set title
 set showmatch
 set showcmd
 set showtabline=2
-set ruler		           " show the cursor position all the time
-set showcmd		           " display incomplete commands
+set ruler                  " show the cursor position all the time
+set showcmd                " display incomplete commands
 
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
