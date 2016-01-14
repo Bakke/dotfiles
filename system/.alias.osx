@@ -1,4 +1,5 @@
 # Apps
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias xcode="open -a '/Developer/Applications/Xcode.app'"
 alias photoshop='open -a Adobe\ Photoshop\ CC\ 2014'
 alias illustrator='open -a Adobe\ Illustrator\ CC\ 2014'
