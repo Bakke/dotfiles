@@ -45,6 +45,7 @@ alias artisan='php artisan'
 # alias artisanclear='artisan cache:clear && artisan clear-compiled && artisan optimize'
 alias flush='dscacheutil -flushcache'
 alias excuse='echo "$(curl --silent https://api.githunt.io/programmingexcuses)"'
+alias idriftweb-packages-update='curl --silent https://packages.idriftweb.no/update.php'
 
 # Fasd
 alias a='fasd -a'        # any
