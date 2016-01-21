@@ -8,6 +8,9 @@ fi
 # Load RVM, if you are using it
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
+# Load oh-my-zsh
+[[ -a $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
+
 if [ -d "$HOME/.dotfiles" ]; then
     DOTFILES_DIR="$HOME/.dotfiles"
 else
@@ -31,9 +34,6 @@ if [ "$OS" = "Linux" ]; then
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
 fi
-
-# Load oh-my-zsh
-[[ -a $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
 
 # Load ncreate config
 [[ -f $HOME/.bash_ncreate_config ]] && source $HOME/.bash_ncreate_config
