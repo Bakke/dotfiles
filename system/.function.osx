@@ -1,3 +1,7 @@
+mp4-convert() {
+	ffmpeg -i "$1" -acodec libfaac -b:a 96k -vcodec libx264 -strict -2 -b:v 1M -s 1280x720 -pix_fmt yuv420p "mp4/$2"
+}
+
 # Start, stop and restart local server
 function server() {
 
