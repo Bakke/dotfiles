@@ -37,8 +37,14 @@ alias gd='git diff | vim -R -'
 alias gt="git tag"
 alias gta="git tag -a"
 
-# Misc
+# Tmux
 alias tm='tmux new-session -A -s main'
+alias txl='tmux ls'
+alias txn='tmux new-session -A -s'
+alias txa='tmux a -t'
+alias txk='tmux kill-session -t'
+
+# Misc
 alias q='exit'
 alias reload="source ~/.zshrc"
 alias artisan='php artisan'
