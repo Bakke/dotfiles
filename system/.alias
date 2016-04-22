@@ -25,6 +25,7 @@ alias gp='git push'
 alias gpo='git push origin'
 alias gpu='git push --set-upstream'
 alias gl='git pull'
+alias gf='git fetch && git rebase'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gls="git log --pretty=format:'%s'"
