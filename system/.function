@@ -3,7 +3,7 @@ sizeof(){ du -hs $1 | awk '{print $1}'; }
 
 #Fetch wp uploads folder from server
 fetch_uploads() {
-	scp -r "$1".idrift.no:/home/httpd/"$2"/public_html/content/uploads .;
+	rsync -rP "$1".idrift.no:/home/httpd/"$2"/public_html/content/uploads/ uploads;
 }
 
 # Bower update recursively
