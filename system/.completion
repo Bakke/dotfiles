@@ -8,9 +8,28 @@ compdef _server server
 
 # fetch_uploads completion
 _fetch_uploads() {
-    local arguments
-    arguments=('elendil' 'westeros' 'essos' 'amandil')
-    _alternative "args:server:($arguments)"
+
+    typeset -A opt_args
+	_arguments -C \
+		'1: :->command'\
+		'2: :->subcommand'\
+		'*:: :->options'
+
+	case $state in
+		command)
+			local commands
+			commands=('elendil' 'westeros' 'essos' 'amandil')
+			_describe 'command' commands
+			;;
+		subcommand)
+			local SERVERNAME
+			local subcommands
+			SERVERNAME=$line[1]
+			subcommands=($(ssh "$SERVERNAME.idrift.no" ls /home/httpd ))
+			_describe 'subcommand' subcommands
+			;;
+	esac
+
 }
 compdef _fetch_uploads fetch_uploads
 
