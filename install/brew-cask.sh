@@ -11,7 +11,18 @@ apps=(
     evernote
     sequel-pro
     totalterminal
+    transmit
     codebox
+    sequel-pro
+    tunnelblick
+    postman
+    poedit
+    goofy
+    jump-desktop
+    ccleaner
+    adobe-creative-cloud
+    vmware-fusion7
+    paw
 )
 
 brew cask install "${apps[@]}"
