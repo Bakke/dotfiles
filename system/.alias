@@ -9,6 +9,7 @@ alias la='ls -la'
 alias lsd='ls -l | grep "^d"'
 alias fs="sizeof"
 alias pwdcp='pwd | pbcopy'
+alias psa='ps aux | ack'
 
 # Find
 alias fd='find . -type d -name'
