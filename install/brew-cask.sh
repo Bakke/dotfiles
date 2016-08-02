@@ -23,6 +23,7 @@ apps=(
     adobe-creative-cloud
     vmware-fusion7
     paw
+    medis
 )
 
 brew cask install "${apps[@]}"

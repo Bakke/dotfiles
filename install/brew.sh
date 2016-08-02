@@ -14,6 +14,7 @@ apps=(
     wget
     curl
     tmux
+    redis
     reattach-to-user-namespace
 )
 
