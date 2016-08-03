@@ -5,14 +5,13 @@ apps=(
     google-chrome-canary
     opera
     spotify
-    sublime-text3
+    sublime-text
     transmit
     vlc
     evernote
     sequel-pro
     totalterminal
     transmit
-    codebox
     sequel-pro
     tunnelblick
     postman
