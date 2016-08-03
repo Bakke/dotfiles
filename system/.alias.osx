@@ -13,4 +13,6 @@ alias service="sudo brew services"
 
 alias srdb='php /usr/local/bin/Search-Replace-DB/srdb.cli.php -u root -p root -h localhost'
 alias wppermissions='sudo chown _www:staff content && sudo chmod 775 content && sudo chown -R _www:staff content/uploads && sudo chmod -R 775 content/uploads'
-# alias php='$(which php) -dzend_extension=xdebug.so'
+
+alias php='php -c /usr/local/etc/php/current/cli/php.ini'
+alias composer='php -c /usr/local/etc/php/current/cli/php.ini /usr/local/bin/composer'
