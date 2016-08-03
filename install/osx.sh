@@ -19,9 +19,9 @@ brew tap caskroom/versions
 sudo gem install sass
 
 # Globally install with npm
-npm install -g bower
-npm install -g grunt
-npm install -g gulp
+sudo /usr/local/bin/npm install -g bower
+sudo /usr/local/bin/npm install -g grunt
+sudo /usr/local/bin/npm install -g gulp
 
 # Set osx preferences
 . "$DOTFILES_DIR/install/osx-preferences.sh"
