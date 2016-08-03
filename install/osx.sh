@@ -1,3 +1,6 @@
+# Set hostname
+sudo scutil --set HostName Kattekebab
+
 # Install Homebrew & brew-cask
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew tap caskroom/cask
