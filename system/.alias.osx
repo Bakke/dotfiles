@@ -7,8 +7,8 @@ alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias ss='a -e subl'
 
 # Server stuff
-alias nginxd="sudo /usr/local/share/create-nginx-config-os-x/nginx"
-alias php-fpmd="sudo /usr/local/share/create-nginx-config-os-x/php-fpm"
+alias nginxd="sudo /usr/local/share/ncreate/nginx"
+alias php-fpmd="sudo /usr/local/share/ncreate/php-fpm"
 alias service="sudo brew services"
 
 alias srdb='php /usr/local/bin/Search-Replace-DB/srdb.cli.php -u root -p root -h localhost'
