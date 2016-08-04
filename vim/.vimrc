@@ -30,7 +30,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
 Plugin 'ConradIrwin/vim-bracketed-paste.git'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors.git'
 Plugin 'kien/ctrlp.vim.git'
 Plugin 'scrooloose/nerdtree.git'
