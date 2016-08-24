@@ -56,3 +56,36 @@ kunder() {
 	CHARACTER=${CUSTOMER:0:1}
 	open "/Users/$USER/Documents/Kunder/$CHARACTER/$CUSTOMER";
 }
+
+function web_search() {
+
+	# define search engine URLS
+	typeset -A urls
+	urls=(
+		google        "https://www.google.com/search?q="
+		github        "https://github.com/search?q="
+		stackoverflow "http://stackoverflow.com/search?tab=relevance&q="
+		wordpress     "http://wordpress.org/search/"
+		caniuse       "http://caniuse.com/#search="
+		phpnet        "http://php.net/manual-lookup.php?pattern="
+	)
+
+	# Check whether the search engine is supported
+	if [[ -z "$urls[$1]" ]]; then
+		echo "Search engine $1 not supported."
+		return 1
+	fi
+
+	# Search or go to main page depending on number of arguments passed
+	if [[ $# -gt 1 ]]; then
+		# build search url:
+		# join arguments passed with '+', then append to search engine URL
+		url="${urls[$1]}${(j:+:)@[2,-1]}"
+	else
+		# Build main page url:
+		# Split by '/', then rejoin protocol (1) and domain (2) parts with '//'
+		url="${(j://:)${(s:/:)urls[$1]}[1,2]}"
+	fi
+
+	open_command "$url"
+}

@@ -16,3 +16,11 @@ alias wppermissions='sudo chown _www:staff content && sudo chmod 775 content && 
 
 alias php='php -c /usr/local/etc/php/current/cli/php.ini'
 # alias composer='php -c /usr/local/etc/php/current/cli/php.ini /usr/local/bin/composer'
+
+# Web search aliases
+alias google='web_search google'
+alias github='web_search github'
+alias stackoverflow='web_search stackoverflow'
+alias wordpress='web_search wordpress'
+alias caniuse='web_search caniuse'
+alias phpnet='web_search phpnet'
