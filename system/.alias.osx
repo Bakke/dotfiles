@@ -17,6 +17,8 @@ alias wppermissions='sudo chown _www:staff content && sudo chmod 775 content && 
 alias php='php -c /usr/local/etc/php/current/cli/php.ini'
 # alias composer='php -c /usr/local/etc/php/current/cli/php.ini /usr/local/bin/composer'
 
+alias mt='multitail --config ~/.multitailrc -CS php'
+
 # Web search aliases
 alias google='web_search google'
 alias github='web_search github'
