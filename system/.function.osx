@@ -89,3 +89,7 @@ function web_search() {
 
 	open_command "$url"
 }
+
+service() {
+	sudo brew services $*
+}

@@ -17,3 +17,53 @@ _kunder() {
 }
 
 compdef _kunder kunder
+
+_service() {
+
+	typeset -A opt_args
+	_arguments -C \
+		'1: :->command'\
+		'2: :->formula'\
+		'*:: :->options'
+
+	case $state in
+		command)
+			local commands
+			commands=(
+					'cleanup:Get rid of stale services and unused plists'
+					'list:List all services managed by `brew services`'
+					'restart:Gracefully restart service(s)'
+					'start:Start service(s)'
+					'stop:Stop service(s)'
+			)
+			_describe 'command' commands
+			;;
+		formula)
+			case $line[1] in
+				start)
+					local commands
+					commands=( $(brew services list | awk '/(^[a-zA-Z0-9]+).*stopped/ { print $1 }') )
+					compadd -a commands
+					;;
+				stop)
+					;&
+				restart)
+					local commands
+					commands=( $(brew services list | awk '/(^[a-zA-Z0-9]+).*started/ { print $1 }') )
+					compadd -a commands
+					;;
+
+			esac
+
+			local options
+			options=(
+				'--all'
+			)
+			_describe 'options' options
+
+			;; # End subcommands
+
+	esac
+
+}
+compdef _service service
