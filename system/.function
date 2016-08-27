@@ -71,3 +71,8 @@ legal() {
 function hs() {
 	history | ack $*
 }
+
+# Search all processes
+function psa() {
+	ps aux | ack $*
+}
