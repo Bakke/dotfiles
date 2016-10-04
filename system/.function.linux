@@ -66,3 +66,35 @@ initgit() {
     chmod +x hooks/post-receive
 
 }
+
+## artisanclean
+artisanclean() {
+
+    if [ ! -f 'artisan' ]; then
+        echo "You need to be in the same folder as artisan!"
+        return
+    fi
+
+    if [ ! $1 ]; then
+        echo "You need to specify user"
+        return
+    fi
+
+    if [ ! -d "public/uploads" ]; then
+        mkdir public/uploads
+    fi
+
+    if [ ! -d "public/cache" ]; then
+        mkdir public/cache
+    fi
+
+    sudo chown -R "$1":adm bootstrap/cache storage public/uploads public/cache
+    sudo chmod -R 775 bootstrap/cache storage public/uploads public/cache
+
+    php artisan cache:clear
+    php artisan clear-compiled
+    php artisan optimize
+    php artisan config:clear
+    php artisan queue:restart
+
+}
