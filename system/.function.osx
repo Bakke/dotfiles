@@ -1,5 +1,14 @@
+error_log() {
+	tail -f ~/Development/vhost/*/logs/"$@"
+}
+
 mp4-convert() {
-	ffmpeg -i "$1" -acodec libfaac -b:a 96k -vcodec libx264 -strict -2 -b:v 1M -s 1280x720 -pix_fmt yuv420p "mp4/$2"
+	# ffmpeg -i "$1" -acodec libfaac -b:a 96k -vcodec libx264 -strict -2 -b:v 1M -s 1280x720 -pix_fmt yuv420p "mp4/$2"
+	ffmpeg -i "$1" -vcodec h264 -acodec aac -strict -2 "mp4/$2"
+}
+
+srdb() {
+	php /usr/local/bin/Search-Replace-DB/srdb.cli.php -u root -p root -h localhost "$@"
 }
 
 # Start, stop and restart local server
@@ -92,4 +101,15 @@ function web_search() {
 
 service() {
 	sudo brew services $*
+}
+
+morgen-kaffe() {
+	open "https://comics.io/my/"
+	open "https://news.ycombinator.com/"
+	open "http://thehackernews.com/"
+	open "http://www.tek.no/#hardware"
+	open "https://www.smashingmagazine.com/"
+	open "http://alistapart.com/"
+	open "https://hackernoon.com/"
+	open "https://medium.com/"
 }

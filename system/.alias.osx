@@ -11,7 +11,6 @@ alias nginxd="sudo /usr/local/share/ncreate/nginx"
 alias php-fpmd="sudo /usr/local/share/ncreate/php-fpm"
 # alias service="sudo brew services"
 
-alias srdb='php /usr/local/bin/Search-Replace-DB/srdb.cli.php -u root -p root -h localhost'
 alias wppermissions='sudo chown _www:staff content && sudo chmod 775 content && sudo chown -R _www:staff content/uploads && sudo chmod -R 775 content/uploads'
 
 alias php='php -c /usr/local/etc/php/current/cli/php.ini'
