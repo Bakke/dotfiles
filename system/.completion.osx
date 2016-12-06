@@ -1,4 +1,14 @@
 # Kunder completion
+_error_log() {
+
+	local errorlogs=(~/Development/vhost/*/logs/*.error.log(N:t))
+	compadd -a errorlogs
+
+}
+
+compdef _error_log error_log
+
+# Kunder completion
 _kunder() {
 
 	# Backup and change IFS
@@ -17,6 +27,31 @@ _kunder() {
 }
 
 compdef _kunder kunder
+
+_databases() {
+	local -a databases
+	databases=( $(mysql -u root --password=root -e 'show databases;' 2>/dev/null | awk '/([a-zA-Z0-9_]+)/ { print $1 }') )
+	_describe "MySQL databases" databases
+}
+
+_vhosts() {
+	local -a vhosts
+	vhosts=( $(basename print -l ~/Development/vhost/*(/) ) )
+	_describe "Virtual hosts" vhosts
+}
+
+_srdb() {
+
+	typeset -A opt_args
+
+	_arguments \
+		'-n[Database name]:database: _databases' \
+		'-s[Search for]:search: _vhosts' \
+		'-r[Reaplce with]:replace: _vhosts'
+
+}
+
+compdef _srdb srdb
 
 _service() {
 
