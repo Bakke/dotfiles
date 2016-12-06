@@ -9,7 +9,7 @@ alias la='ls -la'
 alias lsd='ls -l | grep "^d"'
 alias fs="sizeof"
 alias pwdcp='pwd | pbcopy'
-alias -g vr="| vim -R -"
+alias -g vr="| nvim -R -"
 
 # Find
 alias fd='find . -type d -name'
@@ -35,7 +35,7 @@ alias gg="git log --graph --pretty=format:'%C(bold)%h%Creset%C(yellow)%d%Creset 
 alias ggs="gg --stat"
 alias gsl="git shortlog -sn"
 alias gw="git whatchanged"
-alias gd='git diff | vim -R -'
+alias gd='git diff | nvim -R -'
 alias gt="git tag"
 alias gta="git tag -a"
 
