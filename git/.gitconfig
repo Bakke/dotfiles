@@ -7,3 +7,13 @@
 	ui = true
 [push]
 	default = current
+[alias]
+	shorty = status --short --branch
+	commend = commit --amend --no-edit
+	praise = blame
+[grep]
+	extendRegexp = true
+[core]
+	editor = nvim
+[pull]
+	rebase = true
