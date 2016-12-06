@@ -113,3 +113,45 @@ morgen-kaffe() {
 	open "https://hackernoon.com/"
 	open "https://medium.com/"
 }
+
+# Swith php version
+sphp() {
+
+	if [ $# -ne 1 ]; then
+		echo "Usage: sphp [phpversion]"
+		exit 1
+	fi
+
+	currentversion="`php -r \"echo str_replace('.', '', substr(phpversion(), 0, 3));\"`"
+	newversion="${1//\.}"
+
+	shortOld="`php -r \"echo substr(phpversion(), 0, 1);\"`"
+	shortNew="`php -r \"echo substr('$newversion', 0, 1);\"`"
+
+	brew list php$newversion 2> /dev/null > /dev/null
+
+	if [ $? -eq 0 ]; then
+		echo "PHP version $newversion found"
+
+		php-fpmd stop
+
+		echo "Unlinking old binaries..."
+		brew unlink php$currentversion 2> /dev/null > /dev/null
+
+		echo "Linking new binaries..."
+		brew link php$newversion
+
+		echo "Linking new modphp addon..."
+		sudo ln -sf `brew list php$newversion | grep libphp` /usr/local/lib/libphp${shortNew}.so
+
+		ln -sf "/usr/local/etc/php/$1" "/usr/local/etc/php/current"
+
+		php-fpmd start
+
+		echo "Done."
+	else
+		echo "PHP version $newversion was not found."
+		exit 1
+	fi
+
+}
