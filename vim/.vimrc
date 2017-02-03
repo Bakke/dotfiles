@@ -11,7 +11,7 @@ let g:ctrlp_working_path_mode = 'a'
 
 " Vim Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='oceanicnext2'
+let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 
 " Toggle NERD Tree
@@ -30,6 +30,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
 Plugin 'ConradIrwin/vim-bracketed-paste.git'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors.git'
 Plugin 'kien/ctrlp.vim.git'
@@ -39,7 +40,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/emmet-vim'
-Plugin 'mhartington/oceanic-next'
+Plugin 'jdkanani/vim-material-theme.git'
 Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
@@ -55,7 +56,7 @@ set wildmode=list:longest,full
 
 " Syntax options
 syntax on                  " syntax coloring
-silent! colorscheme OceanicNext
+silent! colorscheme material-theme
 
 " Powerline options
 set guifont=Menlo:h12
