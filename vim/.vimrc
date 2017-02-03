@@ -33,15 +33,11 @@ Plugin 'ConradIrwin/vim-bracketed-paste.git'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors.git'
-Plugin 'kien/ctrlp.vim.git'
+Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/emmet-vim'
 Plugin 'jdkanani/vim-material-theme.git'
-Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
