@@ -15,6 +15,7 @@ apps=(
     curl
     tmux
     redis
+	reattach-to-user-namespace
 )
 
 brew install "${apps[@]}"
