@@ -1,8 +1,8 @@
 # Bakke ZSH Theme
 
 PROMPT='
-$(_user_host) ${_current_dir} $(git_prompt_info) $(_ruby_version)
-→ '
+$(_user_host) ${_current_dir} $(git_prompt_info)
+%{$fg_bold[magenta]%}❯%{$reset_color%} '
 
 local _current_dir="%{$fg[cyan]%}%~%{$reset_color%} "
 
@@ -14,12 +14,6 @@ function _user_host() {
     echo "%{$fg[yellow]%}$me%{$reset_color%}@%{$fg[magenta]%}$host%{$reset_color%}:"
   else
     echo "%{$fg[yellow]%}$me%{$reset_color%}%{$reset_color%}:"
-  fi
-}
-
-function _ruby_version() {
-  if {echo $fpath | grep -q "plugins/rvm"}; then
-    echo "%{$fg[grey]%}$(rvm_prompt_info)%{$reset_color%}"
   fi
 }
 
