@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+COMMIT=$(git status -s | cut -c4- | fzf -m)
+git add $COMMIT

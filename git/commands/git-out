@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+##
+# Usage
+#
+# List commits locally that aren't present in origin remote
+# $ git out
+#
+##
+
+# exit on error
+set -e
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+git fetch origin
+git log origin/$BRANCH..$BRANCH

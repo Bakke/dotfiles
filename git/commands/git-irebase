@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+##
+# Usage
+#
+# Open selection of commits to select commit to do an interactive rebase from
+# $ git irebase
+#
+##
+
+COMMIT=($(git log --pretty=oneline | fzf))
+git rebase -i ${COMMIT[0]}^
