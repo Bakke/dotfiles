@@ -21,7 +21,6 @@ ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/vim/.vimrc" ~
-ln -sfv "$DOTFILES_DIR/vim/autoload/airline/themes/oceanicnext2.vim" ~/.vim/autoload/airline/themes
 ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
 
 if [ "$(uname)" == "Darwin" ]; then
@@ -32,9 +31,3 @@ fi
 
 # Install Vundle
 source "$DOTFILES_DIR/install/vundle.sh"
-
-# Install fasd
-source "$DOTFILES_DIR/install/fasd.sh"
-
-# Install oh-my-zsh
-source "$DOTFILES_DIR/install/oh-my-zsh.sh"

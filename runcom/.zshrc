@@ -35,21 +35,5 @@ fi
 # Load ncreate config
 [[ -f $HOME/.bash_ncreate_config ]] && source $HOME/.bash_ncreate_config
 
-# Init fasd
-if [ -d "$HOME/.fasd-git" ]; then
-
-    # Add fasd to PATH
-    PATH=$PATH:$HOME/.fasd-git
-
-    # Init fasd
-    fasd_cache="$HOME/.fasd-init"
-    if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-        fasd --init auto >| "$fasd_cache"
-    fi
-    source "$fasd_cache"
-    unset fasd_cache
-
-fi
-
 # Clean up
 unset SCRIPT_PATH DOTFILE
