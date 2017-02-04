@@ -1,0 +1,14 @@
+# Load zplug
+source ~/.zplug/init.zsh
+
+# Plugins
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-autosuggestions"
+
+# Then, source plugins and add commands to $PATH
+zplug load
+
+# Bind keys for history substring search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
