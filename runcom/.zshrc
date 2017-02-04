@@ -32,9 +32,6 @@ if [ "$OS" = "Linux" ]; then
     done
 fi
 
-# Load oh-my-zsh
-[[ -a $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
-
 # Load ncreate config
 [[ -f $HOME/.bash_ncreate_config ]] && source $HOME/.bash_ncreate_config
 
