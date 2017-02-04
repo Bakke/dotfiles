@@ -37,6 +37,7 @@ Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
+Plugin 'mhartington/oceanic-next'
 Plugin 'jdkanani/vim-material-theme.git'
 
 " All of your Plugins must be added before the following line
@@ -53,6 +54,7 @@ set wildmode=list:longest,full
 " Syntax options
 syntax on                  " syntax coloring
 silent! colorscheme material-theme
+set termguicolors
 
 " Powerline options
 set guifont=Menlo:h12
