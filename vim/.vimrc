@@ -1,8 +1,4 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" Use tab for emmet vim
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+set nocompatible
 
 " Ctrp.vim
 let g:ctrlp_map = '<c-p>'
@@ -48,21 +44,12 @@ filetype plugin indent on    " required
 set wildmenu
 set wildmode=list:longest,full
 
-" Enter selects completion option without creating newline
-:inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Syntax options
+" Theming
 syntax on                  " syntax coloring
 silent! colorscheme material-theme
 set termguicolors
 
-" Powerline options
-set guifont=Menlo:h12
-set encoding=utf-8
-set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
-set termencoding=utf-8
-set laststatus=2
+:let mapleader = ","
 
 " editing options
 set virtualedit=block      " select unwritten chars in visual-block mode
@@ -113,10 +100,10 @@ autocmd BufWinLeave * call clearmatches()
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Relaod .vimrc
-nmap <F1> :so $MYVIMRC<CR>
+nmap <silent> <leader>r :so $MYVIMRC<CR>
 
-" Set paste
-set pastetoggle=<F2>
+" Clear last search
+nmap <silent> <leader>c <Esc>:noh<CR>
 
 " tab/indenting options
 filetype indent on   " per file indent
@@ -125,8 +112,6 @@ set cindent          " see help
 set tabstop=4        " display width for old tab characters
 set shiftwidth=4     " new tabs
 set softtabstop=4    " how many spaces for tab key press
-
-autocmd BufEnter *.sls set expandtab
 
 " Brighter line numbers
 highlight LineNr ctermfg=Grey
@@ -140,16 +125,6 @@ set history=50
 set backspace=indent,eol,start
 
 set nobackup
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
-
-" Clear search buffer with ,/
-nmap <silent> ,/ :nohlsearch<CR>
 
 " Juse jj for esc
 inoremap jj <esc>
@@ -170,15 +145,3 @@ nnoremap æ >>
 vnoremap ø <
 vnoremap æ >
 
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
