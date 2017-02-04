@@ -16,18 +16,18 @@ else
 fi
 
 # Finally we can source the dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,env,alias,completion}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{env,function,alias,prompt,completion}; do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
 if [ "$OS" = "OSX" ]; then
-    for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function,completion}.osx; do
+    for DOTFILE in "$DOTFILES_DIR"/system/.{env,function,alias,prompt,completion}.osx; do
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
 fi
 
 if [ "$OS" = "Linux" ]; then
-    for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function,completion}.linux; do
+    for DOTFILE in "$DOTFILES_DIR"/system/.{env,function,alias,prompt,completion}.linux; do
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
 fi
