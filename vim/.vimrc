@@ -5,9 +5,14 @@ set nocompatible
 :let mapleader = ","
 
 " Ctrp.vim
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_clear_cache_on_exit = 0 " Do not clear filenames cache, to improve CtrlP startup
+let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
+let g:ctrlp_match_window_bottom = 0 " Show at top of window
+let g:ctrlp_max_files = 0 " Set no file limit, we are building a big project
+let g:ctrlp_switch_buffer = 'Et' " Jump to tab AND buffer if already open
+let g:ctrlp_open_new_file = 'r' " Open newly created files in the current window
+let g:ctrlp_open_multiple_files = 'ij' " Open multiple files in hidden buffers, and jump to the first one
 
 " Vim Airline
 let g:airline_powerline_fonts = 1
