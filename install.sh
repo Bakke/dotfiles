@@ -31,3 +31,6 @@ fi
 
 # Install Vundle
 source "$DOTFILES_DIR/install/vundle.sh"
+
+# Install Zplug
+source "$DOTFILES_DIR/install/zplug.sh"
