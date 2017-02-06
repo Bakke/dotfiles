@@ -2,6 +2,7 @@
 source ~/.zplug/init.zsh
 
 # Plugins
+zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 
 # Then, source plugins and add commands to $PATH
