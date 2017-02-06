@@ -42,6 +42,7 @@ Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'mhartington/oceanic-next'
 Plugin 'jdkanani/vim-material-theme.git'
 
