@@ -159,6 +159,9 @@ nmap <silent> <leader>r :so $MYVIMRC<CR>
 " Clear last search
 nmap <silent> <leader>c <Esc>:noh<CR>
 
+" Copy to clipboard
+vnoremap <C-c> "+y
+
 " .viminfo settings
 " read/write a .viminfo file, don't store more that 50 lines of registers
 set viminfo='20,\"50
