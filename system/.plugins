@@ -2,7 +2,6 @@
 source ~/.zplug/init.zsh
 
 # Plugins
-zplug "clvv/fasd"
 zplug "zsh-users/zsh-history-substring-search"
 
 # Then, source plugins and add commands to $PATH
@@ -12,5 +11,3 @@ zplug load
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# Init fasd
-eval "$(fasd --init auto)"
