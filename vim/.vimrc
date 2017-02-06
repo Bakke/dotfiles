@@ -56,7 +56,6 @@ set wildmode=list:longest,full
 " Syntax highlighting
 syntax on
 set t_Co=256
-set termguicolors
 silent! colorscheme material-theme
 set background=dark
 set encoding=utf-8
