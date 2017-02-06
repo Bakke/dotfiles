@@ -62,6 +62,10 @@ set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
 
+if has("termguicolors")
+	set termguicolors
+endif
+
 " Searching
 set hlsearch                    " Syntax highlighting on last search
 set incsearch                   " Instant (char by char) search
