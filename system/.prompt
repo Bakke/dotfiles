@@ -43,13 +43,34 @@ function parse_git_dirty() {
 	fi
 }
 
+function preexec() {
+	timer=${timer:-$SECONDS}
+}
+
+function precmd() {
+	if [ $timer ]; then
+		timer_show=$(($SECONDS - $timer))
+		unset timer
+	fi
+}
+
+function right_prompt() {
+	local _rprompt
+	if [ -n "${timer_show}" ]; then
+		_rprompt="%{$fg[cyan]%}${timer_show}s %{$reset_color%}%(?..%F{red}%?%f)%{$reset_color%}"
+	fi
+	echo "${_rprompt}"
+	unset timer_show
+}
+
 function left_prompt() {
 echo "
 $(_user_host) ${_current_dir} $(git_prompt_info)
 %{$fg_bold[magenta]%}❯%{$reset_color%} "
 }
 
-PROMPT='$(left_prompt)'
+export PROMPT='$(left_prompt)'
+export RPROMPT='$(right_prompt)'
 
 # LS colors, made with http://geoff.greer.fm/lscolors/
 export LSCOLORS="gxfxcxdxbxegedabagacad"
