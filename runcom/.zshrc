@@ -54,6 +54,7 @@ fi
 [[ -f "${DOTFILES_DIR}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && source "${DOTFILES_DIR}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [[ -f "${DOTFILES_DIR}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && source "${DOTFILES_DIR}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [[ -f "${DOTFILES_DIR}/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh" ]] && source "${DOTFILES_DIR}/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+[[ -f "${DOTFILES_DIR}/plugins/colored-man-pages/colored-man-pages.zsh" ]] && source "${DOTFILES_DIR}/plugins/colored-man-pages/colored-man-pages.zsh"
 
 # Bind keys for history substring search
 bindkey '^[[A' history-substring-search-up
