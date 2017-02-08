@@ -7,3 +7,6 @@
 [submodule "plugins/zsh-autosuggestions"]
 	path = plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "plugins/grunt-zsh-completion"]
+	path = plugins/grunt-zsh-completion
+	url = https://github.com/yonchu/grunt-zsh-completion.git
