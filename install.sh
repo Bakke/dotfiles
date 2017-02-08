@@ -31,3 +31,9 @@ fi
 
 # Install Vundle
 source "$DOTFILES_DIR/install/vundle.sh"
+
+# Update submodules
+git submodule update --init --recursive
+
+# Symlink autocompletion files
+ln -s "${DOTFILES_DIR}/plugins/grunt-zsh-completion/_grunt" /usr/local/share/zsh/site-functions/_grunt
