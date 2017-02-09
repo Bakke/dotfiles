@@ -57,8 +57,10 @@ fi
 [[ -f "${DOTFILES_DIR}/plugins/colored-man-pages/colored-man-pages.zsh" ]] && source "${DOTFILES_DIR}/plugins/colored-man-pages/colored-man-pages.zsh"
 
 # Bind keys for history substring search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey '^K' history-substring-search-up # ctrl + k
+bindkey '^J' history-substring-search-down # ctrl + j
+bindkey '^[[A' history-substring-search-up # Arrow up
+bindkey '^[[B' history-substring-search-down # Arrow down
 
 # Clean up
 unset SCRIPT_PATH DOTFILE
