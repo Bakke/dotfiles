@@ -12,12 +12,6 @@ let g:ctrlp_max_files = 0 " Set no file limit, we are building a big project
 let g:ctrlp_switch_buffer = 'Et' " Jump to tab AND buffer if already open
 let g:ctrlp_open_new_file = 'r' " Open newly created files in the current window
 let g:ctrlp_open_multiple_files = 'ij' " Open multiple files in hidden buffers, and jump to the first one
-let g:ctrlp_prompt_mappings = {
-	\ 'AcceptSelection("e")': ['<c-t>'],
-	\ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
-	\ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-	\ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
-	\ }
 
 " Vim Airline
 let g:airline_powerline_fonts = 1
@@ -27,8 +21,16 @@ let g:airline#extensions#tabline#enabled = 1
 " Toggle NERD Tree
 map <C-i> :NERDTreeToggle<CR>
 
-" SHow hidden files in NERD Tree
+" NERD Tree settings
 let NERDTreeShowHidden=1
+let g:NERDTreeQuitOnOpen=1
+
+" Open NERDTree automatically when vim starts up on opening a directory?
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -179,6 +181,9 @@ nmap <silent> <leader>c <Esc>:noh<CR>
 " Copy to clipboard
 vnoremap <C-c> "+y
 
+" Mappings for git
+map <silent> <leader>gs :Gstatus<CR>
+
 " .viminfo settings
 " read/write a .viminfo file, don't store more that 50 lines of registers
 set viminfo='20,\"50
@@ -193,15 +198,15 @@ noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
-" Open and close tabs
-nnoremap <C-t>     :tabnew<CR>
-nnoremap <C-w>     :tabclose<CR>
-inoremap <C-t>     <Esc>:tabnew<CR>
-inoremap <C-w>     <Esc>:tabclose<CR>
+" Close buffers
+nnoremap <C-q>     :bw!<CR>
+nnoremap <C-w>     :bw<CR>
+inoremap <C-q>     <Esc>:bw!<CR>
+inoremap <C-w>     <Esc>:bw<CR>
 
-" Next/previous tab with Shift + H/L
-nnoremap H gT
-nnoremap L gt
+" Next/previous buffer with Shift + H/L
+nnoremap H :bprevious<CR>
+nnoremap L :bnext<CR>
 
 " Indention
 nnoremap ø <<
