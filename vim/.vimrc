@@ -160,6 +160,16 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 let g:neocomplete#sources#omni#input_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 
+"Disable neocomplete when multiple cursors are active
+function! Multiple_cursors_before()
+	exe 'NeoCompleteLock'
+endfunction
+
+"Enable neocomplete when multiple cursors are done
+function! Multiple_cursors_after()
+	exe 'NeoCompleteUnlock'
+endfunction
+
 " Relaod .vimrc
 nmap <silent> <leader>r :so $MYVIMRC<CR>
 
