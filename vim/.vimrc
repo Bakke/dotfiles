@@ -51,8 +51,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'Shougo/neocomplete.vim.git'
 Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'mhartington/oceanic-next'
-Plugin 'jdkanani/vim-material-theme.git'
+Plugin 'kristijanhusak/vim-hybrid-material'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -70,7 +69,7 @@ set wildmode=list:longest,full
 " Syntax highlighting
 syntax on
 set t_Co=256
-silent! colorscheme material-theme
+silent! colorscheme hybrid_material
 set background=dark
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
