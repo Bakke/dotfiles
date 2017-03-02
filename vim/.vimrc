@@ -30,6 +30,12 @@ map <C-i> :NERDTreeToggle<CR>
 " SHow hidden files in NERD Tree
 let NERDTreeShowHidden=1
 
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " Vundle plugins
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -51,6 +57,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'Shougo/neocomplete.vim.git'
 Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'jwalton512/vim-blade'
 Plugin 'kristijanhusak/vim-hybrid-material'
 
 " All of your Plugins must be added before the following line
