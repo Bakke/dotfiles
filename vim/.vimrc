@@ -183,6 +183,10 @@ vnoremap <C-c> "+y
 
 " Mappings for git
 map <silent> <leader>gs :Gstatus<CR>
+map <silent> <leader>gd :Gdiff<CR>
+map <silent> <leader>gp :Gpush<CR>
+map <silent> <leader>gl :Gpull<CR>
+map <silent> <leader>gb :Gblame<CR>
 
 " .viminfo settings
 " read/write a .viminfo file, don't store more that 50 lines of registers
