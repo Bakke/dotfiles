@@ -43,6 +43,9 @@ nmap ga <Plug>(EasyAlign)
 let g:indent_guides_default_mapping = 0
 nmap <silent> <Leader>tt <Plug>IndentGuidesToggle
 
+" Use leader + tab for Emmet abbrevations
+imap <silent> <leader><tab> <C-y>,
+
 " Vundle plugins
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -151,7 +154,40 @@ function! s:my_cr_function()
 endfunction
 
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+imap <expr> <tab> TabComplete()
+smap <expr> <tab> TabComplete()
+xmap <expr> <tab> TabComplete()
+
+" Custom function for tab completion
+" Checks if we should youse neocomplete or emmet
+function! TabComplete()
+	if &filetype =~ 'html\|php\|css\|scss\|less' && IsEmmetExpandable()
+		return "\<plug>(emmet-expand-abbr)"
+	elseif pumvisible()
+		return "\<c-n>"
+	else
+		return "\<tab>"
+	endif
+endfunction
+
+" Custom function to check if
+" string is expandable by emmet
+function! IsEmmetExpandable()
+	if !emmet#isExpandable() | return 0 | endif
+	"if &filetype =~ 'css' | return 1 | endif
+	"if &filetype =~ 'less' | return 1 | endif
+	"if &filetype =~ 'scss' | return 1 | endif
+
+	let expr = matchstr(getline('.')[:col('.')], '\(\S\+\)$')
+	return expr =~ '[.#>+*]' || index(s:emmetElements, expr) >= 0
+endfunction
+
+" HTML elements Emmet should recognize
+let s:emmetElements = ['a', 'abbr', 'acronym', 'address', 'applet', 'area', 'article', 'aside', 'audio', 'b', 'base', 'basefont', 'bdi', 'bdo', 'big', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'datalist', 'dd', 'del', 'details', 'dfn', 'dialog', 'dir', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'font', 'footer', 'form', 'frame', 'frameset', 'h1', 'head', 'header', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'main', 'map', 'mark', 'menu', 'menuitem', 'meta', 'meter', 'nav', 'noframes', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strike', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'tt', 'u', 'ul', 'var', 'video', 'wbr']
+      \ + ['emb', 'btn', 'sty', 'dlg', 'fst', 'fig', 'leg', 'tarea', 'hdr', 'cmd', 'colg', 'art', 'fset', 'src', 'prog', 'bq', 'kg', 'adr' , 'cap', 'datag', 'datal', 'sect', 'str', 'obj', 'ftr', 'optg', 'ifr', 'out', 'det', 'acr', 'opt']
 
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
