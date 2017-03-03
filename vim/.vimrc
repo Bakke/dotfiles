@@ -39,6 +39,10 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" Indent guides options
+let g:indent_guides_default_mapping = 0
+nmap <silent> <Leader>tt <Plug>IndentGuidesToggle
+
 " Vundle plugins
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -53,6 +57,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors.git'
 Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'tpope/vim-surround'
@@ -223,29 +229,6 @@ vnoremap æ >
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
-" Highlight whitespace
-" set list
-" set listchars=tab:>.,trail:.,extends:#,nbsp:.
-
-" Show tabs
-" set list
-" set listchars=tab:>.,trail:.
-
-"If your goal is to:
-"
-"    highlight trailing whitespace in red
-"    have this highlighting not appear whilst you are typing in insert mode
-"    have the highlighting of whitespace apply when you open new buffers
-"
-"then the following 6 commands are what you should put into your .vimrc. They are all listed on this page in separate sections, but this is a consolidated list of precisely what you need.
-autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
-" Trim trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
+" Strip whitespace on save
+autocmd BufEnter * EnableStripWhitespaceOnSave
 
