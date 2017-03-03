@@ -8,6 +8,7 @@ set nocompatible
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_clear_cache_on_exit = 0 " Do not clear filenames cache, to improve CtrlP startup
 let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } " Use python fuzzy matcher for better performance
 let g:ctrlp_max_files = 0 " Set no file limit, we are building a big project
 let g:ctrlp_switch_buffer = 'Et' " Jump to tab AND buffer if already open
 let g:ctrlp_open_new_file = 'r' " Open newly created files in the current window
@@ -51,6 +52,7 @@ Plugin 'ConradIrwin/vim-bracketed-paste.git'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors.git'
+Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'tpope/vim-surround'
