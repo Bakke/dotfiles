@@ -15,5 +15,6 @@
 	extendRegexp = true
 [core]
 	editor = nvim
+	excludesfile = ~/.dotfiles/git/.gitignore
 [pull]
 	rebase = true
