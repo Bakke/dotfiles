@@ -234,7 +234,7 @@ endfunction
 nmap <silent> <leader>r :so $MYVIMRC<CR>
 
 " Clear last search
-nmap <silent> <leader>c <Esc>:noh<CR>
+nmap <silent> <leader>c <Esc>:let @/ = ""<CR>
 
 " Copy to clipboard
 vnoremap <C-c> "+y
