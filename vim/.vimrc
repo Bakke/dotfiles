@@ -42,10 +42,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" Indent guides options
-let g:indent_guides_default_mapping = 0
-nmap <silent> <Leader>tt <Plug>IndentGuidesToggle
-
 " Use leader + tab for Emmet abbrevations
 imap <silent> <leader><tab> <C-y>,
 
@@ -63,7 +59,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors.git'
 Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'scrooloose/nerdtree.git'
@@ -107,6 +102,10 @@ set background=dark
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
+
+" Show indention etc
+"set list
+set listchars=tab:›.,trail:.,extends:#,nbsp:.
 
 " Searching
 set hlsearch                    " Syntax highlighting on last search
@@ -235,6 +234,9 @@ nmap <silent> <leader>r :so $MYVIMRC<CR>
 
 " Clear last search
 nmap <silent> <leader>c <Esc>:let @/ = ""<CR>
+
+" Toggle list
+nmap <silent> <Leader>tt <Esc>:set list!<CR>
 
 " Copy to clipboard
 vnoremap <C-c> "+y
