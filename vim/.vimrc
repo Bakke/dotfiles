@@ -19,6 +19,9 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 
+" Toggle tagbar
+nmap <silent> <leader>t :TagbarToggle<CR>
+
 " Toggle NERD Tree
 map <C-i> :NERDTreeToggle<CR>
 
@@ -66,6 +69,8 @@ Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'posva/vim-vue'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'Shougo/neocomplete.vim.git'
@@ -73,6 +78,9 @@ Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jwalton512/vim-blade'
 Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'sumpygump/php-documentor-vim'
+Plugin 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -87,18 +95,18 @@ set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,
 set wildmenu
 set wildmode=list:longest,full
 
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
+
 " Syntax highlighting
 syntax on
 set t_Co=256
+"silent! colorscheme hybrid
 silent! colorscheme hybrid_material
 set background=dark
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
-
-if has("termguicolors")
-	set termguicolors
-endif
 
 " Searching
 set hlsearch                    " Syntax highlighting on last search
@@ -117,6 +125,7 @@ set backspace=indent,eol,start  " Allow backspacing over everything in insert mo
 set visualbell                  " Use visual bell instead of audible bell (annnnnoying)
 set noshowmode                  " Don't show the current mode (airline.vim takes care of us)
 set magic                       " Enable extended regexes
+set hidden                      " Enable hidden buffers
 
 " tab/indenting options
 filetype indent on              " per file indent
@@ -139,6 +148,11 @@ set formatoptions+=n            " Recognize numbered lists
 set formatoptions+=2            " Use indent from 2nd line of a paragraph
 set formatoptions+=l            " Don't break lines that are already long
 set formatoptions+=1            " Break before 1-letter words
+
+" PHP DocBlockr
+au BufRead,BufNewFile *.php inoremap <buffer> <C-B> :call PhpDoc()<CR>
+au BufRead,BufNewFile *.php nnoremap <buffer> <C-B> :call PhpDoc()<CR>
+au BufRead,BufNewFile *.php vnoremap <buffer> <C-B> :call PhpDocRange()<CR>
 
 " Autocompletion
 let g:neocomplete#enable_at_startup = 1
@@ -177,9 +191,9 @@ endfunction
 " string is expandable by emmet
 function! IsEmmetExpandable()
 	if !emmet#isExpandable() | return 0 | endif
-	"if &filetype =~ 'css' | return 1 | endif
-	"if &filetype =~ 'less' | return 1 | endif
-	"if &filetype =~ 'scss' | return 1 | endif
+	if &filetype =~ 'css' | return 1 | endif
+	if &filetype =~ 'less' | return 1 | endif
+	if &filetype =~ 'scss' | return 1 | endif
 
 	let expr = matchstr(getline('.')[:col('.')], '\(\S\+\)$')
 	return expr =~ '[.#>+*]' || index(s:emmetElements, expr) >= 0
@@ -267,4 +281,42 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " Strip whitespace on save
 autocmd BufEnter * EnableStripWhitespaceOnSave
+
+" Better indent support for PHP by making it possible to indent HTML sections
+" as well.
+if exists("b:did_indent")
+  finish
+endif
+" This script pulls in the default indent/php.vim with the :runtime command
+" which could re-run this script recursively unless we catch that:
+if exists('s:doing_indent_inits')
+  finish
+endif
+let s:doing_indent_inits = 1
+runtime! indent/html.vim
+unlet b:did_indent
+runtime! indent/php.vim
+unlet s:doing_indent_inits
+function! GetPhpHtmlIndent(lnum)
+	if exists('*HtmlIndent')
+		let html_ind = HtmlIndent()
+	else
+		let html_ind = HtmlIndentGet(a:lnum)
+	endif
+	let php_ind = GetPhpIndent()
+	" priority one for php indent script
+	if php_ind > -1
+		return php_ind
+	endif
+	if html_ind > -1
+		if getline(a:num) =~ "^<?" && (0< searchpair('<?', '', '?>', 'nWb')
+					\ || 0 < searchpair('<?', '', '?>', 'nW'))
+			return -1
+		endif
+		return html_ind
+	endif
+	return -1
+endfunction
+setlocal indentexpr=GetPhpHtmlIndent(v:lnum)
+setlocal indentkeys+=<>>
 
