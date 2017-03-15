@@ -70,6 +70,7 @@ au BufRead,BufNewFile *.php vnoremap <buffer> <C-B> :call PhpDocRange()<CR>
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#enable_auto_close_preview = 1
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -154,28 +155,30 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
 Plugin 'ConradIrwin/vim-bracketed-paste.git'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'terryma/vim-multiple-cursors.git'
 Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'Shougo/neocomplete.vim.git'
 Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'ivalkeen/vim-ctrlp-tjump.git'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'tpope/vim-surround'
-Plugin 'mattn/emmet-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'posva/vim-vue'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-fugitive.git'
-Plugin 'Shougo/neocomplete.vim.git'
-Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jwalton512/vim-blade'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'kristijanhusak/vim-hybrid-material'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'sumpygump/php-documentor-vim'
 Plugin 'majutsushi/tagbar'
+Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'posva/vim-vue'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'sumpygump/php-documentor-vim'
+Plugin 'terryma/vim-multiple-cursors.git'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive.git'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'w0ng/vim-hybrid'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -222,9 +225,9 @@ set visualbell                  " Use visual bell instead of audible bell (annnn
 set noshowmode                  " Don't show the current mode (airline.vim takes care of us)
 set magic                       " Enable extended regexes
 set hidden                      " Enable hidden buffers
-set nostartofline               " Don't reset cursor to start of line when moving around
 
 " Indention
+filetype indent on
 set autoindent                  " Copy indent from last line when starting new line
 set expandtab                   " Expand tabs to spaces
 set smarttab                    " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
@@ -288,8 +291,8 @@ inoremap <C-q>     <Esc>:bd!<CR>
 inoremap <C-w>     <Esc>:bd<CR>
 
 " Next/previous buffer with Shift + H/L
-nnoremap J :bprevious<CR>
-nnoremap K :bnext<CR>
+nnoremap H :bprevious<CR>
+nnoremap L :bnext<CR>
 
 " Indention
 nnoremap ø <<
@@ -306,14 +309,26 @@ nnoremap ' `
 " Yank from cursor to end of line
 nnoremap Y y$
 
-" Insert newline
-nnoremap <Enter> o<ESC>
-
 " Close Quickfix window
-map <leader>qq :cclose<CR>
+map <leader>qq :pclose<CR>
+map <leader>ww :cclose<CR>
 
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
+
+inoremap '      ''<Left>
+inoremap <expr> '  strpart(getline('.'), col('.')-1, 1) == "'" ? "\<Right>" : "'"
+inoremap "      ""<Left>
+inoremap <expr> "  strpart(getline('.'), col('.')-1, 1) == """ ? "\<Right>" : """
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+inoremap (      ()<Left>
+inoremap (<CR>  (<CR>)<Esc>O
+inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap [      []<Left>
+inoremap [<CR>  [<CR>]<Esc>O
+inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 
 " Custom scripts ------------------------------------------------------
 
