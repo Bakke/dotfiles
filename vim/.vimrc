@@ -313,8 +313,8 @@ nnoremap æ >>
 vnoremap ø <
 vnoremap æ >
 
-nnoremap + <C-W>+
-nnoremap - <C-W>-
+nnoremap <C-+> <C-W>+
+nnoremap <C-+> <C-W>-
 
 " Better mark jumping (line + col)
 nnoremap ' `
