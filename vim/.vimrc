@@ -4,6 +4,11 @@ set nocompatible
 " Set leader
 :let mapleader = ","
 
+let g:AutoPairsShortcutToggle = 0
+let g:AutoPairsShortcutFastWrap = 0
+let g:AutoPairsShortcutJump = 0
+let g:AutoPairsShortcutBackInsert = 0
+
 " Plugin Configuration ------------------------------------------------
 
 " Hybrid theme
@@ -56,6 +61,9 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" CtrlPFunky
+nnoremap <Leader>f :CtrlPFunky<Cr>
 
 " Emmet
 " Use leader + tab for Emmet abbrevations
@@ -179,6 +187,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0ng/vim-hybrid'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'jiangmiao/auto-pairs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -249,6 +259,9 @@ set formatoptions+=2            " Use indent from 2nd line of a paragraph
 set formatoptions+=l            " Don't break lines that are already long
 set formatoptions+=1            " Break before 1-letter words
 
+" PHP comment style
+autocmd FileType php setlocal commentstring=//%s
+
 " Key mappings --------------------------------------------------------
 
 " Relaod .vimrc
@@ -315,20 +328,6 @@ map <leader>ww :cclose<CR>
 
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
-
-inoremap '      ''<Left>
-inoremap <expr> '  strpart(getline('.'), col('.')-1, 1) == "'" ? "\<Right>" : "'"
-inoremap "      ""<Left>
-inoremap <expr> "  strpart(getline('.'), col('.')-1, 1) == """ ? "\<Right>" : """
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-inoremap (      ()<Left>
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-inoremap [      []<Left>
-inoremap [<CR>  [<CR>]<Esc>O
-inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 
 " Custom scripts ------------------------------------------------------
 
