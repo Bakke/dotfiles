@@ -102,3 +102,56 @@ _service() {
 
 }
 compdef _service service
+
+_gitlab() {
+
+	typeset -A opt_args
+	_arguments -C \
+		'1: :->command'\
+		'2: :->subcommand'\
+		'*:: :->options'
+
+	case $state in
+		command)
+
+			local commands
+			commands=(
+					'project:Create or search projects'
+					'issue:Create or list issues'
+			)
+			_describe 'command' commands
+
+			;; # End command
+
+		subcommand)
+
+			case $line[1] in
+				project)
+					local commands
+					commands=(
+							'create:Create new project'
+							'search:Search projects'
+					)
+					_describe 'subcommand' commands
+					;;
+				issue)
+					local commands
+					commands=(
+							'create:Create new issue for current Git-project'
+							'list:List issue for current Git-project'
+					)
+					_describe 'subcommand' commands
+					;;
+
+			esac
+
+			local options
+			options=()
+			_describe 'options' options
+
+			;; # End subcommand
+
+	esac
+
+}
+compdef _gitlab gitlab
