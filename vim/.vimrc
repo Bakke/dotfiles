@@ -69,87 +69,27 @@ nnoremap <Leader>f :CtrlPFunky<Cr>
 " Use leader + tab for Emmet abbrevations
 imap <silent> <leader><tab> <C-y>,
 
+" EditorConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+" Indent Guides
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
+let g:mta_filetypes = {
+    \ 'html': 1,
+    \ 'vue': 1,
+    \ 'xml': 1,
+    \ 'jinja': 1,
+    \ 'htmldjango': 1,
+    \ 'php.html': 1,
+    \}
+
 " PHP DocBlockr
 au BufRead,BufNewFile *.php inoremap <buffer> <C-B> :call PhpDoc()<CR>
 au BufRead,BufNewFile *.php nnoremap <buffer> <C-B> :call PhpDoc()<CR>
 au BufRead,BufNewFile *.php vnoremap <buffer> <C-B> :call PhpDocRange()<CR>
-
-" NeoComplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#enable_auto_close_preview = 1
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-    " For no inserting <CR> key.
-    "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-
-" <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-imap <expr> <tab> TabComplete()
-smap <expr> <tab> TabComplete()
-xmap <expr> <tab> TabComplete()
-
-" Custom function for tab completion
-" Checks if we should youse neocomplete or emmet
-function! TabComplete()
-    if &filetype =~ 'html\|php\|css\|scss\|less' && IsEmmetExpandable()
-        return "\<plug>(emmet-expand-abbr)"
-    elseif pumvisible()
-        return "\<c-n>"
-    else
-        return "\<tab>"
-    endif
-endfunction
-
-" Custom function to check if
-" string is expandable by emmet
-function! IsEmmetExpandable()
-    if !emmet#isExpandable() | return 0 | endif
-    if &filetype =~ 'css' | return 1 | endif
-    if &filetype =~ 'less' | return 1 | endif
-    if &filetype =~ 'scss' | return 1 | endif
-
-    let expr = matchstr(getline('.')[:col('.')], '\(\S\+\)$')
-    return expr =~ '[.#>+*]' || index(s:emmetElements, expr) >= 0
-endfunction
-
-" HTML elements Emmet should recognize
-let s:emmetElements = ['a', 'abbr', 'acronym', 'address', 'applet', 'area', 'article', 'aside', 'audio', 'b', 'base', 'basefont', 'bdi', 'bdo', 'big', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'datalist', 'dd', 'del', 'details', 'dfn', 'dialog', 'dir', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'font', 'footer', 'form', 'frame', 'frameset', 'h1', 'head', 'header', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'main', 'map', 'mark', 'menu', 'menuitem', 'meta', 'meter', 'nav', 'noframes', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strike', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'tt', 'u', 'ul', 'var', 'video', 'wbr']
-            \ + ['emb', 'btn', 'sty', 'dlg', 'fst', 'fig', 'leg', 'tarea', 'hdr', 'cmd', 'colg', 'art', 'fset', 'src', 'prog', 'bq', 'kg', 'adr' , 'cap', 'datag', 'datal', 'sect', 'str', 'obj', 'ftr', 'optg', 'ifr', 'out', 'det', 'acr', 'opt']
-
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-"if !exists('g:neocomplete#sources#omni#input_patterns')
-"let g:neocomplete#sources#omni#input_patterns = {}
-"endif
-"let g:neocomplete#sources#omni#input_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-
-"Disable neocomplete when multiple cursors are active
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-endfunction
-
-"Enable neocomplete when multiple cursors are done
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-endfunction
 
 " Plugins -------------------------------------------------------------
 
@@ -164,7 +104,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugins
 Plugin 'ConradIrwin/vim-bracketed-paste.git'
 Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'Shougo/neocomplete.vim.git'
+Plugin 'Shougo/neocomplete'
+Plugin 'Shougo/neosnippet'
 Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'ivalkeen/vim-ctrlp-tjump.git'
 Plugin 'junegunn/vim-easy-align'
@@ -174,7 +115,7 @@ Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'pangloss/vim-javascript'
+" Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'shawncplus/phpcomplete.vim'
@@ -189,10 +130,102 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'valloric/MatchTagAlways'
+Plugin 'wellle/targets.vim'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'captbaritone/better-indent-support-for-php-with-html'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers=['eslint']
+let syntastic_mode_map = { 'passive_filetypes': ['html'] }
+let g:syntastic_scss_sass_quiet_messages = {
+    \ "regex": 'File to import not found or unreadable', }
+
+" NeoComplete
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_camel_case = 1
+let g:neocomplete#enable_fuzzy_completion = 1
+let g:neocomplete#enable_auto_close_preview = 1
+let g:neocomplete#auto_completion_start_length = 3
+let g:neocomplete#min_keyword_length = 3
+
+" NeoSnippets
+let g:neosnippet#disable_runtime_snippets = {
+\   '_' : 1,
+\ }
+let g:neosnippet#snippets_directory='~/.dotfiles/vim/snippets'
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" For conceal markers.
+" if has('conceal')
+"     set conceallevel=2 concealcursor=niv
+" endif
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+    " For no inserting <CR> key.
+    "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+"     let g:neocomplete#sources#omni#input_patterns = {}
+" endif
+" let g:neocomplete#sources#omni#input_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+
+" Called once right before you start selecting multiple cursors
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+" Called once only when the multiple selection is canceled (default <Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
 
 
 " Vim settings --------------------------------------------------------
@@ -214,7 +247,7 @@ set wildmenu
 set wildmode=list:longest
 
 " Show tabs and trailing spaces
-set list
+" set list
 set listchars=tab:›.,trail:.,extends:#,nbsp:.
 
 " Searching
@@ -232,9 +265,17 @@ set ruler                       " Show the cursor position all the time
 set showcmd                     " Display incomplete commands
 set backspace=indent,eol,start  " Allow backspacing over everything in insert mode
 set visualbell                  " Use visual bell instead of audible bell (annnnnoying)
+set wrap                        " Wrap long lines
+set linebreak                   " Do not break lines inside words
 set noshowmode                  " Don't show the current mode (airline.vim takes care of us)
 set magic                       " Enable extended regexes
 set hidden                      " Enable hidden buffers
+set autoread                    " Auto reload files that are changed outside vim
+au CursorHold * checktime
+set scrolloff=3                 " Start scrolling three lines before horizontal border of window
+set mouse=a                     " Enable mouse in all in all modes
+set ttymouse=xterm              " Set mouse type to xterm
+set ttyfast                     " Sends more characters at a time
 
 " Indention
 filetype indent on
@@ -262,6 +303,12 @@ set formatoptions+=1            " Break before 1-letter words
 " PHP comment style
 autocmd FileType php setlocal commentstring=//%s
 
+" Disable right-hand scrollbar for vertically split window
+set guioptions-=R
+
+" Abbreviations -------------------------------------------------------
+ab teh the
+
 " Key mappings --------------------------------------------------------
 
 " Relaod .vimrc
@@ -286,7 +333,25 @@ map <silent> <leader>gb :Gblame<CR>
 " .viminfo settings
 " read/write a .viminfo file, don't store more that 50 lines of registers
 set viminfo='20,\"50
-set history=50
+set history=1000
+set nobackup
+set noswapfile
+
+"undo stuff
+"location of undo files
+if exists("+undodir")
+    set undodir=~/.vimundo
+    "save an undo file - persistent undo
+    set undofile
+    "max number of changes that can be undone
+    set undolevels=1000
+    "undo on reload
+    set undoreload=10000
+endif
+
+"fix search - normal regex can be used in searching
+nnoremap / /\v
+vnoremap / /\v
 
 " Use jj for esc
 inoremap jj <esc>
@@ -334,40 +399,10 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 " Strip whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
-" as well.
-if exists("b:did_indent")
-    finish
-endif
-" This script pulls in the default indent/php.vim with the :runtime command
-" which could re-run this script recursively unless we catch that:
-if exists('s:doing_indent_inits')
-    finish
-endif
-let s:doing_indent_inits = 1
-runtime! indent/html.vim
-unlet b:did_indent
-runtime! indent/php.vim
-unlet s:doing_indent_inits
-function! GetPhpHtmlIndent(lnum)
-    if exists('*HtmlIndent')
-        let html_ind = HtmlIndent()
-    else
-        let html_ind = HtmlIndentGet(a:lnum)
-    endif
-    let php_ind = GetPhpIndent()
-    " priority one for php indent script
-    if php_ind > -1
-        return php_ind
-    endif
-    if html_ind > -1
-        if getline(a:num) =~ "^<?" && (0< searchpair('<?', '', '?>', 'nWb')
-                    \ || 0 < searchpair('<?', '', '?>', 'nW'))
-            return -1
-        endif
-        return html_ind
-    endif
-    return -1
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
 endfunction
-setlocal indentexpr=GetPhpHtmlIndent(v:lnum)
-setlocal indentkeys+=<>>
 
