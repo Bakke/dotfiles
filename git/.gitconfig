@@ -18,3 +18,8 @@
 	excludesfile = ~/.dotfiles/git/.gitignore
 [pull]
 	rebase = true
+[advice]
+	pushNonFastForward = false
+	statusHints = false
+[diff]
+	mnemonicprefix = true
