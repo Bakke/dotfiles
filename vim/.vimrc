@@ -314,6 +314,9 @@ ab teh the
 " Relaod .vimrc
 nmap <silent> <leader>r :so $MYVIMRC<CR>
 
+" Open .vimrc for editing
+nmap <leader>v :edit $MYVIMRC<cr>
+
 " Clear last search
 nmap <silent> <leader>c <Esc>:let @/ = ""<CR>
 
