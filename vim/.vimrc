@@ -125,6 +125,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0ng/vim-hybrid'
@@ -317,6 +318,15 @@ nmap <silent> <leader>r :so $MYVIMRC<CR>
 " Open .vimrc for editing
 nmap <leader>v :edit $MYVIMRC<cr>
 
+" Start editing before second doublequote
+nmap <leader>" 2f"i
+
+" Start editing before second singlequote
+nmap <leader>" 2f'i
+
+" Search for selected text
+vnoremap // y/\V<C-R>"<CR>
+
 " Clear last search
 nmap <silent> <leader>c <Esc>:let @/ = ""<CR>
 
@@ -325,6 +335,14 @@ nmap <silent> <Leader>tt <Esc>:set list!<CR>
 
 " Copy to clipboard
 vnoremap <C-c> "+y
+
+" Bubble single lines
+nmap ª [e
+nmap √ ]e
+
+" Bubble multiple lines
+vmap ª [egv
+vmap √ ]egv
 
 " Mappings for git
 map <silent> <leader>gs :Gstatus<CR>
