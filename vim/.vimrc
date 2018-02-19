@@ -326,7 +326,7 @@ nmap <leader>" 2f"i
 nmap <leader>" 2f'i
 
 " Search for selected text
-vnoremap // y/\V<C-R>"<CR>
+vnoremap // y/\V<C-R>"<CR>N
 
 " Clear last search
 nmap <silent> <leader>c <Esc>:let @/ = ""<CR>
