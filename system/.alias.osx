@@ -25,3 +25,10 @@ alias stackoverflow='web_search stackoverflow'
 alias wordpress='web_search wordpress'
 alias caniuse='web_search caniuse'
 alias phpnet='web_search phpnet'
+
+# Use "highlight" in place of "less"
+alias less='less -m -N -g -i -J --line-numbers --underline-special'
+alias more='less'
+
+# Use "highlight" in place of "cat"
+alias cat="highlight $1 --out-format xterm256 --line-numbers --quiet --force --style solarized-light"
