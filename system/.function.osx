@@ -63,7 +63,7 @@ artisanclean() {
 kunder() {
 	CUSTOMER="$1"
 	CHARACTER=${CUSTOMER:0:1}
-	open "/Users/$USER/Documents/Kunder/$CHARACTER/$CUSTOMER";
+	open "/Users/bakke/Documents/Kunder/$CHARACTER/$CUSTOMER";
 }
 
 function web_search() {
