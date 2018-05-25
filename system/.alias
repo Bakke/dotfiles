@@ -9,8 +9,7 @@ alias la='ls -la'
 alias lsd='ls -l | grep "^d"'
 alias fs="sizeof"
 alias pwdcp='pwd | pbcopy'
-alias -g vr="| nvim -R -"
-alias c='pygmentize -O style=monokai -f console256 -g'
+alias -g vr=" vim -R -u ~/.dotfiles/vim/.vimrc.more -"
 
 # Find
 alias fd='find . -type d -name'

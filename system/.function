@@ -1,3 +1,7 @@
+function vmore() {
+	vim -R -u ${DOTFILES_DIR}/vim/.vimrc.more $1
+}
+
 # Get size of folder
 sizeof(){ du -hs $1 | awk '{print $1}'; }
 
