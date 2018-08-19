@@ -8,7 +8,7 @@ mp4-convert() {
 }
 
 srdb() {
-	php /usr/local/bin/Search-Replace-DB/srdb.cli.php -u root -p root -h localhost "$@"
+	php /usr/local/bin/Search-Replace-DB/srdb.cli.php -u root -p root -h 127.0.0.1 "$@"
 }
 
 # Start, stop and restart local server
