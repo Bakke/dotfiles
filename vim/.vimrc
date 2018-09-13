@@ -317,8 +317,9 @@ nmap <leader>" 2f"i
 " Start editing before second singlequote
 nmap <leader>" 2f'i
 
-" Search for selected text
+" Search for selected text or text under cursor (normal mode)
 vnoremap // y/\V<C-R>"<CR>N
+nnoremap // viwy/\V<C-R>"<CR>N
 
 " Clear last search
 nmap <silent> <leader>c <Esc>:let @/ = ""<CR>
