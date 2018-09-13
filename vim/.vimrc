@@ -31,9 +31,6 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 
-" Toggle tagbar
-nmap <silent> <leader>t :TagbarToggle<CR>
-
 " Toggle NERD Tree
 map <C-i> :NERDTreeToggle<CR>
 
@@ -107,20 +104,16 @@ Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'Shougo/neocomplete'
 Plugin 'Shougo/neosnippet'
 Plugin 'ctrlpvim/ctrlp.vim.git'
-Plugin 'ivalkeen/vim-ctrlp-tjump.git'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jwalton512/vim-blade'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kristijanhusak/vim-hybrid-material'
-Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
-" Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'sumpygump/php-documentor-vim'
-Plugin 'terryma/vim-multiple-cursors.git'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'tpope/vim-repeat'
@@ -129,7 +122,6 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-abolish'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'w0ng/vim-hybrid'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-syntastic/syntastic'
