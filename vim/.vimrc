@@ -370,6 +370,9 @@ vnoremap / /\v
 " Use jj for esc
 inoremap jj <esc>
 
+" Use gb to select last pasted text
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l)
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
