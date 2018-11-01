@@ -9,6 +9,10 @@ function vmore() {
 
 }
 
+tunnel-kill() {
+	lsof -ti tcp:${1} | xargs kill -9
+}
+
 # Get size of folder
 sizeof(){ du -hs $1 | awk '{print $1}'; }
 
