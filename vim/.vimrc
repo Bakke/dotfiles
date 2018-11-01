@@ -15,6 +15,9 @@ let g:AutoPairsShortcutBackInsert = 0
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 
+" EasyClip
+let g:EasyClipUseSubstituteDefaults = 1
+
 " Ctrp.vim
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_clear_cache_on_exit = 0 " Do not clear filenames cache, to improve CtrlP startup
@@ -120,6 +123,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-abolish'
+Plugin 'svermeulen/vim-easyclip'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tacahiroy/ctrlp-funky'
@@ -304,6 +308,9 @@ set guioptions-=R
 ab teh the
 
 " Key mappings --------------------------------------------------------
+
+" Remap set mark because of easyclip
+nnoremap gm m
 
 " Relaod .vimrc
 nmap <silent> <leader>r :so $MYVIMRC<CR>
