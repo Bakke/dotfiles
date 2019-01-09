@@ -47,10 +47,8 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Ack
-let g:ackhighlight = 1
-let g:ack_default_options =
-            \ " -s -H --nocolor --smart-case --nogroup --column"
+" RipGrep
+let g:rg_highlight = 1
 
 " Easy Align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -109,7 +107,7 @@ Plugin 'jwalton512/vim-blade'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'mattn/emmet-vim'
-Plugin 'mileszs/ack.vim'
+Plugin 'jremmen/vim-ripgrep'
 Plugin 'posva/vim-vue'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'shawncplus/phpcomplete.vim'
