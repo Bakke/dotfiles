@@ -27,6 +27,7 @@ apps=(
 	wp-cli-completion
 	openvpn
 	fzf
+	bat
 )
 
 brew install "${apps[@]}"
