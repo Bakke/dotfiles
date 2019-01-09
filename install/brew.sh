@@ -15,6 +15,7 @@ apps=(
     curl
     tmux
     redis
+	elasticsearch
 	hashcat
 	ncdu
 	nmap
@@ -29,3 +30,6 @@ apps=(
 )
 
 brew install "${apps[@]}"
+
+# To install useful key bindings and fuzzy completion:
+$(brew --prefix)/opt/fzf/install
