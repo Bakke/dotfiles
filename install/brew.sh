@@ -28,6 +28,7 @@ apps=(
 	openvpn
 	fzf
 	bat
+	fd
 )
 
 brew install "${apps[@]}"
