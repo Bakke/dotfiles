@@ -28,6 +28,3 @@ sudo /usr/local/bin/npm install -g gulp
 
 # Set osx preferences
 . "$DOTFILES_DIR/install/osx-preferences.sh"
-
-# Setup osx salt states
-. "$DOTFILES_DIR/install/osx-salt-states.sh"
