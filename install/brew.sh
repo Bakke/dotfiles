@@ -6,16 +6,26 @@ brew upgrade
 apps=(
     git
     grep --default-names
-    ack
+	ripgrep
     node
     nvm
     python
-    vim
+    vim --with-cscope --with-python --with-lua --override-system-vim
     wget
     curl
     tmux
     redis
-	reattach-to-user-namespace
+	hashcat
+	ncdu
+	nmap
+	masscan
+	openssl
+	wireshark
+	wpscan
+	wp-cli
+	wp-cli-completion
+	openvpn
+	fzf
 )
 
 brew install "${apps[@]}"
