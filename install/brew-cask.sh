@@ -8,9 +8,7 @@ apps=(
     vlc
     evernote
     sequel-pro
-    totalterminal
     sequel-pro
-    tunnelblick
     postman
     ccleaner
     adobe-creative-cloud
