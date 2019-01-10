@@ -6,6 +6,7 @@ apps=(
     opera
     spotify
     vlc
+	slack
     evernote
     sequel-pro
     sequel-pro
