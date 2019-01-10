@@ -1,3 +1,7 @@
+function homestead() {
+    ( cd ~/Homestead && vagrant $* )
+}
+
 error_log() {
 	tail -f ~/Development/vhost/*/logs/"$@"
 }
@@ -9,32 +13,6 @@ mp4-convert() {
 
 srdb() {
 	php /usr/local/bin/Search-Replace-DB/srdb.cli.php -u root -p root -h 127.0.0.1 "$@"
-}
-
-# Start, stop and restart local server
-function server() {
-
-	case $1
-		in
-			start)
-				mysql-start
-				php-fpmd start
-				nginxd start
-				;;
-			stop)
-				mysql-stop
-				php-fpmd stop
-				nginxd stop
-				;;
-			restart)
-				mysql-restart
-				php-fpmd restart
-				nginxd restart
-				;;
-			*)
-				echo "Usage: server start|stop|restart"
-	esac
-
 }
 
 # artisanclean
@@ -64,39 +42,6 @@ kunder() {
 	CUSTOMER="$1"
 	CHARACTER=${CUSTOMER:0:1}
 	open "/Users/bakke/Documents/Kunder/$CHARACTER/$CUSTOMER";
-}
-
-function web_search() {
-
-	# define search engine URLS
-	typeset -A urls
-	urls=(
-		google        "https://www.google.com/search?q="
-		github        "https://github.com/search?q="
-		stackoverflow "http://stackoverflow.com/search?tab=relevance&q="
-		wordpress     "http://wordpress.org/search/"
-		caniuse       "http://caniuse.com/#search="
-		phpnet        "http://php.net/manual-lookup.php?pattern="
-	)
-
-	# Check whether the search engine is supported
-	if [[ -z "$urls[$1]" ]]; then
-		echo "Search engine $1 not supported."
-		return 1
-	fi
-
-	# Search or go to main page depending on number of arguments passed
-	if [[ $# -gt 1 ]]; then
-		# build search url:
-		# join arguments passed with '+', then append to search engine URL
-		url="${urls[$1]}${(j:+:)@[2,-1]}"
-	else
-		# Build main page url:
-		# Split by '/', then rejoin protocol (1) and domain (2) parts with '//'
-		url="${(j://:)${(s:/:)urls[$1]}[1,2]}"
-	fi
-
-	open_command "$url"
 }
 
 service() {
