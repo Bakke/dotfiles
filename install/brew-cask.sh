@@ -16,6 +16,8 @@ apps=(
     vmware-fusion7
 	alfred
 	amethyst
+	vagrant
+	virtualbox
 )
 
 brew cask install "${apps[@]}"
