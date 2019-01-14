@@ -16,6 +16,7 @@ alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 
 # Git
+alias gs='git status'
 alias gss='git status -s'
 alias gcl='git clone'
 alias ga='git add'
