@@ -1,26 +1,16 @@
 snippet php
+options word
 abbr <?php ?>
         <?php ${1:TARGET} ?>
 
-snippet ?>
-abbr ?><?php
-        ?>
-        ${1:TARGET}
-        <?php
 
 snippet function
-abbr public function () {}
-        ${1:public }function ${2:#:FunctionName}(${3})
-        {
-                ${4:TARGET}
-        }
-
-snippet function_literal
-options word
+alias function
 abbr function () {}
-        function (${1})${2: use } {
-                ${3:TARGET}
-        }
+		${1:public }function ${2:#:FunctionName}(${3})
+		{
+				${4:TARGET}
+		}
 
 snippet pecho
         <?php echo ${1} ?>${0}
@@ -112,4 +102,18 @@ options head
         while (${1}) {
                 ${0:TARGET}
         }
+
+snippet model
+options head
+	<?php
+
+	namespace ${1:App};
+
+	use iDriftWeb\Cms\Database\Eloquent\Model;
+
+	class ${2:`expand('%:t:r')`} extends Model {
+
+		${0}
+
+	}
 
