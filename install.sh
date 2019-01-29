@@ -32,6 +32,15 @@ fi
 # Install Vundle
 source "$DOTFILES_DIR/install/vundle.sh"
 
+if [[ ! -e ~/.fasd-git ]]; then
+
+	read -p "\033[0;32mDo you want to install Fasd? [y/n] \033[0m" FASD
+	if [ "$FASD" = "y" ]; then
+		. "$DOTFILES_DIR/install/fasd.sh"
+	fi
+
+fi
+
 # Update submodules
 git submodule update --init --recursive
 
