@@ -130,6 +130,7 @@ Plugin 'valloric/MatchTagAlways'
 Plugin 'wellle/targets.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
+Plugin 'vim-vdebug/vdebug'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -226,6 +227,13 @@ function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
   endif
 endfunction
+
+if !exists('g:vdebug_options')
+    let g:vdebug_options = {}
+endif
+
+let g:vdebug_options["break_on_open"]=0
+let g:vdebug_options["path_maps"] = {"/home/vagrant/code": "/Users/magnus/Development/vhost"}
 
 
 " Vim settings --------------------------------------------------------
