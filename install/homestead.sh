@@ -1,14 +1,11 @@
-# Add homestead virtualbox
-vagrant box add laravel/homestead
-
 # Clone Homestead repo
-git clone https://github.com/laravel/homestead.git ~/Homestead
+git clone git@gitlab.idrift.no:seb/homestead.git ~/Homestead
 
 # Enter Homestead dir
 cd ~/Homestead
 
-# Checkout version
-git checkout v7.20.0
+# Add homestead virtualbox
+vagrant box add laravel/homestead
 
 # Init Homestead
 source init.sh
