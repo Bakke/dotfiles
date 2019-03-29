@@ -181,9 +181,9 @@ function! s:check_back_space() "{{{
 endfunction "}}}
 
 " For conceal markers.
-if has('conceal')
-    set conceallevel=2 concealcursor=niv
-endif
+" if has('conceal')
+"     set conceallevel=2 concealcursor=niv
+" endif
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
