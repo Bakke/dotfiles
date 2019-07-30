@@ -63,6 +63,11 @@ nnoremap <Leader>f :CtrlPFunky<Cr>
 " Emmet
 " Use leader + tab for Emmet abbrevations
 imap <silent> <leader><tab> <C-y>,
+let g:user_emmet_settings = {
+			\  'javascript.jsx' : {
+			\      'extends' : 'jsx',
+			\  },
+			\}
 
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -82,6 +87,10 @@ let g:mta_filetypes = {
     \}
 
 " PHP DocBlockr
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+let g:pdv_cfg_Author = 'Magnus Hauge Bakke <magnus@idrift.no>'
+
+" PHP DocBlockr keybindings
 au BufRead,BufNewFile *.php inoremap <buffer> <C-B> :call PhpDoc()<CR>
 au BufRead,BufNewFile *.php nnoremap <buffer> <C-B> :call PhpDoc()<CR>
 au BufRead,BufNewFile *.php vnoremap <buffer> <C-B> :call PhpDocRange()<CR>
@@ -111,7 +120,7 @@ Plugin 'jremmen/vim-ripgrep'
 Plugin 'posva/vim-vue'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'sumpygump/php-documentor-vim'
+Plugin 'tobyS/pdv'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'tpope/vim-repeat'
@@ -131,6 +140,8 @@ Plugin 'wellle/targets.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
 Plugin 'vim-vdebug/vdebug'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -344,14 +355,6 @@ nmap <silent> <Leader>tt <Esc>:set list!<CR>
 " Copy to clipboard
 vnoremap <C-c> "+y
 
-" Bubble single lines
-nmap ª [e
-nmap √ ]e
-
-" Bubble multiple lines
-vmap ª [egv
-vmap √ ]egv
-
 " Mappings for git
 map <silent> <leader>gs :Gstatus<CR>
 map <silent> <leader>gd :Gdiff<CR>
@@ -409,9 +412,6 @@ nnoremap ø <<
 nnoremap æ >>
 vnoremap ø <
 vnoremap æ >
-
-nnoremap <C-+> <C-W>+
-nnoremap <C-+> <C-W>-
 
 " Better mark jumping (line + col)
 nnoremap ' `
