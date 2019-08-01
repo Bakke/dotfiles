@@ -41,6 +41,11 @@ if [[ ! -e ~/.fasd-git ]]; then
 
 fi
 
+read -p "\033[0;32mDo you want to install/update fzf? [y/n] \033[0m" FZF_INSTALL
+if [ "$FZF_INSTALL" = "y" ]; then
+	. "$DOTFILES_DIR/install/fzf.sh"
+fi
+
 # Update submodules
 git submodule update --init --recursive
 

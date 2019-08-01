@@ -64,3 +64,5 @@ bindkey '^[[B' history-substring-search-down # Arrow down
 
 # Clean up
 unset SCRIPT_PATH DOTFILE
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
