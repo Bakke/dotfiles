@@ -86,6 +86,23 @@ let g:mta_filetypes = {
     \ 'php.html': 1,
     \}
 
+" Enable ale extension for airline
+let g:airline#extensions#ale#enabled = 1
+
+" Ale linting jsx support
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
+
+" Linting jsx
+let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
+let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+
+" Linting Vue
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+let g:ale_linters = {'vue': ['eslint', 'vls']}
+
 " PHP DocBlockr
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 let g:pdv_cfg_Author = 'Magnus Hauge Bakke <magnus@idrift.no>'
@@ -132,7 +149,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'dense-analysis/ale'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'valloric/MatchTagAlways'
@@ -148,17 +165,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers=['eslint']
-let syntastic_mode_map = { 'passive_filetypes': ['html'] }
-let g:syntastic_scss_sass_quiet_messages = {
-    \ "regex": 'File to import not found or unreadable', }
 
 " NeoComplete
 let g:neocomplete#enable_at_startup = 1
@@ -412,6 +419,10 @@ nnoremap ø <<
 nnoremap æ >>
 vnoremap ø <
 vnoremap æ >
+
+" Next/prev lint error
+nmap <silent> gj <Plug>(ale_previous_wrap)
+nmap <silent> gk <Plug>(ale_next_wrap)
 
 " Better mark jumping (line + col)
 nnoremap ' `
