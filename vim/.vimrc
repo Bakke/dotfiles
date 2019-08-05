@@ -159,6 +159,9 @@ Plugin 'captbaritone/better-indent-support-for-php-with-html'
 Plugin 'vim-vdebug/vdebug'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'saltstack/salt-vim'
+Plugin 'stephpy/vim-yaml'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
