@@ -26,7 +26,7 @@ apps=(
 	wp-cli
 	wp-cli-completion
 	openvpn
-	fzf
+#	fzf
 	bat
 	fd
 )
