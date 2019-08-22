@@ -80,10 +80,10 @@ let g:indent_guides_guide_size = 1
 let g:mta_filetypes = {
     \ 'html': 1,
     \ 'vue': 1,
+    \ 'jsx': 1,
     \ 'xml': 1,
     \ 'jinja': 1,
-    \ 'htmldjango': 1,
-    \ 'php.html': 1,
+    \ 'php': 1,
     \}
 
 " Enable ale extension for airline
@@ -102,6 +102,10 @@ let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
 " Linting Vue
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {'vue': ['eslint', 'vls']}
+
+" Linitng PHP
+let g:ale_php_phpcbf_standard = "PSR2"
+let g:ale_php_phpcs_standard = "PSR2"
 
 " PHP DocBlockr
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
@@ -130,7 +134,6 @@ Plugin 'Shougo/neosnippet'
 Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jwalton512/vim-blade'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'mattn/emmet-vim'
 Plugin 'jremmen/vim-ripgrep'
