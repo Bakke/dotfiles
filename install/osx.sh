@@ -10,6 +10,7 @@ brew tap caskroom/cask
 brew install brew-cask
 brew tap homebrew/versions
 brew tap caskroom/versions
+brew tap homebrew/cask-fonts
 
 # Install brew & brew-cask packages
 . "$DOTFILES_DIR/install/brew.sh"

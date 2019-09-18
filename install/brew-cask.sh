@@ -18,6 +18,7 @@ apps=(
 	amethyst
 	vagrant
 	virtualbox
+	font-hack-nerd-font
 )
 
 brew cask install "${apps[@]}"
