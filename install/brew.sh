@@ -5,12 +5,12 @@ brew upgrade
 # Install packages
 apps=(
     git
-    grep --default-names
+    grep
 	ripgrep
     node
     nvm
     python
-    vim --with-cscope --with-python --with-lua --override-system-vim
+    vim
     wget
     curl
     tmux
