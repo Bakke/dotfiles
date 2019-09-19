@@ -14,8 +14,6 @@ apps=(
     wget
     curl
     tmux
-    redis
-	elasticsearch
 	hashcat
 	ncdu
 	nmap
