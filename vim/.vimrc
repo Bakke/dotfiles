@@ -134,7 +134,8 @@ Plugin 'Shougo/neosnippet'
 Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jwalton512/vim-blade'
-Plugin 'kristijanhusak/vim-hybrid-material'
+"Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'jeffkreeftmeijer/vim-dim'
 Plugin 'mattn/emmet-vim'
 Plugin 'jremmen/vim-ripgrep'
 Plugin 'posva/vim-vue'
@@ -266,7 +267,8 @@ let g:vdebug_options["path_maps"] = {"/home/vagrant/code": "/Users/magnus/Develo
 syntax on
 set t_Co=256
 set background=dark
-colorscheme hybrid_material
+colorscheme dim
+" colorscheme hybrid_material
 
 " Bash style tab completion
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion)
