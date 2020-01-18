@@ -445,6 +445,9 @@ map <leader>ww :cclose<CR>
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
+" Pretty json
+map <leader>j :%!python -m json.tool<CR>
+
 " Custom scripts ------------------------------------------------------
 
 " Strip whitespace on save
