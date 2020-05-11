@@ -19,6 +19,7 @@ apps=(
 	vagrant
 	virtualbox
 	font-hack-nerd-font
+	font-sfmono-nerd-font
 )
 
 brew cask install "${apps[@]}"
