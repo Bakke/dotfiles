@@ -64,7 +64,7 @@ function right_prompt() {
 }
 
 function left_prompt() {
-echo "$(_user_host) ${_current_dir}$(git_prompt_info)# "
+echo "$(_user_host) ${_current_dir}$(git_prompt_info)\n# "
 }
 
 export PROMPT='$(left_prompt)'
