@@ -1,3 +1,14 @@
+# Open customer
+kcontainer() {
+
+	if [ -z "$2" ]
+	then
+		kubectl exec -it $1 -- bash
+	else
+		kubectl exec -it $2 --container $1 -- bash
+	fi
+}
+
 function homestead() {
     ( cd ~/Homestead && vagrant $* )
 }
