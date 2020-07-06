@@ -458,8 +458,8 @@ vnoremap ø <
 vnoremap æ >
 
 " Next/prev lint error
-nmap <silent> gj <Plug>(ale_previous_wrap)
-nmap <silent> gk <Plug>(ale_next_wrap)
+nmap <silent> gk <Plug>(ale_previous_wrap)
+nmap <silent> gj <Plug>(ale_next_wrap)
 
 " Better mark jumping (line + col)
 nnoremap ' `
