@@ -5,6 +5,8 @@ else
     OS=$(uname -s)
 fi
 
+export KUBECONFIG=$HOME/.kube/narnia
+
 # Load RVM, if you are using it
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
