@@ -1,3 +1,6 @@
+# Kubectl
+. "${DOTFILES_DIR}/system/.alias.kubectl"
+
 # Directory and file navigation/editing
 alias md='mkdir -p'
 alias rd='rmdir'
