@@ -41,12 +41,6 @@ map <C-i> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let g:NERDTreeQuitOnOpen=1
 
-" Open NERDTree automatically when vim starts up on opening a directory?
-" Or just remove netrw
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | wincmd p | ene | endif
-"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -267,20 +261,6 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "     let g:neocomplete#sources#omni#input_patterns = {}
 " endif
 " let g:neocomplete#sources#omni#input_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-
-" Called once right before you start selecting multiple cursors
-function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
-  endif
-endfunction
-
-" Called once only when the multiple selection is canceled (default <Esc>)
-function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
-endfunction
 
 if !exists('g:vdebug_options')
     let g:vdebug_options = {}
