@@ -9,6 +9,9 @@ let g:AutoPairsShortcutFastWrap = 0
 let g:AutoPairsShortcutJump = 0
 let g:AutoPairsShortcutBackInsert = 0
 
+" Enable Elite mode, No ARRRROWWS!!!!
+let g:elite_mode=1
+
 " Plugin Configuration ------------------------------------------------
 
 " Hybrid theme
@@ -441,6 +444,14 @@ nnoremap Y y$
 " Close Quickfix window
 map <leader>qq :pclose<CR>
 map <leader>ww :cclose<CR>
+
+" Disable arrow movement, resize splits instead.
+if get(g:, 'elite_mode')
+    nnoremap <Up>    :resize +2<CR>
+    nnoremap <Down>  :resize -2<CR>
+    nnoremap <Left>  :vertical resize +2<CR>
+    nnoremap <Right> :vertical resize -2<CR>
+endif
 
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
