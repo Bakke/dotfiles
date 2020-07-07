@@ -70,9 +70,6 @@ augroup LargeFile
                 \ endif
 augroup END
 
-" RipGrep
-let g:rg_highlight = 1
-
 " Easy Align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -160,7 +157,6 @@ Plugin 'jwalton512/vim-blade'
 "Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'jeffkreeftmeijer/vim-dim'
 Plugin 'mattn/emmet-vim'
-Plugin 'jremmen/vim-ripgrep'
 Plugin 'posva/vim-vue'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'shawncplus/phpcomplete.vim'
@@ -466,6 +462,20 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 map <leader>j :%!python -m json.tool<CR>
 
 " Custom scripts ------------------------------------------------------
+
+" Ripgrep command
+command! -bang -nargs=* Rg
+\ call fzf#vim#grep(
+\   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+\   <bang>0 ? fzf#vim#with_preview('up:60%')
+\           : fzf#vim#with_preview('right:50%:hidden', '?'),
+\   <bang>0)
+
+" only use FZF shortcuts in non diff-mode
+if !&diff
+    nnoremap <C-p> :Files<Cr>
+    nnoremap <C-g> :Rg<Cr>
+endif
 
 " Strip whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
