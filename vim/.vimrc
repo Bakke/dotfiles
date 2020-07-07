@@ -18,17 +18,6 @@ let g:elite_mode=1
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 
-" Ctrp.vim
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_clear_cache_on_exit = 0 " Do not clear filenames cache, to improve CtrlP startup
-let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } " Use python fuzzy matcher for better performance
-let g:ctrlp_max_files = 0 " Set no file limit, we are building a big project
-let g:ctrlp_switch_buffer = 'Et' " Jump to tab AND buffer if already open
-let g:ctrlp_open_new_file = 'r' " Open newly created files in the current window
-let g:ctrlp_open_multiple_files = 'ij' " Open multiple files in hidden buffers, and jump to the first one
-let g:ctrlp_working_path_mode = 0
-
 " Vim Airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
@@ -143,15 +132,17 @@ au BufRead,BufNewFile *.php vnoremap <buffer> <C-B> :call PhpDocRange()<CR>
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+set rtp+=~/.fzf
+
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
 Plugin 'ConradIrwin/vim-bracketed-paste.git'
-Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'Shougo/neosnippet'
-Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jwalton512/vim-blade'
 "Plugin 'kristijanhusak/vim-hybrid-material'
@@ -170,7 +161,6 @@ Plugin 'tpope/vim-abolish'
 Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'dense-analysis/ale'
 Plugin 'editorconfig/editorconfig-vim'
