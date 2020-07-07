@@ -464,6 +464,8 @@ if !&diff
     nnoremap <C-g> :Rg<Cr>
     nnoremap <C-f> :BTags<Cr>
     nnoremap <leader>f :Tags<Cr>
+	nnoremap <leader>ff yiw:Tags <C-R>"<CR>N
+	vnoremap <leader>f y:Tags <C-R>"<CR>N
 endif
 
 " Strip whitespace on save
