@@ -442,6 +442,12 @@ if get(g:, 'elite_mode')
     nnoremap <Right> :vertical resize -2<CR>
 endif
 
+" Exclude dollar sign ($) from words in PHP
+augroup PHP
+    autocmd!
+    autocmd FileType php setlocal iskeyword-=$
+augroup END
+
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
