@@ -66,9 +66,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" CtrlPFunky
-nnoremap <Leader>f :CtrlPFunky<Cr>
-
 " Emmet
 " Use leader + tab for Emmet abbrevations
 imap <silent> <leader><tab> <C-y>,
@@ -465,6 +462,8 @@ command! -bang -nargs=* Rg
 if !&diff
     nnoremap <C-p> :Files<Cr>
     nnoremap <C-g> :Rg<Cr>
+    nnoremap <C-f> :BTags<Cr>
+    nnoremap <leader>f :Tags<Cr>
 endif
 
 " Strip whitespace on save
