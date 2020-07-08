@@ -359,6 +359,7 @@ set scrolloff=3                 " Start scrolling three lines before horizontal 
 set mouse=a                     " Enable mouse in all in all modes
 set ttymouse=xterm              " Set mouse type to xterm
 set ttyfast                     " Sends more characters at a time
+set nofoldenable
 
 " Indention
 filetype indent on
@@ -510,6 +511,13 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " Pretty json
 map <leader>j :%!python -m json.tool<CR>
+
+augroup vimrc
+	au BufReadPre * setlocal foldmethod=indent
+	au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
+
+nnoremap <C-l> za
 
 " Custom scripts ------------------------------------------------------
 
