@@ -30,6 +30,60 @@ map <C-i> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let g:NERDTreeQuitOnOpen=1
 
+" Gutentags
+let g:gutentags_add_default_project_roots = 0
+let g:gutentags_project_root = ['package.json', '.git']
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+let g:gutentags_ctags_exclude = [
+	\ '*.git', '*.svg', '*.hg',
+	\ '*/tests/*',
+	\ 'build',
+	\ 'dist',
+	\ '*sites/*/files/*',
+	\ 'bin',
+	\ 'node_modules',
+	\ 'bower_components',
+	\ 'cache',
+	\ 'compiled',
+	\ 'docs',
+	\ 'example',
+	\ 'bundle',
+	\ '*.md',
+	\ '*-lock.json',
+	\ '*.lock',
+	\ '*bundle*.js',
+	\ '*build*.js',
+	\ '.*rc*',
+	\ '*.json',
+	\ '*.min.*',
+	\ '*.map',
+	\ '*.bak',
+	\ '*.zip',
+	\ '*.pyc',
+	\ '*.class',
+	\ '*.sln',
+	\ '*.Master',
+	\ '*.csproj',
+	\ '*.tmp',
+	\ '*.csproj.user',
+	\ '*.cache',
+	\ '*.pdb',
+	\ 'tags*',
+	\ 'cscope.*',
+	\ '*.css',
+	\ '*.less',
+	\ '*.scss',
+	\ '*.exe', '*.dll',
+	\ '*.mp3', '*.ogg', '*.flac',
+	\ '*.swp', '*.swo',
+	\ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+	\ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+	\ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+	\ ]
+
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -135,6 +189,7 @@ set rtp+=~/.fzf
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
+Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'ConradIrwin/vim-bracketed-paste.git'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -254,6 +309,8 @@ let g:vdebug_options["path_maps"] = {"/home/vagrant/code": "/Users/magnus/Develo
 
 
 " Vim settings --------------------------------------------------------
+
+set tags=./tags,tags;
 
 " Syntax highlighting
 syntax on
@@ -470,8 +527,8 @@ if !&diff
     nnoremap <C-g> :Rg<Cr>
     nnoremap <C-f> :BTags<Cr>
     nnoremap <leader>f :Tags<Cr>
-	nnoremap <leader>ff yiw:Tags <C-R>"<CR>N
-	vnoremap <leader>f y:Tags <C-R>"<CR>N
+    nnoremap <leader>ff yiw:Tags <C-R>"<CR>
+    vnoremap <leader>f y:Tags <C-R>"<CR>
 endif
 
 " Strip whitespace on save
