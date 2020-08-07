@@ -13,19 +13,6 @@ function homestead() {
     ( cd ~/Homestead && vagrant $* )
 }
 
-error_log() {
-	tail -f ~/Development/vhost/*/logs/"$@"
-}
-
-mp4-convert() {
-	# ffmpeg -i "$1" -acodec libfaac -b:a 96k -vcodec libx264 -strict -2 -b:v 1M -s 1280x720 -pix_fmt yuv420p "mp4/$2"
-	ffmpeg -i "$1" -vcodec h264 -acodec aac -strict -2 "mp4/$2"
-}
-
-srdb() {
-	php /usr/local/bin/Search-Replace-DB/srdb.cli.php -u root -p root -h 127.0.0.1 "$@"
-}
-
 # artisanclean
 artisanclean() {
 
@@ -46,17 +33,6 @@ artisanclean() {
     php artisan optimize
     php artisan config:clear
 
-}
-
-# Open customer
-kunder() {
-	CUSTOMER="$1"
-	CHARACTER=${CUSTOMER:0:1}
-	open "/Users/bakke/Documents/Kunder/$CHARACTER/$CUSTOMER";
-}
-
-service() {
-	sudo brew services $*
 }
 
 morgen-kaffe() {
