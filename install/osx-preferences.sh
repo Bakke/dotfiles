@@ -17,10 +17,10 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 
 #Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0.02
+#defaults write NSGlobalDomain KeyRepeat -int 0.02
 
 #Set a shorter Delay until key repeat
-defaults write NSGlobalDomain InitialKeyRepeat -int 12
+#defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
 #Disable disk image verification
 defaults write com.apple.frameworks.diskimages skip-verify -bool true &&

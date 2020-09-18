@@ -4,16 +4,16 @@ brew upgrade
 
 # Install packages
 apps=(
-    git
-    grep
+	git
+	grep
 	ripgrep
-    node
-    nvm
-    python
-    vim
-    wget
-    curl
-    tmux
+	node
+	python
+	python3
+	vim
+	wget
+	curl
+	tmux
 	hashcat
 	ncdu
 	nmap
@@ -21,11 +21,11 @@ apps=(
 	openssl
 	wireshark
 	wpscan
-	wp-cli
-	wp-cli-completion
 	openvpn
 	bat
 	fd
+	sqlmap
+	hexedit
 )
 
 brew install "${apps[@]}"

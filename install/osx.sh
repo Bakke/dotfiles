@@ -8,8 +8,7 @@ sudo scutil --set HostName Kattekebab
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew tap caskroom/cask
 brew install brew-cask
-brew tap homebrew/versions
-brew tap caskroom/versions
+brew tap homebrew/cask-versions
 brew tap homebrew/cask-fonts
 
 # Install brew & brew-cask packages
@@ -21,11 +20,6 @@ brew tap homebrew/cask-fonts
 
 # Install SASS
 sudo gem install sass
-
-# Globally install with npm
-sudo /usr/local/bin/npm install -g bower
-sudo /usr/local/bin/npm install -g grunt
-sudo /usr/local/bin/npm install -g gulp
 
 # Set osx preferences
 . "$DOTFILES_DIR/install/osx-preferences.sh"

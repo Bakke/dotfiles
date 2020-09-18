@@ -1,25 +1,23 @@
 apps=(
-    dropbox
+	iterm2
     firefox
     google-chrome
-    google-chrome-canary
-    opera
     spotify
     vlc
-	slack
+    slack
     evernote
-    sequel-pro
-    sequel-pro
+	google-drive
     postman
     ccleaner
-    adobe-creative-cloud
-    vmware-fusion7
-	alfred
-	amethyst
-	vagrant
+    alfred
+    amethyst
+    vagrant
 	virtualbox
+	wireshark
+	burp-suite
 	font-hack-nerd-font
 	font-sfmono-nerd-font
+    font-hack-nerd-font
 )
 
 brew cask install "${apps[@]}"
