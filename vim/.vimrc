@@ -160,6 +160,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'dense-analysis/ale'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'wellle/targets.vim'
+Plugin 'jeffkreeftmeijer/vim-dim'
 Plugin 'ryanoasis/vim-devicons'
 
 " All of your Plugins must be added before the following line
