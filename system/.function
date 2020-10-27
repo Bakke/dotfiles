@@ -1,14 +1,3 @@
-function vmore() {
-
-	# If no file was specified read from stdin
-	if [ -z ${1} ]; then
-		1="-"
-	fi
-
-	vim -R -u ${DOTFILES_DIR}/vim/.vimrc.more $1
-
-}
-
 tunnel-kill() {
 	lsof -ti tcp:${1} | xargs kill -9
 }
@@ -19,41 +8,6 @@ sizeof(){ du -hs $1 | awk '{print $1}'; }
 #Fetch wp uploads folder from server
 fetch_uploads() {
 	rsync -rP "$1".idrift.no:/home/httpd/"$2"/public_html/content/uploads/ uploads;
-}
-
-# Bower update recursively
-function bower-update {
-	CurrentDIR="$(pwd)";
-
-	prev='';
-	vendorPath="bower_components";
-	if [[ -f ".bowerrc" ]]; then
-		vendorPath=`cat ".bowerrc" | python -c "import json,sys;obj=json.load(sys.stdin);print str(obj['directory'])"`
-		if [[ "${vendorPath}" == *Traceback* ]]; then
-			vendorPath="bower_components";
-		fi
-	fi
-
-	find . -type f -iname "bower.json" -print0 | while IFS= read -r -d $'\0' bower_file_path; do
-		bowerDir="${bower_file_path//bower.json/}";
-
-		if [[ "${bowerDir}" != "${prev}${vendorPath}"* && "${bowerDir}" != "${prev}./${vendorPath}"* && "${bowerDir}" != "${vendorPath}"* && "${bowerDir}" != "./${vendorPath}"* && "${bowerDir}" != "./node_modules"* ]]; then
-			echo -e "\033[0;36mUpdating Bower in \033[1;36m${bowerDir}\033[0m"
-			cd $bowerDir;
-			bower update
-			cd $CurrentDIR;
-
-			# Filter out bad dirs
-			prev=$bowerDir;
-			if [[ -f "${bowerDir}.bowerrc" ]]; then
-				vendorPath=`cat "${bowerDir}.bowerrc" | python -c "import json,sys;obj=json.load(sys.stdin);print str(obj['directory'])"`
-				if [[ "${vendorPath}" == *Traceback* ]]; then
-					vendorPath="bower_components";
-				fi
-			fi
-		fi
-
-	done
 }
 
 # Get registrar function
@@ -80,16 +34,6 @@ legal() {
 		echo 'Could not find legal info';
 	fi
 
-}
-
-# Search history
-function hs() {
-	history | ack $*
-}
-
-# Search all processes
-function psa() {
-	ps aux | ack $*
 }
 
 #Fetch wp uploads folder from server
