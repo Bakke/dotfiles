@@ -14,10 +14,6 @@ let g:elite_mode=1
 
 " Plugin Configuration ------------------------------------------------
 
-" Hybrid theme
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1
-
 " Vim Airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
@@ -182,7 +178,6 @@ syntax on
 set t_Co=256
 set background=dark
 colorscheme dim
-" colorscheme hybrid_material
 
 " Bash style tab completion
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion)
