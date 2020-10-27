@@ -6,26 +6,20 @@ brew upgrade
 apps=(
 	git
 	grep
-	ripgrep
-	node
 	python
 	python3
+	ripgrep
 	vim
-	wget
-	curl
-	tmux
-	hashcat
+    node
+    nvm
+    wget
+    curl
+    tmux
 	ncdu
 	nmap
-	masscan
-	openssl
-	wireshark
-	wpscan
-	openvpn
 	bat
 	fd
-	sqlmap
-	hexedit
+	fzf
 )
 
 brew install "${apps[@]}"

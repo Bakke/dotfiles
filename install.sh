@@ -44,8 +44,6 @@ if [[ ! -e ~/.fasd-git ]]; then
 
 fi
 
-. "$DOTFILES_DIR/install/fzf.sh"
-
 # Update submodules
 git submodule update --init --recursive
 
