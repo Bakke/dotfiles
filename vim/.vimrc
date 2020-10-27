@@ -133,15 +133,6 @@ let g:ale_linters = {'vue': ['eslint', 'vls']}
 let g:ale_php_phpcbf_standard = "PSR2"
 let g:ale_php_phpcs_standard = "PSR2"
 
-" PHP DocBlockr
-let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-let g:pdv_cfg_Author = 'Magnus Hauge Bakke <magnus@idrift.no>'
-
-" PHP DocBlockr keybindings
-au BufRead,BufNewFile *.php inoremap <buffer> <C-B> :call PhpDoc()<CR>
-au BufRead,BufNewFile *.php nnoremap <buffer> <C-B> :call PhpDoc()<CR>
-au BufRead,BufNewFile *.php vnoremap <buffer> <C-B> :call PhpDocRange()<CR>
-
 " Plugins -------------------------------------------------------------
 
 " Vundle plugins
@@ -159,17 +150,11 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'ConradIrwin/vim-bracketed-paste.git'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'Shougo/neocomplete'
-Plugin 'Shougo/neosnippet'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jwalton512/vim-blade'
-"Plugin 'kristijanhusak/vim-hybrid-material'
-Plugin 'jeffkreeftmeijer/vim-dim'
 Plugin 'mattn/emmet-vim'
 Plugin 'posva/vim-vue'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'tobyS/pdv'
+Plugin 'preservim/nerdtree.git'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'tpope/vim-repeat'
@@ -182,17 +167,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'dense-analysis/ale'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'valloric/MatchTagAlways'
 Plugin 'wellle/targets.vim'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'captbaritone/better-indent-support-for-php-with-html'
-Plugin 'vim-vdebug/vdebug'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'saltstack/salt-vim'
-Plugin 'stephpy/vim-yaml'
-Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -200,79 +176,6 @@ filetype plugin indent on    " required
 
 set statusline+=%#warningmsg#
 set statusline+=%*
-
-" NeoComplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_camel_case = 1
-let g:neocomplete#enable_fuzzy_completion = 1
-let g:neocomplete#enable_auto_close_preview = 1
-let g:neocomplete#auto_completion_start_length = 3
-let g:neocomplete#min_keyword_length = 3
-
-" NeoSnippets
-let g:neosnippet#disable_runtime_snippets = {
-\   '_' : 1,
-\ }
-let g:neosnippet#snippets_directory='~/.dotfiles/vim/snippets'
-
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)": pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : neocomplete#start_manual_complete()
-
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)": "\<TAB>"
-
-function! s:check_back_space() "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction "}}}
-
-" For conceal markers.
-" if has('conceal')
-"     set conceallevel=2 concealcursor=niv
-" endif
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-    " For no inserting <CR> key.
-    "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-" if !exists('g:neocomplete#sources#omni#input_patterns')
-"     let g:neocomplete#sources#omni#input_patterns = {}
-" endif
-" let g:neocomplete#sources#omni#input_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-
-if !exists('g:vdebug_options')
-    let g:vdebug_options = {}
-endif
-
-let g:vdebug_options["break_on_open"]=0
-let g:vdebug_options["path_maps"] = {"/home/vagrant/code": "/Users/magnus/Development/vhost"}
-
 
 " Vim settings --------------------------------------------------------
 
