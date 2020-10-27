@@ -112,15 +112,6 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
-let g:mta_filetypes = {
-    \ 'html': 1,
-    \ 'vue': 1,
-    \ 'jsx': 1,
-    \ 'xml': 1,
-    \ 'jinja': 1,
-    \ 'php': 1,
-    \}
-
 " Enable ale extension for airline
 let g:airline#extensions#ale#enabled = 1
 
