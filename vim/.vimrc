@@ -103,11 +103,6 @@ imap <silent> <leader><tab> <C-y>,
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" Indent Guides
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-
 " Enable ale extension for airline
 let g:airline#extensions#ale#enabled = 1
 
