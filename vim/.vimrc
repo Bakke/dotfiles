@@ -140,16 +140,12 @@ let g:ale_php_phpcs_standard = "PSR2"
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-set rtp+=~/.fzf
-
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'ConradIrwin/vim-bracketed-paste.git'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'jwalton512/vim-blade'
 Plugin 'mattn/emmet-vim'
@@ -364,24 +360,6 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 map <leader>j :%!python -m json.tool<CR>
 
 " Custom scripts ------------------------------------------------------
-
-" Ripgrep command
-command! -bang -nargs=* Rg
-\ call fzf#vim#grep(
-\   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-\   <bang>0 ? fzf#vim#with_preview('up:60%')
-\           : fzf#vim#with_preview('right:50%:hidden', '?'),
-\   <bang>0)
-
-" only use FZF shortcuts in non diff-mode
-if !&diff
-    nnoremap <C-p> :Files<Cr>
-    nnoremap <C-g> :Rg<Cr>
-    nnoremap <C-f> :BTags<Cr>
-    nnoremap <leader>f :Tags<Cr>
-    nnoremap <leader>ff yiw:Tags <C-R>"<CR>
-    vnoremap <leader>f y:Tags <C-R>"<CR>
-endif
 
 " Strip whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
