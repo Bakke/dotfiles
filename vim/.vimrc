@@ -136,8 +136,6 @@ let g:ale_php_phpcs_standard = "PSR2"
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-set rtp+=~/.fzf
-
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
