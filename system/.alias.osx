@@ -1,3 +1,5 @@
+alias c="docker-compose"
+
 # Apps
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias xcode="open -a '/Developer/Applications/Xcode.app'"
