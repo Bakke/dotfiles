@@ -325,6 +325,7 @@ set scrolloff=3                 " Start scrolling three lines before horizontal 
 set mouse=a                     " Enable mouse in all in all modes
 set ttymouse=xterm              " Set mouse type to xterm
 set ttyfast                     " Sends more characters at a time
+set foldmethod=indent
 set nofoldenable
 
 " Indention
