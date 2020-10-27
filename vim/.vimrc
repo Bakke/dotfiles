@@ -26,6 +26,9 @@ map <C-i> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let g:NERDTreeQuitOnOpen=1
 
+" indentLine
+let g:indentLine_char = '⦙'
+
 " Gutentags
 let g:gutentags_add_default_project_roots = 0
 let g:gutentags_project_root = ['package.json', '.git']
@@ -162,6 +165,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'dense-analysis/ale'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'wellle/targets.vim'
+Plugin 'Yggdroot/indentLine'
 Plugin 'jeffkreeftmeijer/vim-dim'
 Plugin 'ryanoasis/vim-devicons'
 
@@ -356,6 +360,9 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " Pretty json
 map <leader>j :%!python -m json.tool<CR>
+
+" Turn off indentLine
+nnoremap <leader>tt :IndentLinesToggle<CR>
 
 " Custom scripts ------------------------------------------------------
 
