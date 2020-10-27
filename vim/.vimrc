@@ -265,24 +265,28 @@ map <silent> <leader>gp :Gpush<CR>
 map <silent> <leader>gl :Gpull<CR>
 map <silent> <leader>gb :Gblame<CR>
 
-" .viminfo settings
-" read/write a .viminfo file, don't store more that 50 lines of registers
-set viminfo='20,\"50
-set history=1000
-set nobackup
-set noswapfile
+" Protect changes between writes. Default values of
+" updatecount (200 keystrokes) and updatetime
+" (4 seconds) are fine
+set swapfile
+set directory^=~/.vim/swap//
 
-"undo stuff
-"location of undo files
-if exists("+undodir")
-    set undodir=~/.vimundo
-    "save an undo file - persistent undo
-    set undofile
-    "max number of changes that can be undone
-    set undolevels=1000
-    "undo on reload
-    set undoreload=10000
-endif
+" Protect against crash-during-write
+set writebackup
+" But do not persist backup after successful write
+set nobackup
+" Use rename-and-write-new method whenever safe
+set backupcopy=auto
+" Patch required to honor double slash at end
+if has("patch-8.1.0251")
+	" Consolidate the writebackups -- not a big
+	" deal either way, since they usually get deleted
+	set backupdir^=~/.vim/backup//
+end
+
+" persist the undo tree for each file
+set undofile
+set undodir^=~/.vim/undo//
 
 "fix search - normal regex can be used in searching
 nnoremap / /\v
