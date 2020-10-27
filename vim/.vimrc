@@ -111,16 +111,6 @@ let g:indent_guides_guide_size = 1
 " Enable ale extension for airline
 let g:airline#extensions#ale#enabled = 1
 
-" Ale linting jsx support
-augroup FiletypeGroup
-    autocmd!
-    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-augroup END
-
-" Linting jsx
-let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
-let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
-
 " Linting Vue
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {'vue': ['eslint', 'vls']}
