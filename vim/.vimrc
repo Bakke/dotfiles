@@ -87,10 +87,7 @@ let g:gutentags_ctags_exclude = [
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Fix auto-indentation for YAML files
-augroup yaml_fix
-    autocmd!
-    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
-augroup END
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Easy Align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
