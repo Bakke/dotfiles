@@ -103,11 +103,6 @@ nmap ga <Plug>(EasyAlign)
 " Emmet
 " Use leader + tab for Emmet abbrevations
 imap <silent> <leader><tab> <C-y>,
-let g:user_emmet_settings = {
-			\  'javascript.jsx' : {
-			\      'extends' : 'jsx',
-			\  },
-			\}
 
 " EditorConfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
