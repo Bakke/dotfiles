@@ -356,9 +356,6 @@ autocmd FileType php setlocal commentstring=//%s
 " Disable right-hand scrollbar for vertically split window
 set guioptions-=R
 
-" Abbreviations -------------------------------------------------------
-ab teh the
-
 " Key mappings --------------------------------------------------------
 
 " Relaod .vimrc
@@ -367,21 +364,12 @@ nmap <silent> <leader>r :so $MYVIMRC<CR>
 " Open .vimrc for editing
 nmap <leader>v :edit $MYVIMRC<cr>
 
-" Start editing before second doublequote
-nmap <leader>" 2f"i
-
-" Start editing before second singlequote
-nmap <leader>" 2f'i
-
 " Search for selected text or text under cursor (normal mode)
 vnoremap // y/\V<C-R>"<CR>N
 nnoremap // viwy/\V<C-R>"<CR>N
 
 " Clear last search
 nmap <silent> <leader>c <Esc>:let @/ = ""<CR>
-
-" Show tabs and trailing whitespace
-nmap <silent> <Leader>tt <Esc>:set list!<CR>
 
 " Copy to clipboard
 vnoremap <C-c> "+y
@@ -451,13 +439,6 @@ nmap <silent> gj <Plug>(ale_next_wrap)
 " Better mark jumping (line + col)
 nnoremap ' `
 
-" Yank from cursor to end of line
-nnoremap Y y$
-
-" Close Quickfix window
-map <leader>qq :pclose<CR>
-map <leader>ww :cclose<CR>
-
 " Disable arrow movement, resize splits instead.
 if get(g:, 'elite_mode')
     nnoremap <Up>    :resize +2<CR>
@@ -477,13 +458,6 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " Pretty json
 map <leader>j :%!python -m json.tool<CR>
-
-augroup vimrc
-	au BufReadPre * setlocal foldmethod=indent
-	au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
-augroup END
-
-nnoremap <C-l> za
 
 " Custom scripts ------------------------------------------------------
 
@@ -508,8 +482,8 @@ endif
 " Strip whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
+" Repeat macro over visually selected range
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
-
 function! ExecuteMacroOverVisualRange()
   echo "@".getcmdline()
   execute ":'<,'>normal @".nr2char(getchar())
