@@ -2,7 +2,7 @@
 set nocompatible
 
 " Set leader
-:let mapleader = ","
+let mapleader = ","
 
 let g:AutoPairsShortcutToggle = 0
 let g:AutoPairsShortcutFastWrap = 0
