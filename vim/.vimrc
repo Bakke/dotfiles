@@ -116,44 +116,39 @@ let g:ale_php_phpcs_standard = "PSR2"
 
 " Plugins -------------------------------------------------------------
 
-" Vundle plugins
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Plugins
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'ConradIrwin/vim-bracketed-paste.git'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'jwalton512/vim-blade'
-Plugin 'mattn/emmet-vim'
-Plugin 'posva/vim-vue'
-Plugin 'preservim/nerdtree.git'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive.git'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-abolish'
-Plugin 'vim-scripts/ReplaceWithRegister'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'dense-analysis/ale'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'wellle/targets.vim'
-Plugin 'Yggdroot/indentLine'
-Plugin 'jeffkreeftmeijer/vim-dim'
-Plugin 'ryanoasis/vim-devicons'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'jwalton512/vim-blade'
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'jiangmiao/auto-pairs'
+Plug 'dense-analysis/ale'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'wellle/targets.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" Initialize plugin system
+call plug#end()
 
 set statusline+=%#warningmsg#
 set statusline+=%*
