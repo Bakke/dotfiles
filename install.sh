@@ -30,7 +30,10 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 # Install Vundle
-source "$DOTFILES_DIR/install/vundle.sh"
+# source "$DOTFILES_DIR/install/vundle.sh"
+
+# Install vim-plug
+source "$DOTFILES_DIR/install/plug.sh"
 
 # Create vim dirs for swap, undo and backup
 mkdir ~/.vim/{swap,undodir,backup}
