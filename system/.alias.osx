@@ -8,18 +8,6 @@ alias illustrator='open -a Adobe\ Illustrator\ CC\ 2014'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias ss='a -e subl'
 
-# Server stuff
-alias nginxd="sudo /usr/local/share/ncreate/nginx"
-alias php-fpmd="sudo /usr/local/share/ncreate/php-fpm"
-# alias service="sudo brew services"
-
-alias wppermissions='sudo chown _www:staff content && sudo chmod 775 content && sudo chown -R _www:staff content/uploads && sudo chmod -R 775 content/uploads'
-
-# alias php='php -c /usr/local/etc/php/current/cli/php.ini'
-# alias composer='php -c /usr/local/etc/php/current/cli/php.ini /usr/local/bin/composer'
-
-alias mt='multitail --config ~/.multitailrc -CS php'
-
 # Web search aliases
 alias google='web_search google'
 alias github='web_search github'

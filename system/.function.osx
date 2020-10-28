@@ -17,16 +17,13 @@ function homestead() {
 artisanclean() {
 
     if [ ! -f 'artisan' ]; then
-        echo "You need to be in the same folder as artisan!"
-        return
+		echo "You need to be in the same folder as artisan!"
+		return
     fi
 
     if [ ! -d "public/uploads" ]; then
     	mkdir public/uploads
     fi
-
-    sudo chown -R _www:staff bootstrap/cache storage public/uploads
-    sudo chmod -R 775 bootstrap/cache storage public/uploads
 
     php artisan cache:clear
     php artisan clear-compiled

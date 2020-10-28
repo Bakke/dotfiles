@@ -7,9 +7,6 @@ fi
 
 export KUBECONFIG=$HOME/.kube/narnia
 
-# Load RVM, if you are using it
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
 if [ -d "$HOME/.dotfiles" ]; then
     DOTFILES_DIR="$HOME/.dotfiles"
 else
@@ -33,9 +30,6 @@ if [ "$OS" = "Linux" ]; then
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
 fi
-
-# Load ncreate config
-[[ -f $HOME/.bash_ncreate_config ]] && source $HOME/.bash_ncreate_config
 
 # Init fasd
 if [ -d "$HOME/.fasd-git" ]; then

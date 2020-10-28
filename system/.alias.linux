@@ -1,3 +1,0 @@
-alias www='cd /home/httpd';
-alias ack='ack-grep'
-alias srdb='php /usr/local/share/Search-Replace-DB/srdb.cli.php'
