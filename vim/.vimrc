@@ -215,8 +215,6 @@ set hidden                      " Enable hidden buffers
 set autoread                    " Auto reload files that are changed outside vim
 au CursorHold * checktime
 set scrolloff=3                 " Start scrolling three lines before horizontal border of window
-set mouse=a                     " Enable mouse in all in all modes
-set ttymouse=xterm              " Set mouse type to xterm
 set ttyfast                     " Sends more characters at a time
 set foldmethod=indent
 set nofoldenable
