@@ -192,10 +192,6 @@ set wildignore+=*/smarty/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/t
 set wildmenu
 set wildmode=list:longest
 
-" Show tabs and trailing spaces
-" set list
-set listchars=tab:›.,trail:.,extends:#,nbsp:.
-
 " Searching
 set hlsearch                    " Syntax highlighting on last search
 set incsearch                   " Instant (char by char) search
