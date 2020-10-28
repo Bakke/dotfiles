@@ -8,6 +8,7 @@ let g:AutoPairsShortcutToggle = 0
 let g:AutoPairsShortcutFastWrap = 0
 let g:AutoPairsShortcutJump = 0
 let g:AutoPairsShortcutBackInsert = 0
+let g:AutoPairsMultilineClose = 0
 
 " Enable Elite mode, No ARRRROWWS!!!!
 let g:elite_mode=1
