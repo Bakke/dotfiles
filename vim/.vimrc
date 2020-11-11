@@ -268,11 +268,11 @@ nmap <silent> <leader>c <Esc>:let @/ = ""<CR>
 vnoremap <C-c> "+y
 
 " Mappings for git
-map <silent> <leader>gs :Gstatus<CR>
-map <silent> <leader>gd :Gdiff<CR>
-map <silent> <leader>gp :Gpush<CR>
-map <silent> <leader>gl :Gpull<CR>
-map <silent> <leader>gb :Gblame<CR>
+map <silent> <leader>gs :Git<CR>
+map <silent> <leader>gd :Gvdiffsplit<CR>
+map <silent> <leader>gp :Git push<CR>
+map <silent> <leader>gl :Git pull<CR>
+map <silent> <leader>gb :Git blame<CR>
 
 set noswapfile
 set nowritebackup
