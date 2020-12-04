@@ -22,6 +22,7 @@ ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/vim/.vimrc" ~
 ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
+ln -sfv "$DOTFILES_DIR/.alacritty.yml" ~
 
 if [[ $(uname) == "Darwin" ]]; then
     if [ -f "$DOTFILES_DIR/install/osx.sh" ]; then

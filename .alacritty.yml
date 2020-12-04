@@ -1,0 +1,48 @@
+env:
+  TERM: xterm-256color
+
+window:
+  # padding:
+  #   x: 5
+  #   y: 5
+  startup_mode: Fullscreen
+  scrolling: 0
+
+# Colors (Gruvbox dark)
+colors:
+  # Default colors
+  primary:
+    background: '#201F1F'
+    foreground: '#FFFFFF'
+
+  # Normal colors
+  normal:
+    black:   '#303F46'
+    red:     '#FF5573'
+    green:   '#8BEE8F'
+    yellow:  '#EEAA00'
+    blue:    '#49A1FF'
+    magenta: '#CA4CCE'
+    cyan:    '#45BDC9'
+    white:   '#A89984'
+
+  # Bright colors
+  bright:
+    black:   '#70716F'
+    red:     '#FF5573'
+    green:   '#8BEF8F'
+    yellow:  '#FEEB44'
+    blue:    '#48A0FF'
+    magenta: '#CB4CCF'
+    cyan:    '#47BDCA'
+    white:   '#ebdbb2'
+
+font:
+  normal:
+    family: SFMono Nerd Font
+    style: Regular
+  size: 14
+  # use_thin_strokes: false
+  offset:
+    x: 1
+    y: 1
