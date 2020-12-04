@@ -15,9 +15,7 @@ apps=(
 	virtualbox
 	wireshark
 	burp-suite
-	font-hack-nerd-font
 	font-sfmono-nerd-font
-    font-hack-nerd-font
 )
 
 brew install --cask "${apps[@]}"
