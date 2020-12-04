@@ -134,6 +134,8 @@ let g:ale_linters = {'vue': ['eslint', 'vls']}
 let g:ale_php_phpcbf_standard = "PSR2"
 let g:ale_php_phpcs_standard = "PSR2"
 
+let g:indentLine_setConceal = 0
+
 " Plugins -------------------------------------------------------------
 
 call plug#begin('~/.vim/plugged')
