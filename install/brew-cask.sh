@@ -15,6 +15,7 @@ apps=(
 	virtualbox
 	wireshark
 	burp-suite
+	alacritty
 	font-sfmono-nerd-font
 )
 
