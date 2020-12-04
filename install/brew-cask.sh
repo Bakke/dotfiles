@@ -20,4 +20,4 @@ apps=(
     font-hack-nerd-font
 )
 
-brew cask install "${apps[@]}"
+brew install --cask "${apps[@]}"
