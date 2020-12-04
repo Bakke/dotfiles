@@ -7,6 +7,7 @@ window:
   #   y: 5
   startup_mode: Fullscreen
   scrolling: 0
+  decorations: none
 
 # Colors (Gruvbox dark)
 colors:
