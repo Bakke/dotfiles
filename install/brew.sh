@@ -25,6 +25,7 @@ apps=(
 	tesseract
 	ffmpeg
 	rga
+	ctags
 )
 
 brew install "${apps[@]}"
