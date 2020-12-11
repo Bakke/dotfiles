@@ -323,6 +323,9 @@ nmap <silent> gj <Plug>(ale_next_wrap)
 " Better mark jumping (line + col)
 nnoremap ' `
 
+autocmd FileType python map <buffer> <leader>e :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <leader>e <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
 " Disable arrow movement, resize splits instead.
 if get(g:, 'elite_mode')
     nnoremap <Up>    :resize +2<CR>
