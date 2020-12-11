@@ -6,7 +6,7 @@ sudo scutil --set HostName Kattekebab
 
 # Install Homebrew & brew-cask
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew tap caskroom/cask
+brew tap homebrew/cask
 brew install brew-cask
 brew tap homebrew/cask-versions
 brew tap homebrew/cask-fonts
