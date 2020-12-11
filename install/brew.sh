@@ -20,6 +20,11 @@ apps=(
 	bat
 	fd
 	fzf
+	pandoc
+	poppler
+	tesseract
+	ffmpeg
+	rga
 )
 
 brew install "${apps[@]}"
