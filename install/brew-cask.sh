@@ -1,12 +1,10 @@
 apps=(
 	iterm2
-    firefox
     google-chrome
     spotify
     vlc
     slack
     evernote
-	google-drive
     postman
     ccleaner
     alfred
@@ -15,8 +13,8 @@ apps=(
 	virtualbox
 	wireshark
 	burp-suite
-	alacritty
-	font-sfmono-nerd-font
+	fliqlo
+    firefox
 )
 
 brew install --cask "${apps[@]}"
