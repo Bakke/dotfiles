@@ -87,8 +87,8 @@ let g:gutentags_ctags_exclude = [
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Fix auto-indentation for YAML files
-autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
+" Fix auto-indentation for YAML and JSON files
+autocmd FileType yaml,yml,json setlocal ts=2 sts=2 sw=2 expandtab
 
 " Easy Align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
