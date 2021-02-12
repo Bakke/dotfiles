@@ -134,7 +134,7 @@ let g:ale_linters = {'vue': ['eslint', 'vls']}
 let g:ale_php_phpcbf_standard = "PSR2"
 let g:ale_php_phpcs_standard = "PSR2"
 
-let g:indentLine_setConceal = 0
+let g:vim_json_conceal=0
 
 " Plugins -------------------------------------------------------------
 
@@ -347,7 +347,7 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 map <leader>j :%!python -m json.tool<CR>
 
 " Turn off indentLine
-nnoremap <leader>tt :IndentLinesToggle<CR>
+nnoremap <leader>l :IndentLinesToggle<CR>
 
 " Custom scripts ------------------------------------------------------
 
