@@ -166,6 +166,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'wellle/targets.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'sainnhe/sonokai'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
@@ -181,9 +182,19 @@ set tags=./tags,tags;
 
 " Syntax highlighting
 syntax on
-set t_Co=256
-set background=dark
-colorscheme dim
+if has('termguicolors')
+	set termguicolors
+endif
+
+let g:sonokai_style = 'maia'
+let g:sonokai_disable_italic_comment = 1
+
+colorscheme sonokai
+
+" syntax on
+" set t_Co=256
+" set background=dark
+" colorscheme dim
 
 " Bash style tab completion
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion)
