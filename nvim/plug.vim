@@ -1,0 +1,39 @@
+if has("nvim")
+	let g:plug_home = stdpath('data') . '/plugged'
+endif
+
+call plug#begin()
+
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'junegunn/vim-easy-align'
+Plug 'jwalton512/vim-blade'
+Plug 'mattn/emmet-vim'
+Plug 'posva/vim-vue'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'wellle/targets.vim'
+Plug 'sainnhe/sonokai'
+
+if has("nvim")
+	Plug 'windwp/nvim-autopairs'
+	Plug 'windwp/nvim-ts-autotag'
+	Plug 'lukas-reineke/indent-blankline.nvim'
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'glepnir/lspsaga.nvim'
+	Plug 'folke/lsp-colors.nvim'
+	Plug 'hrsh7th/nvim-compe'
+	Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+	Plug 'kyazdani42/nvim-web-devicons'
+	Plug 'nvim-telescope/telescope.nvim'
+endif
+
+call plug#end()
