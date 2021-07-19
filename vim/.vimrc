@@ -259,6 +259,9 @@ set formatoptions+=1            " Break before 1-letter words
 " PHP comment style
 autocmd FileType php setlocal commentstring=//%s
 
+" Vue comment style
+autocmd FileType vue setlocal commentstring=//%s
+
 " Disable right-hand scrollbar for vertically split window
 set guioptions-=R
 
