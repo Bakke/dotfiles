@@ -2,7 +2,7 @@ autoload -U colors && colors
 setopt prompt_subst
 #autoload -Uz promptinit && promptinit
 
-local _current_dir="%{$fg[cyan]%}%~%{$reset_color%}"
+local _current_dir="%{$fg[blue]%}%~%{$reset_color%}"
 
 local GIT_PROMPT_DIRTY=" %{$fg[red]%}✗%{$reset_color%}"
 local GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"

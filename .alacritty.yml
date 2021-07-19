@@ -2,48 +2,48 @@ env:
   TERM: xterm-256color
 
 window:
-  # padding:
-  #   x: 5
-  #   y: 5
+  padding:
+    x: 10
+    y: 10
   startup_mode: Fullscreen
   scrolling: 0
   decorations: none
 
 # Colors (Gruvbox dark)
 colors:
-  # Default colors
   primary:
-    background: '#201F1F'
-    foreground: '#FFFFFF'
+    background: "0x273136"
+    foreground: "0xe1e2e3"
 
-  # Normal colors
   normal:
-    black:   '#303F46'
-    red:     '#FF5573'
-    green:   '#8BEE8F'
-    yellow:  '#EEAA00'
-    blue:    '#49A1FF'
-    magenta: '#CA4CCE'
-    cyan:    '#45BDC9'
-    white:   '#A89984'
+    black: "0x1c1e1f"
+    red: "0xf76c7c"
+    green: "0x9cd57b"
+    yellow: "0xe3d367"
+    blue: "0x78cee9"
+    magenta: "0xbaa0f8"
+    cyan: "0xf3a96a"
+    white: "0xe1e2e3"
 
-  # Bright colors
   bright:
-    black:   '#70716F'
-    red:     '#FF5573'
-    green:   '#8BEF8F'
-    yellow:  '#FEEB44'
-    blue:    '#48A0FF'
-    magenta: '#CB4CCF'
-    cyan:    '#47BDCA'
-    white:   '#ebdbb2'
+    black: "0x1c1e1f"
+    red: "0xf76c7c"
+    green: "0x9cd57b"
+    yellow: "0xe3d367"
+    blue: "0x78cee9"
+    magenta: "0xbaa0f8"
+    cyan: "0xf3a96a"
+    white: "0xe1e2e3"
 
 font:
   normal:
     family: SFMono Nerd Font
     style: Regular
   size: 14
-  # use_thin_strokes: false
+  use_thin_strokes: true
   offset:
     x: 1
     y: 1
+
+key_bindings:
+  - { key: Key7, mods: Alt, action: None }
