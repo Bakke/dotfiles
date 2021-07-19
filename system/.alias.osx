@@ -1,4 +1,5 @@
-alias c="docker-compose"
+alias vim="nvim"
+alias c="docker compose"
 
 # Apps
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
