@@ -11,6 +11,7 @@
 	shorty = status --short --branch
 	commend = commit --amend --no-edit
 	praise = blame
+	undo = reset --soft HEAD~1
 [grep]
 	extendRegexp = true
 [core]
