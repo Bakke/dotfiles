@@ -9,7 +9,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'jwalton512/vim-blade'
 Plug 'mattn/emmet-vim'
 Plug 'posva/vim-vue'
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -21,6 +21,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'wellle/targets.vim'
+Plug 'jremmen/vim-ripgrep'
 Plug 'sainnhe/sonokai'
 
 if has("nvim")
@@ -33,6 +34,8 @@ if has("nvim")
 	Plug 'hrsh7th/nvim-compe'
 	Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 	Plug 'kyazdani42/nvim-web-devicons'
+	Plug 'kyazdani42/nvim-tree.lua'
+	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim'
 endif
 
