@@ -4,10 +4,6 @@ nmap <silent> <leader>r :so $MYVIMRC<CR>
 " Open .vimrc for editing
 nmap <leader>v :edit $MYVIMRC<cr>
 
-" Search for selected text or text under cursor (normal mode)
-vnoremap // y/\V<C-R>"<CR>N
-nnoremap // viwy/\V<C-R>"<CR>N
-
 " Clear last search
 nmap <silent> <leader>c :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
@@ -24,6 +20,13 @@ map <silent> <leader>gb :Git blame<CR>
 "fix search - normal regex can be used in searching
 nnoremap / /\v
 vnoremap / /\v
+
+" Search for selected text or text under cursor (normal mode)
+vnoremap // y/\V<C-R>"<CR>N
+nnoremap // viwy/\V<C-R>"<CR>N
+
+nnoremap /" \"\zs(\s)@![^\"]+(\s)@<!\ze\"<CR>N
+nnoremap /' \'\zs(\s)@![^\']+(\s)@<!\ze\'<CR>N
 
 " Use jj for esc
 inoremap <silent> jj <esc>
