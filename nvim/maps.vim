@@ -12,7 +12,7 @@ nnoremap // viwy/\V<C-R>"<CR>N
 nmap <silent> <leader>c :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 " Copy to clipboard
-vnoremap <C-c> "+y
+vnoremap <silent> <C-c> "+y
 
 " Mappings for git
 map <silent> <leader>gs :Git<CR>
@@ -26,7 +26,7 @@ nnoremap / /\v
 vnoremap / /\v
 
 " Use jj for esc
-inoremap jj <esc>
+inoremap <silent> jj <esc>
 
 " Use gb to select last pasted text
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -38,10 +38,10 @@ noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
 " Close buffers
-nnoremap <C-q>     :bd!<CR>
-nnoremap <C-w>     :bd<CR>
-inoremap <C-q>     <Esc>:bd!<CR>
-inoremap <C-w>     <Esc>:bd<CR>
+nnoremap <silent> <C-q>     :bd!<CR>
+nnoremap <silent> <C-w>     :bd<CR>
+inoremap <silent> <C-q>     <Esc>:bd!<CR>
+inoremap <silent> <C-w>     <Esc>:bd<CR>
 
 " Next/previous buffer with Shift + H/L
 nnoremap H :bprevious<CR>
