@@ -52,5 +52,11 @@ autocmd FileType php setlocal commentstring=//%s
 " Vue comment style
 autocmd FileType vue setlocal commentstring=//%s
 
+autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
+
+augroup filetypedetect
+	autocmd FileType edifact,edi,EDIFACT,EDI setlocal filetype=edifact
+augroup END
+
 " Strip whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
