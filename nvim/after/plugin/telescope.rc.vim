@@ -13,6 +13,9 @@ local actions = require('telescope.actions')
 ------------------------------
 require('telescope').setup{
 	defaults = {
+		layout_config = {
+			horizontal = { width = 0.95 },
+		},
 		file_ignore_patterns = {
 			".git",
 			".sass-cache",
