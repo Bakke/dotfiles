@@ -2,7 +2,7 @@ autoload -U colors && colors
 setopt prompt_subst
 #autoload -Uz promptinit && promptinit
 
-local _current_dir="%{$fg[cyan]%}%~%{$reset_color%}"
+local _current_dir="%{$fg[blue]%}%~%{$reset_color%}"
 
 local GIT_PROMPT_DIRTY=" %{$fg[red]%}✗%{$reset_color%}"
 local GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"
@@ -57,7 +57,7 @@ function precmd() {
 function right_prompt() {
 	local _rprompt
 	if [ -n "${timer_show}" ]; then
-		_rprompt="%{$fg[cyan]%}${timer_show}s %{$reset_color%}%(?..%F{red}%?%f)%{$reset_color%}"
+		_rprompt="%{$fg[blue]%}${timer_show}s %{$reset_color%}%(?..%F{red}%?%f)%{$reset_color%}"
 	fi
 	echo "${_rprompt}"
 	unset timer_show
