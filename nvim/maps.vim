@@ -63,6 +63,9 @@ vnoremap æ >
 " Better mark jumping (line + col)
 nnoremap ' `
 
+" Pretty json
+map <leader>j :%!python -m json.tool<CR>
+
 " autocmd FileType python map <buffer> <leader>e :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 " autocmd FileType python imap <buffer> <leader>e <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
