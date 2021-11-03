@@ -7,6 +7,7 @@ window:
     y: 10
   scrolling: 0
   decorations: none
+  startup_mode: Maximized
 
 alt_send_esc: false
 
