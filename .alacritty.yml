@@ -5,7 +5,6 @@ window:
   padding:
     x: 10
     y: 10
-  # startup_mode: Fullscreen
   scrolling: 0
   decorations: none
 
@@ -56,5 +55,5 @@ font:
     y: 1
 
 key_bindings:
-  - { key: Return, mods: Command, action: ToggleSimpleFullscreen }
+  - { key: Return, mods: Command, action: ToggleFullscreen }
   - { key: F, mods: Command|Control, action: None }
