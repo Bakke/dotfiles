@@ -71,10 +71,10 @@ map <leader>j :%!python -m json.tool<CR>
 
 " Disable arrow movement, resize splits instead.
 if get(g:, 'elite_mode')
-    nnoremap <Up>    :resize +2<CR>
-    nnoremap <Down>  :resize -2<CR>
-    nnoremap <Left>  :vertical resize +2<CR>
-    nnoremap <Right> :vertical resize -2<CR>
+    nnoremap <C-Up>    :resize +2<CR>
+    nnoremap <C-Down>  :resize -2<CR>
+    nnoremap <C-Left>  :vertical resize +2<CR>
+    nnoremap <C-Right> :vertical resize -2<CR>
 endif
 
 " Repeat macro over visually selected range
