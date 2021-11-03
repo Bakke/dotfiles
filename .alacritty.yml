@@ -15,6 +15,10 @@ cursor:
   style:
     shape: Beam
 
+scrolling:
+  history: 0
+  multiplier: 0
+
 # Colors (Gruvbox dark)
 colors:
   primary:
