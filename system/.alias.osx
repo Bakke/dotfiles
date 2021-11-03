@@ -1,19 +1,2 @@
 alias vim="nvim"
 alias c="docker compose"
-
-# Apps
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-alias xcode="open -a '/Developer/Applications/Xcode.app'"
-alias photoshop='open -a Adobe\ Photoshop\ CC\ 2014'
-alias illustrator='open -a Adobe\ Illustrator\ CC\ 2014'
-alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-alias ss='a -e subl'
-
-# Web search aliases
-alias google='web_search google'
-alias github='web_search github'
-alias stackoverflow='web_search stackoverflow'
-alias wordpress='web_search wordpress'
-alias caniuse='web_search caniuse'
-alias phpnet='web_search phpnet'
-
