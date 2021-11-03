@@ -17,6 +17,7 @@ apps=(
     tmux
 	ncdu
 	nmap
+	jq
 	bat
 	fd
 	fzf

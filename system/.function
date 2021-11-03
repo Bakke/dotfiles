@@ -1,5 +1,11 @@
-ipinfo() {
-	curl "https://ipinfo.io/${1}"; echo
+ip() {
+	JSON=curl "https://ipinfo.io/${1}";
+
+	if [[ -e $(which jq) ]]; then
+		echo $JSON | jq .
+	else
+		echo $JSON
+	fi
 }
 
 tunnel-kill() {
