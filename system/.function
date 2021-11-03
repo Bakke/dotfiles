@@ -1,5 +1,5 @@
 ip() {
-	JSON=curl "https://ipinfo.io/${1}";
+	JSON=$(curl -s "https://ipinfo.io/${1}");
 
 	if [[ -e $(which jq) ]]; then
 		echo $JSON | jq .
