@@ -21,6 +21,7 @@ require('telescope').setup{
 			".sass-cache",
 			".DS_Store",
 			"node_modules",
+			"vendor",
 			"*.png",
 			"*.jpg",
 			"*.gif",
