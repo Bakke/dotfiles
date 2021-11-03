@@ -5,9 +5,15 @@ window:
   padding:
     x: 10
     y: 10
-  startup_mode: Fullscreen
+  # startup_mode: Fullscreen
   scrolling: 0
   decorations: none
+
+alt_send_esc: false
+
+cursor:
+  style:
+    shape: Beam
 
 # Colors (Gruvbox dark)
 colors:
@@ -46,4 +52,5 @@ font:
     y: 1
 
 key_bindings:
-  - { key: Key7, mods: Alt, action: None }
+  - { key: Return, mods: Command, action: ToggleSimpleFullscreen }
+  - { key: F, mods: Command|Control, action: None }
