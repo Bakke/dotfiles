@@ -1,6 +1,8 @@
 # Kubectl
 . "${DOTFILES_DIR}/system/.alias.kubectl"
 
+alias vim="nvim"
+
 # Directory and file navigation/editing
 alias md='mkdir -p'
 alias rd='rmdir'
