@@ -15,11 +15,6 @@ tunnel-kill() {
 # Get size of folder
 sizeof(){ du -hs $1 | awk '{print $1}'; }
 
-#Fetch wp uploads folder from server
-fetch_uploads() {
-	rsync -rP "$1".idrift.no:/home/httpd/"$2"/public_html/content/uploads/ uploads;
-}
-
 # Get registrar function
 registrar() {
 
@@ -29,19 +24,6 @@ registrar() {
 		whois $REGISTRAR;
 	else
 		echo 'Could not find registrar info';
-	fi
-
-}
-
-# Get legal function
-legal() {
-
-	LEGAL=( $(whois $1 | grep -m 1 -i "Legal" | awk -F ":" '/: / { print $2}') );
-
-	if [ -n "$LEGAL" ]; then
-		whois $LEGAL;
-	else
-		echo 'Could not find legal info';
 	fi
 
 }
