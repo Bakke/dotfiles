@@ -1,5 +1,5 @@
 apps=(
-	iterm2
+    alacritty
     google-chrome
     spotify
     vlc
