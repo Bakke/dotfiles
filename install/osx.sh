@@ -35,8 +35,3 @@ read -p LARAVEL
 if [ "$LARAVEL" = "y" ]; then
 	. "$DOTFILES_DIR/install/laravel-installer.sh"
 fi
-
-read -p "\033[0;32mDo you want to install Homestead? [y/n] \033[0m" HOMESTEAD
-if [ "$HOMESTEAD" = "y" ]; then
-	. "$DOTFILES_DIR/install/homestead.sh"
-fi
