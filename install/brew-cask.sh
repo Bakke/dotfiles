@@ -9,8 +9,6 @@ apps=(
     ccleaner
     alfred
     amethyst
-    vagrant
-	virtualbox
 	wireshark
 	burp-suite
 	fliqlo
