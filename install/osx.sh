@@ -23,12 +23,14 @@ sudo gem install sass
 # Set osx preferences
 . "$DOTFILES_DIR/install/osx-preferences.sh"
 
-read -p "Do you want to install Composer? [y/n]" COMPOSER
+echo "Do you want to install Composer? [y/n]"
+read COMPOSER
 if [ "$COMPOSER" = "y" ]; then
 	. "$DOTFILES_DIR/install/composer.sh"
 fi
 
-read -p "Do you want to install Laravel Installer? [y/n]" LARAVEL
+echo "Do you want to install Laravel Installer? [y/n]"
+read LARAVEL
 if [ "$LARAVEL" = "y" ]; then
 	. "$DOTFILES_DIR/install/laravel-installer.sh"
 fi

@@ -53,7 +53,8 @@ mkdir ~/.vim/{swap,undodir,backup}
 
 if [[ ! -e ~/.fasd-git ]]; then
 
-	read -p "Do you want to install Fasd? [y/n]" FASD
+    echo "Do you want to install Fasd? [y/n]"
+	read FASD
 	if [ "$FASD" = "y" ]; then
 		. "$DOTFILES_DIR/install/fasd.sh"
 	fi
