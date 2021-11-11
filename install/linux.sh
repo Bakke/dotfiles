@@ -5,6 +5,13 @@ ln -sfv "$DOTFILES_DIR/rofi/config" ~/.config/rofi/
 
 . "$DOTFILES_DIR/install/nvim.sh"
 . "$DOTFILES_DIR/install/apt.sh"
+. "$DOTFILES_DIR/install/nodejs.sh"
+
+echo "Do you want to install Alacritty? [y/n]"
+read ALACRITTY
+if [ "$ALACRITTY" = "y" ]; then
+	. "$DOTFILES_DIR/install/alacritty.sh"
+fi
 
 if [[ ! -e "~/.local/share/fonts/SFMono Regular Nerd Font Complete.otf" ]]; then
     wget https://github.com/epk/SF-Mono-Nerd-Font/archive/refs/heads/master.zip

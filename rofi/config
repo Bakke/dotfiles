@@ -1,7 +1,7 @@
 rofi.modi:                           window,run
 rofi.opacity:                        30
 rofi.theme: solarized
-rofi.font: SFMono Nerd Font
+#rofi.font: SFMono Nerd Font
 rofi.lines: 15
 rofi.columns:                        1
 rofi.levenshtein-sort:               true
