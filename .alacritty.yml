@@ -2,6 +2,7 @@ env:
   TERM: xterm-256color
 
 window:
+  opacity: 0.95
   padding:
     x: 10
     y: 10
@@ -10,10 +11,7 @@ window:
   startup_mode: Maximized
 
 alt_send_esc: false
-
-cursor:
-  style:
-    shape: Beam
+background_opacity: 0.95
 
 scrolling:
   history: 0
@@ -30,7 +28,8 @@ colors:
     red: "#E06C75"
     green: "#98C379"
     yellow: "#E5C07B"
-    blue: "#60AFEE"
+    blue: "#85d3f2"
+    # blue: "#60AFEE"
     magenta: "#7FE0FF"
     cyan: "#56B6C2"
     white: "#ABB2BF"
@@ -40,7 +39,8 @@ colors:
     red: "#E06C75"
     green: "#98C379"
     yellow: "#E5C07B"
-    blue: "#60AFEE"
+    blue: "#85d3f2"
+    # blue: "#60AFEE"
     magenta: "#7FE0FF"
     cyan: "#56B6C2"
     white: "#ABB2BF"
