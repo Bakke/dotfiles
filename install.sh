@@ -31,9 +31,6 @@ if [[ $(uname) == "Darwin" ]]; then
     fi
 fi
 
-# Install Vundle
-# source "$DOTFILES_DIR/install/vundle.sh"
-
 # Install vim-plug
 source "$DOTFILES_DIR/install/plug.sh"
 
