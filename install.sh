@@ -29,6 +29,10 @@ if [[ $(uname) == "Darwin" ]]; then
     if [ -f "$DOTFILES_DIR/install/osx.sh" ]; then
         . "$DOTFILES_DIR/install/osx.sh"
     fi
+else
+    if [ -f "$DOTFILES_DIR/install/linux.sh" ]; then
+        . "$DOTFILES_DIR/install/linux.sh"
+    fi
 fi
 
 # Install vim-plug
