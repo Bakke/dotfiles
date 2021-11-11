@@ -6,6 +6,16 @@ export DOTFILES_DIR DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pw
 # Update dotfiles itself first
 [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
+# Create config directory if it does not exist
+if [[ ! -e ~/.config ]]; then
+    mkdir ~/.config
+fi
+
+# Create nvm directory if it does not exist
+if [[ ! -e ~/.nvm ]]; then
+    mkdir ~/.nvm
+fi
+
 # Create vim directory if it does not exist
 if [[ ! -e ~/.vim ]]; then
     mkdir ~/.vim
