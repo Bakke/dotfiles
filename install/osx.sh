@@ -32,3 +32,8 @@ read -p "Do you want to install Laravel Installer? [y/n]" LARAVEL
 if [ "$LARAVEL" = "y" ]; then
 	. "$DOTFILES_DIR/install/laravel-installer.sh"
 fi
+
+wget https://github.com/epk/SF-Mono-Nerd-Font/archive/refs/heads/master.zip
+7z x master.zip
+cd SF-Mono-Nerd-Font-master && mv *.otf ~/Library/Fonts/
+cd .. && rm -rf master.zip SF-Mono-Nerd-Font-master
