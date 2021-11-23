@@ -21,6 +21,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<leader>q', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -41,22 +42,6 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-nvim_lsp.cssls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  }
-}
-
-nvim_lsp.html.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  }
-}
-
 nvim_lsp.sqlls.setup{
   cmd = {"/usr/local/bin/sql-language-server", "up", "--method", "stdio"},
   on_attach = on_attach,
@@ -66,15 +51,6 @@ nvim_lsp.sqlls.setup{
   ...
 }
 
-nvim_lsp.cssls.setup{}
-nvim_lsp.html.setup{}
-nvim_lsp.vuels.setup{}
-nvim_lsp.yamlls.setup{}
-nvim_lsp.bashls.setup{}
-nvim_lsp.dockerls.setup{}
-nvim_lsp.intelephense.setup{}
-nvim_lsp.pyright.setup{}
-
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = { "cssls", "html", "vuels", "yamlls", "bashls", "dockerls", "intelephense", "pyright" }
@@ -83,7 +59,8 @@ for _, lsp in ipairs(servers) do
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
-    }
+    },
+    log_level = vim.lsp.protocol.MessageType.Log,
   }
 end
 
