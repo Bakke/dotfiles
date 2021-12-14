@@ -20,7 +20,8 @@ scrolling:
 # Colors (Gruvbox dark)
 colors:
   primary:
-    background: "#273136"
+    # background: "#273136"
+    background: "#23252E"
     foreground: "#e1e2e3"
 
   normal:
