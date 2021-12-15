@@ -1,0 +1,19 @@
+configuration {
+    modi: "combi";
+	font: "SFMono Nerd Font 12";
+	show-icons: true;
+	drun-show-actions: true;
+	disable-history: false;
+	sort: true;
+	sorting-method: "levenshtein";
+	combi-modi: "drun,run";
+	matching: "fuzzy";
+    kb-remove-to-eol: "Control+p";
+	kb-row-up: "Up,Control+k,ISO_Left_Tab";
+	kb-row-down: "Down,Control+j";
+	kb-accept-entry: "Control+m,Return,KP_Enter";
+	icon-theme: "Papirus";
+	/* steal-focus: false; */
+}
+
+@theme "Arc-Dark"
