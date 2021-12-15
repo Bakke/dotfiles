@@ -1,4 +1,4 @@
-rofi.modi:                           window,run
+rofi.modi:                           drun,run
 rofi.opacity:                        30
 rofi.theme: solarized
 rofi.font: SFMono Nerd Font 18
@@ -6,7 +6,7 @@ rofi.lines: 15
 rofi.columns:                        1
 rofi.levenshtein-sort:               true
 rofi.auto-select:                    false
-rofi.combi-modi:                     window,run
+rofi.combi-modi:                     drun,run
 rofi.fuzzy:                          true
 rofi.separator-style:                solid
 rofi.hide-scrollbar:                 true
@@ -15,7 +15,7 @@ rofi.show-icons:                     true
 
 rofi.kb-remove-to-eol:               Control+p
 rofi.kb-accept-entry:                Control+m,Return,KP_Enter
-rofi.kb-row-up:                      Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab,Control+s
-rofi.kb-row-down:                    Down,Control+j,Control+t
+rofi.kb-row-up:                      Up,Control+k
+rofi.kb-row-down:                    Down,Control+j
 
 rofi.theme: /usr/share/rofi/themes/Arc-Dark.rasi
