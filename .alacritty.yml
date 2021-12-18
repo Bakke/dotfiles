@@ -7,8 +7,8 @@ window:
     x: 10
     y: 10
   scrolling: 0
-  decorations: none
-  startup_mode: Maximized
+  # decorations: none
+  # startup_mode: Maximized
 
 alt_send_esc: false
 background_opacity: 0.95
