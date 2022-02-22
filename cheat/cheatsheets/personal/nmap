@@ -15,3 +15,6 @@ nmap -v -p 53 10.11.1.1-255 -oG ping-sweep-dns.out
 
 # Ping sweep
 nmap -v -sn 10.11.1.1-255 --dns-servers=10.11.1.x -oG ping-sweep.out
+
+# UDP full scan
+sudo nmap -sUV -T4 -vvv --min-rate=1000 --max-retries=2 -oN -p- nmap/udp-full 10.11.1.x
