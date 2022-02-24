@@ -1,0 +1,5 @@
+---
+tags: [ hacking ]
+---
+# Scan WordPress site
+wpscan --url sandbox.local --enumerate ap,at,cb,dbe --api-token XXX
