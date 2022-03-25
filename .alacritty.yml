@@ -49,7 +49,7 @@ font:
   normal:
     family: SFMono Nerd Font
     style: Regular
-  size: 14
+  size: 16
   use_thin_strokes: true
   offset:
     x: 1
