@@ -32,7 +32,7 @@ colors:
     # blue: "#60AFEE"
     magenta: "#7FE0FF"
     cyan: "#56B6C2"
-    white: "#ABB2BF"
+    white: "#FFFFFF"
 
   bright:
     black: "#282C34"
