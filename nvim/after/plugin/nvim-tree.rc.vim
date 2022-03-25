@@ -1,6 +1,3 @@
-let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ]
-let g:nvim_tree_quit_on_open = 1
-
 " nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <C-i> :NvimTreeToggle<CR>
 " nnoremap <Tab> :NvimTreeToggle<CR>
@@ -19,6 +16,14 @@ require'nvim-tree'.setup({
 		mappings = {
 			list = list
 		}
-	}
+	},
+    actions = {
+        open_file = {
+            quit_on_open = true
+        }
+    },
+    filters = {
+        custom = {".git", "node_modules", ".cache"}
+    }
 })
 EOF
