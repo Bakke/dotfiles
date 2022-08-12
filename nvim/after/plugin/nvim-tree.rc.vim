@@ -24,7 +24,9 @@ require'nvim-tree'.setup({
         }
     },
     filters = {
-        custom = {".git", "node_modules", ".cache"}
+        dotfiles = false,
+        custom = {".git", "node_modules", ".cache"},
+        exclude = {".env", ".gitignore"}
     }
 })
 EOF
