@@ -1,6 +1,6 @@
 if !exists('g:loaded_telescope') | finish | endif
 
-nnoremap <silent><C-p> :lua require('telescope.builtin').find_files({hidden = true})<cr>
+nnoremap <silent><C-p> :lua require('telescope.builtin').find_files({hidden = true, previewer = false})<cr>
 nnoremap <silent><leader>g :lua require('telescope.builtin').live_grep<cr>
 " nnoremap <silent><leader>f :lua require('telescope.builtin').file_browser<cr>
 " nnoremap <silent> ;r :lua require('telescope.builtin').live_grep<cr>
