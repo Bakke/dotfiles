@@ -22,6 +22,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'wellle/targets.vim'
 Plug 'jremmen/vim-ripgrep'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'sainnhe/sonokai'
 
 if has("nvim")
@@ -36,7 +38,7 @@ if has("nvim")
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'kyazdani42/nvim-tree.lua'
 	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope.nvim'
+	" Plug 'nvim-telescope/telescope.nvim'
 endif
 
 call plug#end()
