@@ -58,6 +58,9 @@ set formatoptions+=2            " Use indent from 2nd line of a paragraph
 set formatoptions+=l            " Don't break lines that are already long
 set formatoptions+=1            " Break before 1-letter words
 
+" Disable mouse
+set mouse=
+
 set noswapfile
 set nowritebackup
 set nobackup
