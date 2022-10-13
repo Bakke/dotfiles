@@ -9,6 +9,7 @@ require("bufferline").setup {
         close_icon = '',
         show_close_icon = false,
         show_buffer_close_icons = false,
+        max_name_length = 40,
     }
 }
 EOF
