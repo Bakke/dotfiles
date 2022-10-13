@@ -29,20 +29,14 @@ if has('termguicolors')
 	set termguicolors
 endif
 
-" let g:edge_style = 'aura'
-" let g:edge_enable_italic = 1
-" let g:edge_disable_italic_comment = 1
 let g:sonokai_style = 'maia'
 let g:sonokai_transparent_background = 1
 let g:sonokai_disable_italic_comment = 1
-let g:sonokai_better_performance = 1
+let g:sonokai_diagnostic_text_highlight = 1
+" let g:sonokai_diagnostic_line_highlight = 1
+" let g:sonokai_better_performance = 1
 
 colorscheme sonokai
-" colorscheme edge
-
-" set t_Co=256
-" set background=dark
-" colorscheme dim
 
 " Fix auto-indentation for YAML and JSON files
 autocmd FileType yaml,yml,json setlocal ts=2 sts=2 sw=2 expandtab
