@@ -16,34 +16,32 @@ scrolling:
   history: 0
   multiplier: 0
 
-# Colors (Gruvbox dark)
+# Sonokai Maia
+# https://gist.github.com/sainnhe/e5c4512d5bcfcb46afd493beb86223c6
 colors:
   primary:
-    # background: "#273136"
-    background: "#23252E"
-    foreground: "#e1e2e3"
+    background: "0x273136"
+    foreground: "0xe1e2e3"
 
   normal:
-    black: "#282C34"
-    red: "#E06C75"
-    green: "#98C379"
-    yellow: "#E5C07B"
-    blue: "#85d3f2"
-    # blue: "#60AFEE"
-    magenta: "#7FE0FF"
-    cyan: "#56B6C2"
-    white: "#FFFFFF"
+    black: "0x1c1e1f"
+    red: "0xf76c7c"
+    green: "0x9cd57b"
+    yellow: "0xe3d367"
+    blue: "0x78cee9"
+    magenta: "0xbaa0f8"
+    cyan: "0xf3a96a"
+    white: "0xe1e2e3"
 
   bright:
-    black: "#282C34"
-    red: "#E06C75"
-    green: "#98C379"
-    yellow: "#E5C07B"
-    blue: "#85d3f2"
-    # blue: "#60AFEE"
-    magenta: "#7FE0FF"
-    cyan: "#56B6C2"
-    white: "#ABB2BF"
+    black: "0x82878b"
+    red: "0xf76c7c"
+    green: "0x9cd57b"
+    yellow: "0xe3d367"
+    blue: "0x78cee9"
+    magenta: "0xbaa0f8"
+    cyan: "0xf3a96a"
+    white: "0xe1e2e3"
 
 font:
   normal:
