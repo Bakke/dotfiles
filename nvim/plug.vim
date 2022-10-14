@@ -33,10 +33,10 @@ if has("nvim")
 	Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'kyazdani42/nvim-tree.lua'
-	Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-lualine/lualine.nvim'
     Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 	" Plug 'nvim-telescope/telescope.nvim'
+	" Plug 'nvim-lua/plenary.nvim'
 endif
 
 call plug#end()
