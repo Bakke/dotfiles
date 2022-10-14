@@ -6,6 +6,13 @@ lua << EOF
 local nvim_lsp = require('lspconfig')
 
 local opts = { noremap=true, silent=true }
+
+local signs = { Error = "✘ ", Warn = "⚠ ", Hint = "⚠ ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', 'gk', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', 'gj', vim.diagnostic.goto_next, opts)
