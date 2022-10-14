@@ -16,7 +16,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'wellle/targets.vim'
+" Plug 'wellle/targets.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
