@@ -6,7 +6,6 @@ apps=(
     slack
     evernote
     postman
-    ccleaner
     alfred
     amethyst
 	wireshark
