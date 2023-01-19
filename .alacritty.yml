@@ -34,7 +34,7 @@ colors:
     white: "#e1e2e3"
 
   bright:
-    black: "#282C34"
+    black: "#5c5c5c"
     red: "#E06C75"
     green: "#98C379"
     yellow: "#E5C07B"
