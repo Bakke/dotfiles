@@ -10,7 +10,6 @@ apps=(
 	python3
 	ripgrep
 	vim
-    node
     nvm
     wget
     curl
@@ -22,6 +21,7 @@ apps=(
 	fd
 	fzf
 	rga
+    htop
 )
 
 brew install "${apps[@]}"
