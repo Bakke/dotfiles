@@ -54,5 +54,9 @@ augroup filetypedetect
 	autocmd FileType edifact,edi,EDIFACT,EDI setlocal filetype=edifact
 augroup END
 
+" Skeleton files
+autocmd BufNewFile *.sh 0r ~/.config/nvim/skeletons/bash.sh
+autocmd BufNewFile *.php 0r ~/.config/nvim/skeletons/php.php
+
 " Strip whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
