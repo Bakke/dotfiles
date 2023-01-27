@@ -10,3 +10,6 @@
 	path = plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
 	ignore = dirty
+[submodule "cheat/cheatsheets/community"]
+	path = cheat/cheatsheets/community
+	url = https://github.com/cheat/cheatsheets
