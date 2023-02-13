@@ -4,4 +4,9 @@ nnoremap <silent><C-b> :Buffers<cr>
 nnoremap <silent><C-g> :Commits<cr>
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+" let g:fzf_action = {
+"     \ 'enter': 'tab split',
+"     \ 'ctrl-t': 'tab split',
+"     \ 'ctrl-x': 'split',
+"     \ 'ctrl-v': 'vsplit' }
 let g:fzf_preview_window = []
