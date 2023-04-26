@@ -8,9 +8,10 @@ window:
     y: 10
   scrolling: 0
   decorations: buttonless
+  # option_as_alt: OnlyLeft
   # startup_mode: Maximized
 
-alt_send_esc: false
+# alt_send_esc: false
 
 scrolling:
   history: 0
