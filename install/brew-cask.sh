@@ -1,10 +1,8 @@
 apps=(
     alacritty
     google-chrome
-    spotify
     vlc
     slack
-    evernote
     postman
     alfred
     amethyst
@@ -12,6 +10,7 @@ apps=(
 	burp-suite
 	fliqlo
     firefox
+    tidal
 )
 
 brew install --cask "${apps[@]}"
