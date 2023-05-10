@@ -10,6 +10,7 @@ apps=(
 	python3
 	ripgrep
 	vim
+    neovim
     nvm
     wget
     curl
