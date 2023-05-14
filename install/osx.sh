@@ -11,8 +11,8 @@ brew install brew-cask-completion
 brew tap homebrew/cask-versions
 
 # Install brew & brew-cask packages
-. "$DOTFILES_DIR/install/brew-cask.sh"
 . "$DOTFILES_DIR/install/brew.sh"
+. "$DOTFILES_DIR/install/brew-cask.sh"
 
 # Install ZSH (with Homebrew)
 . "$DOTFILES_DIR/install/zsh.sh"
