@@ -1,8 +1,8 @@
 apps=(
     alacritty
-    google-chrome
     vlc
     slack
+    signal
     postman
     alfred
     amethyst
@@ -12,6 +12,10 @@ apps=(
     firefox
     tidal
     docker
+    logitech-g-hub
+    logi-options-plus
+    mullvadvpn
+    tableplus
 )
 
 brew install --cask "${apps[@]}"

@@ -17,6 +17,7 @@ apps=(
     tmux
 	ncdu
 	nmap
+    netcat
 	jq
 	bat
 	fd
@@ -24,9 +25,14 @@ apps=(
 	rga
     htop
     docker-compose
+    libpq
+    yarn
 )
 
 brew install "${apps[@]}"
+
+# Link PostgreSQL binaries
+brew link --force libpq
 
 # To install useful key bindings and fuzzy completion:
 $(brew --prefix)/opt/fzf/install
