@@ -23,6 +23,7 @@ apps=(
 	fzf
 	rga
     htop
+    docker-compose
 )
 
 brew install "${apps[@]}"

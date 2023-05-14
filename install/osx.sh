@@ -5,14 +5,14 @@ sudo scutil --set HostName Kattekebab
 #. "$DOTFILES_DIR/install/ssh-keys.sh"
 
 # Install Homebrew & brew-cask
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew tap homebrew/cask
 brew install brew-cask-completion
 brew tap homebrew/cask-versions
 
 # Install brew & brew-cask packages
-. "$DOTFILES_DIR/install/brew.sh"
 . "$DOTFILES_DIR/install/brew-cask.sh"
+. "$DOTFILES_DIR/install/brew.sh"
 
 # Install ZSH (with Homebrew)
 . "$DOTFILES_DIR/install/zsh.sh"

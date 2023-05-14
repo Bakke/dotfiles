@@ -11,6 +11,7 @@ apps=(
 	fliqlo
     firefox
     tidal
+    docker
 )
 
 brew install --cask "${apps[@]}"
