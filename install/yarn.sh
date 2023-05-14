@@ -1,0 +1,1 @@
+yarn global add yaml-language-server vscode-langservers-extracted vls svelte-language-server sql-language-server pyright dockerfile-language-server-nodejs bash-language-server intelephense

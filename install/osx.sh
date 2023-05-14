@@ -14,6 +14,8 @@ brew tap homebrew/cask-versions
 . "$DOTFILES_DIR/install/brew.sh"
 . "$DOTFILES_DIR/install/brew-cask.sh"
 
+. "$DOTFILES_DIR/install/yarn.sh"
+
 # Install ZSH (with Homebrew)
 . "$DOTFILES_DIR/install/zsh.sh"
 
