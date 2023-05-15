@@ -3,7 +3,6 @@ mkdir -p ~/.local/share/fonts
 
 ln -sfv "$DOTFILES_DIR/rofi/config.rasi" ~/.config/rofi/
 
-. "$DOTFILES_DIR/install/nvim.sh"
 . "$DOTFILES_DIR/install/apt.sh"
 . "$DOTFILES_DIR/install/nodejs.sh"
 . "$DOTFILES_DIR/install/fzf.sh"

@@ -7,6 +7,8 @@ apps=(
     python-is-python3
 	ripgrep
 	vim
+    neovim
+    python3-neovim
     wget
     curl
     tmux
