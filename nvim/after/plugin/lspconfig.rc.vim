@@ -58,9 +58,18 @@ nvim_lsp.sqlls.setup{
   ...
 }
 
+nvim_lsp.yamlls.setup{
+  settings = {
+    yaml = {
+      keyOrdering = false
+    }
+  },
+  ...
+}
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "cssls", "html", "vuels", "jsonls", "yamlls", "bashls", "dockerls", "intelephense", "pyright", "svelte" }
+local servers = { "cssls", "html", "vuels", "jsonls", "bashls", "dockerls", "intelephense", "pyright", "svelte" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
