@@ -27,9 +27,9 @@ if has("nvim")
 	Plug 'windwp/nvim-ts-autotag'
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'glepnir/lspsaga.nvim'
+	Plug 'onsails/lspkind.nvim'
+	" Plug 'glepnir/lspsaga.nvim'
 	" Plug 'folke/lsp-colors.nvim'
-	Plug 'hrsh7th/nvim-compe'
 	Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'kyazdani42/nvim-tree.lua'
@@ -37,8 +37,13 @@ if has("nvim")
     Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
     " Plug 'sbdchd/neoformat'
     Plug 'github/copilot.vim'
-	" Plug 'nvim-telescope/telescope.nvim'
-	" Plug 'nvim-lua/plenary.nvim'
+
+	Plug 'hrsh7th/nvim-cmp'
+	Plug 'hrsh7th/cmp-buffer'
+	Plug 'hrsh7th/cmp-path'
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'saadparwaiz1/cmp_luasnip'
+    Plug 'L3MON4D3/LuaSnip', {'tag': 'v1.*', 'do': 'make install_jsregexp'}
 endif
 
 call plug#end()
