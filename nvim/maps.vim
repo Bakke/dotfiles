@@ -10,6 +10,11 @@ nmap <silent> <leader>c :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR
 " Copy to clipboard
 vnoremap <silent> <C-c> "+y
 
+if &wildoptions =~ "pum"
+    cnoremap <expr> <C-k> pumvisible() ? "<C-p>" : "\\<C-k>"
+    cnoremap <expr> <C-j> pumvisible() ? "<C-n>" : "\\<C-j>"
+endif
+
 " Mappings for git
 map <silent> <leader>gs :Git<CR>
 " map <silent> <leader>gd :Gvdiffsplit<CR>
