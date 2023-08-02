@@ -20,6 +20,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'coreyja/fzf.devicon.vim'
 Plug 'sainnhe/sonokai'
 
 if has("nvim")

@@ -1,4 +1,5 @@
-nnoremap <silent><C-p> :Files<cr>
+" nnoremap <silent><C-p> :Files<cr>
+nnoremap <silent><C-p> :FilesWithDevicons<cr>
 nnoremap <silent><C-f> :BLines<cr>
 nnoremap <silent><C-g> :Commits<cr>
 nnoremap <leader>h :History:<cr>
