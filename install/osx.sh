@@ -15,6 +15,8 @@ brew tap homebrew/cask-versions
 
 . "$DOTFILES_DIR/install/yarn.sh"
 
+. "$DOTFILES_DIR/install/cargo.sh"
+
 # Install ZSH (with Homebrew)
 . "$DOTFILES_DIR/install/zsh.sh"
 
