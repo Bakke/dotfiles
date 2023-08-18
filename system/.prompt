@@ -3,6 +3,7 @@ setopt prompt_subst
 #autoload -Uz promptinit && promptinit
 
 local _current_dir="%{$fg[blue]%}%~%{$reset_color%}"
+local _custom_prefix="%{$fg[magenta]%}❯%{$reset_color%}"
 
 local GIT_PROMPT_DIRTY=" %{$fg[red]%}✗%{$reset_color%}"
 local GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"
@@ -43,28 +44,12 @@ function parse_git_dirty() {
 	fi
 }
 
-function preexec() {
-	timer=${timer:-$SECONDS}
-}
-
-function precmd() {
-	if [ $timer ]; then
-		timer_show=$(($SECONDS - $timer))
-		unset timer
-	fi
-}
-
 function right_prompt() {
-	local _rprompt
-	if [ -n "${timer_show}" ]; then
-		_rprompt="%{$fg[blue]%}${timer_show}s %{$reset_color%}%(?..%F{red}%?%f)%{$reset_color%}"
-	fi
-	echo "${_rprompt}"
-	unset timer_show
+	echo ""
 }
 
 function left_prompt() {
-echo "$(_user_host) ${_current_dir} $(git_prompt_info)\n# "
+echo "$(_user_host) ${_current_dir} $(git_prompt_info) \n# "
 }
 
 export PROMPT='$(left_prompt)'
