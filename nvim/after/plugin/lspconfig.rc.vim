@@ -80,6 +80,31 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 })
 
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = {
+    "cssls",
+    "html",
+    -- "vuels",
+    -- "eslint",
+    -- "tsserver",
+    "jsonls",
+    "bashls",
+    "dockerls",
+    "intelephense",
+    "pyright",
+    "svelte"
+}
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    flags = {
+      debounce_text_changes = 150,
+    },
+    log_level = vim.lsp.protocol.MessageType.Log,
+  }
+end
+
 lspconfig.sqlls.setup{
   cmd = {"/usr/local/bin/sql-language-server", "up", "--method", "stdio"},
   flags = {
@@ -98,16 +123,9 @@ lspconfig.yamlls.setup{
   ...
 }
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { "cssls", "html", "vuels", "jsonls", "bashls", "dockerls", "intelephense", "pyright", "svelte" }
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    flags = {
-      debounce_text_changes = 150,
-    },
-    log_level = vim.lsp.protocol.MessageType.Log,
-  }
-end
+lspconfig.volar.setup{
+    filetypes = {'typescript', 'javascript', 'vue'},
+    ...
+}
 
 EOF

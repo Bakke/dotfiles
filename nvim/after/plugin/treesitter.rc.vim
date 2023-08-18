@@ -30,7 +30,11 @@ require'nvim-treesitter.configs'.setup {
 		"regex",
 		"scss",
 		"vue",
-		"yaml"
+		"yaml",
+        "typescript",
+        "svelte",
+        "sql",
+        "csv",
 	},
 }
 EOF
