@@ -27,6 +27,7 @@ apps=(
     docker-compose
     libpq
     yarn
+    font-jetbrains-mono-nerd-font
 )
 
 brew install "${apps[@]}"

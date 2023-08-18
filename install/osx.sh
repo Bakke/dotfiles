@@ -8,6 +8,7 @@ sudo scutil --set HostName Kattekebab
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install brew-cask-completion
 brew tap homebrew/cask-versions
+brew tap homebrew/cask-fonts
 
 # Install brew & brew-cask packages
 . "$DOTFILES_DIR/install/brew.sh"
