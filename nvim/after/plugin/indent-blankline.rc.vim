@@ -1,12 +1,45 @@
-let g:indent_blankline_disable_warning_message = v:true
+lua << EOF
+local highlight = {
+    "RainbowRed",
+    "RainbowYellow",
+    "RainbowBlue",
+    "RainbowOrange",
+    "RainbowGreen",
+    "RainbowViolet",
+    "RainbowCyan",
+}
 
-let g:indent_blankline_char = '⦙'
-let g:indent_blankline_use_treesitter = v:true
-let g:indent_blankline_show_current_context = v:true
-let g:indent_blankline_show_first_indent_level = v:false
-let g:indent_blankline_context_patterns = ['class', 'function', 'method', 'if', 'for', 'foreach', 'while']
+local hooks = require "ibl.hooks"
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+end)
 
-highlight IndentOdd guibg=NONE guifg=#82878B gui=nocombine
-highlight IndentEven guibg=NONE guifg=#5D6064 gui=nocombine
-let g:indent_blankline_char_highlight_list = ['IndentOdd', 'IndentEven']
-let g:indent_blankline_space_char_highlight_list = ['IndentOdd', 'IndentEven']
+hooks.register(
+    hooks.type.WHITESPACE,
+    hooks.builtin.hide_first_space_indent_level
+)
+
+
+require("ibl").setup({
+	indent = {
+        char = "⦙",
+        highlight = highlight,
+        smart_indent_cap = true,
+    },
+    scope = {
+        enabled = false,
+        char = "|",
+        show_start = false,
+        show_end = false,
+        highlight = highlight,
+    },
+})
+EOF
