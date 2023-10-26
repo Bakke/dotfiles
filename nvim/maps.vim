@@ -71,6 +71,10 @@ nnoremap ' `
 " Pretty json
 map <leader>j :%!python3 -m json.tool<CR>
 
+" Insert UUID
+nnoremap <leader>u :py import uuid, vim; vim.command(':normal a' + str(uuid.uuid1()))<cr>
+inoremap <leader>u <esc>:py import uuid, vim; vim.command(':normal a' + str(uuid.uuid1()))<cr>a
+
 " autocmd FileType python map <buffer> <leader>e :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 " autocmd FileType python imap <buffer> <leader>e <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
