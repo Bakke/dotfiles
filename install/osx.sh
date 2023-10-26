@@ -14,6 +14,8 @@ brew tap homebrew/cask-fonts
 . "$DOTFILES_DIR/install/brew.sh"
 . "$DOTFILES_DIR/install/brew-cask.sh"
 
+. "$DOTFILES_DIR/install/pip.sh"
+
 . "$DOTFILES_DIR/install/yarn.sh"
 
 . "$DOTFILES_DIR/install/cargo.sh"
