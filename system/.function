@@ -28,7 +28,6 @@ registrar() {
 
 }
 
-#Fetch wp uploads folder from server
 tmux_project() {
 	PROJECT_DIR=$PWD
 
@@ -41,4 +40,20 @@ tmux_project() {
 	cd $PROJECT_DIR
 
 	tmux select-window -t 1
+}
+
+kexe() {
+    local pod namespace podList container containers
+
+    podList=$(kubectl get pods -A | fzf )
+    namespace=$(echo ${podList} | awk '{print $1}')
+    pod=$(echo ${podList} | awk '{print $2}')
+    containers=$(kubectl get pods "${pod}" -n "${namespace}" -o jsonpath='{range .spec.containers[*]}{.name}{"\n"}{end}')
+
+    if [[ $(echo $containers | wc -l) -gt 1 ]]; then
+        container=$(echo ${containers} | fzf)
+        kubectl exec -it "${pod}" -n "${namespace}" -c "${container}" -- ${1:-sh}
+    else
+        kubectl exec -it "${pod}" -n "${namespace}" -- ${1:-sh}
+    fi
 }
