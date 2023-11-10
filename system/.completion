@@ -38,3 +38,49 @@ _composer () {
 compdef _composer composer
 compdef _composer composer.phar
 
+_fzf_complete_kubectl() {
+    ARGS="$@"
+
+    local resourceList
+
+    if [[ $ARGS =~ 'exec' ]]; then
+        resourceList=$(kubectl get pods -A | grep '^[[:lower:]]')
+
+        _fzf_complete -- "$@" < <(
+            echo ${resourceList}
+        )
+    elif [[ $ARGS =~ 'logs|describe|edit|delete' ]]; then
+        resourceList=$(kubectl get all -A | grep '^[[:lower:]]')
+
+        _fzf_complete -- "$@" < <(
+            echo ${resourceList}
+        )
+    else
+        eval "zle ${fzf_default_completion:-expand-or-complete}"
+    fi
+}
+
+_fzf_complete_kubectl_post() {
+    local original resource namespace
+
+    original=$(awk '{print $0}')
+    namespace=$(echo ${original} | awk '{print $1}')
+    resource=$(echo ${original} | awk '{print $2}')
+
+    if [[ $ARGS =~ 'exec' ]]; then
+        if [ -n "$resource" ] && [ -n "$namespace" ]; then
+            echo "-it ${resource} -n ${namespace} --"
+        elif [ -n "$resource" ]; then
+            echo "-it ${resource} --"
+        fi
+    elif [[ $ARGS =~ 'logs|describe|edit|delete' ]]; then
+        if [ -n "$resource" ] && [ -n "$namespace" ]; then
+            echo "${resource} -n ${namespace}"
+        elif [ -n "$resource" ]; then
+            echo "${resource}"
+        fi
+    fi
+}
+
+_fzf_complete_k() { _fzf_complete_kubectl "$@" }
+_fzf_complete_k_post() { _fzf_complete_kubectl_post "$@" }
