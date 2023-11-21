@@ -108,3 +108,23 @@ _fzf_complete_cheat() {
         echo ${commandList}
     )
 }
+
+_fzf_complete_git() {
+    ARGS="$@"
+
+    local commitList
+
+    if [[ $ARGS =~ 'rebase' ]]; then
+        commitList=$(git log --graph --pretty=oneline --abbrev-commit)
+
+        _fzf_complete -- "$@" < <(
+            echo ${commitList}
+        )
+    else
+        eval "zle ${fzf_default_completion:-expand-or-complete}"
+    fi
+}
+
+_fzf_complete_git_post() {
+    awk '{print $2}'
+}
