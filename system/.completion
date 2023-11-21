@@ -55,6 +55,12 @@ _fzf_complete_kubectl() {
         _fzf_complete -- "$@" < <(
             echo ${resourceList}
         )
+    elif [[ $ARGS =~ ' -n' ]]; then
+        resourceList=$(kubectl get namespaces -A | grep '^[[:lower:]]')
+
+        _fzf_complete -- "$@" < <(
+            echo ${resourceList}
+        )
     else
         eval "zle ${fzf_default_completion:-expand-or-complete}"
     fi
@@ -79,6 +85,8 @@ _fzf_complete_kubectl_post() {
         elif [ -n "$resource" ]; then
             echo "${resource}"
         fi
+    elif [[ $ARGS =~ ' -n' ]]; then
+        echo ${namespace}
     fi
 }
 
