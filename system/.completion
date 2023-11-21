@@ -92,3 +92,19 @@ _fzf_complete_kubectl_post() {
 
 _fzf_complete_k() { _fzf_complete_kubectl "$@" }
 _fzf_complete_k_post() { _fzf_complete_kubectl_post "$@" }
+
+_cheat() {
+    compadd $(cheat -l | awk '{print $1}')
+}
+compdef _cheat cheat
+
+_fzf_complete_cheat() {
+    ARGS="$@"
+
+    local commandList
+    commandList=$(cheat -l | awk '{print $1}')
+
+    _fzf_complete -- "$@" < <(
+        echo ${commandList}
+    )
+}
