@@ -20,6 +20,8 @@ map <silent> <leader>gs :Git<CR>
 " map <silent> <leader>gd :Gvdiffsplit<CR>
 map <silent> <leader>gp :Git push<CR>
 map <silent> <leader>gl :Git pull<CR>
+map <silent> <leader>gh :Gllog %<CR>
+" map <silent> <leader>gh :Git log --graph --pretty=oneline --abbrev-commit %<CR>
 map <silent> <leader>gb :Git blame<CR>
 
 "fix search - normal regex can be used in searching
