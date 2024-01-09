@@ -16,18 +16,11 @@ apps=(
 	jq
 	fzf
     vlc
-    rofi
     p7zip-full
     cargo
     arc-theme
     papirus-icon-theme
-    lxappearance
-    cmake
-    pkg-config
-    libfreetype6-dev
-    libfontconfig1-dev
-    libxcb-xfixes0-dev
-    libxkbcommon-dev
+    build-essential
 )
 
 sudo apt update && sudo apt install -y "${apps[@]}"
