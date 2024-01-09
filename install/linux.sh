@@ -3,7 +3,6 @@ mkdir -p ~/.local/share/fonts
 
 . "$DOTFILES_DIR/install/apt.sh"
 . "$DOTFILES_DIR/install/nodejs.sh"
-# . "$DOTFILES_DIR/install/fzf.sh"
 # . "$DOTFILES_DIR/install/cargo.sh"
 
 if [[ ! -e "~/.local/share/fonts/SFMono Regular Nerd Font Complete.otf" ]]; then
