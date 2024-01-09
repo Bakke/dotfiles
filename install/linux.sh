@@ -8,12 +8,6 @@ mkdir -p ~/.local/share/fonts
 # . "$DOTFILES_DIR/install/fzf.sh"
 # . "$DOTFILES_DIR/install/cargo.sh"
 
-# echo "Do you want to install Alacritty? [y/n]"
-# read ALACRITTY
-# if [ "$ALACRITTY" = "y" ]; then
-# 	. "$DOTFILES_DIR/install/alacritty.sh"
-# fi
-
 if [[ ! -e "~/.local/share/fonts/SFMono Regular Nerd Font Complete.otf" ]]; then
     wget https://github.com/epk/SF-Mono-Nerd-Font/archive/refs/heads/master.zip
     7z x master.zip
