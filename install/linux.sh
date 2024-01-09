@@ -1,7 +1,6 @@
 mkdir -p ~/.local/share/fonts
 
-
-. "$DOTFILES_DIR/install/apt.sh"
+. "$DOTFILES_DIR/install/pacman.sh"
 . "$DOTFILES_DIR/install/nodejs.sh"
 # . "$DOTFILES_DIR/install/cargo.sh"
 
