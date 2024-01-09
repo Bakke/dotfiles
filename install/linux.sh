@@ -1,7 +1,5 @@
-mkdir -p ~/.config/rofi
 mkdir -p ~/.local/share/fonts
 
-# ln -sfv "$DOTFILES_DIR/rofi/config.rasi" ~/.config/rofi/
 
 . "$DOTFILES_DIR/install/apt.sh"
 . "$DOTFILES_DIR/install/nodejs.sh"
