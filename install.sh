@@ -33,7 +33,7 @@ ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 # ln -sfv "$DOTFILES_DIR/vim/.vimrc" ~
 ln -sfv "$DOTFILES_DIR/nvim/" ~/.config/
 ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
-ln -sfv "$DOTFILES_DIR/.alacritty.yml" ~
+ln -sfv "$DOTFILES_DIR/.alacritty.toml" ~
 
 if [[ $(uname) == "Darwin" ]]; then
     if [ -f "$DOTFILES_DIR/install/osx.sh" ]; then
