@@ -2,6 +2,7 @@ mkdir -p ~/.local/share/fonts
 
 . "$DOTFILES_DIR/install/pacman.sh"
 . "$DOTFILES_DIR/install/nodejs.sh"
+. "$DOTFILES_DIR/install/yay.sh"
 . "$DOTFILES_DIR/install/cargo.sh"
 
 if [[ ! -e "~/.local/share/fonts/SFMono Regular Nerd Font Complete.otf" ]]; then
