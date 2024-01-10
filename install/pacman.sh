@@ -3,6 +3,7 @@ sudo pacman -Syu
 
 apps=(
     base-devel
+    man
     git
     grep
     python3
