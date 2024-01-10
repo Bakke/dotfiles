@@ -28,6 +28,7 @@ apps=(
     docker
     docker-compose
     kubectl
+    gnome-shell-extensions
 )
 
 sudo pacman -S --noconfirm "${apps[@]}"
