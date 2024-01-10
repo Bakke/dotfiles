@@ -22,6 +22,11 @@ apps=(
     p7zip
     rust
     alacritty
+    bluez
+    bluez-utils
+    docker
+    docker-compose
+    kubectl
 )
 
 sudo pacman -S --noconfirm "${apps[@]}"
