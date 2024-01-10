@@ -1,11 +1,16 @@
 mkdir -p ~/.local/share/fonts
 
-sudo ln -sfv "$DOTFILES_DIR/etc/logid.cfg" /etc/
-
 . "$DOTFILES_DIR/install/pacman.sh"
 . "$DOTFILES_DIR/install/nodejs.sh"
 . "$DOTFILES_DIR/install/yay.sh"
 . "$DOTFILES_DIR/install/cargo.sh"
+
+sudo ln -sfv "$DOTFILES_DIR/etc/logid.cfg" /etc/
+
+sudo systemctl enable bluetooth.service
+sudo systemctl enable logid.service
+
+sudo g810-led -p /etc/g810-led/profile
 
 if [[ ! -e "~/.local/share/fonts/SFMono Regular Nerd Font Complete.otf" ]]; then
     wget https://github.com/epk/SF-Mono-Nerd-Font/archive/refs/heads/master.zip
