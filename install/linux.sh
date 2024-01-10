@@ -1,5 +1,7 @@
 mkdir -p ~/.local/share/fonts
 
+sudo ln -sfv "$DOTFILES_DIR/etc/logid.cfg" /etc/
+
 . "$DOTFILES_DIR/install/pacman.sh"
 . "$DOTFILES_DIR/install/nodejs.sh"
 . "$DOTFILES_DIR/install/yay.sh"
