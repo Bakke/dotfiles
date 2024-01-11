@@ -29,6 +29,7 @@ apps=(
     docker-compose
     kubectl
     gnome-shell-extensions
+    ttf-jetbrains-mono-nerd
 )
 
 sudo pacman -S --noconfirm "${apps[@]}"
