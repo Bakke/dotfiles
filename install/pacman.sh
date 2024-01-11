@@ -28,6 +28,7 @@ apps=(
     docker
     docker-compose
     kubectl
+    postgresql-libs
     gnome-shell-extensions
     ttf-jetbrains-mono-nerd
 )
