@@ -25,6 +25,10 @@ apps=(
     alacritty
     bluez
     bluez-utils
+    usbutils
+    gcc
+    make
+    hidapi
     remmina
     freerdp
     docker
