@@ -4,6 +4,8 @@ mkdir -p ~/.local/share/fonts
 . "$DOTFILES_DIR/install/nodejs.sh"
 . "$DOTFILES_DIR/install/yay.sh"
 . "$DOTFILES_DIR/install/cargo.sh"
+. "$DOTFILES_DIR/install/linux/themes.sh"
+. "$DOTFILES_DIR/install/linux/icons.sh"
 
 sudo groupadd docker
 sudo usermod -aG docker $USER
