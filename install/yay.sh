@@ -7,6 +7,7 @@ rm -rf ~/yay
 apps=(
     logiops
     g810-led-git
+    tidal-hifi-bin
 )
 
 sudo pacman -S --noconfirm "${apps[@]}"
