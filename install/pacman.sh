@@ -25,6 +25,8 @@ apps=(
     alacritty
     bluez
     bluez-utils
+    remmina
+    freerdp
     docker
     docker-compose
     kubectl
