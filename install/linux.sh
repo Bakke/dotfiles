@@ -5,6 +5,10 @@ mkdir -p ~/.local/share/fonts
 . "$DOTFILES_DIR/install/yay.sh"
 . "$DOTFILES_DIR/install/cargo.sh"
 
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
 sudo ln -sfv "$DOTFILES_DIR/etc/logid.cfg" /etc/
 
 sudo systemctl enable bluetooth.service
