@@ -7,7 +7,7 @@ mkdir -p ~/.local/share/fonts
 . "$DOTFILES_DIR/install/linux/themes.sh"
 . "$DOTFILES_DIR/install/linux/icons.sh"
 
-if [ ! $(getent group "dockers") ]; then
+if [ ! $(getent group "docker") ]; then
     sudo groupadd docker
     sudo usermod -aG docker $USER
     newgrp docker
