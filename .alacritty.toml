@@ -70,8 +70,8 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
 opacity = 0.97
-# decorations = "None"
-startup_mode = "Maximized"
+decorations = "None"
+# startup_mode = "Maximized"
 
 [window.padding]
 x = 10
