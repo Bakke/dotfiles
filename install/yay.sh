@@ -7,6 +7,7 @@ if [ ! -x "$(command -v yay)" ]; then
 fi
 
 apps=(
+    gnome-shell-extension-pop-shell
     logiops
     g810-led-git
     tidal-hifi-bin

@@ -36,6 +36,8 @@ apps=(
     kubectl
     postgresql-libs
     gnome-shell-extensions
+    gnome-shell-extension-appindicator
+    sushi
     ttf-jetbrains-mono-nerd
 )
 
