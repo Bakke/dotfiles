@@ -23,7 +23,7 @@ fi
 
 # Create vim airline themes directory if it does not exist
 if [[ ! -e ~/.vim/autoload/airline/themes ]]; then
-    mkdir ~/.vim/autoload/airline/themes
+    mkdir -p ~/.vim/autoload/airline/themes
 fi
 
 # Bunch of symlinks
@@ -53,7 +53,7 @@ source "$DOTFILES_DIR/install/plug.sh"
 [[ ! -e "${HOME}/.vim/undodir" ]] && mkdir "${HOME}/.vim/undodir"
 [[ ! -e "${HOME}/.vim/backup" ]] && mkdir "${HOME}/.vim/backup"
 
-if [[ ! -e ~/.fasd-git ]]; then
+if [[ ! -e "${HOME}/.fasd-git" ]]; then
     echo "Do you want to install Fasd? [y/n]"
 	read FASD
 	if [ "$FASD" = "y" ]; then
