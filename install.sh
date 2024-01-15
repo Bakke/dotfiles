@@ -49,18 +49,17 @@ fi
 source "$DOTFILES_DIR/install/plug.sh"
 
 # Create vim dirs for swap, undo and backup
-mkdir ~/.vim/{swap,undodir,backup}
+[[ ! -e "${HOME}/.vim/swap" ]] && mkdir "${HOME}/.vim/swap"
+[[ ! -e "${HOME}/.vim/undodir" ]] && mkdir "${HOME}/.vim/undodir"
+[[ ! -e "${HOME}/.vim/backup" ]] && mkdir "${HOME}/.vim/backup"
 
 if [[ ! -e ~/.fasd-git ]]; then
-
     echo "Do you want to install Fasd? [y/n]"
 	read FASD
 	if [ "$FASD" = "y" ]; then
 		. "$DOTFILES_DIR/install/fasd.sh"
 	fi
-
 fi
 
 # Update submodules
 git submodule update --init --recursive
-
