@@ -9,7 +9,7 @@ fi
 apps=(
     gnome-shell-extension-pop-shell
     logiops
-    g810-led-git
+    # g810-led-git
     tidal-hifi-bin
 )
 
