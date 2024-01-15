@@ -1,1 +1,3 @@
-cargo install devicon-lookup
+if [ ! -x "$(command -v devicon-lookup)" ]; then
+    cargo install devicon-lookup
+fi
