@@ -1,8 +1,10 @@
-git clone https://aur.archlinux.org/yay.git ~/yay
-cd ~/yay
-makepkg -si
-cd ~/.dotfiles
-rm -rf ~/yay
+if [ ! -x "$(command -v yay)" ]; then
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    cd ..
+    rm -rf ~/yay
+fi
 
 apps=(
     logiops
@@ -10,4 +12,4 @@ apps=(
     tidal-hifi-bin
 )
 
-sudo pacman -S --noconfirm "${apps[@]}"
+yay -S --noconfirm "${apps[@]}"
