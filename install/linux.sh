@@ -7,9 +7,11 @@ mkdir -p ~/.local/share/fonts
 . "$DOTFILES_DIR/install/linux/themes.sh"
 . "$DOTFILES_DIR/install/linux/icons.sh"
 
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
+if [ ! $(getent group "dockers") ]; then
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    newgrp docker
+fi
 
 sudo ln -sfv "$DOTFILES_DIR/etc/logid.cfg" /etc/
 
