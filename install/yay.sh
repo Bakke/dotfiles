@@ -10,6 +10,7 @@ apps=(
     gnome-shell-extension-pop-shell
     plymouth
     plymouth-theme-arch-charge
+    ulauncher
     logiops
     # g810-led-git
     tidal-hifi-bin
