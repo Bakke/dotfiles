@@ -23,6 +23,7 @@ apps=(
     p7zip
     rust
     alacritty
+    bolt
     bluez
     bluez-utils
     usbutils
