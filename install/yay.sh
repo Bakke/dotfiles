@@ -11,6 +11,7 @@ apps=(
     plymouth
     plymouth-theme-arch-charge
     ulauncher
+    1password
     logiops
     # g810-led-git
     tidal-hifi-bin
