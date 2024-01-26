@@ -4,6 +4,9 @@ nmap <silent> <leader>r :so $MYVIMRC<CR>
 " Open .vimrc for editing
 nmap <leader>v :edit $MYVIMRC<cr>
 
+" Pretty json
+map <leader>p :PlugUpdate<CR>
+
 " Clear last search
 nmap <silent> <leader>c :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
