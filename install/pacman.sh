@@ -32,6 +32,7 @@ apps=(
     hidapi
     remmina
     freerdp
+    nautilus
     docker
     docker-compose
     kubectl
@@ -40,6 +41,8 @@ apps=(
     gnome-shell-extension-appindicator
     sushi
     ttf-jetbrains-mono-nerd
+    ttf-font-awesome
+    papirus-icon-theme
 )
 
 sudo pacman -S --noconfirm "${apps[@]}"

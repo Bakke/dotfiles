@@ -15,6 +15,7 @@ apps=(
     logiops
     # g810-led-git
     tidal-hifi-bin
+    nordic-theme
 )
 
 # plymouth-set-default-theme -l
