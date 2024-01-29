@@ -26,6 +26,7 @@ apps=(
     bolt
     bluez
     bluez-utils
+    blueman
     usbutils
     gcc
     make
