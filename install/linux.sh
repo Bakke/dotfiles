@@ -5,6 +5,14 @@
 . "$DOTFILES_DIR/install/linux/themes.sh"
 . "$DOTFILES_DIR/install/linux/icons.sh"
 
+# Create config directory if it does not exist
+if [[ ! -e ~/.config/sway ]]; then
+    mkdir ~/.config/sway
+fi
+
+ln -sfv "$DOTFILES_DIR/config/waybar" "${HOME}/.config/"
+ln -sfv "$DOTFILES_DIR/config/sway/config" "${HOME}/.config/sway/"
+
 if [ ! $(getent group "docker") ]; then
     sudo groupadd docker
     sudo usermod -aG docker $USER
