@@ -113,12 +113,19 @@ _fzf_complete_git() {
     ARGS="$@"
 
     local commitList
+    local branchList
 
     if [[ $ARGS =~ 'rebase' ]]; then
         commitList=$(git log --graph --pretty=oneline --abbrev-commit)
 
         _fzf_complete -- "$@" < <(
             echo ${commitList}
+        )
+    elif [[ $ARGS =~ 'branch' || $ARGS =~ 'checkout' ]]; then
+        branchList=$(git branch --format='%(refname:short)')
+
+        _fzf_complete -- "$@" < <(
+            echo ${branchList}
         )
     else
         eval "zle ${fzf_default_completion:-expand-or-complete}"
@@ -128,3 +135,13 @@ _fzf_complete_git() {
 _fzf_complete_git_post() {
     awk '{print $2}'
 }
+
+_fzf_complete_gb() {
+    local branchList
+    branchList=$(git branch --format='%(refname:short)')
+
+    _fzf_complete -- "$@" < <(
+        echo ${branchList}
+    )
+}
+_fzf_complete_gco() { _fzf_complete_gb "$@" }
