@@ -22,6 +22,7 @@ endif
 map <silent> <leader>gs :Git<CR>
 " map <silent> <leader>gd :Gvdiffsplit<CR>
 map <silent> <leader>gp :Git push<CR>
+map <silent> <leader>gpf :Git push --force<CR>
 map <silent> <leader>gl :Git pull<CR>
 map <silent> <leader>gh :Gllog %<CR>
 " map <silent> <leader>gh :Git log --graph --pretty=oneline --abbrev-commit %<CR>
