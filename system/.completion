@@ -144,4 +144,5 @@ _fzf_complete_gb() {
         echo ${branchList}
     )
 }
+_fzf_complete_gbd() { _fzf_complete_gb "$@" }
 _fzf_complete_gco() { _fzf_complete_gb "$@" }
