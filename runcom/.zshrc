@@ -64,5 +64,4 @@ unset SCRIPT_PATH DOTFILE
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+source "${DOTFILES_DIR}/lazy-load-nvm.sh"
