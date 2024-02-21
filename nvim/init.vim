@@ -39,6 +39,8 @@ let g:sonokai_diagnostic_virtual_text = 'colored'
 
 colorscheme sonokai
 
+let g:PHP_noArrowMatching = 1
+
 " Fix auto-indentation for YAML and JSON files
 autocmd FileType yaml,yml,json setlocal ts=2 sts=2 sw=2 expandtab
 
