@@ -26,7 +26,7 @@ background = "0x273136"
 foreground = "0xe1e2e3"
 
 [env]
-TERM = "screen-256color"
+TERM = "xterm-256color"
 WINIT_X11_SCALE_FACTOR = "1.0"
 
 [font]
