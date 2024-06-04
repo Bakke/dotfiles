@@ -36,7 +36,7 @@ if has("nvim")
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'kyazdani42/nvim-tree.lua'
     Plug 'nvim-lualine/lualine.nvim'
-    Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
+    Plug 'akinsho/bufferline.nvim', { 'tag': 'v4.*' }
     " Plug 'sbdchd/neoformat'
     Plug 'github/copilot.vim'
 
