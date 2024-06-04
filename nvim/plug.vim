@@ -23,6 +23,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'coreyja/fzf.devicon.vim'
 Plug 'sainnhe/sonokai'
+Plug 'vim-scripts/edifact.vim'
 
 if has("nvim")
 	Plug 'windwp/nvim-autopairs'
