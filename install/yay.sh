@@ -7,15 +7,15 @@ if [ ! -x "$(command -v yay)" ]; then
 fi
 
 apps=(
-    gnome-shell-extension-pop-shell
-    plymouth
-    plymouth-theme-arch-charge
-    ulauncher
     1password
+    ulauncher
     logiops
-    # g810-led-git
-    tidal-hifi-bin
     nordic-theme
+    # gnome-shell-extension-pop-shell
+    # plymouth
+    # plymouth-theme-arch-charge
+    # g810-led-git
+    # tidal-hifi-bin
 )
 
 # plymouth-set-default-theme -l
