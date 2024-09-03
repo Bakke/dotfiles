@@ -38,8 +38,6 @@ apps=(
     docker-compose
     kubectl
     postgresql-libs
-    gnome-shell-extensions
-    gnome-shell-extension-appindicator
     sushi
     ttf-jetbrains-mono-nerd
     ttf-font-awesome
