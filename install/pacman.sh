@@ -49,6 +49,16 @@ apps=(
     gnome-keyring
     seahorse
     gcr-4
+
+    fprintd
+    imagemagick
+    swaync
+    pipewire
+    wireplumber
+    qt5-wayland
+    qt6-wayland
+    polkit-kde-agent
+    hidapi
 )
 
 sudo pacman -S --noconfirm "${apps[@]}"
