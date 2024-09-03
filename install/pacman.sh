@@ -44,6 +44,13 @@ apps=(
     ttf-jetbrains-mono-nerd
     ttf-font-awesome
     papirus-icon-theme
+
+    # Gnome Keyring
+    libsecret
+    libgnome-keyring
+    gnome-keyring
+    seahorse
+    gcr-4
 )
 
 sudo pacman -S --noconfirm "${apps[@]}"
