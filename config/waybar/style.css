@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 5px;
 }
 
@@ -96,8 +96,9 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad,
+#custom-notification,
 #mpd {
-    padding: 0 12px;
+    padding: 0 14px;
     color: #ffffff;
     background-color: rgba(100, 114, 125, 0.5);
 }
