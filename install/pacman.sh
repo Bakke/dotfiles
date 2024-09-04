@@ -30,6 +30,7 @@ apps=(
     usbutils
     gcc
     make
+    cmake
     hidapi
     remmina
     freerdp
@@ -50,6 +51,7 @@ apps=(
     seahorse
     gcr-4
 
+    cpio # For hyprpm
     fprintd
     imagemagick
     swaync
