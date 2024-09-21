@@ -52,6 +52,7 @@ apps=(
     gcr-4
 
     hyprlock
+    hyprpaper
     cpio # For hyprpm
     fprintd
     imagemagick
