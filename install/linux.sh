@@ -10,14 +10,15 @@ if [[ ! -e ~/.config/sway ]]; then
     mkdir ~/.config/sway
 fi
 
-# Create config directory if it does not exist
-if [[ ! -e ~/.config/hypr ]]; then
-    mkdir ~/.config/hypr
+# Delete config directory if it does exist
+# We will symlink this to the dotfiles directory
+if [[ -e ~/.config/hypr ]]; then
+    rm -rf ~/.config/hypr
 fi
 
 ln -sfv "$DOTFILES_DIR/config/waybar" "${HOME}/.config/"
 ln -sfv "$DOTFILES_DIR/config/sway/config" "${HOME}/.config/sway/"
-ln -sfv "$DOTFILES_DIR/config/hypr/hyprland.conf" "${HOME}/.config/hypr/"
+ln -sfv "$DOTFILES_DIR/config/hypr/" "${HOME}/.config/hypr/"
 
 if [ ! $(getent group "docker") ]; then
     sudo groupadd docker
