@@ -51,6 +51,7 @@ apps=(
     seahorse
     gcr-4
 
+    hyprlock
     cpio # For hyprpm
     fprintd
     imagemagick
