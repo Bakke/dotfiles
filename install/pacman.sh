@@ -58,7 +58,9 @@ apps=(
     imagemagick
     swaync
     pipewire
+    pipewire-pulse
     wireplumber
+    pavucontrol
     qt5-wayland
     qt6-wayland
     polkit-kde-agent
