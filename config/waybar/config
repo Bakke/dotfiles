@@ -1,8 +1,7 @@
 {
     // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    // "position": "top", // Waybar position (top|bottom|left|right)
     "height": 32, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     "margin-top": 4,
     "margin-bottom": 0,
@@ -11,34 +10,26 @@
     // Choose the order of the modules
     "modules-left": [
         // "custom/logo",
-        "hyprland/workspaces",
-        "hyprland/mode",
-        "hyprland/scratchpad",
-        "custom/media"
+        "hyprland/workspaces"
     ],
     "modules-center": [
-        // "sway/window"
+        // "hyprland/window"
         "clock"
     ],
     "modules-right": [
-        // "mpd",
-        // "idle_inhibitor",
         "pulseaudio",
         "pipewire-pulse",
         "network",
         "cpu",
         "memory",
         "temperature",
-        // "backlight",
-        // "keyboard-state",
-        // "sway/language",
         "battery",
         "battery#bat2",
         "tray",
         "custom/notification"
     ],
     // Modules configuration
-    // "sway/workspaces": {
+    // "hyprland/workspaces": {
     //     "disable-scroll": true,
     //     "all-outputs": true,
     //     "warp-on-scroll": false,
@@ -62,16 +53,6 @@
             "locked": "",
             "unlocked": ""
         }
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
