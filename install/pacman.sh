@@ -35,6 +35,7 @@ apps=(
     remmina
     freerdp
     nautilus
+    solaar
     docker
     docker-compose
     kubectl
@@ -61,6 +62,8 @@ apps=(
     pipewire-pulse
     wireplumber
     pavucontrol
+    playerctl
+    brightnessctl
     qt5-wayland
     qt6-wayland
     polkit-kde-agent
