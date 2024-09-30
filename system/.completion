@@ -116,7 +116,7 @@ _fzf_complete_git() {
     local branchList
 
     if [[ $ARGS =~ 'rebase' ]]; then
-        commitList=$(git log --graph --pretty=oneline --abbrev-commit)
+        commitList=$(git log --oneline --no-decorate --no-merges)
 
         _fzf_complete -- "$@" < <(
             echo ${commitList}
@@ -133,7 +133,7 @@ _fzf_complete_git() {
 }
 
 _fzf_complete_git_post() {
-    awk '{print $2}'
+    awk '{print $1}'
 }
 
 _fzf_complete_gb() {
