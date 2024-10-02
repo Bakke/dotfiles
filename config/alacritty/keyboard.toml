@@ -1,0 +1,9 @@
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "Return"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "None"
+key = "F"
+mods = "Command|Control"
