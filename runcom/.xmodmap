@@ -1,3 +1,0 @@
-setxkbmap -option ctrl:nocaps
-xmodmap -e 'keycode 49=apostrophe'
-xmodmap -e 'keycode 13=4 dollar'
