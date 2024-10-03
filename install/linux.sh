@@ -4,7 +4,6 @@
 . "$DOTFILES_DIR/install/cargo.sh"
 . "$DOTFILES_DIR/install/linux/themes.sh"
 . "$DOTFILES_DIR/install/linux/icons.sh"
-. "$DOTFILES_DIR/install/linux/icons.sh"
 
 sudo "$DOTFILES_DIR/install/linux/sddm-theme.sh"
 
