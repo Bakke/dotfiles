@@ -16,7 +16,7 @@
 	extendRegexp = true
 [core]
 	editor = nvim
-	excludesfile = ~/.dotfiles/git/.gitignore
+	excludesfile = ~/.dotfiles/config/git/.gitignore
 [pull]
 	rebase = true
 [advice]

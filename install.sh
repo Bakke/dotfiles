@@ -29,7 +29,7 @@ fi
 # Bunch of symlinks
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
-ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
+ln -sfv "$DOTFILES_DIR/config/git/.gitconfig" ~
 # ln -sfv "$DOTFILES_DIR/vim/.vimrc" ~
 ln -sfv "$DOTFILES_DIR/config/nvim/" ~/.config/
 ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
