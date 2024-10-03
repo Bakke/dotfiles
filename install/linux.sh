@@ -30,6 +30,8 @@ fi
 
 sudo ln -sfv "$DOTFILES_DIR/etc/logid.cfg" /etc/
 
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
 sudo systemctl enable bluetooth.service
 sudo systemctl enable logid.service
 
