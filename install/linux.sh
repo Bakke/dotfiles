@@ -18,9 +18,9 @@ if [[ -e ~/.config/hypr ]]; then
     rm -rf ~/.config/hypr
 fi
 
-ln -sfv "$DOTFILES_DIR/config/waybar" "${HOME}/.config/"
-ln -sfv "$DOTFILES_DIR/config/hypr/" "${HOME}/.config/hypr/"
-ln -sfv "$DOTFILES_DIR/config/xkb/" "${HOME}/.config/xkb/"
+ln -sfv "$DOTFILES_DIR/config/waybar" "${HOME}/.config/waybar"
+ln -sfv "$DOTFILES_DIR/config/hypr/" "${HOME}/.config/hypr"
+ln -sfv "$DOTFILES_DIR/config/xkb/" "${HOME}/.config/xkb"
 
 if [ ! $(getent group "docker") ]; then
     sudo groupadd docker

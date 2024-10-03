@@ -17,12 +17,12 @@ if [[ ! -e ~/.nvm ]]; then
 fi
 
 # Bunch of symlinks
-ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
-ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
-ln -sfv "$DOTFILES_DIR/config/git/.gitconfig" ~
-ln -sfv "$DOTFILES_DIR/config/nvim/" ~/.config/
-ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
-ln -sfv "$DOTFILES_DIR/config/alacritty/.alacritty.toml" ~
+ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~/.zshrc
+ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~/.inputrc
+ln -sfv "$DOTFILES_DIR/config/git/.gitconfig" ~/.gitconfig
+ln -sfv "$DOTFILES_DIR/config/nvim/" ~/.config/nvim
+ln -sfv "$DOTFILES_DIR/config/tmux/.tmux.conf" ~/.tmux.conf
+ln -sfv "$DOTFILES_DIR/config/alacritty/.alacritty.toml" ~/.alacritty.toml
 
 if [[ $(uname) == "Darwin" ]]; then
     if [ -f "$DOTFILES_DIR/install/osx.sh" ]; then
