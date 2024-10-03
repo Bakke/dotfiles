@@ -54,7 +54,6 @@ apps=(
 
     hyprlock
     hyprpaper
-    cpio # For hyprpm
     fprintd
     imagemagick
     swaync
