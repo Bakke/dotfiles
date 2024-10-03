@@ -52,6 +52,7 @@ apps=(
     seahorse
     gcr-4
 
+    waybar
     hyprlock
     hyprpaper
     imagemagick
