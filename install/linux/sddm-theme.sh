@@ -1,5 +1,6 @@
 #!/bin/bash
 
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )"
 THEME_SOURCE=https://github.com/stepanzubkov/where-is-my-sddm-theme.git
 THEME_DIR=where_is_my_sddm_theme
 SDDM_THEMES_DIR=/usr/share/sddm/themes
