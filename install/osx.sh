@@ -22,7 +22,11 @@ brew install brew-cask-completion
 sudo gem install sass
 
 # Set osx preferences
-. "$DOTFILES_DIR/install/osx-preferences.sh"
+echo "Do you want to update osx preferences? [y/n]"
+read OSX_PREFERENCES
+if [ "$OSX_PREFERENCES" = "y" ]; then
+    . "$DOTFILES_DIR/install/osx-preferences.sh"
+fi
 
 echo "Do you want to install Composer? [y/n]"
 read COMPOSER
