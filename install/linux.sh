@@ -19,7 +19,6 @@ if [[ -e ~/.config/hypr ]]; then
 fi
 
 ln -sfv "$DOTFILES_DIR/config/waybar" "${HOME}/.config/"
-ln -sfv "$DOTFILES_DIR/config/sway/config" "${HOME}/.config/sway/"
 ln -sfv "$DOTFILES_DIR/config/hypr/" "${HOME}/.config/hypr/"
 ln -sfv "$DOTFILES_DIR/config/xkb/" "${HOME}/.config/xkb/"
 
