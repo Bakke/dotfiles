@@ -54,7 +54,6 @@ apps=(
 
     hyprlock
     hyprpaper
-    fprintd
     imagemagick
     swaync
     pipewire
@@ -65,7 +64,6 @@ apps=(
     brightnessctl
     qt5-wayland
     qt6-wayland
-    polkit-kde-agent
     hidapi
 )
 
