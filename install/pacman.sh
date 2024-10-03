@@ -20,6 +20,9 @@ apps=(
     jq
     fzf
     vlc
+    grim
+    slurp
+    wl-clipboard
     p7zip
     rust
     alacritty
