@@ -54,6 +54,7 @@ apps=(
 
     waybar
     hyprlock
+    hypridle
     hyprpaper
     imagemagick
     swaync
