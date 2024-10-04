@@ -12,4 +12,4 @@ nvm install --lts node
 npm install --global yarn
 
 yarn config set prefix ~/.yarn
-yarn global add bash-language-server pyright sql-language-server yaml-language-server vim-language-server dockerfile-language-server-nodejs intelephense vscode-langservers-extracted
+yarn global add bash-language-server pyright sql-language-server yaml-language-server vim-language-server dockerfile-language-server-nodejs intelephense vscode-langservers-extracted rofi-search
