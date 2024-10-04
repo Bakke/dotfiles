@@ -24,6 +24,7 @@ apps=(
 	fzf
 	rga
     htop
+    docker
     docker-compose
     libpq
     yarn
