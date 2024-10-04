@@ -14,3 +14,16 @@ git clone git@github.com:Bakke/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 source install.sh
 ```
+
+### Temp fix for e1000e suspend issue
+https://bbs.archlinux.org/viewtopic.php?id=298146
+
+```
+sudo rmmod e1000e # To disable ethernet card
+sudo modprobe e1000e # To enable ethernet card
+```
+
+Or blacklist the module
+```
+echo "blacklist e1000e" | sudo tee /etc/modprobe.d/e1000e.conf
+```
