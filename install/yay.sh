@@ -8,7 +8,6 @@ fi
 
 apps=(
     1password
-    ulauncher
     logiops
     nordic-theme
     # gnome-shell-extension-pop-shell

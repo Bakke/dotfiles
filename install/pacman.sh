@@ -17,6 +17,7 @@ apps=(
     curl
     tmux
     ncdu
+    rofi
     jq
     fzf
     vlc
