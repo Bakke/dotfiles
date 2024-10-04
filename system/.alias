@@ -17,10 +17,6 @@ alias fs="sizeof"
 alias pwdcp='pwd | pbcopy'
 alias -g vr=" vim -R -u ~/.dotfiles/vim/.vimrc.more -"
 
-# Find
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
-
 # Git
 alias gs='git status'
 alias gss='git status -s'
