@@ -20,6 +20,7 @@ apps=(
     rofi
     rofi-calc
     jq
+    fd
     fzf
     vlc
     grim
