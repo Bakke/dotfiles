@@ -20,4 +20,5 @@ apps=(
 # plymouth-set-default-theme -l
 # sudo plymouth-set-default-theme -R arch-charge
 
+yay --save --answerdiff None --answerclean None --removemake
 yay -S --noconfirm "${apps[@]}"
