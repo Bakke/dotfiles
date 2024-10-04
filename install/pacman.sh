@@ -19,6 +19,7 @@ apps=(
     ncdu
     rofi
     rofi-calc
+    rofi-emoji
     jq
     fd
     fzf
@@ -47,6 +48,7 @@ apps=(
     kubectl
     postgresql-libs
     sushi
+    noto-fonts-emoji
     ttf-jetbrains-mono-nerd
     ttf-font-awesome
     papirus-icon-theme
