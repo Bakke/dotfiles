@@ -1,5 +1,5 @@
 configuration {
-    modes: "drun,run,filebrowser";
+    modes: "drun,run,calc,filebrowser";
     show-icons: true;
     icon-theme: "Papirus-Dark";
     terminal: "alacritty";

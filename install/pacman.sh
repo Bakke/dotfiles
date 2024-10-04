@@ -18,6 +18,7 @@ apps=(
     tmux
     ncdu
     rofi
+    rofi-calc
     jq
     fzf
     vlc
