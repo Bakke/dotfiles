@@ -24,6 +24,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'coreyja/fzf.devicon.vim'
 Plug 'sainnhe/sonokai'
 Plug 'vim-scripts/edifact.vim'
+Plug 'Fymyte/rasi.vim'
 
 if has("nvim")
 	Plug 'windwp/nvim-autopairs'
