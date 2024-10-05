@@ -57,11 +57,11 @@ output * bg $HOME/.dotfiles/assets/wallpapers/hzmg6dgeja4d1.jpeg fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-output DP-1 pos 0 -360 res 2560x1440
-output eDP-1 pos 2560 0 res 1920x1080
+# output DP-1 pos 0 -360 res 2560x1440
+# output eDP-1 pos 2560 0 res 1920x1080
 
-workspace 1 output DP-1
-workspace 2 output eDP-1
+# workspace 1 output DP-1
+# workspace 2 output eDP-1
 
 ### Idle configuration
 #
@@ -72,7 +72,7 @@ exec swayidle -w \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
 
-bindsym Mod4+l exec swaylock -f -c 000000
+bindsym $mainMod+$secondMod+l exec swaylock -f -c 000000
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -94,7 +94,7 @@ bindsym Mod4+l exec swaylock -f -c 000000
 
 input type:keyboard {
     xkb_layout nocustom
-    xkb_options
+    xkb_options altwin:swap_alt_win
     repeat_delay 200
     repeat_rate 40
 }
@@ -119,10 +119,10 @@ input type:touchpad {
     bindsym $mainMod+q kill
 
     # Start your launcher
-    bindsym Mod1+space exec $menu
+    bindsym $secondMod+space exec $menu
 
     bindsym Ctrl+Shift+l exec 1password --lock
-    bindsym Shift+Mod1+space exec 1password --quick-access
+    bindsym Shift+$secondMod+space exec 1password --quick-access
 
     # Drag floating windows by holding down $mainMod and left mouse button.
     # Resize them with right mouse button + $mainMod.
@@ -151,7 +151,7 @@ input type:touchpad {
     bindsym $mainMod+Up focus up
     bindsym $mainMod+Down focus down
     bindsym $mainMod+H focus left
-    bindsym $mainMod+L focus, r
+    bindsym $mainMod+L focus right
     bindsym $mainMod+K focus up
     bindsym $mainMod+J focus down
 
@@ -175,8 +175,8 @@ input type:touchpad {
 # Workspaces:
 #
     # Switch to workspace
-    bindsym ctrl+Mod1+$down workspace prev
-    bindsym ctrl+Mod1+$up workspace next
+    bindsym ctrl+$secondMod+$down workspace prev
+    bindsym ctrl+$secondMod+$up workspace next_on_output --create
     bindsym $mainMod+1 workspace number 1
     bindsym $mainMod+2 workspace number 2
     bindsym $mainMod+3 workspace number 3
@@ -188,8 +188,8 @@ input type:touchpad {
     bindsym $mainMod+9 workspace number 9
     bindsym $mainMod+0 workspace number 10
     # Move focused container to workspace
-    bindsym ctrl+Mod1+$left move container to workspace prev
-    bindsym ctrl+Mod1+$right move container to workspace next
+    bindsym ctrl+$secondMod+$left move container to workspace prev
+    bindsym ctrl+$secondMod+$right move container to workspace next
     bindsym $mainMod+Shift+1 move container to workspace number 1
     bindsym $mainMod+Shift+2 move container to workspace number 2
     bindsym $mainMod+Shift+3 move container to workspace number 3
