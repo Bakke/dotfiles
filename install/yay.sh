@@ -9,6 +9,7 @@ fi
 apps=(
     1password
     logiops
+    hyprswitch
     nordic-theme
     # gnome-shell-extension-pop-shell
     # plymouth
