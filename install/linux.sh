@@ -20,6 +20,7 @@ fi
 
 ln -sfv "$DOTFILES_DIR/config/waybar" "${HOME}/.config/waybar"
 ln -sfv "$DOTFILES_DIR/config/hypr/" "${HOME}/.config/hypr"
+ln -sfv "$DOTFILES_DIR/config/sway/" "${HOME}/.config/sway"
 ln -sfv "$DOTFILES_DIR/config/rofi/" "${HOME}/.config/rofi"
 ln -sfv "$DOTFILES_DIR/config/xkb/" "${HOME}/.config/xkb"
 ln -sfv "$DOTFILES_DIR/config/mimeapps.list" "${HOME}/.config/mimeapps.list"
