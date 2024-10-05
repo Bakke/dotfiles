@@ -30,11 +30,13 @@ set $term alacritty
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu rofi -show drun
 
-default_border pixel 0
+default_border pixel 1
 default_floating_border none
 gaps inner 2
 gaps outer 4
-# hide_edge_borders both
+client.focused "#78cee9" "#78cee9" "#e1e2e3" "#78cee9"
+client.unfocused "#273136" "#273136" "#e1e2e3" "#273136"
+smart_borders on
 
 # gtk
 set $gnome-schema org.gnome.desktop.interface
