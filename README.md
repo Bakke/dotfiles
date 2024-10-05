@@ -27,3 +27,11 @@ Or blacklist the module
 ```
 echo "blacklist e1000e" | sudo tee /etc/modprobe.d/e1000e.conf
 ```
+
+### MacBook Pro 2012 WiFi fix
+
+```
+yay -S broadcom-wl
+sudo modprobe -r wl
+sudo modprobe wl
+```
