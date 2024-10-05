@@ -43,6 +43,7 @@ apps=(
     freerdp
     nautilus
     solaar
+    nwg-look
     docker
     docker-compose
     kubectl
