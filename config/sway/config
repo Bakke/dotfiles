@@ -129,6 +129,8 @@ input type:touchpad {
     bindsym $mainMod+N exec swaync-client -t -sw
     bindsym $mainMod+Shift+N exec swaync-client -C
 
+    bindswitch --reload --locked lid:on exec swaylock -f -c 000000 && systemctl suspend
+
     # Drag floating windows by holding down $mainMod and left mouse button.
     # Resize them with right mouse button + $mainMod.
     # Despite the name, also works for non-floating windows.
