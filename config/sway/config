@@ -265,6 +265,23 @@ mode "resize" {
 }
 bindsym $mainMod+r mode "resize"
 
+# Media and volume keys
+bindsym XF86MonBrightnessDown exec brightnessctl set -s 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl set -s 10%+
+
+bindsym XF86KbdBrightnessUp exec brightnessctl --device='smc::kbd_backlight' set 10%+
+bindsym XF86KbdBrightnessDown exec brightnessctl --device='smc::kbd_backlight' set 10%-
+
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+# Requires playerctl
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioNext exec playerctl next
+
 #
 # Status Bar:
 #
