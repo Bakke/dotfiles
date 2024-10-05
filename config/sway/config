@@ -30,12 +30,12 @@ set $term alacritty
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu rofi -show drun
 
-default_border pixel 1
+default_border pixel 2
 default_floating_border none
 gaps inner 2
 gaps outer 4
-client.focused "#78cee9" "#78cee9" "#e1e2e3" "#78cee9"
-client.unfocused "#273136" "#273136" "#e1e2e3" "#273136"
+client.focused "#78cee990" "#78cee990" "#e1e2e3" "#78cee990"
+client.unfocused "#27313690" "#27313690" "#e1e2e3" "#27313690"
 smart_borders on
 
 # gtk
@@ -61,6 +61,7 @@ output * bg $HOME/.dotfiles/assets/wallpapers/hzmg6dgeja4d1.jpeg fill
 
 # output DP-1 pos 0 -360 res 2560x1440
 # output eDP-1 pos 2560 0 res 1920x1080
+output eDP-1 scale 1.6
 
 # workspace 1 output DP-1
 # workspace 2 output eDP-1
