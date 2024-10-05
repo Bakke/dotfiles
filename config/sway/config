@@ -259,6 +259,15 @@ input type:touchpad {
     # bindsym $mainMod+minus scratchpad show
     bindsym ctrl+$secondMod+space scratchpad show
 #
+# Screenshots
+#
+    bindsym CTRL+ALT+2 exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') "${HOME}/Pictures/screenshots/$(date +'screenshot_%F-%T').png"
+    bindsym CTRL+ALT+Shift+2 exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+    bindsym CTRL+ALT+3 exec grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" "${HOME}/Pictures/screenshots/$(date +'screenshot_%F-%T').png"
+    bindsym CTRL+ALT+Shift+3 exec grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | wl-copy
+    bindsym CTRL+ALT+4 exec grim -g "$(slurp)" "${HOME}/Pictures/screenshots/$(date +'screenshot_%F-%T').png"
+    bindsym CTRL+ALT+Shift+4 exec grim -g "$(slurp -d)" - | wl-copy
+#
 # Resizing containers:
 #
 mode "resize" {
