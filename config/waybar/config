@@ -10,10 +10,12 @@
     // Choose the order of the modules
     "modules-left": [
         // "custom/logo",
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "hyprland/window",
+        "sway/workspaces",
+        "sway/window"
     ],
     // "modules-center": [
-        // "sway/window"
     // ],
     "modules-right": [
         "pulseaudio",
@@ -29,6 +31,23 @@
         "clock",
         "custom/notification"
     ],
+    // Modules configuration
+    // "sway/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
     // Modules configuration
     // "hyprland/workspaces": {
     //     "disable-scroll": true,

@@ -98,6 +98,7 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #custom-notification,
+#window,
 #mpd {
     padding: 0 12px;
     color: #ffffff;
@@ -157,6 +158,10 @@ button:hover {
 
 label:focus {
     background-color: #000000;
+}
+
+.empty #window {
+    opacity: 0;
 }
 
 #cpu {
