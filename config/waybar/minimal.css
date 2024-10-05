@@ -14,8 +14,8 @@
 }
 
 window#waybar {
-    background-color: rgba(39, 49, 54, 0.80);
-    border: 2px solid rgba(100, 114, 125, 0.5);
+    background-color: rgba(39, 49, 54, 0.70);
+    border: 2px solid rgba(39, 49, 54, 0.8);
     border-radius: 10px;
     transition-property: background-color;
     transition-duration: .5s;
@@ -103,7 +103,7 @@ button:hover {
 }
 
 #custom-notification {
-    margin-right: 18px;
+    margin-right: 24px;
 }
 
 #tray > .passive {
