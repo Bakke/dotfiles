@@ -12,10 +12,9 @@
         // "custom/logo",
         "hyprland/workspaces"
     ],
-    "modules-center": [
-        // "hyprland/window"
-        "clock"
-    ],
+    // "modules-center": [
+        // "sway/window"
+    // ],
     "modules-right": [
         "pulseaudio",
         "pipewire-pulse",
@@ -27,6 +26,7 @@
         "battery",
         "battery#bat2",
         "tray",
+        "clock",
         "custom/notification"
     ],
     // Modules configuration
@@ -95,22 +95,22 @@
     "clock": {
         // "timezone": "Europe/Oslo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "   {:%Y-%m-%d}",
-        "format": "   {:%H:%M}"
+        "format-alt": "  {:%Y-%m-%d}",
+        "format": "  {:%d.%h %H:%M}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "  {usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": " {}%"
     },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
+        // "format-critical": "{icon} {temperatureC}°C",
+        "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "", ""]
     },
     "backlight": {
@@ -124,10 +124,10 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon}  {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
@@ -137,13 +137,13 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        // "format-wifi": "{ipaddr} {signalStrength}% ",
-        "format-ethernet": "{ipaddr} ",
-        // "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-wifi": "  {essid} ({signalStrength}%)",
+        // "format-wifi": "  {ipaddr} {signalStrength}%",
+        "format-ethernet": "  {ipaddr}",
+        // "format-ethernet": "  {ipaddr}/{cidr}",
+        "tooltip-format": "  {ifname} via {gwaddr}",
+        "format-linked": "  {ifname} (No IP)",
+        "format-disconnected": "⚠ Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "bluetooth": {
