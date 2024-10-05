@@ -1,22 +1,18 @@
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 32, // Waybar height (to be removed for auto height)
+    "height": 36, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
-    "margin-top": 4,
+    "margin-top": 2,
     "margin-bottom": 0,
     "margin-left": 4,
     "margin-right": 4,
     // Choose the order of the modules
     "modules-left": [
-        // "custom/logo",
+        "custom/logo",
         "hyprland/workspaces",
         "hyprland/window",
         "sway/workspaces",
         "sway/window"
     ],
-    // "modules-center": [
-    // ],
     "modules-right": [
         "pulseaudio",
         "pipewire-pulse",
@@ -31,40 +27,9 @@
         "clock",
         "custom/notification"
     ],
-    // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
-    // Modules configuration
-    // "hyprland/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+    "group/hardware": [
+
+    ],
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -115,7 +80,7 @@
         // "timezone": "Europe/Oslo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "  {:%Y-%m-%d}",
-        "format": "  {:%d.%h %H:%M}"
+        "format": "  {:%d. %h %H:%M}"
     },
     "cpu": {
         "format": "  {usage}%",
@@ -146,24 +111,20 @@
         "format": "{icon}  {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
-        "format-alt": "{icon}  {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
         "bat": "BAT2"
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "  {essid} ({signalStrength}%)",
-        // "format-wifi": "  {ipaddr} {signalStrength}%",
-        "format-ethernet": "  {ipaddr}",
-        // "format-ethernet": "  {ipaddr}/{cidr}",
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "",
         "tooltip-format": "  {ifname} via {gwaddr}",
         "format-linked": "  {ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "tooltip-format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-wifi": "  {essid} ({signalStrength}%)",
+        "on-click": "nm-connection-editor"
     },
     "bluetooth": {
         // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
@@ -231,5 +192,38 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
+    // "sway/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
+    // Modules configuration
+    // "hyprland/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
 }
 
