@@ -207,6 +207,16 @@ input type:touchpad {
     bindsym $mainMod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
+    # Resize windows with mainMod + CTRL + arrow keys or hjkl
+    bindsym $mainMod+CTRL+Left resize shrink width 12px
+    bindsym $mainMod+CTRL+Right resize grow width 12px
+    bindsym $mainMod+CTRL+Up resize shrink height 12px
+    bindsym $mainMod+CTRL+Down resize grow height 12px
+    bindsym $mainMod+CTRL+H resize shrink width 12px
+    bindsym $mainMod+CTRL+L resize grow width 12px
+    bindsym $mainMod+CTRL+K resize shrink height 12px
+    bindsym $mainMod+CTRL+J resize grow height 12px
 #
 # Layout stuff:
 #
