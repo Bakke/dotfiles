@@ -64,6 +64,7 @@ apps=(
     hyprlock
     hypridle
     hyprpaper
+    hyprpicker
     imagemagick
     swaync
     pipewire
