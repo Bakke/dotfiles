@@ -176,9 +176,11 @@ input type:touchpad {
 #
 # Workspaces:
 #
+    set $next_or_new swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (max_by(.num) | .num) as $maxOutput | (.[] | select(.focused == true) | .num) as $current | if $maxOutput > $current then "next_on_output" else $max + 1 end'
+
     # Switch to workspace
     bindsym ctrl+$secondMod+$down workspace prev
-    bindsym ctrl+$secondMod+$up workspace next_on_output --create
+    bindsym ctrl+$secondMod+$up exec swaymsg "workspace $($next_or_new)"
     bindsym $mainMod+1 workspace number 1
     bindsym $mainMod+2 workspace number 2
     bindsym $mainMod+3 workspace number 3
@@ -189,9 +191,10 @@ input type:touchpad {
     bindsym $mainMod+8 workspace number 8
     bindsym $mainMod+9 workspace number 9
     bindsym $mainMod+0 workspace number 10
+
     # Move focused container to workspace
-    bindsym ctrl+$secondMod+$left move container to workspace prev
-    bindsym ctrl+$secondMod+$right move container to workspace next
+    bindsym ctrl+$secondMod+$left move container to workspace prev_on_output, workspace prev_on_output
+    bindsym ctrl+$secondMod+$right exec swaymsg "move container to workspace $($next_or_new), workspace $($next_or_new)"
     bindsym $mainMod+Shift+1 move container to workspace number 1
     bindsym $mainMod+Shift+2 move container to workspace number 2
     bindsym $mainMod+Shift+3 move container to workspace number 3
