@@ -38,14 +38,12 @@ client.focused "#78cee990" "#78cee990" "#e1e2e3" "#78cee990"
 client.unfocused "#27313690" "#27313690" "#e1e2e3" "#27313690"
 smart_borders on
 
-# gtk
+# GTK
 set $gnome-schema org.gnome.desktop.interface
-
-exec_always {
-    gsettings set $gnome-schema gtk-theme Orchis-Dark-Compact
-    gsettings set $gnome-schema gtk-application-prefer-dark-theme true
-    gsettings set $gnome-schema icon-theme Papirus-Dark
-    # gsettings set $gnome-schema cursor-theme Adwaita
+exec {
+    gsettings set $gnome-schema gtk-theme 'Orchis-Dark'
+    gsettings set $gnome-schema.wm.preferences theme 'Orchis-Dark'
+    gsettings set $gnome-schema icon-theme 'Papirus-Dark'
 }
 
 ### Output configuration
@@ -71,8 +69,7 @@ output eDP-1 scale 1.6
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         timeout 120 'swaylock -f -c 000000' \
          before-sleep 'swaylock -f -c 000000'
 
 bindsym $mainMod+$secondMod+l exec swaylock -f -c 000000
