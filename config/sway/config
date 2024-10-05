@@ -126,6 +126,7 @@ input type:touchpad {
 
     bindsym Ctrl+Shift+l exec 1password --lock
     bindsym Shift+$secondMod+space exec 1password --quick-access
+    bindsym $mainMod+N exec swaync-client -t -sw
 
     # Drag floating windows by holding down $mainMod and left mouse button.
     # Resize them with right mouse button + $mainMod.
