@@ -138,8 +138,11 @@ input type:touchpad {
     # Reload the configuration file
     bindsym $mainMod+Shift+c reload
 
+    bindsym $mainMod+d exec killall waybar || waybar
+
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mainMod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # bindsym $mainMod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mainMod+Shift+e exec rofi -show poweroff
 #
 # Moving around:
 #
