@@ -23,6 +23,7 @@ apps=(
     jq
     fd
     fzf
+    zsh
     vlc
     grim
     slurp
