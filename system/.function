@@ -57,3 +57,21 @@ kexe() {
         kubectl exec -it "${pod}" -n "${namespace}" -- ${1:-sh}
     fi
 }
+
+t() {
+    session_name=$@
+    number_of_tmux_sessions=$(tmux ls | wc -l)
+
+    if [[ -n $session_name ]]; then
+        tmux new-session -As $session_name
+        exit 0
+    fi
+
+    if [[ $number_of_tmux_sessions > 1 ]]; then
+        tmux attach -t $(tmux ls -F '#{session_name}' | fzf)
+    elif [[ $number_of_tmux_sessions = 1 ]]; then
+        tmux attach
+    else
+        tmux new-session -s "Main"
+    fi
+}
