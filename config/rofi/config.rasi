@@ -1,5 +1,5 @@
 configuration {
-    modes: "drun,run,calc,emoji,filesearch:~/.config/rofi/modes/filesearch.sh";
+    modes: "drun,run,calc,emoji,filesearch";
     show-icons: true;
     icon-theme: "Papirus-Dark";
     terminal: "alacritty";
