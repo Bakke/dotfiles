@@ -109,6 +109,17 @@ _fzf_complete_cheat() {
     )
 }
 
+_fzf_complete_tmux() {
+    ARGS="$@"
+
+    local commandList
+    commandList=$(tmux ls -F '#{session_name}')
+
+    _fzf_complete -- "$@" < <(
+        echo ${commandList}
+    )
+}
+
 _fzf_complete_git() {
     ARGS="$@"
 
