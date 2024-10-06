@@ -4,6 +4,7 @@
 . "$DOTFILES_DIR/install/cargo.sh"
 . "$DOTFILES_DIR/install/linux/themes.sh"
 . "$DOTFILES_DIR/install/linux/icons.sh"
+. "$DOTFILES_DIR/install/linux/sfmono-font.sh"
 
 sudo "$DOTFILES_DIR/install/linux/sddm-theme.sh"
 
@@ -39,10 +40,3 @@ sudo systemctl enable bluetooth.service
 sudo systemctl enable logid.service
 
 # sudo g810-led -p /etc/g810-led/profile
-
-# if [[ ! -e "~/.local/share/fonts/SFMono Regular Nerd Font Complete.otf" ]]; then
-#     wget https://github.com/epk/SF-Mono-Nerd-Font/archive/refs/heads/master.zip
-#     7z x master.zip
-#     cd SF-Mono-Nerd-Font-master && mv *.otf ~/.local/share/fonts/
-#     cd .. && rm -rf master.zip SF-Mono-Nerd-Font-master
-# fi
