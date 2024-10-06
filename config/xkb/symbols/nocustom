@@ -2,9 +2,11 @@ default partial alphanumeric_keys
 xkb_symbols "basic" {
 
     // Get the basic Norwegian keyboard layout
-    include "no(basic)"
+    include "no(nodeadkeys)"
 
     // Map capslock to left control (it is useless anyway)
+    include "ctrl(nocaps)"
+
     include "ctrl(nocaps)"
 
     // We use capslock as left control
