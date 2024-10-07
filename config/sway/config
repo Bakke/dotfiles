@@ -69,7 +69,7 @@ output eDP-1 scale 1.6
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 120 'swaylock -f -c 000000' \
+         timeout 300 'swaylock -f -c 000000' \
          before-sleep 'swaylock -f -c 000000'
 
 bindsym $mainMod+$secondMod+l exec swaylock -f -c 000000
