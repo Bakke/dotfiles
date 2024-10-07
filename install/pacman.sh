@@ -40,7 +40,6 @@ apps=(
     make
     cmake
     hidapi
-    remmina
     freerdp
     nautilus
     solaar
