@@ -35,6 +35,7 @@ apps=(
     bluez
     bluez-utils
     blueman
+    zenity
     usbutils
     gcc
     make
