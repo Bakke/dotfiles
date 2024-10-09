@@ -3,6 +3,9 @@ sudo pacman -Syu
 
 apps=(
     base-devel
+    gcc
+    make
+    cmake
     man
     git
     grep
@@ -13,6 +16,7 @@ apps=(
     vim
     neovim
     python-pynvim
+    imagemagick
     wget
     curl
     tmux
@@ -25,31 +29,27 @@ apps=(
     fzf
     zsh
     vlc
-    grim
-    slurp
-    wl-clipboard
+    grim # Screenshots
+    slurp # Screenshots
+    wl-clipboard # Wayland clipboard
     p7zip
     rust
     alacritty
-    bolt
-    bluez
-    bluez-utils
-    blueman
-    zenity
-    usbutils
-    gcc
-    make
-    cmake
-    hidapi
+    bolt # Thunderbolt 3 device manager
+    bluez # Bluetooth protocol stack
+    bluez-utils # bluetoothctl utility
+    blueman # Bluetooth GUI manager
+    zenity # Dialog boxes
+    usbutils # Usb utilities
     freerdp
-    nautilus
-    solaar
-    nwg-look
+    nautilus # File manager
+    sushi # Preview files in Nautilus
+    solaar # Logitech devices manager
+    nwg-look # GTK theme and icons manager
     docker
     docker-compose
     kubectl
     postgresql-libs
-    sushi
     noto-fonts-emoji
     ttf-jetbrains-mono-nerd
     ttf-font-awesome
@@ -62,21 +62,23 @@ apps=(
     seahorse
     gcr-4
 
+    # Hyprland / Sway stuff
     waybar
     hyprlock
     hypridle
     hyprpaper
     hyprpicker
-    imagemagick
     swaync
+    qt5-wayland
+    qt6-wayland
+
+    # Sound and media
     pipewire
     pipewire-pulse
     wireplumber
-    pavucontrol
+    pavucontrol # PulseAudio volume control
     playerctl
     brightnessctl
-    qt5-wayland
-    qt6-wayland
     hidapi
 )
 
