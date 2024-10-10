@@ -7,6 +7,7 @@ if [ ! -x "$(command -v yay)" ]; then
 fi
 
 apps=(
+    cheat
     1password
     logiops
     hyprswitch
