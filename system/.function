@@ -28,20 +28,6 @@ registrar() {
 
 }
 
-tmux_project() {
-	PROJECT_DIR=$PWD
-
-	tmux split-window -h
-	tmux select-pane -t 1
-	cd $PROJECT_DIR
-	tmux resize-pane -R 35
-
-	tmux new-window -a
-	cd $PROJECT_DIR
-
-	tmux select-window -t 1
-}
-
 kexe() {
     local pod namespace podList container containers
 
