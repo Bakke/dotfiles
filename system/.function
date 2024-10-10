@@ -70,3 +70,7 @@ function y() {
     fi
     rm -f -- "$tmp"
 }
+
+function follow_redirect() {
+    curl -s -L -D - $1 -o /dev/null -w '%{url_effective}'
+}
