@@ -21,6 +21,7 @@ apps=(
     curl
     tmux
     ncdu
+    yazi
     rofi
     rofi-calc
     rofi-emoji
