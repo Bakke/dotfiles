@@ -11,6 +11,8 @@ if [[ ! -e ~/.config ]]; then
     mkdir ~/.config
 fi
 
+[[ ! -d "$HOME/.config/beekeeper-studio" ]] && mkdir "$HOME/.config/beekeeper-studio"
+
 # Create nvm directory if it does not exist
 if [[ ! -e ~/.nvm ]]; then
     mkdir ~/.nvm
@@ -24,6 +26,7 @@ ln -sfv "$DOTFILES_DIR/config/nvim/" ~/.config/nvim
 ln -sfv "$DOTFILES_DIR/config/tmux/.tmux.conf" ~/.tmux.conf
 ln -sfv "$DOTFILES_DIR/config/kitty/" ~/.config/kitty
 ln -sfv "$DOTFILES_DIR/config/alacritty/.alacritty.toml" ~/.alacritty.toml
+ln -sfv "$DOTFILES_DIR/config/beekeeper-studio/.beekeeper.vimrc" ~/.config/beekeeper-studio/.beekeeper.vimrc
 
 if [[ $(uname) == "Darwin" ]]; then
     if [ -f "$DOTFILES_DIR/install/osx.sh" ]; then
