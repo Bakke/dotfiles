@@ -22,6 +22,7 @@ ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~/.inputrc
 ln -sfv "$DOTFILES_DIR/config/git/.gitconfig" ~/.gitconfig
 ln -sfv "$DOTFILES_DIR/config/nvim/" ~/.config/nvim
 ln -sfv "$DOTFILES_DIR/config/tmux/.tmux.conf" ~/.tmux.conf
+ln -sfv "$DOTFILES_DIR/config/kitty/" ~/.config/kitty
 ln -sfv "$DOTFILES_DIR/config/alacritty/.alacritty.toml" ~/.alacritty.toml
 
 if [[ $(uname) == "Darwin" ]]; then
