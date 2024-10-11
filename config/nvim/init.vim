@@ -11,15 +11,6 @@ let g:elite_mode=1
 autocmd!
 
 runtime ./plug.vim
-
-if has("unix")
-	let s:uname = system("uname -s")
-	" Do Mac stuff
-	if s:uname == "Darwin\n"
-		runtime ./macos.vim
-	endif
-endif
-
 runtime ./settings.vim
 runtime ./maps.vim
 
