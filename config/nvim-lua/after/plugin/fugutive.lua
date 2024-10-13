@@ -1,0 +1,2 @@
+-- Status line
+-- vim.opt.statusline = "%F\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[L%l/%L,C%03v]%=%{fugitive#statusline()}"
