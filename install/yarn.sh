@@ -1,1 +1,1 @@
-yarn global add yaml-language-server vscode-langservers-extracted svelte-language-server sql-language-server pyright dockerfile-language-server-nodejs bash-language-server intelephense @vue/language-server
+yarn global add @vue/language-server bash-language-server dockerfile-language-server-nodejs intelephense pyright rofi-search sql-language-server svelte-language-server vim-language-server vscode-langservers-extracted yaml-language-server
