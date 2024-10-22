@@ -32,6 +32,7 @@ apps=(
     vlc
     grim # Screenshots
     slurp # Screenshots
+    ksnip # Annotate Screenshots
     wl-clipboard # Wayland clipboard
     p7zip
     rust
