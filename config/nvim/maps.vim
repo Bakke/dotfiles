@@ -59,8 +59,8 @@ inoremap <silent> <C-q>     <Esc>:bd!<CR>
 inoremap <silent> <C-w>     <Esc>:bd<CR>
 
 " Next/previous buffer with Shift + H/L
-nnoremap H :bprevious<CR>
-nnoremap L :bnext<CR>
+nmap H :bprevious<CR>
+nmap L :bnext<CR>
 
 " Indention
 nnoremap ø <<

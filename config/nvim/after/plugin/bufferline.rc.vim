@@ -38,4 +38,6 @@ require("bufferline").setup {
 
 vim.keymap.set('n', '<M-left>', function() require"bufferline".move(-1) end, { noremap = true, silent = true })
 vim.keymap.set('n', '<M-right>', function() require"bufferline".move(1) end, { noremap = true, silent = true })
+vim.keymap.set('n', 'H', '<cmd>BufferLineCyclePrev<cr>', { noremap = true, silent = true })
+vim.keymap.set('n', 'L', '<cmd>BufferLineCycleNext<cr>', { noremap = true, silent = true })
 EOF
