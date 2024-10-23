@@ -1,4 +1,4 @@
-import = [
+general.import = [
     "~/.dotfiles/config/alacritty/env.toml",
     "~/.dotfiles/config/alacritty/font.toml",
     "~/.dotfiles/config/alacritty/colors.toml",
