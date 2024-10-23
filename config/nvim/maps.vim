@@ -37,6 +37,8 @@ vnoremap / /\v
 vnoremap // y/\V<C-R>"<CR>N
 nnoremap // viwy/\V<C-R>"<CR>N
 
+nnoremap <M-/> viwy:Rg <C-R>"<CR>
+
 nnoremap /" \"\zs(\s)@![^\"]+(\s)@<!\ze\"<CR>N
 nnoremap /' \'\zs(\s)@![^\']+(\s)@<!\ze\'<CR>N
 
