@@ -9,6 +9,12 @@ git clone git@github.com:Bakke/dotfiles.git ~/.dotfiles
 # Run install script
 cd ~/.dotfiles
 source install.sh
+git submodule update --init --recursive
+```
+
+# Update submodules
+```
+git submodule update --remote
 ```
 
 ### Temp fix for e1000e suspend issue
