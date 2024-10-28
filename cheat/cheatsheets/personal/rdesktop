@@ -1,0 +1,5 @@
+---
+tags: [ remote ]
+---
+# Connect to client with clipboard and minimal gui
+rdesktop -u Administrator -p evilpass -g 90% 10.11.1.x -r clipboard:PRIMARYCLIPBOARD -x m

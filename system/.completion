@@ -1,0 +1,161 @@
+#!/bin/bash
+
+# artisan completion
+_artisan() {
+
+	if [ -f artisan ]; then
+		compadd $( php artisan --no-ansi | sed "1,/Available commands/d" | awk '/^ +[a-z]+/ { print $1 }' )
+	fi
+
+}
+compdef _artisan php artisan
+compdef _artisan artisan
+
+# Composer basic command completion
+_composer_get_command_list () {
+	$_comp_command1 --no-ansi 2>/dev/null | sed "1,/Available commands/d" | awk '/^[ \t]*[a-z]+/ { print $1 }'
+}
+
+_composer_get_required_list () {
+	$_comp_command1 show -s --no-ansi 2>/dev/null | sed '1,/requires/d' | awk 'NF > 0 && !/^requires \(dev\)/{ print $1 }'
+}
+
+_composer () {
+	local curcontext="$curcontext" state line
+	typeset -A opt_args
+	_arguments \
+		'1: :->command'\
+		'*: :->args'
+
+	case $state in
+		command)
+		compadd $(_composer_get_command_list)
+		;;
+	*)
+		compadd $(_composer_get_required_list)
+		;;
+	esac
+}
+
+compdef _composer composer
+compdef _composer composer.phar
+
+_fzf_complete_kubectl() {
+    ARGS="$@"
+
+    local resourceList
+
+    if [[ $ARGS =~ 'exec' ]]; then
+        resourceList=$(kubectl get pods -A | grep '^[[:lower:]]')
+
+        _fzf_complete -- "$@" < <(
+            echo ${resourceList}
+        )
+    elif [[ $ARGS =~ 'logs|describe|edit|delete' ]]; then
+        resourceList=$(kubectl get all -A | grep '^[[:lower:]]')
+
+        _fzf_complete -- "$@" < <(
+            echo ${resourceList}
+        )
+    elif [[ $ARGS =~ ' -n' ]]; then
+        resourceList=$(kubectl get namespaces -A | grep '^[[:lower:]]')
+
+        _fzf_complete -- "$@" < <(
+            echo ${resourceList}
+        )
+    else
+        eval "zle ${fzf_default_completion:-expand-or-complete}"
+    fi
+}
+
+_fzf_complete_kubectl_post() {
+    local original resource namespace
+
+    original=$(awk '{print $0}')
+    namespace=$(echo ${original} | awk '{print $1}')
+    resource=$(echo ${original} | awk '{print $2}')
+
+    if [[ $ARGS =~ 'exec' ]]; then
+        if [ -n "$resource" ] && [ -n "$namespace" ]; then
+            echo "-it ${resource} -n ${namespace} --"
+        elif [ -n "$resource" ]; then
+            echo "-it ${resource} --"
+        fi
+    elif [[ $ARGS =~ 'logs|describe|edit|delete' ]]; then
+        if [ -n "$resource" ] && [ -n "$namespace" ]; then
+            echo "${resource} -n ${namespace}"
+        elif [ -n "$resource" ]; then
+            echo "${resource}"
+        fi
+    elif [[ $ARGS =~ ' -n' ]]; then
+        echo ${namespace}
+    fi
+}
+
+_fzf_complete_k() { _fzf_complete_kubectl "$@" }
+_fzf_complete_k_post() { _fzf_complete_kubectl_post "$@" }
+
+_cheat() {
+    compadd $(cheat -l | awk '{print $1}')
+}
+compdef _cheat cheat
+
+_fzf_complete_cheat() {
+    ARGS="$@"
+
+    local commandList
+    commandList=$(cheat -l | awk '{print $1}')
+
+    _fzf_complete -- "$@" < <(
+        echo ${commandList}
+    )
+}
+
+_fzf_complete_tmux() {
+    ARGS="$@"
+
+    local commandList
+    commandList=$(tmux ls -F '#{session_name}')
+
+    _fzf_complete -- "$@" < <(
+        echo ${commandList}
+    )
+}
+
+_fzf_complete_git() {
+    ARGS="$@"
+
+    local commitList
+    local branchList
+
+    if [[ $ARGS =~ 'rebase' ]]; then
+        commitList=$(git log --oneline --no-decorate --no-merges)
+
+        _fzf_complete -- "$@" < <(
+            echo ${commitList}
+        )
+    elif [[ $ARGS =~ 'branch' || $ARGS =~ 'checkout' ]]; then
+        branchList=$(git branch --format='%(refname:short)')
+
+        _fzf_complete -- "$@" < <(
+            echo ${branchList}
+        )
+    else
+        eval "zle ${fzf_default_completion:-expand-or-complete}"
+    fi
+}
+
+_fzf_complete_git_post() {
+    awk '{print $1}'
+}
+
+_fzf_complete_gb() {
+    local branchList
+    branchList=$(git branch --format='%(refname:short)')
+
+    _fzf_complete -- "$@" < <(
+        echo ${branchList}
+    )
+}
+_fzf_complete_gbd() { _fzf_complete_gb "$@" }
+_fzf_complete_gco() { _fzf_complete_gb "$@" }

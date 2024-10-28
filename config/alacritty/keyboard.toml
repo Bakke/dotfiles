@@ -1,0 +1,18 @@
+# [[keyboard.bindings]]
+# action = "ToggleFullscreen"
+# key = "Return"
+# mods = "Command"
+
+# [[keyboard.bindings]]
+# action = "None"
+# key = "F"
+# mods = "Command|Control"
+
+# Add the following lines to your configuration file to set the keybindings for Tab with Control and Control+Shift:
+[keyboard]
+bindings = [
+    # { key = "Tab", mods = "Control", chars = "\u001b[27;5;9~" },
+    # { key = "Tab", mods = "Control|Shift", chars = "\u001b[27;6;9~" },
+    { key = "Tab", mods = "Control", chars = "ł" },
+    { key = "Tab", mods = "Control|Shift", chars = "ħ" },
+]

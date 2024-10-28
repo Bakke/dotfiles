@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+power_off='  Power off'
+reboot='  Reboot'
+lock='  Lock'
+suspend='  Suspend'
+log_out='  Log out'
+
+if [ $ROFI_RETV -eq 1 ]
+then
+    case "$@" in
+        "$power_off")
+            systemctl poweroff
+            exit 0
+            ;;
+
+        "$reboot")
+            systemctl reboot
+            exit 0
+            ;;
+
+        "$lock")
+            loginctl lock-session
+            exit 0
+            ;;
+
+        "$suspend")
+            systemctl suspend
+            exit 0
+            ;;
+
+        "$log_out")
+            [[ -n $HYPRLAND_INSTANCE_SIGNATURE ]] && hyprctl dispatch exit || swaymsg exit
+            exit 0
+            ;;
+
+        *) exit 1 ;;
+    esac
+    exit 0
+else
+    echo "$power_off"
+    echo "$reboot"
+    echo "$lock"
+    echo "$suspend"
+    echo "$log_out"
+fi

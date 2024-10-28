@@ -1,0 +1,8 @@
+---
+tags: [ vim ]
+---
+# Regex search with RipGrep
+Rg 'App\\Voyage[^A-Za-z]+'
+
+# Replace in all files in quickview, with negative lookahead
+cfdo %s/App\\Voyage\([^A-Za-z]\)\@=/App\\Models\\Voyage/ge | update

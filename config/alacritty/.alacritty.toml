@@ -1,0 +1,10 @@
+general.import = [
+    "~/.dotfiles/config/alacritty/env.toml",
+    "~/.dotfiles/config/alacritty/font.toml",
+    "~/.dotfiles/config/alacritty/colors.toml",
+    "~/.dotfiles/config/alacritty/window.toml",
+    "~/.dotfiles/config/alacritty/keyboard.toml",
+    "~/.dotfiles/config/alacritty/scrolling.toml",
+    "~/.dotfiles/config/alacritty/selection.toml",
+    "~/.dotfiles/config/alacritty/custom.toml",
+]

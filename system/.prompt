@@ -1,0 +1,61 @@
+autoload -U colors && colors
+setopt prompt_subst
+#autoload -Uz promptinit && promptinit
+
+local _current_dir="%{$fg[blue]%}%~%{$reset_color%}"
+local _custom_prefix="%{$fg[magenta]%}❯%{$reset_color%}"
+
+local GIT_PROMPT_DIRTY=" %{$fg[red]%}✗%{$reset_color%}"
+local GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"
+local GIT_PROMPT_PREFIX="%{$fg[green]%}["
+local GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}"
+
+function _user_host() {
+	me="%n"
+	host="%m"
+
+	if [[ -n $SSH_CONNECTION ]]; then
+        echo "%{$fg[red]%}$me%{$reset_color%}[%{$fg[magenta]%}$host%{$reset_color%}]%{$reset_color%}:"
+	else
+		echo "%{$fg[red]%}$me%{$reset_color%}:"
+	fi
+}
+
+# Outputs current branch info in prompt format
+function git_prompt_info() {
+	local ref
+	ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+	ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+	echo "$GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$GIT_PROMPT_SUFFIX"
+}
+
+# Checks if working tree is dirty
+function parse_git_dirty() {
+	local STATUS=''
+	local FLAGS
+	FLAGS=('--porcelain')
+
+	STATUS=$(command git status ${FLAGS} 2> /dev/null | tail -n1)
+
+	if [[ -n $STATUS ]]; then
+		echo "$GIT_PROMPT_DIRTY"
+	else
+		echo "$GIT_PROMPT_CLEAN"
+	fi
+}
+
+function right_prompt() {
+	echo ""
+}
+
+function left_prompt() {
+echo "$(_user_host) ${_current_dir} $(git_prompt_info) \n# "
+}
+
+export PROMPT='$(left_prompt)'
+export RPROMPT='$(right_prompt)'
+
+# LS colors, made with http://geoff.greer.fm/lscolors/
+export LSCOLORS="gxfxcxdxbxegedabagacad"
+export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
+export GREP_COLOR='1;33'

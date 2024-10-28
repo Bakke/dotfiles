@@ -1,0 +1,9 @@
+---
+tags: [ hacking ]
+---
+
+# 64-bit cross compile
+i686-w64-mingw32-gcc 47755.c -o up.exe
+
+# 64-bit cross compile
+x86_64-w64-mingw32-gcc 47755.c -o up.exe
