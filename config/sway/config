@@ -36,6 +36,7 @@ gaps inner 2
 gaps outer 4
 client.focused "#78cee990" "#78cee990" "#e1e2e3" "#78cee990"
 client.unfocused "#27313690" "#27313690" "#e1e2e3" "#27313690"
+smart_gaps on
 smart_borders on
 
 # GTK
