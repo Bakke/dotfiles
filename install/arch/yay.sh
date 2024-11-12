@@ -13,7 +13,6 @@ apps=(
     1password
     logiops
     hyprswitch
-    nordic-theme
 )
 
 yay --save --answerdiff None --answerclean None --removemake
