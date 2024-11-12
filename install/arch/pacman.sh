@@ -56,6 +56,7 @@ apps=(
     ttf-jetbrains-mono-nerd
     ttf-font-awesome
     papirus-icon-theme
+    arc-gtk-theme
 
     # Hyprland / Sway stuff
     waybar
