@@ -45,32 +45,17 @@ apps=(
     p7zip
     rust
     alacritty
-    bolt # Thunderbolt 3 device manager
-    bluez # Bluetooth protocol stack
-    bluez-utils # bluetoothctl utility
-    blueman # Bluetooth GUI manager
     zenity # Dialog boxes
-    usbutils # Usb utilities
-    freerdp
     nautilus # File manager
     sushi # Preview files in Nautilus
-    solaar # Logitech devices manager
     nwg-look # GTK theme and icons manager
     docker
     docker-compose
-    kubectl
     postgresql-libs
     noto-fonts-emoji
     ttf-jetbrains-mono-nerd
     ttf-font-awesome
     papirus-icon-theme
-
-    # Gnome Keyring
-    libsecret
-    libgnome-keyring
-    gnome-keyring
-    seahorse
-    gcr-4
 
     # Hyprland / Sway stuff
     waybar
@@ -81,6 +66,18 @@ apps=(
     swaync
     qt5-wayland
     qt6-wayland
+)
+
+fullApps=(
+    freerdp
+    kubectl
+    solaar # Logitech devices manager
+
+    usbutils # Usb utilities
+    bolt # Thunderbolt 3 device manager
+    bluez # Bluetooth protocol stack
+    bluez-utils # bluetoothctl utility
+    blueman # Bluetooth GUI manager
 
     # Sound and media
     pipewire
@@ -90,6 +87,17 @@ apps=(
     playerctl
     brightnessctl
     hidapi
+
+    # Gnome Keyring
+    libsecret
+    libgnome-keyring
+    gnome-keyring
+    seahorse
+    gcr-4
 )
 
 sudo pacman -S --noconfirm "${apps[@]}"
+
+if [[ $FULL_INSTALL == true ]]; then
+    sudo pacman -S --noconfirm "${fullApps[@]}"
+fi
