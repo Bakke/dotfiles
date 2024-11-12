@@ -12,8 +12,7 @@ rm -rf .theme_temp
 
 rm "${SDDM_THEMES_DIR}/${THEME_DIR}/theme.conf"
 cp "${HOME}/.dotfiles/config/sddm/theme.conf" "${SDDM_THEMES_DIR}/${THEME_DIR}/theme.conf"
-# cp "${HOME/.dotfiles}/assets/wallpapers/hzmg6dgeja4d1.jpeg" "${SDDM_THEMES_DIR}/${THEME_DIR}/background.jpeg"
-cp "${HOME}/.dotfiles/assets/wallpapers/sunset.jpg" "${SDDM_THEMES_DIR}/${THEME_DIR}/sunset.jpg"
+cp "${HOME}/.dotfiles/assets/wallpapers/forest.png" "${SDDM_THEMES_DIR}/${THEME_DIR}/forest.png"
 
 sudo echo -e "[Theme]\nCurrent=${THEME_DIR}" > ${SDDM_CONFIG_PATH} || (echo -e "\e[31;02mFailed to write to ${SDDM_CONFIG_PATH}.\e[0m" && exit 1)
 
