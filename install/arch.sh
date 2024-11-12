@@ -22,7 +22,7 @@ ln -sfv "$HOME/.dotfiles/config/sway/" "${HOME}/.config/sway"
 ln -sfv "$HOME/.dotfiles/config/rofi/" "${HOME}/.config/rofi"
 ln -sfv "$HOME/.dotfiles/config/xkb/" "${HOME}/.config/xkb"
 ln -sfv "$HOME/.dotfiles/config/mimeapps.list" "${HOME}/.config/mimeapps.list"
-ln -sfv "$HOME/.dotfiles/config/kitty/" ~/.config/kitty
+# ln -sfv "$HOME/.dotfiles/config/kitty/" ~/.config/kitty
 ln -sfv "$HOME/.dotfiles/config/alacritty/.alacritty.toml" ~/.alacritty.toml
 ln -sfv "$HOME/.dotfiles/config/beekeeper-studio/.beekeeper.vimrc" ~/.config/beekeeper-studio/.beekeeper.vimrc
 
