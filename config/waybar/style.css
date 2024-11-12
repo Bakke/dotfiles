@@ -14,7 +14,7 @@
 }
 
 window#waybar {
-    background-color: rgba(43, 42, 51, 0.90);
+    background-color: rgba(43, 42, 51, 0.85);
     border-radius: 0px;
     transition-property: background-color;
     transition-duration: .5s;
@@ -66,8 +66,12 @@ button:hover {
     color: #eb4d4b;
 }
 
+.modules-left {
+    margin: 0px 0px 0px 6px;
+}
+
 .modules-right {
-    margin: 0px;
+    margin: 0px 6px 0px 0px;
 }
 
 #clock,
@@ -117,7 +121,7 @@ button:hover {
 
 #custom-logo {
     padding-left: 6px;
-    padding-right: 6px;
+    padding-right: 4px;
     font-size: 16px;
     border-radius: 0px;
     color: #1793d1;
