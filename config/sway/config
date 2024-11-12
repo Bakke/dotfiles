@@ -60,7 +60,7 @@ output * bg $HOME/.dotfiles/assets/wallpapers/forest.png fill
 
 # output DP-1 pos 0 -360 res 2560x1440
 # output eDP-1 pos 2560 0 res 1920x1080
-output eDP-1 scale 1.6
+# output eDP-1 scale 1.6
 
 # workspace 1 output DP-1
 # workspace 2 output eDP-1
@@ -95,7 +95,7 @@ bindsym $mainMod+$secondMod+l exec swaylock -f -c 000000
 
 input type:keyboard {
     xkb_layout nocustom
-    xkb_options altwin:swap_alt_win
+    # xkb_options altwin:swap_alt_win
     repeat_delay 500
     repeat_rate 40
 }
