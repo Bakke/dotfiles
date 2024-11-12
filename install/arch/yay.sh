@@ -10,7 +10,6 @@ fi
 
 apps=(
     cheat
-    hyprswitch
 )
 
 fullApps=(
