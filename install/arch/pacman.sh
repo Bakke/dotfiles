@@ -8,6 +8,8 @@ apps=(
     gcc
     make
     cmake
+    cpio
+    meson
     man
     git
     grep
