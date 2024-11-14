@@ -26,6 +26,8 @@ if [[ $LINUX_DISTRO == "arch" ]]; then
     . "$HOME/.dotfiles/install/arch.sh"
 elif [[ $LINUX_DISTRO == "ubuntu" ]]; then
     . "$HOME/.dotfiles/install/ubuntu.sh"
+elif [[ $LINUX_DISTRO == "kali" ]]; then
+    . "$HOME/.dotfiles/install/kali.sh"
 fi
 
 # Change shell to ZSH
