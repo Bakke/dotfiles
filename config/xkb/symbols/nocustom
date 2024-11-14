@@ -7,8 +7,6 @@ xkb_symbols "basic" {
     // Map capslock to left control (it is useless anyway)
     include "ctrl(nocaps)"
 
-    include "ctrl(nocaps)"
-
     // We use capslock as left control
     // Left control acts as 3rd level modifier instead
     key <LCTL> {[  ISO_Level3_Shift  ], type[group1]="ONE_LEVEL" };
