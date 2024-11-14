@@ -8,3 +8,4 @@
 [[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
 
 ln -sfv "$HOME/.dotfiles/config/alacritty/.alacritty.toml" ~/.alacritty.toml
+ln -sfv "$HOME/.dotfiles/config/xkb/" "${HOME}/.config/xkb"
