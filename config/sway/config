@@ -1,10 +1,10 @@
+# Start network manager applet
+exec_always nm-applet --indicator
+
 # Import base config from i3
 include $HOME/.dotfiles/config/i3/variables.conf
 include $HOME/.dotfiles/config/i3/settings.conf
 include $HOME/.dotfiles/config/i3/keybinds.conf
-
-# Start network manager applet
-exec_always nm-applet --indicator
 
 # GTK
 set $gnome-schema org.gnome.desktop.interface
