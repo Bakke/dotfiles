@@ -20,6 +20,7 @@ apps=(
     python-is-python3
     ripgrep
     alacritty
+    neovim
     tmux
     jq
     p7zip-full
