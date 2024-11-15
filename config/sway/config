@@ -70,12 +70,12 @@ bindsym $mainMod+Shift+N exec swaync-client -C
 bindsym $mainMod+d exec killall waybar || waybar
 
 # Switch to workspace
-bindsym ctrl+$secondMod+j exec ~/.dotfiles/config/sway/scripts/sway-next.sh -1
-bindsym ctrl+$secondMod+k exec ~/.dotfiles/config/sway/scripts/sway-next.sh 1
+bindsym ctrl+$secondMod+j exec ~/.dotfiles/config/i3/scripts/i3-next.sh -1
+bindsym ctrl+$secondMod+k exec ~/.dotfiles/config/i3/scripts/i3-next.sh 1
 
 # Move focused container to workspace
-bindsym ctrl+$secondMod+h exec ~/.dotfiles/config/sway/scripts/sway-move-next.sh -1
-bindsym ctrl+$secondMod+l exec ~/.dotfiles/config/sway/scripts/sway-move-next.sh 1
+bindsym ctrl+$secondMod+h exec ~/.dotfiles/config/i3/scripts/i3-move-next.sh -1
+bindsym ctrl+$secondMod+l exec ~/.dotfiles/config/i3/scripts/i3-move-next.sh 1
 
 # Screenshots
 bindsym CTRL+ALT+2 exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') "${HOME}/Pictures/screenshots/$(date +'screenshot_%F-%T').png"
