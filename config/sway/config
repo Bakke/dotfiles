@@ -1,8 +1,21 @@
 # Start network manager applet
 exec_always nm-applet --indicator
 
+# Use super as the main modifier
+# and alt as the secondary modifier
+set $mainMod Mod4
+set $secondMod Mod1
+
+# Your preferred terminal emulator
+set $term alacritty
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu "rofi -show drun"
+
 # Import base config from i3
-include $HOME/.dotfiles/config/i3/variables.conf
 include $HOME/.dotfiles/config/i3/settings.conf
 include $HOME/.dotfiles/config/i3/keybinds.conf
 
