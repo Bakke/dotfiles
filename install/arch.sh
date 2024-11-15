@@ -8,7 +8,7 @@
 # . "$HOME/.dotfiles/install/arch/icons.sh"
 . "$HOME/.dotfiles/install/arch/sfmono-font.sh"
 
-sudo "$HOME/.dotfiles/install/arch/sddm-theme.sh"
+. "$HOME/.dotfiles/install/arch/sddm-theme.sh"
 
 [[ -e "$HOME/.config/hypr" ]] && rm -rf ~/.config/hypr
 [[ -e "$HOME/.config/sway" ]] && rm -rf ~/.config/sway
