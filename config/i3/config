@@ -32,12 +32,12 @@ include $HOME/.dotfiles/config/i3/settings.conf
 include $HOME/.dotfiles/config/i3/keybinds.conf
 
 # Move focused container to workspace
-bindsym $mod+Shift+h move container to workspace prev_on_output; workspace prev_on_output
-bindsym $mod+Shift+l move container to workspace next_on_output; workspace next_on_output
+bindsym $mod+Shift+h exec ~/.dotfiles/config/i3/scripts/i3-move-next.sh -1
+bindsym $mod+Shift+l exec ~/.dotfiles/config/i3/scripts/i3-move-next.sh 1
 
 # Switch to workspace
-bindsym ctrl+$secondMod+j workspace prev_on_output
-bindsym ctrl+$secondMod+k workspace next_on_output
+bindsym ctrl+$secondMod+j exec ~/.dotfiles/config/i3/scripts/i3-next.sh -1
+bindsym ctrl+$secondMod+k exec ~/.dotfiles/config/i3/scripts/i3-next.sh 1
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
