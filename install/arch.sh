@@ -12,6 +12,7 @@ sudo "$HOME/.dotfiles/install/arch/sddm-theme.sh"
 
 [[ -e "$HOME/.config/hypr" ]] && rm -rf ~/.config/hypr
 [[ -e "$HOME/.config/sway" ]] && rm -rf ~/.config/sway
+[[ -e "$HOME/.config/i3" ]] && rm -rf ~/.config/i3
 
 [[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
 [[ ! -d "$HOME/.config/beekeeper-studio" ]] && mkdir "$HOME/.config/beekeeper-studio"
