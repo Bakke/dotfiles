@@ -1,5 +1,3 @@
-export NVM_DIR="$HOME/.nvm"
-
 # This lazy loads nvm
 nvm() {
     unset -f nvm
