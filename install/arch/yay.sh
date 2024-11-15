@@ -35,5 +35,5 @@ fi
 echo "Do you want to install pentest tools? [y/N]"
 read PENTEST
 if [ "$PENTEST" = "y" ]; then
-    sudo pacman -S --noconfirm "${pentestApps[@]}"
+    yay -S --noconfirm "${pentestApps[@]}"
 fi
