@@ -4,10 +4,6 @@ xkb_symbols "basic" {
     // Get the basic Norwegian keyboard layout
     include "no(nodeadkeys)"
 
-    // We use capslock as left control
-    // Left control acts as 3rd level modifier instead
-    key <LCTL> {[  ISO_Level3_Shift  ], type[group1]="ONE_LEVEL" };
-
     // Dollar sign is more useful than currency
     key <AE04> { [ 4, dollar, currency, onequarter ] };
 
