@@ -35,8 +35,10 @@ apps=(
     bat
     zsh
     zsh-completions
+    nmap
     whois
     traceroute
+    openbsd-netcat
     lsof
     bind
     vlc
