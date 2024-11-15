@@ -4,8 +4,6 @@
 . "$HOME/.dotfiles/install/arch/nodejs.sh"
 . "$HOME/.dotfiles/install/arch/yay.sh"
 . "$HOME/.dotfiles/install/arch/cargo.sh"
-# . "$HOME/.dotfiles/install/arch/themes.sh"
-# . "$HOME/.dotfiles/install/arch/icons.sh"
 . "$HOME/.dotfiles/install/arch/sfmono-font.sh"
 
 . "$HOME/.dotfiles/install/arch/sddm-theme.sh"
