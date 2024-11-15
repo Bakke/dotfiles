@@ -59,6 +59,11 @@ bindsym Mod4+Shift+$down move down
 bindsym Mod4+Shift+$up move up
 bindsym Mod4+Shift+$right move right
 
+# change container layout (stacked, tabbed, toggle split)
+bindsym Mod1+s layout stacking
+bindsym Mod1+w layout tabbed
+bindsym Mod1+e layout toggle split
+
 # split in horizontal orientation
 bindsym Mod1+h split h
 
