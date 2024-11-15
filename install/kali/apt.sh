@@ -23,6 +23,8 @@ apps=(
     tmux
     jq
     p7zip-full
+    fonts-jetbrains-mono
+    fonts-font-awesome
 )
 
 sudo apt update && sudo apt install -y "${apps[@]}"
