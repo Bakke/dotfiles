@@ -44,12 +44,13 @@ bar {
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
         i3bar_command i3bar -t
         position top
-        height 26
-        font pango: JetBrainsMono Nerd Font Regular 8.0
+        tray_output none
+        height 32
+        font pango: JetBrainsMono Nerd Font Regular 10.0
         colors {
             statusline #EEEEEE
-            background #1C1D2B88
-            focused_workspace #282A3E88 #282A3E88 #FFFFFF
+            background #2B2A33
+            focused_workspace #2B2A33 #414B53 #E1E2E3
             statusline #E6FFF5
         }
 }
