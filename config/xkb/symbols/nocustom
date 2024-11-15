@@ -4,9 +4,6 @@ xkb_symbols "basic" {
     // Get the basic Norwegian keyboard layout
     include "no(nodeadkeys)"
 
-    // Map capslock to left control (it is useless anyway)
-    include "ctrl(nocaps)"
-
     // We use capslock as left control
     // Left control acts as 3rd level modifier instead
     key <LCTL> {[  ISO_Level3_Shift  ], type[group1]="ONE_LEVEL" };
@@ -22,5 +19,13 @@ xkb_symbols "basic" {
 
     // asciitilde is defalt (more useful on the terminal)
     key <AD12> { [ asciitilde, dead_circumflex, dead_diaeresis, dead_caron ] };
+
+    // Map capslock to left control (it is useless anyway)
+    replace key <CAPS> { [ Control_L ], type[group1]="ONE_LEVEL" };
+    modifier_map Control { <CAPS> };
+
+    // Left control acts as 3rd level modifier instead
+    replace key <LCTL> { [ ISO_Level3_Shift ] };
+    modifier_map Mod5 { <LCTL> };
 
 };
