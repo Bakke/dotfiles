@@ -3,7 +3,7 @@
 . "$HOME/.dotfiles/install/kali/apt.sh"
 . "$HOME/.dotfiles/install/arch/nodejs.sh"
 . "$HOME/.dotfiles/install/arch/cargo.sh"
-. "$HOME/.dotfiles/install/nerd-fonts.sh"
+. "$HOME/.dotfiles/install/common/nerd-fonts.sh"
 # . "$HOME/.dotfiles/install/common/sfmono-font.sh"
 
 [[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
