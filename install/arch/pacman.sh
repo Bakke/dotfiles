@@ -40,10 +40,7 @@ apps=(
     lsof
     bind
     vlc
-    grim # Screenshots
-    slurp # Screenshots
     ksnip # Annotate Screenshots
-    wl-clipboard # Wayland clipboard
     p7zip
     rust
     alacritty
@@ -60,16 +57,6 @@ apps=(
     papirus-icon-theme
     arc-gtk-theme
 
-    # Hyprland / Sway stuff
-    waybar
-    hyprlock
-    hypridle
-    hyprpaper
-    hyprpicker
-    swaync
-    qt5-wayland
-    qt6-wayland
-
     # Sound and media
     pipewire
     pipewire-pulse
@@ -84,6 +71,45 @@ apps=(
     bluez # Bluetooth protocol stack
     bluez-utils # bluetoothctl utility
     blueman # Bluetooth GUI manager
+)
+
+hyprApps=(
+    waybar
+    hyprlock
+    hypridle
+    hyprpaper
+    hyprpicker
+    grim
+    slurp
+    swaync
+    wl-clipboard
+    qt5-wayland
+    qt6-wayland
+)
+
+swayApps=(
+    waybar
+    swaybg
+    swayidle
+    swaylock
+    grim
+    slurp
+    swaync
+    wl-clipboard
+    qt5-wayland
+    qt6-wayland
+)
+
+i3Apps=(
+    feh
+    xclip
+    i3lock
+    i3status
+    i3blocks
+    arandr
+    xss-lock
+    lxappearance
+    sysstat
 )
 
 fullApps=(
@@ -103,4 +129,22 @@ sudo pacman -S --noconfirm "${apps[@]}"
 
 if [[ $FULL_INSTALL == true ]]; then
     sudo pacman -S --noconfirm "${fullApps[@]}"
+fi
+
+echo "Do you want to install Hyprland apps? [y/N]"
+read HYPR
+if [ "$HYPR" = "y" ]; then
+    sudo pacman -S --noconfirm "${hyprApps[@]}"
+fi
+
+echo "Do you want to install Sway apps? [y/N]"
+read SWAY
+if [ "$SWAY" = "y" ]; then
+    sudo pacman -S --noconfirm "${swayApps[@]}"
+fi
+
+echo "Do you want to install i3 apps? [y/N]"
+read I3
+if [ "$I3" = "y" ]; then
+    sudo pacman -S --noconfirm "${i3Apps[@]}"
 fi
