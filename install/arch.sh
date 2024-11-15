@@ -57,3 +57,9 @@ read I3BLOCKLETS
 if [ "$I3BLOCKLETS" = "y" ]; then
     . "$HOME/.dotfiles/install/common/laravel-installer.sh"
 fi
+
+echo "Do you want to install wordlists? [y/N]"
+read WORDLISTS
+if [ "$WORDLISTS" = "y" ]; then
+    . "$HOME/.dotfiles/install/common/wordlists.sh"
+fi
