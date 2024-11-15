@@ -51,3 +51,9 @@ read LARAVEL
 if [ "$LARAVEL" = "y" ]; then
     . "$HOME/.dotfiles/install/common/laravel-installer.sh"
 fi
+
+echo "Do you want to install i3 blocklets? [y/N]"
+read I3BLOCKLETS
+if [ "$I3BLOCKLETS" = "y" ]; then
+    . "$HOME/.dotfiles/install/common/laravel-installer.sh"
+fi
