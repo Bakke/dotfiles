@@ -57,6 +57,7 @@ set nobackup
 
 " persist the undo tree for each file
 set undofile
+set undodir=~/.vim/undo-dir
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.

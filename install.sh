@@ -11,6 +11,7 @@ fi
 
 # Create config directory if it does not exist
 [[ ! -d "$HOME/.config" ]] && mkdir "$HOME/.config"
+[[ ! -d "$HOME/.vim/undo-dir" ]] && mkdir -p "$HOME/.vim/undo-dir"
 
 # Bunch of symlinks
 ln -sfv "$HOME/.dotfiles/runcom/.zshrc" ~/.zshrc
