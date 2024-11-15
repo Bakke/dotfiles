@@ -69,18 +69,6 @@ apps=(
     swaync
     qt5-wayland
     qt6-wayland
-)
-
-fullApps=(
-    freerdp
-    kubectl
-    solaar # Logitech devices manager
-
-    usbutils # Usb utilities
-    bolt # Thunderbolt 3 device manager
-    bluez # Bluetooth protocol stack
-    bluez-utils # bluetoothctl utility
-    blueman # Bluetooth GUI manager
 
     # Sound and media
     pipewire
@@ -90,6 +78,18 @@ fullApps=(
     playerctl
     brightnessctl
     hidapi
+
+    usbutils # Usb utilities
+    bolt # Thunderbolt 3 device manager
+    bluez # Bluetooth protocol stack
+    bluez-utils # bluetoothctl utility
+    blueman # Bluetooth GUI manager
+)
+
+fullApps=(
+    freerdp
+    kubectl
+    solaar # Logitech devices manager
 
     # Gnome Keyring
     libsecret
