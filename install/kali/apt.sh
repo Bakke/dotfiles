@@ -23,7 +23,6 @@ apps=(
     tmux
     jq
     p7zip-full
-    fonts-jetbrains-mono
     fonts-font-awesome
 )
 
