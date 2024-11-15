@@ -39,7 +39,7 @@ tiling_drag modifier titlebar
 bindsym Mod1+Return exec $term
 
 # start dmenu/launcher
-bindsym Mod1+Return exec $menu
+bindsym Mod1+space exec $menu
 
 # kill focused window
 bindsym Mod1+q kill
