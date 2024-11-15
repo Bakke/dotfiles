@@ -19,4 +19,4 @@ autocmd BufNewFile *.sh 0r ~/.dotfiles/config/vim/skeletons/bash.sh
 autocmd BufNewFile *.php 0r ~/.dotfiles/config/vim/skeletons/php.php
 
 " Strip whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
+" autocmd BufWritePre * %s/\s\+$//e
