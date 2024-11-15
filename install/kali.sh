@@ -8,7 +8,7 @@
 
 [[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
 
-ln -sfv "$HOME/.dotfiles/config/alacritty/.alacritty.toml" ~/.alacritty.toml
+ln -sfv "$HOME/.dotfiles/config/alacritty/" "${HOME}/.config/alacritty"
 ln -sfv "$HOME/.dotfiles/config/xkb/" "${HOME}/.config/xkb"
 
 sudo ln -s "$HOME/.dotfiles/config/xkb/symbols/nocustom" /usr/share/X11/xkb/symbols/nocustom
