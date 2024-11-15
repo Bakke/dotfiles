@@ -13,6 +13,12 @@ if [ "${LINUX_DISTRO}" = "arch" ]; then
     done
 fi
 
+if [ "${LINUX_DISTRO}" = "kali" ]; then
+    for DOTFILE in "$HOME"/.dotfiles/system/.{env,alias,function,prompt,completion}.arch; do
+        [ -f "$DOTFILE" ] && . "$DOTFILE"
+    done
+fi
+
 # Init fasd
 if [ -d "$HOME/.fasd-git" ]; then
 
