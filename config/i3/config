@@ -46,6 +46,7 @@ bar {
         position top
         tray_output none
         height 32
+        workspace_min_width 32
         font pango: JetBrainsMono Nerd Font Regular 10.0
         colors {
             statusline #EEEEEE
