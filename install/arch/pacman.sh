@@ -42,6 +42,7 @@ apps=(
     vlc
     ksnip # Annotate Screenshots
     p7zip
+    unzip
     rust
     alacritty
     zenity # Dialog boxes
