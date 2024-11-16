@@ -110,4 +110,5 @@ bar {
     swaybar_command waybar
 }
 
+include $HOME/.dotfiles/config/sway/custom.conf
 include /etc/sway/config.d/*

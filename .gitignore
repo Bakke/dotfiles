@@ -1,3 +1,4 @@
 .DS_Store
 /yay
 /config/alacritty/custom.toml
+/config/sway/custom.conf
