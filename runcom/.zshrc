@@ -66,6 +66,6 @@ elif [[ -e "/usr/share/doc/fzf/examples/completion.zsh" ]]; then
     source /usr/share/doc/fzf/examples/completion.zsh
 fi
 
-if [[ -e "${HOME}/.nvm/versions" ]]; then
+if [[ -e "$NVM_DIR" ]]; then
     source "${HOME}/.dotfiles/scripts/lazy-load-nvm.sh"
 fi
