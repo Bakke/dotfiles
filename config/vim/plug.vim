@@ -32,7 +32,7 @@ if has("nvim")
     Plug 'akinsho/bufferline.nvim', { 'tag': 'v4.*' }
     Plug 'github/copilot.vim'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+    Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'main' }
 
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-buffer'
