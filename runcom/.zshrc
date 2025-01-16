@@ -1,4 +1,5 @@
-LINUX_DISTRO=$(cat /etc/issue | awk '{print tolower($1)}')
+# LINUX_DISTRO=$(cat /etc/issue | awk '{print tolower($1)}')
+LINUX_DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)
 
 export KUBECONFIG=$HOME/.kube/narnia
 
