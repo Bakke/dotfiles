@@ -1,6 +1,9 @@
+local mason = require("mason")
 local nvim_lsp = require('lspconfig')
 local lspconfig = require('lspconfig')
 local lsp_defaults = lspconfig.util.default_config
+
+mason.setup({})
 
 lsp_defaults.capabilities = vim.tbl_deep_extend(
     'force',
@@ -78,47 +81,57 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-    "cssls",
-    "html",
-    -- "vuels",
-    -- "eslint",
-    -- "tsserver",
-    "jsonls",
-    "bashls",
-    "dockerls",
-    "intelephense",
-    "pyright",
-    "svelte"
-}
-
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        flags = {
-            debounce_text_changes = 150,
+    -- vuels = {},
+    -- eslint = {},
+    -- tsserver = {},
+    cssls = {},
+    html = {},
+    jsonls = {},
+    bashls = {},
+    dockerls = {},
+    intelephense = {},
+    pyright = {},
+    svelte = {},
+    sqlls = {
+        cmd = {"/usr/local/bin/sql-language-server", "up", "--method", "stdio"},
+    },
+    yamlls = {
+        settings = {
+            yaml = {
+                keyOrdering = false
+            }
         },
-        log_level = vim.lsp.protocol.MessageType.Log,
-    }
-end
-
-lspconfig.sqlls.setup{
-    cmd = {"/usr/local/bin/sql-language-server", "up", "--method", "stdio"},
-    flags = {
-        debounce_text_changes = 150,
     },
-    log_level = vim.lsp.protocol.MessageType.Log,
-    ...
+    volar = {
+        filetypes = {'typescript', 'javascript', 'vue'},
+    },
+    ts_ls = {
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        init_options = {
+            plugins = {
+                {
+                    name = '@vue/typescript-plugin',
+                    location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                    languages = { 'vue' },
+                },
+            },
+        },
+    },
 }
 
-lspconfig.yamlls.setup{
-    settings = {
-        yaml = {
-            keyOrdering = false
-        }
-    },
-    ...
-}
+local ensure_installed = vim.tbl_keys(servers or {})
 
-lspconfig.volar.setup{
-    filetypes = {'typescript', 'javascript', 'vue'},
-    ...
+require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+require('mason-lspconfig').setup {
+    handlers = {
+        function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+        end,
+    },
 }
