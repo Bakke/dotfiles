@@ -18,6 +18,7 @@ Plug 'coreyja/fzf.devicon.vim'
 Plug 'sainnhe/sonokai'
 Plug 'vim-scripts/edifact.vim'
 Plug 'Fymyte/rasi.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 if has("nvim")
     Plug 'windwp/nvim-autopairs'

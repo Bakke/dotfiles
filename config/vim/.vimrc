@@ -20,5 +20,6 @@ source ~/.dotfiles/config/vim/plugins/fzf.vim
 source ~/.dotfiles/config/vim/plugins/editorconfig.vim
 source ~/.dotfiles/config/vim/plugins/copilot.vim
 source ~/.dotfiles/config/vim/plugins/airline.vim
+source ~/.dotfiles/config/vim/plugins/tmux-navigator.vim
 
 " let g:PHP_noArrowMatching = 1

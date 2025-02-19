@@ -50,6 +50,10 @@ bindkey '^[[B' history-substring-search-down # Arrow down
 # bindkey -r '^[[A'
 # bindkey -r '^[[B'
 
+clear-terminal() { tput reset; zle redisplay; }
+zle -N clear-terminal
+bindkey '^[[C' clear-terminal
+
 # Clean up
 unset SCRIPT_PATH DOTFILE
 
