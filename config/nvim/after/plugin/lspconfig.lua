@@ -81,9 +81,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-    -- vuels = {},
-    -- eslint = {},
-    -- tsserver = {},
     cssls = {},
     html = {},
     jsonls = {},
