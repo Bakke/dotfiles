@@ -53,6 +53,7 @@ bindkey '^[[B' history-substring-search-down # Arrow down
 clear-terminal() { tput reset; zle redisplay; }
 zle -N clear-terminal
 bindkey '^[[C' clear-terminal
+bindkey '^I' clear-terminal
 
 # Clean up
 unset SCRIPT_PATH DOTFILE
