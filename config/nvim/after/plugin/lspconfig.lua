@@ -89,6 +89,15 @@ local servers = {
     intelephense = {},
     pyright = {},
     svelte = {},
+    lua_ls = {
+        settings = {
+            Lua = {
+                diagnostics = {
+                    globals = { 'vim' }
+                }
+            }
+        }
+    },
     sqlls = {
         cmd = {"/usr/local/bin/sql-language-server", "up", "--method", "stdio"},
     },
