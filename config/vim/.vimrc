@@ -2,7 +2,7 @@
 set nocompatible
 
 " Set leader
-let mapleader = " "
+let mapleader = ","
 
 " Init autocmd
 autocmd!
