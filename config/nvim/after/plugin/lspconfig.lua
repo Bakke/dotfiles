@@ -47,13 +47,13 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
 
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
-    callback = function()
+    callback = function(event)
         -- Enable completion triggered by <c-x><c-o>
         -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local bufopts = { noremap=true, silent=true, buffer=bufnr }
+        local bufopts = { noremap=true, silent=true, buffer=event.buf }
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -62,10 +62,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
         vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 
-        vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-        vim.keymap.set('n', 'gk', vim.diagnostic.goto_prev, opts)
-        vim.keymap.set('n', 'gj', vim.diagnostic.goto_next, opts)
-        vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+        vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, bufopts)
+        vim.keymap.set('n', 'gk', vim.diagnostic.goto_prev, bufopts)
+        vim.keymap.set('n', 'gj', vim.diagnostic.goto_next, bufopts)
+        vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, bufopts)
 
         -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
         -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
