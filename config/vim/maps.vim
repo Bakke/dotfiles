@@ -78,10 +78,10 @@ nnoremap <leader>u :py import uuid, vim; vim.command(':normal a' + str(uuid.uuid
 inoremap <leader>u <esc>:py import uuid, vim; vim.command(':normal a' + str(uuid.uuid1()))<cr>a
 
 " Disable arrow movement, resize splits instead.
-nnoremap <C-Up>    :resize +2<CR>
-nnoremap <C-Down>  :resize -2<CR>
-nnoremap <C-Left>  :vertical resize +2<CR>
-nnoremap <C-Right> :vertical resize -2<CR>
+nnoremap <M-Up>    :resize +2<CR>
+nnoremap <M-Down>  :resize -2<CR>
+nnoremap <M-Left>  :vertical resize +2<CR>
+nnoremap <M-Right> :vertical resize -2<CR>
 
 " Repeat macro over visually selected range
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
