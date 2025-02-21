@@ -24,6 +24,7 @@ set scrolloff=3                 " Start scrolling three lines before horizontal 
 set ttyfast                     " Sends more characters at a time
 set foldmethod=indent
 set nofoldenable
+set nrformats=alpha,octal,bin,hex   " Allow for 0x, 0o, 0b
 
 " Indention
 filetype indent on
