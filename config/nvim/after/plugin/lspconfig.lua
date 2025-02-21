@@ -1,5 +1,4 @@
 local mason = require("mason")
-local nvim_lsp = require('lspconfig')
 local lspconfig = require('lspconfig')
 local lsp_defaults = lspconfig.util.default_config
 
