@@ -46,10 +46,10 @@ inoremap <silent> jj <esc>
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l)
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
+" noremap <C-j> <C-W>j
+" noremap <C-k> <C-W>k
+" noremap <C-h> <C-W>h
+" noremap <C-l> <C-W>l
 
 " Close buffers
 nnoremap <silent> <C-q>     :bd!<CR>
