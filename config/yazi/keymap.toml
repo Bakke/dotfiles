@@ -1,4 +1,19 @@
 [[manager.prepend_keymap]]
+on = "<i>"
+run = "spot"
+desc = "Spot hovered file"
+
+[[manager.prepend_keymap]]
+on = "<Tab>"
+run = [ "toggle", "arrow 1" ]
+desc = "Toggle the current selection state"
+
+[[manager.prepend_keymap]]
+on = "<Space>"
+run = 'shell -- sushi "$@"'
+desc = "Preview hovered file"
+
+[[manager.prepend_keymap]]
 on   = "T"
 run  = "plugin toggle-pane min-preview"
 desc = "Show or hide the preview pane"
