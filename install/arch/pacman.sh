@@ -26,6 +26,7 @@ apps=(
     tmux
     ncdu
     yazi
+    ueberzugpp # Image preview in Yazi
     rofi
     rofi-calc
     rofi-emoji
