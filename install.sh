@@ -19,6 +19,7 @@ ln -sfv "$HOME/.dotfiles/runcom/.inputrc" ~/.inputrc
 ln -sfv "$HOME/.dotfiles/config/vim/.vimrc" ~/.vimrc
 ln -sfv "$HOME/.dotfiles/config/git/.gitconfig" ~/.gitconfig
 ln -sfv "$HOME/.dotfiles/config/nvim/" ~/.config/nvim
+ln -sfv "$HOME/.dotfiles/config/yazi/" ~/.config/yazi
 ln -sfv "$HOME/.dotfiles/config/tmux/.tmux.conf" ~/.tmux.conf
 
 LINUX_DISTRO=$(cat /etc/issue | awk '{print tolower($1)}')
