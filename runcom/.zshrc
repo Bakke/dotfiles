@@ -20,22 +20,6 @@ if [ "${LINUX_DISTRO}" = "kali" ]; then
     done
 fi
 
-# Init fasd
-if [ -d "$HOME/.fasd-git" ]; then
-
-    # Add fasd to PATH
-    PATH=$PATH:$HOME/.fasd-git
-
-    # Init fasd
-    fasd_cache="$HOME/.fasd-init"
-    if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-        fasd --init auto >| "$fasd_cache"
-    fi
-    source "$fasd_cache"
-    unset fasd_cache
-
-fi
-
 [[ -f "${HOME}/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [[ -f "${HOME}/.dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [[ -f "${HOME}/.dotfiles/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"

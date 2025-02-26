@@ -38,13 +38,5 @@ chsh -s /bin/zsh
 # Install vim-plug
 source "$HOME/.dotfiles/install/common/plug.sh"
 
-if [[ ! -e "${HOME}/.fasd-git" ]]; then
-    echo "Do you want to install Fasd? [y/n]"
-    read FASD
-    if [ "$FASD" = "y" ]; then
-        . "$HOME/.dotfiles/install/common/fasd.sh"
-    fi
-fi
-
 # Update submodules
 git submodule update --init --recursive

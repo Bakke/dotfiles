@@ -27,8 +27,3 @@ desc = "Maximize or restore the preview pane"
 on   = [ "g", "p" ]
 run  = 'cd ~/Pictures'
 desc = "Goto ~/Pictures"
-
-[[manager.prepend_keymap]]
-on   = "<C-p>"
-run  = 'plugin fasd'
-desc = "Jump to dir"
