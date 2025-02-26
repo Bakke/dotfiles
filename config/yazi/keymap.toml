@@ -1,29 +1,27 @@
-[[manager.prepend_keymap]]
-on = "<i>"
-run = "spot"
-desc = "Spot hovered file"
+[manager]
+prepend_keymap = [
+    # Spotting
+    { on = "i", run = "spot", desc = "Spot hovered file" },
 
-[[manager.prepend_keymap]]
-on = "<Tab>"
-run = [ "toggle", "arrow 1" ]
-desc = "Toggle the current selection state"
+    # Toggle
+    { on = "<Tab>", run = [ "toggle", "arrow 1" ], desc = "Toggle the current selection state" },
 
-[[manager.prepend_keymap]]
-on = "<Space>"
-run = 'shell -- sushi "$@"'
-desc = "Preview hovered file"
+    # Goto
+    { on = [ "g", "p" ], run = 'cd ~/Pictures', desc = "Goto ~/Pictures" },
 
-[[manager.prepend_keymap]]
-on   = "T"
-run  = "plugin toggle-pane min-preview"
-desc = "Show or hide the preview pane"
+    # Operation
+    { on = "<C-p>", run = "plugin zoxide", desc = "Jump to a directory via zoxide" },
+    { on = "<C-A-p>", run = "plugin fzf", desc = "Jump to a file/directory via fzf" },
 
-[[manager.prepend_keymap]]
-on   = "F"
-run  = "plugin toggle-pane max-preview"
-desc = "Maximize or restore the preview pane"
+    # Tabs
+    { on = "<C-h>", run = "tab_switch -1 --relative", desc = "Switch to the previous tab" },
+    { on = "<C-l>", run = "tab_switch 1 --relative",  desc = "Switch to the next tab" },
 
-[[manager.prepend_keymap]]
-on   = [ "g", "p" ]
-run  = 'cd ~/Pictures'
-desc = "Goto ~/Pictures"
+    { on = "<C-left>", run = "tab_swap -1", desc = "Swap current tab with previous tab" },
+    { on = "<C-right>", run = "tab_swap 1",  desc = "Swap current tab with next tab" },
+
+    # Preview 
+    { on = "<Space>", run = 'shell -- sushi "$@"', desc = "Preview hovered file" },
+    { on = "T", run = "plugin toggle-pane min-preview", desc = "Show or hide the preview pane" },
+    { on = "F", run = "plugin toggle-pane max-preview", desc = "Maximize or restore the preview pane" },
+]
