@@ -3,6 +3,10 @@ require("full-border"):setup {
 	type = ui.Border.ROUNDED,
 }
 
+require("smart-enter"):setup {
+	open_multi = true,
+}
+
 function Linemode:size_and_mtime()
 	local time = math.floor(self._file.cha.mtime or 0)
 	if time == 0 then

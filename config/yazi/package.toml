@@ -8,5 +8,10 @@ use = "yazi-rs/plugins:full-border"
 rev = "5186af7"
 hash = "ae9e1d0c6bfd68cdebc98cc684c22b45"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "5186af7"
+hash = "aef2b1a805b80cce573bb766f1459d88"
+
 [flavor]
 deps = []
