@@ -4,3 +4,8 @@ show_symlink = true
 sort_by = "mtime"
 sort_reverse = true
 linemode = "size_and_mtime"
+
+[opener]
+edit = [
+    { run = 'nvim "$@"', block = true, for = "unix" },
+]
