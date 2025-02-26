@@ -60,7 +60,6 @@ apps=(
     ttf-font-awesome
     papirus-icon-theme
     arc-gtk-theme
-    lua-language-server
 
     # Sound and media
     pipewire

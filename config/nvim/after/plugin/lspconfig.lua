@@ -1,5 +1,8 @@
+local mason = require("mason")
 local lspconfig = require('lspconfig')
 local lsp_defaults = lspconfig.util.default_config
+
+mason.setup({})
 
 lsp_defaults.capabilities = vim.tbl_deep_extend(
     'force',
@@ -113,7 +116,7 @@ local servers = {
             plugins = {
                 {
                     name = '@vue/typescript-plugin',
-                    location = "/usr/local/lib/node_modules/@vue/language-server",
+                    location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
                     languages = { 'vue', 'javascript', 'typescript' },
                 },
             },
@@ -121,14 +124,19 @@ local servers = {
     },
 }
 
-local default_config = {
-    flags = {
-        debounce_text_changes = 150,
-    },
-    log_level = vim.lsp.protocol.MessageType.Log,
-}
+local ensure_installed = vim.tbl_keys(servers or {})
 
-for server_name, server_config in pairs(servers) do
-    local merged_config = vim.tbl_deep_extend('force', default_config, server_config)
-    lspconfig[server_name].setup(merged_config)
-end
+require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+require('mason-lspconfig').setup {
+    handlers = {
+        function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+        end,
+    },
+}
