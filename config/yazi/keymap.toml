@@ -22,6 +22,10 @@ prepend_keymap = [
     { on = "<C-left>", run = "tab_swap -1", desc = "Swap current tab with previous tab" },
     { on = "<C-right>", run = "tab_swap 1",  desc = "Swap current tab with next tab" },
 
+    # Shell
+    { on   = "!", run  = 'shell "$SHELL" --block', desc = "Open shell here" },
+    { on   = "<C-v>", run  = 'shell "nvim" --block', desc = "Open shell here" },
+
     # Preview 
     { on = "<Space>", run = 'shell -- sushi "$@"', desc = "Preview hovered file" },
     { on = "T", run = "plugin toggle-pane min-preview", desc = "Show or hide the preview pane" },
