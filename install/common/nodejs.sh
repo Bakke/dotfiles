@@ -15,14 +15,17 @@ npm install --global yarn
 
 yarn config set prefix ~/.yarn
 
-# yarn global add \
-#     @vue/language-server \
-#     bash-language-server \
-#     dockerfile-language-server-nodejs \
-#     intelephense \
-#     pyright \
-#     sql-language-server \
-#     svelte-language-server \
-#     vim-language-server \
-#     vscode-langservers-extracted \
-#     yaml-language-server
+yarn global add \
+    @vue/language-server \
+    @vue/typescript-plugin \
+    typescript \
+    typescript-language-server \
+    bash-language-server \
+    dockerfile-language-server-nodejs \
+    intelephense \
+    pyright \
+    sql-language-server \
+    svelte-language-server \
+    vim-language-server \
+    vscode-langservers-extracted \
+    yaml-language-server
