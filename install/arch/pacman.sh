@@ -30,6 +30,7 @@ apps=(
     rofi
     rofi-calc
     rofi-emoji
+    zoxide # Directory jump
     jq
     fd
     fzf

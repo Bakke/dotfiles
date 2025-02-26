@@ -49,6 +49,10 @@ elif [[ -e "/usr/share/doc/fzf/examples/completion.zsh" ]]; then
     source /usr/share/doc/fzf/examples/completion.zsh
 fi
 
+if whence zoxide >/dev/null; then
+    eval "$(zoxide init zsh)"
+fi
+
 if [[ -e "$NVM_DIR" ]]; then
     source "${HOME}/.dotfiles/scripts/lazy-load-nvm.sh"
 fi
