@@ -1,0 +1,35 @@
+#!/bin/bash
+
+lsofResultRaw=$(lsof -Pwni)
+lsofResult=$(echo "${lsofResultRaw}" | sed 1d)
+headerText=$(echo "${lsofResultRaw}" | head -1)
+labelText="Ctrl-t: Terminate connection, Enter: Show destination IP info"
+
+height="--height=100%"
+header="--header='${headerText}'"
+layout="--layout=reverse"
+label="--border-label='${labelText}'"
+preview="--preview-window=down,20% --preview='fzf-connection-info {}'"
+pageBind="--bind='ctrl-u:page-up' --bind='ctrl-d:page-down'"
+terminateBind="--bind='ctrl-t:execute(fzf-connection-terminate {})+abort'"
+
+fzfOptions="${FZF_DEFAULT_OPTS} \
+    ${height} \
+    ${header} \
+    ${layout} \
+    ${label} \
+    ${preview} \
+    ${pageBind} \
+    ${terminateBind} \
+"
+
+pids=$(echo "${lsofResult}" | eval "fzf -m ${fzfOptions}" | awk -F '>' '{print $2}' | awk -F ':' '{print $1}')
+
+if [ "x$pids" = "x" ]; then
+    exit 1
+fi
+
+echo "$pids" | while IFS= read -r line
+do
+    ipinfo $line
+done
