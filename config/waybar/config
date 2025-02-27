@@ -14,6 +14,7 @@
         "sway/window"
     ],
     "modules-right": [
+        "network#usage",
         "privacy",
         "pulseaudio",
         "pipewire-pulse",
@@ -118,6 +119,7 @@
         "bat": "BAT2"
     },
     "network": {
+        "interval": 10,
         "format-wifi": "  {signalStrength}%",
         "format-ethernet": "",
         "tooltip-format": "  {ifname} via {gwaddr}",
@@ -126,6 +128,10 @@
         "tooltip-format-ethernet": " {ifname}: {ipaddr}/{cidr}",
         "tooltip-format-wifi": "  {essid} ({signalStrength}%)",
         "on-click": "nm-connection-editor"
+    },
+    "network#usage": {
+        "interval": 1,
+        "format": "{bandwidthDownBytes} / {bandwidthUpBytes}",
     },
     "bluetooth": {
         // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
