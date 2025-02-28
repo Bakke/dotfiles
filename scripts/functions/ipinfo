@@ -1,0 +1,9 @@
+#!/bin/sh
+
+JSON=$(curl -s "https://ipinfo.io/${1}");
+
+if [[ -e $(which jq) ]]; then
+    echo $JSON | jq .
+else
+    echo $JSON
+fi

@@ -1,15 +1,5 @@
 #!/bin/bash
 
-ipinfo() {
-    JSON=$(curl -s "https://ipinfo.io/${1}");
-
-    if [[ -e $(which jq) ]]; then
-        echo $JSON | jq .
-    else
-        echo $JSON
-    fi
-}
-
 tunnel-kill() {
     lsof -ti tcp:${1} | xargs kill -9
 }
