@@ -28,6 +28,7 @@ if has("nvim")
     Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
     Plug 'neovim/nvim-lspconfig'
     Plug 'onsails/lspkind.nvim'
+    Plug 'fei6409/log-highlight.nvim'
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'nvim-tree/nvim-web-devicons'
