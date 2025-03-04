@@ -100,6 +100,11 @@ _cheat() {
 }
 compdef _cheat cheat
 
+_ki() {
+    compadd $(kubectl api-resources --verbs=list -o name)
+}
+compdef _ki ki
+
 _fzf_complete_cheat() {
     ARGS="$@"
 
