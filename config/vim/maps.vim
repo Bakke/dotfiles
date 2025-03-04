@@ -25,6 +25,7 @@ map <silent> <leader>gh :Git log %<CR>
 map <silent> <leader>gg :Git log --oneline<CR>
 " map <silent> <leader>gh :Git log --graph --pretty=oneline --abbrev-commit %<CR>
 map <silent> <leader>gb :Git blame<CR>
+map <silent> <leader>w <M-h> ZZ <M-j> <Enter> <M-j>
 
 "fix search - normal regex can be used in searching
 nnoremap / /\v
