@@ -14,7 +14,7 @@ xkb_symbols "basic" {
     key <AC12> { [ at, asterisk, doubleacute, multiply ] };
 
     // asciitilde is defalt (more useful on the terminal)
-    key <AD12> { [ asciitilde, dead_circumflex, dead_diaeresis, dead_caron ] };
+    key <AD12> { [ asciitilde, circumflex, diaeresis, caron ] };
 
     // Map capslock to left control (it is useless anyway)
     replace key <CAPS> { [ Control_L ], type[group1]="ONE_LEVEL" };
