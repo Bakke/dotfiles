@@ -79,6 +79,7 @@ apps=(
 )
 
 hyprApps=(
+    wev # Wayland event viewer (find keycodes etc)
     waybar
     hyprlock
     hypridle
@@ -93,6 +94,7 @@ hyprApps=(
 )
 
 swayApps=(
+    wev # Wayland event viewer (find keycodes etc)
     waybar
     swaybg
     swayidle
