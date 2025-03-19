@@ -4,3 +4,7 @@ if !exists('*fugitive#statusline')
 	set statusline+=%=
 	set statusline+=%{fugitive#statusline()}
 endif
+
+" Jump to next/previous file, hunk, or revision with Ctrl-j/k 
+autocmd FileType fugitive nmap <buffer> <C-k> (
+autocmd FileType fugitive nmap <buffer> <C-j> )
