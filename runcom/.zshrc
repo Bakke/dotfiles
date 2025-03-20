@@ -1,7 +1,7 @@
 # LINUX_DISTRO=$(cat /etc/issue | awk '{print tolower($1)}')
 LINUX_DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)
 
-export KUBECONFIG=$HOME/.kube/narnia
+export KUBECONFIG=$HOME/.kube/narnia.yaml
 
 # Finally we can source the dotfiles (order matters)
 for DOTFILE in "$HOME/.dotfiles"/system/.{env,alias,function,prompt,completion}; do
