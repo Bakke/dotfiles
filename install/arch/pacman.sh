@@ -88,6 +88,7 @@ hyprApps=(
     grim
     slurp
     swaync
+    wtype
     wl-clipboard
     qt5-wayland
     qt6-wayland
@@ -102,6 +103,7 @@ swayApps=(
     grim
     slurp
     swaync
+    wtype
     wl-clipboard
     qt5-wayland
     qt6-wayland
