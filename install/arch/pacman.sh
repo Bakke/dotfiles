@@ -60,7 +60,7 @@ apps=(
     ttf-jetbrains-mono-nerd
     ttf-font-awesome
     papirus-icon-theme
-    arc-gtk-theme
+    # arc-gtk-theme
 
     # Sound and media
     pipewire
