@@ -26,11 +26,11 @@ apps=(
     tmux
     ncdu
     yazi
-    ueberzugpp
+    ueberzugpp # Image preview in Yazi
     rofi
     rofi-calc
     rofi-emoji
-    zoxide
+    zoxide # Directory jump
     jq
     fd
     fzf
@@ -44,15 +44,15 @@ apps=(
     lsof
     bind
     vlc
-    ksnip
+    ksnip # Annotate Screenshots
     p7zip
     unzip
     rust
     alacritty
-    zenity
-    nautilus
-    sushi
-    nwg-look
+    zenity # Dialog boxes
+    nautilus # File manager
+    sushi # Preview files in Nautilus
+    nwg-look # GTK theme and icons manager
     docker
     docker-compose
     postgresql-libs
@@ -61,22 +61,25 @@ apps=(
     ttf-font-awesome
     papirus-icon-theme
     arc-gtk-theme
+
+    # Sound and media
     pipewire
     pipewire-pulse
     wireplumber
-    pavucontrol
+    pavucontrol # PulseAudio volume control
     playerctl
     brightnessctl
     hidapi
-    usbutils
-    bolt
-    bluez
-    bluez-utils
-    blueman
+
+    usbutils # Usb utilities
+    bolt # Thunderbolt 3 device manager
+    bluez # Bluetooth protocol stack
+    bluez-utils # bluetoothctl utility
+    blueman # Bluetooth GUI manager
 )
 
 hyprApps=(
-    wev
+    wev # Wayland event viewer (find keycodes etc)
     waybar
     hyprlock
     hypridle
@@ -92,7 +95,7 @@ hyprApps=(
 )
 
 swayApps=(
-    wev 
+    wev # Wayland event viewer (find keycodes etc)
     waybar
     swaybg
     swayidle
@@ -121,7 +124,9 @@ i3Apps=(
 fullApps=(
     freerdp
     kubectl
-    solaar 
+    solaar # Logitech devices manager
+
+    # Gnome Keyring
     libsecret
     libgnome-keyring
     gnome-keyring
