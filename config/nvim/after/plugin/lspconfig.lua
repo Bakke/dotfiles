@@ -122,6 +122,7 @@ local servers = {
             },
         },
     },
+    twiggy_language_server = {},
 }
 
 local ensure_installed = vim.tbl_keys(servers or {})

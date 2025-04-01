@@ -14,7 +14,6 @@
 [[ -e "$HOME/.config/i3" ]] && rm -rf ~/.config/i3
 
 [[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
-[[ ! -d "$HOME/.config/beekeeper-studio" ]] && mkdir "$HOME/.config/beekeeper-studio"
 
 ln -sfv "$HOME/.dotfiles/config/waybar" "${HOME}/.config/waybar"
 ln -sfv "$HOME/.dotfiles/config/hypr/" "${HOME}/.config/hypr"
@@ -24,7 +23,6 @@ ln -sfv "$HOME/.dotfiles/config/rofi/" "${HOME}/.config/rofi"
 ln -sfv "$HOME/.dotfiles/config/xkb/" "${HOME}/.config/xkb"
 ln -sfv "$HOME/.dotfiles/config/alacritty/" "${HOME}/.config/alacritty"
 ln -sfv "$HOME/.dotfiles/config/mimeapps.list" "${HOME}/.config/mimeapps.list"
-ln -sfv "$HOME/.dotfiles/config/beekeeper-studio/.beekeeper.vimrc" ~/.config/beekeeper-studio/.beekeeper.vimrc
 
 if [ ! $(getent group "docker") ]; then
     sudo groupadd docker
