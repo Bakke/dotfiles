@@ -30,14 +30,9 @@ if [ ! $(getent group "docker") ]; then
     newgrp docker
 fi
 
-# sudo ln -sfv "$HOME/.dotfiles/etc/logid.cfg" /etc/
-
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 sudo systemctl enable bluetooth.service
-# sudo systemctl enable logid.service
-
-# sudo g810-led -p /etc/g810-led/profile
 
 echo "Do you want to install Composer? [y/n]"
 read COMPOSER

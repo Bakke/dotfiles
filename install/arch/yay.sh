@@ -14,7 +14,6 @@ apps=(
 
 fullApps=(
     1password
-    # logiops
 )
 
 pentestApps=(
