@@ -5,7 +5,7 @@
 . "$HOME/.dotfiles/install/common/cargo.sh"
 . "$HOME/.dotfiles/install/common/nodejs.sh"
 # . "$HOME/.dotfiles/install/common/vscode-php-debug.sh"
-# . "$HOME/.dotfiles/install/common/sfmono-font.sh"
+. "$HOME/.dotfiles/install/common/sfmono-font.sh"
 
 sudo "$HOME/.dotfiles/install/arch/sddm-theme.sh"
 
