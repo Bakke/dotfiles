@@ -14,6 +14,7 @@ apps=(
 
 fullApps=(
     1password
+    arc-gtk-theme
 )
 
 pentestApps=(
