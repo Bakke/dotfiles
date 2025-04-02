@@ -137,6 +137,9 @@ sudo pacman -S --noconfirm "${apps[@]}"
 
 if [[ $FULL_INSTALL == true ]]; then
     sudo pacman -S --noconfirm "${fullApps[@]}"
+
+    systemctl --user enable gcr-ssh-agent.service
+    systemctl --user start gcr-ssh-agent.service
 fi
 
 echo "Do you want to install Hyprland apps? [y/N]"
