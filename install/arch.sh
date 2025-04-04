@@ -26,9 +26,10 @@ ln -sfv "$HOME/.dotfiles/config/mimeapps.list" "${HOME}/.config/mimeapps.list"
 
 if [ ! $(getent group "docker") ]; then
     sudo groupadd docker
-    sudo usermod -aG docker $USER
-    newgrp docker
 fi
+
+sudo usermod -aG docker $USER
+newgrp docker
 
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
