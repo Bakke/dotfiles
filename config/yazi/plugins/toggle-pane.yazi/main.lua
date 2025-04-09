@@ -1,13 +1,13 @@
---- @since 25.2.7
+--- @since 25.2.26
 --- @sync entry
 
 local function entry(st, job)
-	local R = MANAGER.ratio
+	local R = rt.mgr.ratio
 	job = type(job) == "string" and { args = { job } } or job
 
-	st.parent = st.parent and st.parent or R.parent
-	st.current = st.current and st.current or R.current
-	st.preview = st.preview and st.preview or R.preview
+	st.parent = st.parent or R.parent
+	st.current = st.current or R.current
+	st.preview = st.preview or R.preview
 
 	local act, to = string.match(job.args[1] or "", "(.-)-(.+)")
 	if act == "min" then
