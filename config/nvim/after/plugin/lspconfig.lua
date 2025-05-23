@@ -107,7 +107,7 @@ local servers = {
             }
         },
     },
-    volar = {
+    vue_ls = {
         filetypes = {'typescript', 'javascript', 'vue'},
     },
     ts_ls = {
