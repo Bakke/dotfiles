@@ -1,4 +1,4 @@
-[manager]
+[mgr]
 prepend_keymap = [
     # Spotting
     { on = "i", run = "spot", desc = "Spot hovered file" },
