@@ -2,10 +2,10 @@
 autocmd FileType yaml,yml,json setlocal ts=2 sts=2 sw=2 expandtab
 
 " PHP comment style
-autocmd FileType php setlocal commentstring=//%s
+" autocmd FileType php setlocal commentstring=//%s
 
 " Vue comment style
-autocmd FileType vue setlocal commentstring=//%s
+" autocmd FileType vue setlocal commentstring=//%s
 
 autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 autocmd BufRead,BufNewFile .env* if &ft == '' | setfiletype bash | endif

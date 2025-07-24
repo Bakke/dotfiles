@@ -4,7 +4,6 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'junegunn/vim-easy-align'
 Plug 'jwalton512/vim-blade'
 Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -21,6 +20,7 @@ Plug 'Fymyte/rasi.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 if has("nvim")
+    Plug 'numToStr/Comment.nvim'
     Plug 'windwp/nvim-autopairs'
     Plug 'windwp/nvim-ts-autotag'
     Plug 'williamboman/mason.nvim'
@@ -50,6 +50,7 @@ if has("nvim")
     " Plug 'theHamsta/nvim-dap-virtual-text'
 else
     Plug 'vim-airline/vim-airline'
+    Plug 'tpope/vim-commentary'
 endif
 
 call plug#end()
