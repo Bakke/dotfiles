@@ -45,7 +45,7 @@ nnoremap /' \'\zs(\s)@![^\']+(\s)@<!\ze\'<CR>N
 inoremap <silent> jj <esc>
 
 " Use gb to select last pasted text
-nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l)
 " noremap <C-j> <C-W>j
