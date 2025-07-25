@@ -9,6 +9,7 @@ local servers = {
     'svelte-language-server',
     'lua-language-server',
     'sqlls',
+    'json-lsp',
     'yaml-language-server',
     'vtsls',
     'vue-language-server',
