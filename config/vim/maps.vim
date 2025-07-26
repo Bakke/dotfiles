@@ -28,6 +28,9 @@ map <silent> <leader>gg :Git log --oneline<CR>
 map <silent> <leader>gb :Git blame<CR>
 map <silent> <leader>w <M-h> ZZ <M-j> <Enter> <M-j>
 
+" Toggle DBUI
+map <silent> <leader>d :DBUIToggle<CR>
+
 "fix search - normal regex can be used in searching
 nnoremap / /\v
 vnoremap / /\v
