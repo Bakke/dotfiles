@@ -22,6 +22,7 @@ ln -sfv "$HOME/.dotfiles/config/i3/" "${HOME}/.config/i3"
 ln -sfv "$HOME/.dotfiles/config/rofi/" "${HOME}/.config/rofi"
 ln -sfv "$HOME/.dotfiles/config/xkb/" "${HOME}/.config/xkb"
 ln -sfv "$HOME/.dotfiles/config/alacritty/" "${HOME}/.config/alacritty"
+ln -sfv "$HOME/.dotfiles/config/sql-language-server/" "${HOME}/.config/sql-language-server"
 ln -sfv "$HOME/.dotfiles/config/mimeapps.list" "${HOME}/.config/mimeapps.list"
 
 if [ ! $(getent group "docker") ]; then

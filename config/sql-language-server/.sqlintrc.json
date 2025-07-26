@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "reserved-word-case": ["off", "upper"],
+    "linebreak-after-clause-keyword": "off"
+  }
+}
