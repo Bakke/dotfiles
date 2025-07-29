@@ -44,6 +44,7 @@ apps=(
     lsof
     bind
     vlc
+    vlc-plugins-all
     ksnip # Annotate Screenshots
     p7zip
     unzip
