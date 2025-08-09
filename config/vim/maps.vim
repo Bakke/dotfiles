@@ -10,6 +10,8 @@ nmap <silent> <leader>c :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR
 " Copy to clipboard
 vnoremap <silent> <C-c> "+y
 nnoremap <silent> <C-c> "+yiw
+nnoremap cf :let @+=expand("%:t")<CR>
+nnoremap cp :let @+=expand("%")<CR>
 
 if &wildoptions =~ "pum"
     cnoremap <expr> <C-k> pumvisible() ? "<C-p>" : "\\<C-k>"
