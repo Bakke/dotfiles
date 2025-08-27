@@ -5,13 +5,13 @@ nmap <silent> <leader>r :so $MYVIMRC<CR>
 map <leader>p :PlugUpdate<CR>
 
 " Clear last search
-nmap <silent> <leader>c :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+nmap <silent> <leader>cc :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 " Copy to clipboard
 vnoremap <silent> <C-c> "+y
 nnoremap <silent> <C-c> "+yiw
-nnoremap cf :let @+=expand("%:t")<CR>
-nnoremap cp :let @+=expand("%")<CR>
+nnoremap <silent> <leader>cf :let @+=expand("%:t")<CR>
+nnoremap <silent> <leader>cp :let @+=expand("%")<CR>
 
 if &wildoptions =~ "pum"
     cnoremap <expr> <C-k> pumvisible() ? "<C-p>" : "\\<C-k>"
