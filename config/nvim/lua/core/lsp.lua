@@ -14,6 +14,7 @@ local servers = {
     'vtsls',
     'vue-language-server',
     'twiggy-language-server',
+    'csharp-language-server',
 }
 
 -- Setup Mason
