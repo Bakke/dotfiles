@@ -34,6 +34,7 @@ if has("nvim")
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'nvim-tree/nvim-web-devicons'
     Plug 'nvim-tree/nvim-tree.lua'
+    Plug 'mikavilpas/yazi.nvim'
     Plug 'nvim-lualine/lualine.nvim'
     Plug 'akinsho/bufferline.nvim', { 'tag': 'v4.*' }
     Plug 'github/copilot.vim'

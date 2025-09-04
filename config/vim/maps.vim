@@ -13,6 +13,9 @@ nnoremap <silent> <C-c> "+yiw
 nnoremap <silent> <leader>cf :let @+=expand("%:t")<CR>
 nnoremap <silent> <leader>cp :let @+=expand("%")<CR>
 
+" Explore with Yazi
+nnoremap <leader>t <cmd>Yazi toggle<cr>
+
 if &wildoptions =~ "pum"
     cnoremap <expr> <C-k> pumvisible() ? "<C-p>" : "\\<C-k>"
     cnoremap <expr> <C-j> pumvisible() ? "<C-n>" : "\\<C-j>"
