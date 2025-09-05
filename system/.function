@@ -32,6 +32,14 @@ t() {
     fi
 }
 
+s () {
+    session_name=$(sesh list --icons | fzf)
+
+    if [[ -n "$session_name" ]]; then
+        sesh connect "$session_name"
+    fi
+}
+
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 

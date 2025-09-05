@@ -10,6 +10,7 @@ fi
 
 apps=(
     cheat
+    sesh-bin
 )
 
 fullApps=(
