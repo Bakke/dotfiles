@@ -39,11 +39,12 @@ fzf.setup({
     },
 })
 
-vim.keymap.set('n', '<C-p>', fzf.files, { noremap = true, silent = true })
-vim.keymap.set('n', '<C-f>', fzf.lines, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>r', fzf.grep_project, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>h', fzf.command_history, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>s', fzf.search_history, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>m', fzf.helptags, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gc', fzf.git_commits, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>gf', fzf.git_bcommits, { noremap = true, silent = true })
+local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<C-p>', fzf.files, opts)
+vim.keymap.set('n', '<C-f>', fzf.lines, opts)
+vim.keymap.set('n', '<leader>r', fzf.grep_project, opts)
+vim.keymap.set('n', '<leader>h', fzf.command_history, opts)
+vim.keymap.set('n', '<leader>s', fzf.search_history, opts)
+vim.keymap.set('n', '<leader>m', fzf.helptags, opts)
+vim.keymap.set('n', '<leader>gc', fzf.git_commits, opts)
+vim.keymap.set('n', '<leader>gf', fzf.git_bcommits, opts)
