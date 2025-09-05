@@ -1,8 +1,11 @@
 # Search hidden files / directories (e.g. dotfiles) by default
 --hidden
+--no-ignore
 
 # Using glob patterns to include/exclude files or folders
 --glob=!.git/*
+--glob=!node_modules/*
+--glob=!/plugins/*
 
 # Because who cares about case!?
 --smart-case
