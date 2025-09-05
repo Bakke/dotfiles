@@ -1,0 +1,14 @@
+[[session]]
+name = "API"
+path = "~/projects/ncl-api"
+startup_command = "~/.dotfiles/config/tmux/scripts/split-window-vim.sh"
+
+[[session]]
+name = "Synergy"
+path = "~/projects/synergy-spa"
+startup_command = "~/.dotfiles/config/tmux/scripts/split-window-vim.sh"
+
+[[session]]
+name = "Dotfiles"
+path = "~/.dotfiles"
+startup_command = "~/.dotfiles/config/tmux/scripts/split-window-vim.sh 2"
