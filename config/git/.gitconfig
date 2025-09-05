@@ -12,7 +12,7 @@
     commend = commit --amend --no-edit
     praise = blame
     undo = reset --soft HEAD~1
-    fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+    fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf --layout=reverse | cut -c -7 | xargs -o git commit --fixup"
 [grep]
     extendRegexp = true
 [core]

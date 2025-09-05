@@ -13,7 +13,7 @@ fzf.setup({
         },
     },
     fzf_opts = {
-        ["--layout"] = false,
+        -- ["--layout"] = false,
     },
     files = {
         actions = {
