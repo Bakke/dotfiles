@@ -21,8 +21,8 @@ fzf.setup({
         },
         hidden = true,
         noignore = true,
-        rg_opts = [[--color=never --hidden --no-ignore --files -g "!.git" -g "!node_modules"]],
-        fd_opts = [[--color=never --hidden --no-ignore --type f --type l --exclude .git --exclude node_modules]],
+        rg_opts = [[--color=never --hidden --no-ignore --files -g "!.git" -g "!node_modules" -g "!^plugins"]],
+        fd_opts = [[--color=never --hidden --no-ignore --type f --type l --exclude .git --exclude node_modules --exclude /plugins/*]],
     },
     git = {
         commits = {
