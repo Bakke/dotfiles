@@ -11,9 +11,6 @@ Plug 'tpope/vim-abolish'
 Plug 'wellle/targets.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jremmen/vim-ripgrep'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'coreyja/fzf.devicon.vim'
 Plug 'sainnhe/sonokai'
 Plug 'vim-scripts/edifact.vim'
 Plug 'Fymyte/rasi.vim'
@@ -23,6 +20,7 @@ Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
 
 if has("nvim")
+    Plug 'ibhagwan/fzf-lua'
     Plug 'numToStr/Comment.nvim'
     Plug 'windwp/nvim-autopairs'
     Plug 'windwp/nvim-ts-autotag'
@@ -55,6 +53,9 @@ if has("nvim")
 else
     Plug 'vim-airline/vim-airline'
     Plug 'tpope/vim-commentary'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'coreyja/fzf.devicon.vim'
 endif
 
 call plug#end()

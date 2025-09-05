@@ -1,3 +1,7 @@
+if has("nvim")
+    finish
+endif
+
 if executable('devicon-lookup') == 0
     nnoremap <silent><C-p> :Files<cr>
 else
