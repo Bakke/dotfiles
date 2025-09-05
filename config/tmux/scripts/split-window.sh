@@ -1,6 +1,6 @@
 #!/bin/bash
 DEFAULT="3"
-SPLITS="${1:-3}"
+SPLITS="${1:-${DEFAULT}}"
 
 tmux split-window -h -c "#{pane_current_path}"
 tmux send-keys C-l
