@@ -25,5 +25,6 @@
 [advice]
     pushNonFastForward = false
     statusHints = false
+    skippedCherryPicks = false
 [diff]
     mnemonicprefix = true
