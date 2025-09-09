@@ -9,7 +9,7 @@ resultRaw=$(eval ${baseCommand} ${resourceType})
 resourceList=$(echo "${resultRaw}" | sed 1d)
 headerText=$(echo "${resultRaw}" | head -1)
 labelText="Ctrl-R: Reload, Ctrl-I: Describe, Ctrl-L: Logs, Ctrl-V: Events, Ctrl-E: Edit, Ctrl-T: Terminal, Ctrl-X: Delete, Enter: Preview describe"
-labelListText="Alt-P: Pods, Alt-S: Services, Alt-Z: Secrets, Alt-C: Certificates, Alt-R: CertificateRequests"
+labelListText="Alt-O: Pods, Alt-S: Services, Alt-Z: Secrets, Alt-C: Certificates, Alt-R: CertificateRequests"
 labelList="--list-label='${labelListText}'"
 
 height="--height=100%"
@@ -25,7 +25,7 @@ eventsBind="--bind='ctrl-v:execute(kubectl events -n {1} {2} | nvim -R -c \"set 
 executeBind="--bind='ctrl-t:execute(fzf-ki-exec {1} {2})'"
 deleteBind="--bind='ctrl-x:execute(kubectl delete -i -n {1} {2})+reload(${reloadCommand})'"
 describeBind="--bind='ctrl-i:execute(kubectl describe -n {1} {2} | nvim -R -c \"set syntax=yaml\" -)'"
-podsBind="--bind='alt-p:change-prompt(pods > )+change-header($(${baseCommand} pods | head -1))+reload(${baseCommand} pods | sed 1d)'"
+podsBind="--bind='alt-o:change-prompt(pods > )+change-header($(${baseCommand} pods | head -1))+reload(${baseCommand} pods | sed 1d)'"
 deploymentsBind="--bind='alt-d:change-prompt(deployments > )+change-header($(${baseCommand} deployments | head -1))+reload(${baseCommand} deployments | sed 1d)'"
 servicesBind="--bind='alt-s:change-prompt(services > )+change-header($(${baseCommand} services | head -1))+reload(${baseCommand} services | sed 1d)'"
 secretsBind="--bind='alt-z:change-prompt(secrets > )+change-header($(${baseCommand} secrets | head -1))+reload(${baseCommand} secrets | sed 1d)'"
