@@ -157,13 +157,13 @@ _fzf_complete_git() {
     local commitList
     local branchList
 
-    if [[ $ARGS =~ 'rebase' ]]; then
+    if [[ $ARGS == "git rebase"* ]]; then
         commitList=$(git log --oneline --no-decorate --no-merges)
 
         _fzf_complete -- "$@" < <(
             echo ${commitList}
         )
-    elif [[ $ARGS =~ 'branch' || $ARGS =~ 'checkout' ]]; then
+    elif [[ $ARGS == "git branch"* || $ARGS == "git checkout"* ]]; then
         branchList=$(git branch --format='%(refname:short)')
 
         _fzf_complete -- "$@" < <(
