@@ -169,6 +169,12 @@ _fzf_complete_git() {
         _fzf_complete -- "$@" < <(
             echo ${branchList}
         )
+    elif [[ $ARGS == "git show"* ]]; then
+        commitList=$(git log --oneline)
+
+        _fzf_complete -- "$@" < <(
+            echo ${commitList}
+        )
     else
         eval "zle ${fzf_default_completion:-expand-or-complete}"
     fi
