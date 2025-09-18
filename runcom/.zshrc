@@ -4,18 +4,18 @@ LINUX_DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)
 export KUBECONFIG=$HOME/.kube/narnia.yaml
 
 # Finally we can source the dotfiles (order matters)
-for DOTFILE in "$HOME/.dotfiles"/system/.{env,alias,function,prompt,completion}; do
+for DOTFILE in "$HOME/.dotfiles"/system/.{env,alias,function,prompt,keybind,completion}; do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
 if [ "${LINUX_DISTRO}" = "arch" ]; then
-    for DOTFILE in "$HOME"/.dotfiles/system/.{env,alias,function,prompt,completion}.arch; do
+    for DOTFILE in "$HOME"/.dotfiles/system/.{env,alias,function,prompt,keybind,completion}.arch; do
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
 fi
 
 if [ "${LINUX_DISTRO}" = "kali" ]; then
-    for DOTFILE in "$HOME"/.dotfiles/system/.{env,alias,function,prompt,completion}.arch; do
+    for DOTFILE in "$HOME"/.dotfiles/system/.{env,alias,function,prompt,keybind,completion}.arch; do
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
 fi
@@ -24,13 +24,6 @@ fi
 [[ -f "${HOME}/.dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [[ -f "${HOME}/.dotfiles/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
 [[ -f "${HOME}/.dotfiles/plugins/colored-man-pages/colored-man-pages.zsh" ]] && source "${HOME}/.dotfiles/plugins/colored-man-pages/colored-man-pages.zsh"
-
-# Bind keys for history substring search
-bindkey '^ ' autosuggest-accept # ctrl + space
-bindkey '^K' history-substring-search-up # ctrl + k
-bindkey '^J' history-substring-search-down # ctrl + j
-bindkey '^[[A' history-substring-search-up # Arrow up
-bindkey '^[[B' history-substring-search-down # Arrow down
 
 # Clean up
 unset SCRIPT_PATH DOTFILE
