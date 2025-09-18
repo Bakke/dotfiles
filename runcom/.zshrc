@@ -23,7 +23,6 @@ fi
 [[ -f "${HOME}/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [[ -f "${HOME}/.dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [[ -f "${HOME}/.dotfiles/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
-[[ -f "${HOME}/.dotfiles/plugins/colored-man-pages/colored-man-pages.zsh" ]] && source "${HOME}/.dotfiles/plugins/colored-man-pages/colored-man-pages.zsh"
 
 # Clean up
 unset SCRIPT_PATH DOTFILE
