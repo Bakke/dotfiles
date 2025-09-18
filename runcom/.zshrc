@@ -28,18 +28,8 @@ fi
 # Clean up
 unset SCRIPT_PATH DOTFILE
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-if [[ -e "/usr/share/fzf/key-bindings.zsh" ]]; then
-    source /usr/share/fzf/key-bindings.zsh
-elif [[ -e "/usr/share/doc/fzf/examples/key-bindings.zsh" ]]; then
-    source /usr/share/doc/fzf/examples/key-bindings.zsh
-fi
-
-if [[ -e "/usr/share/fzf/completion.zsh" ]]; then
-    source /usr/share/fzf/completion.zsh
-elif [[ -e "/usr/share/doc/fzf/examples/completion.zsh" ]]; then
-    source /usr/share/doc/fzf/examples/completion.zsh
+if whence fzf >/dev/null; then
+    source <(fzf --zsh)
 fi
 
 if whence zoxide >/dev/null; then
