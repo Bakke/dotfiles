@@ -10,3 +10,6 @@
 [submodule "cheat/cheatsheets/community"]
 	path = cheat/cheatsheets/community
 	url = https://github.com/cheat/cheatsheets
+[submodule "plugins/fzf-tab"]
+	path = plugins/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab

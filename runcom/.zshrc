@@ -20,6 +20,13 @@ if [ "${LINUX_DISTRO}" = "kali" ]; then
     done
 fi
 
+[[ -f "${HOME}/.dotfiles/plugins/fzf-tab/fzf-tab.plugin.zsh" ]] && source "${HOME}/.dotfiles/plugins/fzf-tab/fzf-tab.plugin.zsh"
+
+bindkey -M emacs '^I'  complete-word
+bindkey -M viins '^I'  complete-word
+bindkey -M emacs '^Y'  fzf-tab-complete
+bindkey -M viins '^Y'  fzf-tab-complete
+
 [[ -f "${HOME}/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [[ -f "${HOME}/.dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [[ -f "${HOME}/.dotfiles/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
