@@ -18,7 +18,7 @@
         "privacy",
         "pulseaudio",
         "pipewire-pulse",
-        "network",
+        //"network",
         "bluetooth",
         //"cpu",
         //"memory",
