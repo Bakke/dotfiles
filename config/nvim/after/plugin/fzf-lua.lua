@@ -37,6 +37,12 @@ fzf.setup({
             },
         },
     },
+    lines = {
+        previewer = 'hidden',
+    },
+    blines = {
+        previewer = 'hidden',
+    },
 })
 
 local opts = { noremap = true, silent = true }
