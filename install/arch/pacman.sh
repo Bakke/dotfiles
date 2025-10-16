@@ -60,7 +60,7 @@ apps=(
     dotnet-sdk
     noto-fonts-emoji
     ttf-jetbrains-mono-nerd
-    ttf-font-awesome
+    otf-font-awesome
     papirus-icon-theme
 
     # Sound and media
