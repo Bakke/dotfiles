@@ -131,7 +131,7 @@
     },
     "network#usage": {
         "interval": 1,
-        "format": "{bandwidthDownBytes} / {bandwidthUpBytes}",
+        "format": "󰜮 {bandwidthDownBytes} / 󰜷 {bandwidthUpBytes}",
     },
     "bluetooth": {
         // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
