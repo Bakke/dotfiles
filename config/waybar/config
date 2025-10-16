@@ -15,15 +15,15 @@
     ],
     "modules-right": [
         "network#usage",
+        "cpu",
+        "memory",
+        //"temperature",
+        "battery",
         "privacy",
         "pulseaudio",
         "pipewire-pulse",
         //"network",
         "bluetooth",
-        //"cpu",
-        //"memory",
-        //"temperature",
-        "battery",
         "battery#bat2",
         "tray",
         "clock",
@@ -85,11 +85,13 @@
         "format": "  {:%d. %h %H:%M}"
     },
     "cpu": {
-        "format": "  {usage}%",
+        "interval": 1,
+        "format": " {usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": " {}%"
+        "interval": 1,
+        "format": " {}%"
     },
     "temperature": {
         // "thermal-zone": 2,
