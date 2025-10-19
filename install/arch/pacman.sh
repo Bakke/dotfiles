@@ -72,6 +72,7 @@ apps=(
     brightnessctl
     hidapi
 
+    exfatprogs # exFAT support
     usbutils # Usb utilities
     bolt # Thunderbolt 3 device manager
     bluez # Bluetooth protocol stack
