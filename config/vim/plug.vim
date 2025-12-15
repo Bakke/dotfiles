@@ -29,7 +29,7 @@ if has("nvim")
     Plug 'onsails/lspkind.nvim'
     Plug 'fei6409/log-highlight.nvim'
     Plug 'lukas-reineke/indent-blankline.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+    Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'main', 'do': ':TSUpdate' }
     Plug 'nvim-tree/nvim-web-devicons'
     Plug 'nvim-tree/nvim-tree.lua'
     Plug 'mikavilpas/yazi.nvim'
