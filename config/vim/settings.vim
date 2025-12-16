@@ -28,7 +28,8 @@ set nrformats=alpha,octal,bin,hex   " Allow for 0x, 0o, 0b
 
 " Indention
 filetype indent on
-set autoindent                  " Copy indent from last line when starting new line
+" set autoindent                  " Copy indent from last line when starting new line
+set smartindent                 " Smart autoindenting for C-like programs
 set expandtab                   " Expand tabs to spaces
 set smarttab                    " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
 set shiftwidth=4                " Number of spaces for indenting
