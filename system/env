@@ -31,6 +31,7 @@ export PATH="$PATH:$HOME/.yarn/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/bin/functions"
+export PATH="$PATH:$HOME/.dotnet/tools"
 
 setopt histignorealldups sharehistory
 

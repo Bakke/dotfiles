@@ -72,6 +72,9 @@ apps=(
     brightnessctl
     hidapi
 
+    # Language servers (LSP)
+    lua-language-server
+
     exfatprogs # exFAT support
     usbutils # Usb utilities
     bolt # Thunderbolt 3 device manager

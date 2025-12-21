@@ -3,7 +3,7 @@ local servers = {
     'html-lsp',
     'bash-language-server',
     'dockerfile-language-server',
-    'docker-compose-language-service',
+    -- 'docker-compose-language-service',
     'intelephense',
     'pyright',
     'svelte-language-server',
@@ -18,10 +18,10 @@ local servers = {
 }
 
 -- Setup Mason
-require("mason").setup({})
+-- require("mason").setup({})
 
 -- Ensure that the servers are installed
-require('mason-tool-installer').setup({ ensure_installed = servers })
+-- require('mason-tool-installer').setup({ ensure_installed = servers })
 
 -- Enable servers
 vim.lsp.enable(servers)
