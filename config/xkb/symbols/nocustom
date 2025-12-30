@@ -16,6 +16,13 @@ xkb_symbols "basic" {
     // asciitilde is defalt (more useful on the terminal)
     key <AD12> { [ asciitilde, circumflex, diaeresis, caron ] };
 
+    // Add paren, bracket and brace characters to 3rd and 4th level HJKL keys for easier coding
+    key <AC06> { [ h, H, braceleft, U01E4 ] };
+    key <AC07> { [ j, J, parenleft, bracketleft ] };
+    key <AC08> { [ k, K, parenright, bracketright ] };
+    key <AC09> { [ l, L, braceright, hyphen ] };
+
+
     // Map capslock to left control (it is useless anyway)
     replace key <CAPS> { [ Control_L ], type[group1]="ONE_LEVEL" };
     modifier_map Control { <CAPS> };
