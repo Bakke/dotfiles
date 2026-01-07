@@ -5,5 +5,7 @@ let g:copilot_filetypes = {
 \ 'json': v:true,
 \ 'yaml': v:true,
 \ 'markdown': v:true,
-\ 'gitcommit': v:true
+\ 'gitcommit': v:true,
+\ '*.env.*': v:false,
+\ '*.env': v:false
 \ }
