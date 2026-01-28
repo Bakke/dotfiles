@@ -1,0 +1,10 @@
+---
+tags: [ hacking ]
+---
+# Setup server and listen
+sudo ./chisel server -p 53 --reverse
+
+# Connect to server
+# Forward local port 8080 to local port 8080 on server
+chisel.exe client 192.168.1.X:53 R:8080:127.0.0.1:8080
+

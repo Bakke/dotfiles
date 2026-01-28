@@ -1,0 +1,27 @@
+[github]
+    user = Bakke
+[color]
+    ui = true
+[push]
+    default = current
+[alias]
+    shorty = status --short --branch
+    commend = commit --amend --no-edit
+    praise = blame
+    undo = reset --soft HEAD~1
+    fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf --layout=reverse | cut -c -7 | xargs -o git commit --fixup"
+[grep]
+    extendRegexp = true
+[core]
+    editor = nvim
+    excludesfile = ~/.dotfiles/config/git/.gitignore
+[pull]
+    rebase = true
+[rebase]
+    autosquash = true
+[advice]
+    pushNonFastForward = false
+    statusHints = false
+    skippedCherryPicks = false
+[diff]
+    mnemonicprefix = true

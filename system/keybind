@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Use emacs keybindings even if our EDITOR is set to vi
+bindkey -e
+bindkey '^[[3~' delete-char
+bindkey '^[3;5~' delete-char
+bindkey '\e[1;5C' forward-word
+bindkey '\e[1;5D' backward-word
+
+# Bind keys for history substring search
+bindkey '^ ' autosuggest-accept # ctrl + space
+bindkey '^K' history-substring-search-up # ctrl + k
+bindkey '^J' history-substring-search-down # ctrl + j
+bindkey '^[[A' history-substring-search-up # Arrow up
+bindkey '^[[B' history-substring-search-down # Arrow down

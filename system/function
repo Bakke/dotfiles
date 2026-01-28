@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Get size of folder
+sizeof(){ du -hs $1 | awk '{print $1}'; }
+
+# Get registrar function
+registrar() {
+    REGISTRAR=( $(whois $1 | grep -m 1 -i "Registrar Handle" | awk -F ":" '/: / { print $2}') );
+
+    if [ -n "$REGISTRAR" ]; then
+        whois $REGISTRAR;
+    else
+        echo 'Could not find registrar info';
+    fi
+}
+
+t() {
+    session_name=$@
+    number_of_tmux_sessions=$(tmux ls | wc -l)
+
+    if [[ -n $session_name ]]; then
+        tmux new-session -As $session_name
+        exit 0
+    fi
+
+    if [[ $number_of_tmux_sessions > 1 ]]; then
+        tmux attach -t $(tmux ls -F '#{session_name}' | fzf)
+    elif [[ $number_of_tmux_sessions = 1 ]]; then
+        tmux attach
+    else
+        tmux new-session -s "Main"
+    fi
+}
+
+s () {
+    session_name=$(sesh list --icons | fzf)
+
+    if [[ -n "$session_name" ]]; then
+        sesh connect "$session_name"
+    fi
+}
+
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+
+    yazi "$@" --cwd-file="$tmp"
+
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+
+    rm -f -- "$tmp"
+}
+
+function follow_redirect() {
+    curl -s -L -D - $1 -o /dev/null -w '%{url_effective}'
+}

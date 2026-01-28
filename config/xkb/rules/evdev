@@ -1,0 +1,4 @@
+! option   = symbols
+  nocustom:basic  = +nocustom(basic)
+
+! include %S/evdev

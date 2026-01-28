@@ -1,0 +1,6 @@
+---
+tags: [ hacking ]
+---
+# Generate wordlist from rules
+hashcat --force /usr/share/wordlists/rockyou.txt -r /usr/share/password_cracking_rules/OneRuleToRuleThemAll.rule --stdout | wc -l
+

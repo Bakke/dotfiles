@@ -1,0 +1,19 @@
+[manager]
+show_hidden = true
+show_symlink = true
+sort_by = "mtime"
+sort_reverse = true
+linemode = "size_and_mtime"
+
+[opener]
+edit = [
+    { run = 'nvim "$@"', block = true, for = "unix" },
+]
+open = [
+    { run = 'xdg-open "$@"', desc = "Open" },
+]
+
+[open]
+prepend_rules = [
+    { mime = "video/*", use = "open" },
+]

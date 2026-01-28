@@ -1,0 +1,12 @@
+#!/bin/bash
+
+namespace="${1}"
+pod="${2}"
+containers=$(kubectl get "${pod}" -n "${namespace}" -o jsonpath='{range .spec.containers[*]}{.name}{"\n"}{end}')
+
+if [[ $(echo "$containers" | wc -l) -gt 1 ]]; then
+    container=$(echo "${containers}" | fzf)
+    kubectl logs "${pod}" -n "${namespace}" -c "${container}" | nvim -R -c 'set syntax=log' -
+else
+    kubectl logs "${pod}" -n "${namespace}" | nvim -R -c 'set syntax=log' -
+fi

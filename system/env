@@ -1,0 +1,57 @@
+# Don't check mail when opening terminal.
+unset MAILCHECK
+
+# Set term
+export TERM=xterm-256color
+
+# Language options
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Set editor and git editor
+if [[ -e $(which nvim) ]]; then
+    export EDITOR='nvim'
+    export GIT_EDITOR='nvim'
+else
+    export EDITOR='vim'
+    export GIT_EDITOR='vim'
+fi
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#82878B"
+
+# Set custom config path for cheat
+export CHEAT_USE_FZF=true
+export CHEAT_CONFIG_PATH="~/.dotfiles/cheat/conf.yml"
+export NVM_DIR="$HOME/.nvm"
+export RIPGREP_CONFIG_PATH="${HOME}/.dotfiles/config/ripgrep/.ripgreprc"
+
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$PATH:$HOME/.yarn/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin/functions"
+export PATH="$PATH:$HOME/.dotnet/tools"
+
+setopt histignorealldups sharehistory
+
+if type fd &> /dev/null; then
+    export FZF_DEFAULT_COMMAND="fd --files --no-ignore --hidden --exclude .git --exclude node_modules . --exclude /plugins/* ."
+elif type rg &> /dev/null; then
+    export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden -g '!.git/*' -g '!*node_modules/*' . -g '!/plugins/*' ."
+fi
+
+export FZF_DEFAULT_OPTS="-m --height 50% --border --layout=reverse --ansi"
+
+# Keep 10000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+HISTIGNORE="&:ls:[bf]g:exit:history:pwd"
+HISTTIMEFORMAT='%F %T '
+
+# Fix wordchars
+WORDCHARS=${WORDCHARS/\//}
+WORDCHARS=${WORDCHARS/-/}
+WORDCHARS=${WORDCHARS/\./}
+WORDCHARS=${WORDCHARS/\_/}

@@ -1,0 +1,129 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #e1e2e3;
+    border-radius: 0px;
+}
+
+@keyframes blink {
+    to {
+        color: #eb4d4b;
+        background: transparent;
+    }
+}
+
+window#waybar {
+    background-color: rgba(43, 42, 51, 0.95);
+    border-bottom: 2px solid #414B53;
+    border-radius: 0px;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -2px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -2px #ffffff;
+}
+
+#window,
+#workspaces {
+    margin: 0 6px;
+}
+
+#workspaces {
+    padding: 0px;
+    margin-left: 0px;
+}
+
+#workspaces button {
+    padding: 0 6px;
+    background-color: transparent;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    box-shadow: inset 0 -2px #e1e2e3;
+}
+
+#workspaces button.urgent {
+    box-shadow: inset 0 -2px #eb4d4b;
+}
+
+#workspaces button.urgent label {
+    color: #eb4d4b;
+}
+
+.modules-left {
+    margin: 0px 0px 0px 6px;
+}
+
+.modules-right {
+    margin: 0px 6px 0px 0px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#bluetooth,
+#privacy,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#custom-notification,
+#mpd {
+    margin: 0px 10px;
+    background-color: transparent;
+}
+
+#tray {
+    margin: 0px 12px;
+}
+
+#clock {
+    font-weight: bold;
+    margin: 0 12px;
+}
+
+#custom-notification {
+    margin-right: 24px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    border-bottom: 2px solid #eb4d4b;
+}
+
+#custom-logo {
+    padding-left: 6px;
+    padding-right: 4px;
+    font-size: 16px;
+    border-radius: 0px;
+    color: #1793d1;
+}

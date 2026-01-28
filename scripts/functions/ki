@@ -1,0 +1,63 @@
+#!/bin/bash
+
+resourceType=${1:-pods}
+# baseCommand="kubectl get -A -o wide"
+baseCommand="kubectl get -A -o wide --show-kind"
+reloadCommand="${baseCommand} ${resourceType} | sed 1d"
+
+resultRaw=$(eval ${baseCommand} ${resourceType})
+resourceList=$(echo "${resultRaw}" | sed 1d)
+headerText=$(echo "${resultRaw}" | head -1)
+labelText="Ctrl-R: Reload, Ctrl-I: Describe, Ctrl-L: Logs, Ctrl-V: Events, Ctrl-E: Edit, Ctrl-T: Terminal, Ctrl-X: Delete, Enter: Preview describe"
+labelListText="Alt-O: Pods, Alt-S: Services, Alt-Z: Secrets, Alt-C: Certificates, Alt-R: CertificateRequests"
+labelList="--list-label='${labelListText}'"
+
+height="--height=100%"
+prompt="--prompt='${resourceType} > '"
+header="--header='${headerText}'"
+layout="--layout=reverse"
+label="--border-label='${labelText}'"
+preview="--preview-window=hidden --preview='kubectl describe -n {1} {2} | bat --color=always -p -l yaml'"
+pageBind="--bind='ctrl-u:page-up' --bind='ctrl-d:page-down'"
+editBind="--bind='ctrl-e:execute(kubectl edit -n {1} {2})'"
+logsBind="--bind='ctrl-l:execute(fzf-ki-logs {1} {2})'"
+eventsBind="--bind='ctrl-v:execute(kubectl events -n {1} {2} | nvim -R -c \"set syntax=log\" -)'"
+executeBind="--bind='ctrl-t:execute(fzf-ki-exec {1} {2})'"
+deleteBind="--bind='ctrl-x:execute(kubectl delete -i -n {1} {2})+reload(${reloadCommand})'"
+describeBind="--bind='ctrl-i:execute(kubectl describe -n {1} {2} | nvim -R -c \"set syntax=yaml\" -)'"
+podsBind="--bind='alt-o:change-prompt(pods > )+change-header($(${baseCommand} pods | head -1))+reload(${baseCommand} pods | sed 1d)'"
+deploymentsBind="--bind='alt-d:change-prompt(deployments > )+change-header($(${baseCommand} deployments | head -1))+reload(${baseCommand} deployments | sed 1d)'"
+servicesBind="--bind='alt-s:change-prompt(services > )+change-header($(${baseCommand} services | head -1))+reload(${baseCommand} services | sed 1d)'"
+secretsBind="--bind='alt-z:change-prompt(secrets > )+change-header($(${baseCommand} secrets | head -1))+reload(${baseCommand} secrets | sed 1d)'"
+certificatesBind="--bind='alt-c:change-prompt(certificates > )+change-header($(${baseCommand} certificates | head -1))+reload(${baseCommand} certificates | sed 1d)'"
+certificateRequestsBind="--bind='alt-r:change-prompt(certificaterequests > )+change-header($(${baseCommand} certificaterequests | head -1))+reload(${baseCommand} certificaterequests | sed 1d)'"
+reloadBind="--bind='ctrl-r:reload(${reloadCommand})'"
+togglePreviewBind="--bind='enter:toggle-preview'"
+
+fzfOptions="${FZF_DEFAULT_OPTS} \
+    ${height} \
+    ${prompt} \
+    ${header} \
+    ${layout} \
+    ${label} \
+    ${labelList} \
+    ${preview} \
+    ${pageBind} \
+    ${editBind} \
+    ${logsBind} \
+    ${eventsBind} \
+    ${executeBind} \
+    ${deleteBind} \
+    ${describeBind} \
+    ${podsBind} \
+    ${deploymentsBind} \
+    ${servicesBind} \
+    ${secretsBind} \
+    ${certificatesBind} \
+    ${certificateRequestsBind} \
+    ${reloadBind} \
+    ${togglePreviewBind} \
+    --nth=1..2
+"
+
+echo "${resourceList}" | eval "fzf ${fzfOptions}"

@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill ~/.dotfiles/assets/wallpapers/forest.png

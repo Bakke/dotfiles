@@ -1,0 +1,34 @@
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+
+    // Get the basic Norwegian keyboard layout
+    include "no(nodeadkeys)"
+
+    // Dollar sign is more useful than currency
+    key <AE04> { [ 4, dollar, currency, onequarter ] };
+
+    // Use tilde for apostrophe and bar
+    key <TLDE> { [ apostrophe, bar, brokenbar, paragraph ] };
+
+    // Move @ to mac placement (useful for Vim macros)
+    key <AC12> { [ at, asterisk, doubleacute, multiply ] };
+
+    // asciitilde is defalt (more useful on the terminal)
+    key <AD12> { [ asciitilde, circumflex, diaeresis, caron ] };
+
+    // Add paren, bracket and brace characters to 3rd and 4th level HJKL keys for easier coding
+    key <AC06> { [ h, H, braceleft, U01E4 ] };
+    key <AC07> { [ j, J, parenleft, bracketleft ] };
+    key <AC08> { [ k, K, parenright, bracketright ] };
+    key <AC09> { [ l, L, braceright, hyphen ] };
+
+
+    // Map capslock to left control (it is useless anyway)
+    replace key <CAPS> { [ Control_L ], type[group1]="ONE_LEVEL" };
+    modifier_map Control { <CAPS> };
+
+    // Left control acts as 3rd level modifier instead
+    replace key <LCTL> { [ ISO_Level3_Shift ] };
+    modifier_map Mod5 { <LCTL> };
+
+};

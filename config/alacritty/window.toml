@@ -1,0 +1,8 @@
+[window]
+opacity = 0.95
+decorations = "Full"
+# startup_mode = "Maximized"
+
+[window.padding]
+x = 10
+y = 10

@@ -1,0 +1,41 @@
+alias c="docker compose"
+alias k='kubectl'
+
+# Directory and file navigation/editing
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ll='ls -li'
+alias la='ls -la'
+alias lsd='ls -l | grep "^d"'
+
+# Git
+alias gs='git status'
+alias gss='git status -s'
+alias gcl='git clone'
+alias ga='git add'
+alias gall='git add -A'
+alias gm="git merge"
+alias gp='git push'
+alias gb='git branch'
+alias gbd='git branch -D'
+alias gpo='git push origin'
+alias gpu='git push --set-upstream'
+alias gl='git pull'
+alias gf='git fetch && git rebase'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gcf='git checkout $(git branch -r | fzf)'
+alias gls="git log --pretty=format:'%s'"
+alias gll='git log --graph --pretty=oneline --abbrev-commit'
+alias gg="git log --color --graph --oneline"
+alias ggs="gg --stat"
+alias gsl="git shortlog -sn"
+alias gw="git whatchanged"
+alias gd='git diff | nvim -R -'
+alias gt="git tag"
+alias gta="git tag -a"
+
+# Misc
+alias q='exit'
+alias reload="source ~/.zshrc"

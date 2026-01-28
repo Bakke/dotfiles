@@ -1,0 +1,114 @@
+# Start network manager applet
+exec_always nm-applet --indicator
+
+# Use super as the main modifier
+# and alt as the secondary modifier
+set $mainMod Mod4
+set $secondMod Mod1
+
+# Your preferred terminal emulator
+set $term alacritty
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu "rofi -show drun"
+
+# Import base config from i3
+include $HOME/.dotfiles/config/i3/settings.conf
+include $HOME/.dotfiles/config/i3/keybinds.conf
+
+# GTK
+set $gnome-schema org.gnome.desktop.interface
+exec {
+    gsettings set $gnome-schema gtk-theme 'Arc-Dark'
+    gsettings set $gnome-schema.wm.preferences theme 'Arc-Dark'
+    gsettings set $gnome-schema icon-theme 'Papirus-Dark'
+}
+
+# Wallpaper
+output * bg $HOME/.dotfiles/assets/wallpapers/forest.png fill
+
+# Idle configuration
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         before-sleep 'swaylock -f -c 000000'
+
+# Lock when lid is closed
+bindswitch --reload --locked lid:on exec swaylock -f -c 000000 && systemctl suspend
+
+# Lock screen with hotkeys
+bindsym $mainMod+$secondMod+l exec swaylock -f -c 000000
+
+# Input configuration
+input type:keyboard {
+    xkb_layout nocustom
+    # xkb_options altwin:swap_alt_win
+    repeat_delay 500
+    repeat_rate 40
+}
+
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    tap_button_map lrm
+    natural_scroll enabled
+    middle_emulation disabled
+    click_method clickfinger
+}
+
+# 1Password
+bindsym Ctrl+Shift+l exec 1password --lock
+bindsym Shift+$secondMod+space exec 1password --quick-access
+
+# Sway notifications
+bindsym $mainMod+N exec swaync-client -t -sw
+bindsym $mainMod+Shift+N exec swaync-client -C
+
+# Toggle Waybar
+bindsym $mainMod+d exec killall waybar || waybar
+
+# Switch to workspace
+bindsym ctrl+$secondMod+j exec ~/.dotfiles/config/sway/scripts/sway-next.sh -1
+bindsym ctrl+$secondMod+k exec ~/.dotfiles/config/sway/scripts/sway-next.sh 1
+
+# Move focused container to workspace
+bindsym ctrl+$secondMod+h exec ~/.dotfiles/config/sway/scripts/sway-move-next.sh -1
+bindsym ctrl+$secondMod+l exec ~/.dotfiles/config/sway/scripts/sway-move-next.sh 1
+
+# Screenshots
+bindsym CTRL+ALT+2 exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') "${HOME}/Pictures/screenshots/$(date +'screenshot_%F-%T').png"
+bindsym CTRL+ALT+Shift+2 exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+bindsym CTRL+ALT+3 exec grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" "${HOME}/Pictures/screenshots/$(date +'screenshot_%F-%T').png"
+bindsym CTRL+ALT+Shift+3 exec grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | wl-copy
+bindsym CTRL+ALT+4 exec grim -g "$(slurp)" "${HOME}/Pictures/screenshots/$(date +'screenshot_%F-%T').png"
+bindsym CTRL+ALT+Shift+4 exec grim -g "$(slurp -d)" - | wl-copy
+
+# Monitor brightness
+bindsym XF86MonBrightnessDown exec brightnessctl set -s 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl set -s 10%+
+
+# Keyboard brightness
+bindsym XF86KbdBrightnessUp exec brightnessctl --device='smc::kbd_backlight' set 10%+
+bindsym XF86KbdBrightnessDown exec brightnessctl --device='smc::kbd_backlight' set 10%-
+
+# Volume
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+
+# Media (requires playerctl)
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioNext exec playerctl next
+
+# Status Bar:
+bar {
+    swaybar_command waybar
+}
+
+include $HOME/.dotfiles/config/sway/custom.conf
+include /etc/sway/config.d/*
