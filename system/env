@@ -36,9 +36,9 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 setopt histignorealldups sharehistory
 
 if type fd &> /dev/null; then
-    export FZF_DEFAULT_COMMAND="fd --files --no-ignore --hidden --exclude .git --exclude node_modules . --exclude /plugins/* ."
+    export FZF_DEFAULT_COMMAND="fd --files --no-ignore-vcs --hidden --exclude .git --exclude node_modules . --exclude /plugins/* ."
 elif type rg &> /dev/null; then
-    export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden -g '!.git/*' -g '!*node_modules/*' . -g '!/plugins/*' ."
+    export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --hidden -g '!.git/*' -g '!*node_modules/*' . -g '!/plugins/*' ."
 fi
 
 export FZF_DEFAULT_OPTS="-m --height 50% --border --layout=reverse --ansi"
