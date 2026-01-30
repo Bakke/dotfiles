@@ -11,4 +11,4 @@ startup_command = "~/.dotfiles/config/tmux/scripts/split-window.sh"
 [[session]]
 name = "Dotfiles"
 path = "~/.dotfiles"
-startup_command = "~/.dotfiles/config/tmux/scripts/split-window.sh 2"
+startup_command = "~/.dotfiles/config/tmux/scripts/split-window.sh"
