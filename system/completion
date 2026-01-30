@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# [[ -f "/usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh" ]] && source "/usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
