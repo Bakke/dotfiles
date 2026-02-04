@@ -6,9 +6,9 @@
 . "$HOME/.dotfiles/install/common/nodejs.sh"
 . "$HOME/.dotfiles/install/common/dotnet.sh"
 # . "$HOME/.dotfiles/install/common/vscode-php-debug.sh"
-. "$HOME/.dotfiles/install/common/sfmono-font.sh" "${HOME}/.dotfiles"
+. "$HOME/.dotfiles/install/common/sfmono-font.sh"
 
-sudo "$HOME/.dotfiles/install/arch/sddm-theme.sh"
+sudo "$HOME/.dotfiles/install/arch/sddm-theme.sh" "${HOME}/.dotfiles"
 
 [[ -e "$HOME/.config/hypr" ]] && rm -rf ~/.config/hypr
 [[ -e "$HOME/.config/sway" ]] && rm -rf ~/.config/sway
