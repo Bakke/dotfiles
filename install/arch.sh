@@ -38,11 +38,11 @@ sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 sudo systemctl enable bluetooth.service
 
-echo "Do you want to install Composer? [y/n]"
-read COMPOSER
-if [ "$COMPOSER" = "y" ]; then
-    . "$HOME/.dotfiles/install/common/composer.sh"
-fi
+# echo "Do you want to install Composer? [y/n]"
+# read COMPOSER
+# if [ "$COMPOSER" = "y" ]; then
+#     . "$HOME/.dotfiles/install/common/composer.sh"
+# fi
 
 echo "Do you want to install Laravel Installer? [y/n]"
 read LARAVEL

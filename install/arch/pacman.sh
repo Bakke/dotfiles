@@ -64,6 +64,10 @@ apps=(
     otf-font-awesome
     papirus-icon-theme
 
+    # PHP
+    php
+    composer
+
     # Sound and media
     pipewire
     pipewire-pulse
