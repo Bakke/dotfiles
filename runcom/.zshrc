@@ -36,5 +36,6 @@ if whence zoxide >/dev/null; then
 fi
 
 if [[ -e "$NVM_DIR" ]]; then
-    source "${HOME}/.dotfiles/scripts/lazy-load-nvm.sh"
+    # source "${HOME}/.dotfiles/scripts/lazy-load-nvm.sh"
+    source /usr/share/nvm/init-nvm.sh
 fi

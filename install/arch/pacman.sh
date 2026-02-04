@@ -63,6 +63,7 @@ apps=(
     ttf-jetbrains-mono-nerd
     otf-font-awesome
     papirus-icon-theme
+    nvm
 
     # PHP
     php
