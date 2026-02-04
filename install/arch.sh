@@ -27,12 +27,12 @@ ln -sfv "$HOME/.dotfiles/config/alacritty/" "${HOME}/.config/alacritty"
 ln -sfv "$HOME/.dotfiles/config/sql-language-server/" "${HOME}/.config/sql-language-server"
 ln -sfv "$HOME/.dotfiles/config/mimeapps.list" "${HOME}/.config/mimeapps.list"
 
-if ! getent group docker > /dev/null 2>&1; then
-    sudo groupadd docker
-fi
-
-sudo usermod -aG docker $USER
-newgrp docker
+# if ! getent group docker > /dev/null 2>&1; then
+#     sudo groupadd docker
+# fi
+#
+# sudo usermod -aG docker $USER
+# newgrp docker
 
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
