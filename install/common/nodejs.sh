@@ -16,6 +16,7 @@ npm install --global yarn
 yarn config set prefix ~/.yarn
 
 yarn global add \
+    tree-sitter-cli \
     vscode-langservers-extracted \
     vscode-json-languageserver \
     bash-language-server \
