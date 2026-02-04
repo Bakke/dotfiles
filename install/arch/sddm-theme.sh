@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # This script should be run as sudo!
+DOTFILES_DIR="${1:-$HOME/.dotfiles}"
 THEME_SOURCE=https://github.com/stepanzubkov/where-is-my-sddm-theme.git
 THEME_DIR=where_is_my_sddm_theme
 SDDM_THEMES_DIR=/usr/share/sddm/themes
@@ -12,8 +13,8 @@ cp -rv .theme_temp/${THEME_DIR} $SDDM_THEMES_DIR || (echo -e "\e31;02mFailed to 
 rm -rf .theme_temp
 
 rm "${SDDM_THEMES_DIR}/${THEME_DIR}/theme.conf"
-cp "${HOME}/.dotfiles/config/sddm/theme.conf" "${SDDM_THEMES_DIR}/${THEME_DIR}/theme.conf"
-cp "${HOME}/.dotfiles/assets/wallpapers/forest.png" "${SDDM_THEMES_DIR}/${THEME_DIR}/forest.png"
+cp "${DOTFILES_DIR}/config/sddm/theme.conf" "${SDDM_THEMES_DIR}/${THEME_DIR}/theme.conf"
+cp "${DOTFILES_DIR}/assets/wallpapers/forest.png" "${SDDM_THEMES_DIR}/${THEME_DIR}/forest.png"
 
 echo -e "[Theme]\nCurrent=${THEME_DIR}" > ${SDDM_CONFIG_PATH} || (echo -e "\e[31;02mFailed to write to ${SDDM_CONFIG_PATH}.\e[0m" && exit 1)
 

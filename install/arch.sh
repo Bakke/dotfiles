@@ -6,7 +6,7 @@
 . "$HOME/.dotfiles/install/common/nodejs.sh"
 . "$HOME/.dotfiles/install/common/dotnet.sh"
 # . "$HOME/.dotfiles/install/common/vscode-php-debug.sh"
-. "$HOME/.dotfiles/install/common/sfmono-font.sh"
+. "$HOME/.dotfiles/install/common/sfmono-font.sh" "${HOME}/.dotfiles"
 
 sudo "$HOME/.dotfiles/install/arch/sddm-theme.sh"
 
