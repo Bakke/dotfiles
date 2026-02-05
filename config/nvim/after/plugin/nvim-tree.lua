@@ -30,4 +30,4 @@ require'nvim-tree'.setup({
     }
 })
 
-vim.keymap.set('n', '<C-i>', '<cmd>NvimTreeToggle<cr>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<C-i>', '<cmd>NvimTreeToggle<cr>', { noremap = true, silent = true })
