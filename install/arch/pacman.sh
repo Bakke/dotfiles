@@ -82,6 +82,7 @@ apps=(
     # Language servers (LSP)
     lua-language-server
 
+    hyprpolkitagent # Polkit agent for Hyprland
     exfatprogs # exFAT support
     usbutils # Usb utilities
     bolt # Thunderbolt 3 device manager
