@@ -64,6 +64,7 @@ apps=(
     otf-font-awesome
     papirus-icon-theme
     nvm
+    bc # vmrss dependency
 
     # PHP
     php
