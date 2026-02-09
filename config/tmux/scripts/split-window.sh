@@ -12,7 +12,7 @@ tmux send-keys C-l
 # fi
 
 if [[ ${START_COLUMNS} -ge 230 ]]; then
-    tmux resize-pane -R 35
+    tmux resize-pane -R 45
 else
     tmux resize-pane -R 20
 fi
