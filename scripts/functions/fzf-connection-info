@@ -6,4 +6,8 @@ if [ "x$pid" = "x" ]; then
     exit 1
 fi
 
-ps -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS -p $pid
+INFO=$(ps -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS -p $pid)
+INFO+="\n\n"
+INFO+=$(lsof -w -p $pid)
+
+echo -e "$INFO"
