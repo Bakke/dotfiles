@@ -41,7 +41,7 @@ fzf.setup({
         previewer = 'hidden',
     },
     blines = {
-        previewer = 'hidden',
+        -- previewer = 'hidden',
     },
 })
 
