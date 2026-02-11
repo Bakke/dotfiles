@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+baseCommand="ps aux"
+reloadCommand="${baseCommand} | sed 1d"
+resultRaw=$(eval ${baseCommand} ${resourceType})
+resourceList=$(echo "${resultRaw}" | sed 1d)
+headerText=$(echo "${resultRaw}" | head -1)
+labelText="Ctrl-T: Kill, Ctrl-X: Force Kill (sig 9), Ctrl-Y: Copy PID, Ctrl-I: Show process info"
+
+height="--height=100%"
+prompt="--prompt='${resourceType} > '"
+header="--header='${headerText}'"
+layout="--layout=reverse"
+label="--border-label='${labelText}'"
+preview="--preview-window=hidden --preview='lsof -w -p {2}'"
+togglePreviewBind="--bind='ctrl-i:toggle-preview'"
+copyBind="--bind='ctrl-y:execute(wl-copy {2})'"
+deleteBind="--bind='ctrl-t:execute(kill {2})+reload(${reloadCommand})'"
+forceDeleteBind="--bind='ctrl-x:execute(kill -9 {2})+reload(${reloadCommand})'"
+
+fzfOptions="${FZF_DEFAULT_OPTS} \
+    ${height} \
+    ${prompt} \
+    ${header} \
+    ${label} \
+    ${layout} \
+    ${preview} \
+    ${deleteBind} \
+    ${copyBind} \
+    ${forceDeleteBind} \
+    ${togglePreviewBind} \
+    --accept-nth 2 \
+    --nth=11
+"
+
+echo "${resourceList}" | eval "fzf ${fzfOptions}"
