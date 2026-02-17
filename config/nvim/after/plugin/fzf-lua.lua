@@ -4,6 +4,16 @@ vim.g.fzf_history_dir = '~/.local/share/fzf-history'
 
 fzf.setup({
     -- "hide",
+    previewers = {
+        builtin = {
+            extensions = {
+                ["png"] = { "ueberzugpp" },
+                ["svg"] = { "ueberzugpp" },
+                ["jpg"] = { "ueberzugpp" },
+                ["gif"] = { "ueberzugpp" },
+            },
+        },
+    },
     winopts = {
         height = 0.90,
         width = 0.90,
