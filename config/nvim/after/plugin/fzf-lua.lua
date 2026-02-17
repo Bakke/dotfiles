@@ -48,6 +48,7 @@ fzf.setup({
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<C-p>', fzf.files, opts)
 vim.keymap.set('n', '<C-f>', fzf.blines, opts)
+vim.keymap.set('n', '<leader>b', fzf.builtin, opts)
 vim.keymap.set('n', '<leader>r', fzf.grep_project, opts)
 vim.keymap.set('n', '<leader>h', fzf.command_history, opts)
 vim.keymap.set('n', '<leader>s', fzf.search_history, opts)
