@@ -24,6 +24,13 @@ copilot_chat.setup {
         tool = '🔧 Tool',
     },
 
+    mappings = {
+        close = {
+            normal = '<C-c>',
+            insert = '<C-c>',
+        },
+    },
+
     separator = '━━',
     auto_fold = true, -- Automatically folds non-assistant messages
 }
