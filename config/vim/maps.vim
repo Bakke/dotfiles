@@ -13,6 +13,11 @@ nnoremap <silent> <C-c> "+yiw
 nnoremap <silent> <leader>cf :let @+=expand("%:t")<CR>
 nnoremap <silent> <leader>cp :let @+=expand("%")<CR>
 
+nnoremap <C-i> <C-a>
+vnoremap <C-i> <C-a>
+snoremap <C-i> <C-a>
+xnoremap <C-i> <C-a>
+
 " Explore with Yazi
 nnoremap <leader>t <cmd>Yazi toggle<cr>
 
