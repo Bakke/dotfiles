@@ -8,6 +8,7 @@ prepend_keymap = [
 
     # Goto
     { on = [ "g", "p" ], run = 'cd ~/Pictures', desc = "Goto ~/Pictures" },
+    { on = [ "g", "r" ], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "Goto root of Git repository" },
 
     # Operation
     { on = "l", run  = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
