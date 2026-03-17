@@ -18,10 +18,5 @@ use = "macydnah/office"
 rev = "41ebef8"
 hash = "5805affd3ae8adcb3c72b6997d21c0a6"
 
-[[plugin.deps]]
-use = "yazi-rs/plugins:mime-ext"
-rev = "1962818"
-hash = "8b177921e50732b2c8e9d71aa5956270"
-
 [flavor]
 deps = []
