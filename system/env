@@ -18,6 +18,10 @@ else
     export GIT_EDITOR='vim'
 fi
 
+if [[ -e "${HOME}/.upcloud/token" ]]; then
+    export UPCLOUD_TOKEN="$(cat ${HOME}/.upcloud/token)"
+fi
+
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#82878B"
 
 # Set custom config path for cheat
