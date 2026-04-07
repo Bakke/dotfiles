@@ -18,6 +18,7 @@ local treesitter_languages = {
   'svelte',
   'sql',
   'csv',
+  'diff',
 }
 
 treesitter.install(treesitter_languages)
