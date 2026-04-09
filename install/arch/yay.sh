@@ -11,6 +11,7 @@ fi
 apps=(
     cheat
     sesh-bin
+    terraform-ls
 )
 
 fullApps=(

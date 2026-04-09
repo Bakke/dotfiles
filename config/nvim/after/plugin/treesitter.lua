@@ -19,6 +19,8 @@ local treesitter_languages = {
   'sql',
   'csv',
   'diff',
+  'hcl',
+  'terraform',
 }
 
 treesitter.install(treesitter_languages)

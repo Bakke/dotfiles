@@ -12,6 +12,7 @@ local servers = {
     'json-lsp',
     'yaml-language-server',
     'vtsls',
+    'terraformls',
     'vue-language-server',
     'twiggy-language-server',
     'csharp-language-server',
