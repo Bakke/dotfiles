@@ -8,7 +8,6 @@ autocmd FileType yaml,yml,json setlocal ts=2 sts=2 sw=2 expandtab
 " autocmd FileType vue setlocal commentstring=//%s
 
 autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
-autocmd BufRead,BufNewFile .env* if &ft == '' | setfiletype bash | endif
 
 augroup filetypedetect
 	autocmd FileType edifact,edi,EDIFACT,EDI setlocal filetype=edifact
