@@ -2,6 +2,7 @@
 LINUX_DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)
 
 export KUBECONFIG=$HOME/.kube/narnia.yaml
+#export KUBECONFIG=$HOME/.kube/upcloud.yaml
 
 # Finally we can source the dotfiles (order matters)
 for DOTFILE in "$HOME/.dotfiles"/system/{env,alias,function,prompt,keybind,completion}; do
@@ -18,6 +19,10 @@ if [ "${LINUX_DISTRO}" = "kali" ]; then
     for DOTFILE in "$HOME"/.dotfiles/system/{env,alias,function,prompt,keybind,completion}.arch; do
         [ -f "$DOTFILE" ] && . "$DOTFILE"
     done
+fi
+
+if [ -f "$HOME/.env.local" ]; then
+    source "$HOME/.env.local"
 fi
 
 [[ -f "${HOME}/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && source "${HOME}/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
