@@ -33,8 +33,12 @@ cmp.setup({
         -- completion = {
         --     border = true,
         -- },
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered()
+        completion = cmp.config.window.bordered({
+            zindex = 1001, -- Ensure completion window is above other UI elements
+        }),
+        documentation = cmp.config.window.bordered({
+            zindex = 1002, -- Ensure documentation window is above other UI elements
+        }),
     },
     -- formatting = {
     --     fields = {'menu', 'abbr', 'kind'}
