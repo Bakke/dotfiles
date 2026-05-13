@@ -1,6 +1,11 @@
 local ollama_url = os.getenv("OLLAMA_URL")
 
-local anthropic = {
+local claude_opus = {
+    name = "anthropic",
+    model = "claude-opus-4-7",
+}
+
+local claude_sonnet = {
     name = "anthropic",
     model = "claude-sonnet-4-6",
 }
@@ -9,6 +14,8 @@ local ollama = {
     name = "ollama",
     model = "llama3.1:8b",
 }
+
+local default_adapter = claude_sonnet
 
 require("codecompanion").setup({
     adapters = {
@@ -24,13 +31,13 @@ require("codecompanion").setup({
     },
     interactions = {
         chat = {
-            adapter = anthropic,
+            adapter = default_adapter,
         },
         inline = {
-            adapter = anthropic,
+            adapter = default_adapter,
         },
         cmd = {
-            adapter = anthropic,
+            adapter = default_adapter,
         },
         -- background = {
         --     adapter = {
