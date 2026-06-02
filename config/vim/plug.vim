@@ -38,6 +38,7 @@ if has("nvim")
     Plug 'github/copilot.vim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'olimorris/codecompanion.nvim', { 'tag': 'v19.*'}
+    Plug 'ravitemer/codecompanion-history.nvim'
     " Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'main' }
 
     Plug 'hrsh7th/nvim-cmp'
