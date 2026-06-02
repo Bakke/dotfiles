@@ -1,5 +1,3 @@
-local ollama_url = os.getenv("OLLAMA_URL")
-
 local claude_opus = {
     name = "anthropic",
     model = "claude-opus-4-7",
@@ -23,7 +21,7 @@ require("codecompanion").setup({
             ollama = function()
                 return require("codecompanion.adapters").extend("ollama", {
                     env = {
-                        url = ollama_url,
+                        url = vim.env.OLLAMA_URL,
                     },
                 })
             end,
