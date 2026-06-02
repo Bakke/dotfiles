@@ -47,11 +47,6 @@ cmp.setup({
         format = lspkind.cmp_format({
             mode = "symbol",
             preset = 'codicons',
-            menu = ({
-                path = "[Path]",
-                nvim_lsp = "[LSP]",
-                buffer = "[Buffer]",
-            })
         }),
     },
     completion = {
