@@ -46,6 +46,26 @@ require("codecompanion").setup({
         --     },
         -- },
     },
+    prompt_library = {
+        ['Branch code review'] = {
+            strategy = 'chat',
+            description = 'Perform a code review on the current branch',
+            opts = {
+                is_slash_command = true, -- Accessible via /review-branch in chat
+                short_name = "review-branch",
+            },
+            prompts = {
+                {
+                    role = 'user',
+                    content = function()
+                        local target = vim.fn.input('Target branch (default: master): ', 'master')
+                        -- Use git to get the diff between the current branch and the target
+                        return "Review these changes: " .. vim.fn.system('git diff ' .. target .. '..HEAD')
+                    end,
+                },
+            },
+        }
+    },
     extensions = {
         history = {
             enabled = true,
