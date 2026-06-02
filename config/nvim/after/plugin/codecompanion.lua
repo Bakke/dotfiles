@@ -1,11 +1,5 @@
-local claude_opus = {
-    name = "anthropic",
-    model = "claude-opus-4-7",
-}
-
-local claude_sonnet = {
-    name = "anthropic",
-    model = "claude-sonnet-4-6",
+local claude_code = {
+    name = "claude_code",
 }
 
 local ollama = {
@@ -13,7 +7,7 @@ local ollama = {
     model = "llama3.1:8b",
 }
 
-local default_adapter = claude_sonnet
+local default_adapter = claude_code
 
 require("codecompanion").setup({
     adapters = {
@@ -25,7 +19,16 @@ require("codecompanion").setup({
                     },
                 })
             end,
-        }
+        },
+        acp = {
+            claude_code = function()
+                return require("codecompanion.adapters").extend("claude_code", {
+                    env = {
+                        CLAUDE_CODE_OAUTH_TOKEN = vim.env.CLAUDE_CODE_OAUTH_TOKEN,
+                    },
+                })
+            end,
+        },
     },
     interactions = {
         chat = {
@@ -36,6 +39,21 @@ require("codecompanion").setup({
         },
         cmd = {
             adapter = default_adapter,
+        },
+        cli = {
+            agent = "claude_code",
+            agents = {
+                claude_code = {
+                    cmd = "claude",
+                    args = {},
+                    description = "Claude Code CLI",
+                    provider = "terminal",
+                },
+            },
+            opts = {
+                auto_insert = true, -- Enter insert mode when focusing the CLI terminal
+                reload = true, -- Reload buffers when an agent modifies files on disk
+            },
         },
         -- background = {
         --     adapter = {

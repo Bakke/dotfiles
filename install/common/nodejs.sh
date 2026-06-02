@@ -29,4 +29,5 @@ yarn global add \
     twiggy-language-server \
     vim-language-server \
     @vtsls/language-server \
-    @vue/language-server 
+    @vue/language-server \
+    @agentclientprotocol/claude-agent-acp

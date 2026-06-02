@@ -16,6 +16,7 @@ apps=(
 
 fullApps=(
     1password
+    claude-code
     arc-gtk-theme
 )
 
