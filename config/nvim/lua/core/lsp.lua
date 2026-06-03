@@ -18,12 +18,6 @@ local servers = {
     'csharp-language-server',
 }
 
--- Setup Mason
--- require("mason").setup({})
-
--- Ensure that the servers are installed
--- require('mason-tool-installer').setup({ ensure_installed = servers })
-
 -- Enable servers
 vim.lsp.enable(servers)
 
