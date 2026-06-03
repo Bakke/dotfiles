@@ -17,7 +17,6 @@ Plug 'Fymyte/rasi.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'kristijanhusak/vim-dadbod-completion'
 
 if has("nvim")
     Plug 'ibhagwan/fzf-lua'

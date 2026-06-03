@@ -14,9 +14,6 @@ augroup filetypedetect
 	autocmd FileType edifact,edi,EDIFACT,EDI setlocal filetype=edifact
 augroup END
 
-" Enable autocompletion for DBUI 
-autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
-
 " Skeleton files
 autocmd BufNewFile *.sh 0r ~/.dotfiles/config/vim/skeletons/bash.sh
 autocmd BufNewFile *.php 0r ~/.dotfiles/config/vim/skeletons/php.php
