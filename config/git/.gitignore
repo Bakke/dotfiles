@@ -4,5 +4,7 @@
 *.edi
 composer.phar
 /tags*
+/todo.txt
+/todo.md
 
 **/.claude/settings.local.json
