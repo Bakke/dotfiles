@@ -4,3 +4,5 @@
 *.edi
 composer.phar
 /tags*
+
+**/.claude/settings.local.json
