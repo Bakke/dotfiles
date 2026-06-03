@@ -39,7 +39,8 @@ map <silent> <leader>gg :Git log --oneline<CR>
 map <silent> <leader>w <M-h> ZZ <M-j> <Enter> <M-j>
 
 " Toggle DBUI
-map <silent> <leader>d :DBUIToggle<CR>
+" map <silent> <leader>d :DBUIToggle<CR>
+noremap <leader>q :%DB<CR>
 
 "fix search - normal regex can be used in searching
 nnoremap / /\v

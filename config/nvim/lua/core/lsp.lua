@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
         vim.keymap.set('n', 'gk', vim.diagnostic.goto_prev, bufopts)
         vim.keymap.set('n', 'gj', vim.diagnostic.goto_next, bufopts)
-        vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, bufopts)
+        -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, bufopts)
 
         -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
         -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
