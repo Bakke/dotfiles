@@ -21,6 +21,8 @@ local treesitter_languages = {
   'diff',
   'hcl',
   'terraform',
+  'markdown',
+  'markdown_inline',
 }
 
 treesitter.install(treesitter_languages)
