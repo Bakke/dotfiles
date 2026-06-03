@@ -12,6 +12,7 @@ apps=(
     cheat
     sesh-bin
     terraform-ls
+    postgres-language-server-bin
 )
 
 fullApps=(

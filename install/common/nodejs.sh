@@ -24,10 +24,11 @@ yarn global add \
     intelephense \
     pyright \
     svelte-language-server \
-    sql-language-server \
+    # sql-language-server \
     yaml-language-server \
     twiggy-language-server \
     vim-language-server \
     @vtsls/language-server \
     @vue/language-server \
+    # @postgres-language-server/cli \
     @agentclientprotocol/claude-agent-acp
