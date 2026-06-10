@@ -55,3 +55,81 @@ function y() {
 function follow_redirect() {
     curl -s -L -D - $1 -o /dev/null -w '%{url_effective}'
 }
+
+function rebase_branches() {
+    local INITIAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    local EXCLUDE_BRANCHES="master|main|develop|dev|staging|production"
+    local DEFAULT_BRANCH=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+
+    # Define color variables
+    RED='\033[0;31m'
+    GREEN='\033[0;32m'
+    YELLOW='\033[0;33m'
+    BLUE='\033[0;34m'
+    CYAN='\033[0;36m'
+    NC='\033[0m' # No Color (Reset)
+
+    if [ $(git status --porcelain | wc -l) -ne "0" ]; then
+        echo "❌Please commit your changes or stash them rebasing other branches."
+        return 1
+    fi
+
+    echo "\n==========================================\n"
+    echo -e "${GREEN}⏬Fetching latest changes from remote...${NC}"
+
+    git fetch origin "${DEFAULT_BRANCH}" --verbose
+
+    if [ $? -ne 0 ]; then
+        echo "❌Could not fetch changes from remote!" >&2
+        return 1
+    fi
+
+
+    # Extract only the short names of local branches
+    while read -r branch; do
+        if [[ "${branch}" =~ ${EXCLUDE_BRANCHES} ]]; then
+            continue
+        fi
+
+        echo "\n==========================================\n"
+
+        echo -e "${CYAN}🔄 Switching to branch ${branch}${NC}\n"
+
+        git checkout "$branch" 
+
+        if [ $? -ne 0 ]; then
+            echo "" # Just spacing
+            echo "❌Could not switch to branch ${branch}" >&2
+            return 1
+        fi
+
+        echo "" # Just spacing
+
+        remote_branch="origin/${branch}"
+        local_hash=$(git rev-parse "refs/heads/$branch")
+        remote_hash=$(git rev-parse "refs/remotes/$remote_branch")
+
+        if [[ "$local_hash" != "$remote_hash" ]]; then
+            echo "⚠️Local branch ${branch} is not up to date with ${remote_branch}. Skipping rebase to avoid potential conflicts.\n"
+            continue
+        fi
+
+        # Insert stuff here
+        git rebase "origin/${DEFAULT_BRANCH}"
+
+        if [ $? -ne 0 ]; then
+            echo "" # Just spacing
+            echo "${RED}❌Could not automatically rebase ${branch}!${NC}\n"
+            return 1
+        fi
+
+        echo "" # Just spacing
+
+        git push --force
+    done < <(git for-each-ref --format='%(refname:short)' refs/heads/)
+
+    # Return to the original starting branch
+    git checkout "${INITIAL_BRANCH}" --quiet
+    echo "\n==========================================\n"
+    echo "🚀 ${GREEN}Completed! Returned to ${INITIAL_BRANCH}.${NC}\n"
+}
