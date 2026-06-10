@@ -24,8 +24,8 @@ function _user_host() {
 # Outputs current branch info in prompt format
 function git_prompt_info() {
 	local ref
-	ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-	ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+	ref=$(command git symbolic-ref HEAD 2> /dev/null) || ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+    ref=$(echo $ref | sed -E 's/(.{35}).*/\1.../')
 	echo "$GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$GIT_PROMPT_SUFFIX"
 }
 
@@ -49,7 +49,7 @@ function right_prompt() {
 }
 
 function left_prompt() {
-echo "$(_user_host) ${_current_dir} $(git_prompt_info) \n# "
+    echo "$(_user_host) ${_current_dir} $(git_prompt_info) \n# "
 }
 
 export PROMPT='$(left_prompt)'
