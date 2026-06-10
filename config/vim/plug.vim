@@ -20,7 +20,8 @@ Plug 'tpope/vim-dadbod'
 
 if has("nvim")
     Plug 'ibhagwan/fzf-lua'
-    Plug 'numToStr/Comment.nvim'
+    " Plug 'numToStr/Comment.nvim'
+    Plug 'nvim-mini/mini.comment'
     Plug 'windwp/nvim-autopairs'
     Plug 'windwp/nvim-ts-autotag'
     Plug 'MeanderingProgrammer/render-markdown.nvim'
