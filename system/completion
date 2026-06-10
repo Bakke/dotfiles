@@ -4,11 +4,26 @@
 
 # Use modern completion system
 autoload -Uz compinit
-compinit
 
-if [[ $(command -v kubectl) ]]; then
-    source <(kubectl completion zsh)
+if [[ -n ~/.zcompdump(#qNmh-24) ]]; then
+    compinit -C
+else
+    compinit
 fi
+
+# if [[ $(command -v kubectl) ]]; then
+#     source <(kubectl completion zsh)
+# fi
+
+kubectl() {
+    command kubectl "$@"
+    local ret=$?
+    if [[ -z $KUBECTL_COMPLETE ]]; then
+        source <(command kubectl completion zsh)
+        KUBECTL_COMPLETE=1
+    fi
+    return $ret
+}
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'

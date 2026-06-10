@@ -10,7 +10,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Set editor and git editor
-if [[ -e $(which nvim) ]]; then
+# if [[ -e $(which nvim) ]]; then
+if (( $+commands[nvim] )); then
     export EDITOR='nvim'
     export GIT_EDITOR='nvim'
 else
@@ -39,9 +40,11 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 
 setopt histignorealldups sharehistory
 
-if type fd &> /dev/null; then
+# if type fd &> /dev/null; then
+if (( $+commands[fd] )); then
     export FZF_DEFAULT_COMMAND="fd --files --no-ignore-vcs --hidden --exclude .git --exclude node_modules . --exclude /plugins/* ."
-elif type rg &> /dev/null; then
+# elif type rg &> /dev/null; then
+elif (( $+commands[rg] )); then
     export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --hidden -g '!.git/*' -g '!*node_modules/*' . -g '!/plugins/*' ."
 fi
 

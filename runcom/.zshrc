@@ -32,15 +32,24 @@ fi
 # Clean up
 unset SCRIPT_PATH DOTFILE
 
-if whence fzf >/dev/null; then
+# if whence fzf >/dev/null; then
+if (( $+commands[fzf] )); then
     source <(fzf --zsh)
 fi
 
-if whence zoxide >/dev/null; then
+# if whence zoxide >/dev/null; then
+if (( $+commands[zoxide] )); then
     eval "$(zoxide init zsh)"
 fi
 
 if [[ -e "$NVM_DIR" ]]; then
     # source "${HOME}/.dotfiles/scripts/lazy-load-nvm.sh"
-    source /usr/share/nvm/init-nvm.sh
+    # source /usr/share/nvm/init-nvm.sh
+
+    nvm() {
+        unset -f nvm
+        [ -s "/usr/share/nvm/nvm.sh" ] && \. "/usr/share/nvm/nvm.sh" --no-use
+        [ -s "/usr/share/nvm/bash_completion" ] && \. "/usr/share/nvm/bash_completion"
+        nvm "$@"
+    }
 fi
