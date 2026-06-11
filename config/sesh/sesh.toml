@@ -1,14 +1,19 @@
 [[session]]
 name = "API"
 path = "~/projects/ncl-api"
-startup_command = "~/.dotfiles/config/tmux/scripts/split-window.sh"
+startup_command = "~/.dotfiles/config/tmux/scripts/open-laravel-project.sh"
 
 [[session]]
 name = "Synergy"
 path = "~/projects/synergy-spa"
-startup_command = "~/.dotfiles/config/tmux/scripts/split-window.sh"
+startup_command = "~/.dotfiles/config/tmux/scripts/open-vue-project.sh"
+
+[[session]]
+name = "eSea"
+path = "~/projects/esea-v2"
+startup_command = "~/.dotfiles/config/tmux/scripts/open-vite-project.sh"
 
 [[session]]
 name = "Dotfiles"
 path = "~/.dotfiles"
-startup_command = "~/.dotfiles/config/tmux/scripts/split-window.sh"
+startup_command = "~/.dotfiles/config/tmux/scripts/split-window-vim.sh"
