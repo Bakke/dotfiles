@@ -79,6 +79,16 @@ map("i", "<leader>iu", function()
     vim.cmd("startinsert")
 end, { desc = "Insert UUID" })
 
+local function insert_timestamp()
+    local timestamp = os.date("!%Y-%m-%d %H:%M:%S")
+    vim.api.nvim_put({ timestamp }, "c", true, true)
+end
+map("n", "<leader>it", insert_timestamp, { desc = "Insert timestamp" })
+map("i", "<leader>it", function()
+    insert_timestamp()
+    vim.cmd("startinsert")
+end, { desc = "Insert timestamp" })
+
 -- Resize splits with Alt + arrow keys
 map("n", "<M-Up>", "<cmd>resize +2<cr>", silent)
 map("n", "<M-Down>", "<cmd>resize -2<cr>", silent)
