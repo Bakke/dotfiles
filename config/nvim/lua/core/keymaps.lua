@@ -19,10 +19,6 @@ map("n", "<C-c>", '"+yiw', silent)
 map("n", "<leader>cf", function() vim.fn.setreg("+", vim.fn.expand("%:t")) end, { desc = "Copy filename" })
 map("n", "<leader>cp", function() vim.fn.setreg("+", vim.fn.expand("%")) end, { desc = "Copy file path" })
 
--- Use <C-i> to increment numbers (note: native `g<C-a>` makes sequences in
--- visual mode, replacing the old vim-visual-increment script).
-map({ "n", "v", "s", "x" }, "<C-i>", "<C-a>")
-
 -- In the command-line popup menu, navigate with <C-j>/<C-k>
 if vim.tbl_contains(vim.opt.wildoptions:get(), "pum") then
     map("c", "<C-k>", function() return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>" end, { expr = true })

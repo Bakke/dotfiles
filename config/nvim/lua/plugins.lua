@@ -13,6 +13,7 @@ return {
     "tpope/vim-surround",              -- Add/change/delete surrounding pairs
     "tpope/vim-abolish",               -- Smart substitution and case coercion
     "wellle/targets.vim",              -- Extra text objects
+    "monaqa/dial.nvim",                -- Increment/decrement with various "augends" (config: after/plugin/dial.lua)
 
     "junegunn/vim-easy-align", -- Align text on a delimiter (maps: after/plugin/easy-align.lua)
     "mattn/emmet-vim",         -- HTML/CSS abbreviation expansion (maps: after/plugin/emmet.lua)
