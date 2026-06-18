@@ -28,7 +28,8 @@ return {
     -----------------------------------------------------------------------
     -- Git
     -----------------------------------------------------------------------
-    "tpope/vim-fugitive", -- Git wrapper (maps: after/plugin/fugitive.lua)
+    "sindrets/diffview.nvim", -- Git diff viewer (config: after/plugin/diffview.lua)
+    "tpope/vim-fugitive",     -- Git wrapper (maps: after/plugin/fugitive.lua)
 
     -----------------------------------------------------------------------
     -- Database
