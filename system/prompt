@@ -45,11 +45,12 @@ function parse_git_dirty() {
 }
 
 function right_prompt() {
-	echo ""
+    echo ""
 }
 
 function left_prompt() {
-    echo "$(_user_host) ${_current_dir} $(git_prompt_info) \n# "
+    # echo "$(_user_host) ${_current_dir} $(git_prompt_info) \n# "
+    echo "$(_user_host) ${_current_dir} \n# "
 }
 
 export PROMPT='$(left_prompt)'

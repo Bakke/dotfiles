@@ -11,6 +11,7 @@ fi
 apps=(
     cheat
     sesh-bin
+    gitmux-bin
     terraform-ls
     postgres-language-server-bin
 )
