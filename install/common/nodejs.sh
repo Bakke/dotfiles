@@ -11,7 +11,7 @@ elif [ "$FISH_VERSION" ]; then # bash
 fi
 
 nvm install --lts node
-npm install --global yarn
+# npm install --global yarn
 
 yarn config set prefix ~/.yarn
 
