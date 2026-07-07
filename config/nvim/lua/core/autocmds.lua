@@ -51,18 +51,6 @@ autocmd("FileType", {
     end,
 })
 
--- Skeleton files for new buffers
-autocmd("BufNewFile", {
-    group = augroup,
-    pattern = "*.sh",
-    command = "0r ~/.dotfiles/config/vim/skeletons/bash.sh",
-})
-autocmd("BufNewFile", {
-    group = augroup,
-    pattern = "*.php",
-    command = "0r ~/.dotfiles/config/vim/skeletons/php.php",
-})
-
 -- In fugitive buffers, jump to the next/previous hunk with <C-j>/<C-k>
 autocmd("FileType", {
     group = augroup,
