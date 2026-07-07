@@ -4,6 +4,15 @@ vim.g.fzf_history_dir = '~/.local/share/fzf-history'
 
 fzf.setup({
     -- "hide",
+    defaults = {
+        actions = {
+            ["enter"] = actions.file_edit,
+        },
+        hidden = true,
+        noignore = true,
+        rg_opts = [[--color=never --hidden --no-ignore --files -g "!.git" -g "!node_modules" -g "!^plugins"]],
+        fd_opts = [[--color=never --hidden --no-ignore --type f --type l --exclude .git --exclude node_modules --exclude /plugins/*]],
+    },
     previewers = {
         builtin = {
             extensions = {
@@ -24,15 +33,6 @@ fzf.setup({
     },
     fzf_opts = {
         -- ["--layout"] = false,
-    },
-    files = {
-        actions = {
-            ["enter"] = actions.file_edit,
-        },
-        hidden = true,
-        noignore = true,
-        rg_opts = [[--color=never --hidden --no-ignore --files -g "!.git" -g "!node_modules" -g "!^plugins"]],
-        fd_opts = [[--color=never --hidden --no-ignore --type f --type l --exclude .git --exclude node_modules --exclude /plugins/*]],
     },
     git = {
         commits = {
