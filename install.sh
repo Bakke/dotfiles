@@ -17,7 +17,6 @@ fi
 # Bunch of symlinks
 ln -sfv "$HOME/.dotfiles/runcom/.zshrc" ~/.zshrc
 ln -sfv "$HOME/.dotfiles/runcom/.inputrc" ~/.inputrc
-ln -sfv "$HOME/.dotfiles/config/vim/.vimrc" ~/.vimrc
 ln -sfv "$HOME/.dotfiles/config/git/.gitconfig" ~/.gitconfig
 ln -sfv "$HOME/.dotfiles/scripts/functions/" ~/.local/bin/functions
 ln -sfv "$HOME/.dotfiles/config/nvim/" ~/.config/nvim
