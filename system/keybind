@@ -15,3 +15,4 @@ bindkey '^[[A' history-substring-search-up # Arrow up
 bindkey '^[[B' history-substring-search-down # Arrow down
 
 bindkey '^Z' undo
+bindkey ' ' magic-space
