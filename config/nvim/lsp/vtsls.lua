@@ -8,7 +8,15 @@ local vue_plugin = {
 
 return {
     cmd = { 'vtsls', '--stdio' },
-    root_markers = { 'tsconfig.json', 'package.json', 'jsconfig.json', '.git' },
+    root_dir = function(bufnr, on_dir)
+        local name = vim.api.nvim_buf_get_name(bufnr)
+        -- Skip virtual buffers (`fugitive://` git blobs, `oil://`, `diffview://`, …):
+        -- `tsserver` cannot resolve them.
+        if name == '' or name:match('^%w[%w+.-]*://') then
+            return
+        end
+        on_dir(vim.fs.root(bufnr, { 'tsconfig.json', 'package.json', 'jsconfig.json', '.git' }))
+    end,
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     settings = {
         vtsls = {
