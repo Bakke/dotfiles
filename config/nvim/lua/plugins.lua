@@ -78,6 +78,7 @@ return {
         "nvim-tree/nvim-tree.lua",  -- File explorer (config: after/plugin/nvim-tree.lua)
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
+    "numtostr/fterm.nvim", -- Floating terminal (maps: after/plugin/fterm.lua)
     "mikavilpas/yazi.nvim", -- Yazi file manager integration (maps: after/plugin/yazi.lua)
     "nvim-lualine/lualine.nvim",   -- Statusline (config: after/plugin/lualine.lua)
     {
