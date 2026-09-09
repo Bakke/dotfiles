@@ -14,6 +14,10 @@ registrar() {
     fi
 }
 
+function rgp() {
+    rg "$@" ~/projects/ -g '!node_modules' -g '!.git' -g '!dist' -g '!build' -g '!tmp'
+}
+
 t() {
     session_name=$@
     number_of_tmux_sessions=$(tmux ls | wc -l)
