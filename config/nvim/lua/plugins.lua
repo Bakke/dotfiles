@@ -79,7 +79,12 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     "numtostr/fterm.nvim", -- Floating terminal (maps: after/plugin/fterm.lua)
-    "mikavilpas/yazi.nvim", -- Yazi file manager integration (maps: after/plugin/yazi.lua)
+    {
+        "mikavilpas/yazi.nvim", -- Yazi file manager integration (maps: after/plugin/yazi.lua)
+        dependencies = {
+            { "nvim-lua/plenary.nvim", lazy = true },
+        },
+    },
     "nvim-lualine/lualine.nvim",   -- Statusline (config: after/plugin/lualine.lua)
     {
         "akinsho/bufferline.nvim",  -- Buffer/tab line (config: after/plugin/bufferline.lua)
@@ -157,14 +162,5 @@ return {
                 "~/projects/synergy-spa",
             }
         end,
-    },
-    "nvim-lua/plenary.nvim",
-    {
-        "olimorris/codecompanion.nvim", -- Config: after/plugin/codecompanion.lua
-        version = "v19.*",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "ravitemer/codecompanion-history.nvim",
-        },
     },
 }
