@@ -157,10 +157,6 @@ return {
                 ["*.env.*"] = false,
                 ["*.env"] = false,
             }
-            vim.g.copilot_workspace_folders = {
-                "~/projects/ncl-api",
-                "~/projects/synergy-spa",
-            }
         end,
     },
 }
