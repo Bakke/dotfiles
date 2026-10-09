@@ -38,7 +38,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/bin/functions"
 export PATH="$PATH:$HOME/.dotnet/tools"
 
-setopt histignorealldups sharehistory
+setopt histignorealldups sharehistory extendedhistory
 
 # if type fd &> /dev/null; then
 if (( $+commands[fd] )); then
