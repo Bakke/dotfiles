@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync Claude Code sessions and zsh history through the Filen mount
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/filen-sync
+Nice=10
+IOSchedulingClass=idle
+TimeoutStartSec=20min

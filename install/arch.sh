@@ -60,3 +60,9 @@ read WORDLISTS
 if [ "$WORDLISTS" = "y" ]; then
     . "$HOME/.dotfiles/install/common/wordlists.sh"
 fi
+
+echo "Do you want to set up Filen sync (Claude Code sessions, zsh history)? [y/N]"
+read CLAUDE_SYNC
+if [ "$CLAUDE_SYNC" = "y" ]; then
+    "$HOME/.dotfiles/install/common/filen-sync.sh"
+fi

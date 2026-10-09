@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodic sync through the Filen mount
+
+[Timer]
+OnStartupSec=1min
+OnUnitActiveSec=2min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

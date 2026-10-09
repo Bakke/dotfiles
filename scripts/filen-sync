@@ -1,0 +1,232 @@
+#!/usr/bin/env bash
+# filen-sync: two-way sync of per-machine state between machines through a
+# Filen mount. Safe to run when the mount is absent: it just exits.
+#
+# Layout on Filen:  <mount>/sync/<module>/hosts/<host-id>/...
+# Each host mirrors its own data into its own folder and pulls from every other
+# host's folder. Modules:
+#   claude  ~/.claude/{projects,file-history}: newest file wins, missing files
+#           are created. history.jsonl: union, ordered by timestamp.
+#   zsh     ~/.zsh_history (needs EXTENDED_HISTORY): union of all hosts, minus
+#           what any host deleted since the previous run, ordered by timestamp,
+#           capped to SAVEHIST entries.
+#
+# Usage: filen-sync [--now] [module...]      (--now skips the throttle)
+set -euo pipefail
+
+# ---- configuration -----------------------------------------------------------
+FILEN_MOUNT="${FILEN_SYNC_MOUNT:-$HOME/Filen}"
+MIN_INTERVAL="${FILEN_SYNC_MIN_INTERVAL:-60}"   # seconds between syncs; a kick inside the window waits, it is not dropped
+CONF="${XDG_CONFIG_HOME:-$HOME/.config}/filen-sync.conf"
+[ -f "$CONF" ] && . "$CONF"
+HOST_ID="${FILEN_SYNC_HOST_ID:-$(hostname)-$(cut -c1-6 /etc/machine-id)}"
+MODULES="${FILEN_SYNC_MODULES:-claude zsh}"
+
+SYNC_ROOT="${FILEN_SYNC_ROOT:-$FILEN_MOUNT/sync}"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/filen-sync"
+RSYNC_OPTS=(-t --no-perms --no-owner --no-group)
+RSYNC_TREE_OPTS=("${RSYNC_OPTS[@]}" -rO --modify-window=2 --exclude='*.tmp' --exclude='.*.swp')
+
+CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+CLAUDE_TREES=(projects file-history)
+
+ZSH_HISTFILE="${FILEN_SYNC_ZSH_HISTFILE:-$HOME/.zsh_history}"
+# entries to keep; follows SAVEHIST in the dotfiles zsh env so the sync and zsh agree on what is old
+ZSH_KEEP="${FILEN_SYNC_ZSH_KEEP:-$(sed -n 's/^SAVEHIST=\([0-9]*\).*/\1/p' "$HOME/.dotfiles/system/env" 2>/dev/null | tail -1)}"
+ZSH_KEEP="${ZSH_KEEP:-10000}"
+
+# ---- helpers -----------------------------------------------------------------
+log() { printf '%s %s\n' "$(date '+%F %T')" "$*"; }
+
+# other_hosts <module>: folders of every other host for a module, one per line
+other_hosts() {
+    local h
+    for h in "$SYNC_ROOT/$1/hosts"/*/; do
+        h="${h%/}"
+        [ -d "$h" ] && [ "$(basename "$h")" != "$HOST_ID" ] && printf '%s\n' "$h"
+    done
+}
+
+# own_dir <module>: this host's folder for a module, created
+own_dir() { local d="$SYNC_ROOT/$1/hosts/$HOST_ID"; mkdir -p "$d"; printf '%s\n' "$d"; }
+
+# mid_write <file>: true if the last entry is not finished (no final newline, or a line continued with a backslash)
+mid_write() {
+    [ -s "$1" ] && { [ -n "$(tail -c1 "$1")" ] || [ "$(tail -c2 "$1")" = '\' ]; }
+}
+
+# complete_lines <file>: the file without a last line that has no newline yet
+complete_lines() {
+    [ -f "$1" ] || return 0
+    if [ -n "$(tail -c1 "$1")" ]; then head -n -1 "$1"; else cat "$1"; fi
+}
+
+# write_if_changed <label> <out>: stdin becomes <out> (mode 600, atomic) unless it is already identical
+write_if_changed() {
+    local label=$1 out=$2 tmp before=0
+    tmp=$(mktemp "$(dirname "$out")/.$(basename "$out").XXXXXX")
+    cat > "$tmp"
+    chmod 600 "$tmp"
+    if [ -f "$out" ] && cmp -s "$tmp" "$out"; then
+        rm -f "$tmp"
+    else
+        [ -f "$out" ] && before=$(grep -c '' "$out")
+        mv -f "$tmp" "$out"
+        log "$label: $(basename "$out") rewritten ($before -> $(grep -c '' "$out") lines)"
+    fi
+}
+
+# sort_entries: stdin "<timestamp>\t<seq>\t<entry>" -> entries by timestamp, then input order
+sort_entries() { sort -t $'\t' -k1,1n -k2,2n | cut -f3-; }
+
+# ---- claude ------------------------------------------------------------------
+sync_claude() {
+    local own h d others
+    own=$(own_dir claude)
+    mapfile -t others < <(other_hosts claude)
+    for d in "${CLAUDE_TREES[@]}"; do mkdir -p "$CLAUDE_DIR/$d"; done
+
+    for h in "${others[@]}"; do
+        for d in "${CLAUDE_TREES[@]}"; do
+            [ -d "$h/$d" ] || continue
+            log "claude: pull $d from $(basename "$h")"
+            timeout 900 rsync "${RSYNC_TREE_OPTS[@]}" --update "$h/$d/" "$CLAUDE_DIR/$d/"
+        done
+    done
+
+    if mid_write "$CLAUDE_DIR/history.jsonl"; then
+        log "claude: history.jsonl is mid-write, merging next run"
+    else
+        claude_merge_history "$CLAUDE_DIR/history.jsonl" "${others[@]/%//history.jsonl}" \
+            | write_if_changed claude "$CLAUDE_DIR/history.jsonl"
+    fi
+
+    for d in "${CLAUDE_TREES[@]}"; do
+        log "claude: push $d"
+        timeout 900 rsync "${RSYNC_TREE_OPTS[@]}" --delete "$CLAUDE_DIR/$d/" "$own/$d/"
+    done
+    [ -f "$CLAUDE_DIR/history.jsonl" ] && rsync "${RSYNC_OPTS[@]}" "$CLAUDE_DIR/history.jsonl" "$own/history.jsonl"
+    date '+%F %T' > "$own/last-sync"
+}
+
+# claude_merge_history <file>...: union of the files, deduplicated, ordered by timestamp
+claude_merge_history() {
+    local f
+    for f in "$@"; do complete_lines "$f"; done \
+        | awk -v OFS='\t' '
+            /^\{.*"timestamp":[0-9]+.*\}$/ && !seen[$0]++ {
+                ts = $0; sub(/.*"timestamp":/, "", ts); sub(/[^0-9].*/, "", ts)
+                print ts, NR, $0
+            }' \
+        | sort_entries
+}
+
+# ---- zsh ---------------------------------------------------------------------
+# History entries look like ": <epoch>:<duration>;<command>"; a line ending in a
+# backslash continues into the next. Entries without a timestamp (written before
+# EXTENDED_HISTORY was on) sort first, in file order.
+#
+# A copy of each file as last seen is kept in $STATE_DIR/zsh. An entry that was
+# in a host's file last time and is gone now was deleted there (zsh trimming
+# the file counts), and is dropped from the merge everywhere.
+sync_zsh() {
+    local own st h name f others
+    own=$(own_dir zsh)
+    st="$STATE_DIR/zsh"; mkdir -p "$st"
+    mapfile -t others < <(other_hosts zsh)
+
+    local sources=()                                 # name old new, per host
+    for h in "${others[@]}"; do
+        name=$(basename "$h")
+        [ -s "$h/zsh_history" ] || continue          # absent or empty mirror: leave that host out of this run
+        cp "$h/zsh_history" "$st/$name.new"          # read the mount once; this copy becomes the snapshot
+        sources+=("$name" "$st/$name.last" "$st/$name.new")
+    done
+
+    if [ "${#sources[@]}" -eq 0 ]; then
+        :                                            # nothing to merge with
+    elif mid_write "$ZSH_HISTFILE"; then
+        log "zsh: local history is mid-write, retrying next run"
+        rm -f "$st"/*.new
+    else
+        zsh_merge_history local "$st/local.last" "$ZSH_HISTFILE" "${sources[@]}" \
+            | write_if_changed zsh "$ZSH_HISTFILE"
+        for f in "$st"/*.new; do mv -f "$f" "${f%.new}.last"; done
+        cp "$ZSH_HISTFILE" "$st/local.last"
+    fi
+
+    [ -f "$ZSH_HISTFILE" ] && rsync "${RSYNC_OPTS[@]}" "$ZSH_HISTFILE" "$own/zsh_history"
+    date '+%F %T' > "$own/last-sync"
+}
+
+# zsh_merge_history <name> <old> <new>...: union of every <new> minus entries missing
+# from a <new> that were in its <old>, deduplicated, ordered by timestamp, newest $ZSH_KEEP
+zsh_merge_history() {
+    while [ $# -ge 3 ]; do
+        printf '\036old %s\n' "$1"; complete_lines "$2"
+        printf '\036new %s\n' "$1"; complete_lines "$3"
+        shift 3
+    done | awk -v OFS='\t' '
+        function flush() {
+            if (cur == "") return
+            if (cur !~ /\\$/) {                              # an entry still waiting for its next line is dropped
+                if (mode == "old") old[src, cur] = 1
+                else if (!((src, cur) in new)) {
+                    new[src, cur] = 1
+                    if (!(cur in ts)) {
+                        entry[n++] = cur; ts[cur] = 0
+                        if (cur ~ /^: [0-9]+:[0-9]+;/) { t = substr(cur, 3); sub(/:.*/, "", t); ts[cur] = t }
+                    }
+                }
+            }
+            cur = ""
+        }
+        /^\036/                   { flush(); mode = substr($1, 2); src = $2; next }
+        /^: [0-9]+:[0-9]+;/       { flush(); cur = $0; next }
+        cur != "" && cur ~ /\\$/  { cur = cur "\n" $0; next }
+                                  { flush(); cur = $0 }
+        END {
+            flush()
+            for (k in old) if (!(k in new)) { split(k, p, SUBSEP); deleted[p[2]] = 1 }
+            for (i = 0; i < n; i++) {
+                e = entry[i]
+                if (e in deleted) continue
+                gsub(/\n/, "\001", e)                          # one line per entry for sort
+                print ts[entry[i]], i, e
+            }
+        }' \
+        | sort_entries | tail -n "$ZSH_KEEP" | tr '\001' '\n'
+}
+
+# ---- main --------------------------------------------------------------------
+args=()
+for a in "$@"; do
+    case "$a" in
+        --now) MIN_INTERVAL=0 ;;
+        *) args+=("$a") ;;
+    esac
+done
+[ "${#args[@]}" -gt 0 ] && MODULES="${args[*]}"
+
+mkdir -p "$STATE_DIR"
+exec 9>"$STATE_DIR/lock"
+if ! flock -n 9; then log "another sync is running, skipping"; exit 0; fi
+
+stamp="$STATE_DIR/last-sync"
+if [ -f "$stamp" ] && [ "$MIN_INTERVAL" -gt 0 ]; then
+    age=$(( $(date +%s) - $(stat -c %Y "$stamp") ))
+    [ "$age" -lt "$MIN_INTERVAL" ] && sleep $(( MIN_INTERVAL - age ))
+fi
+
+# A missing mount is the normal case when Filen is not running.
+if ! mountpoint -q "$FILEN_MOUNT"; then log "$FILEN_MOUNT not mounted, nothing to do"; exit 0; fi
+if ! timeout 20 ls "$FILEN_MOUNT" >/dev/null 2>&1; then log "$FILEN_MOUNT mounted but not responding, skipping"; exit 0; fi
+
+for m in $MODULES; do
+    case "$m" in
+        claude|zsh) "sync_$m" ;;
+        *) log "unknown module '$m', skipping" ;;
+    esac
+done
+touch "$stamp"
+log "done"
