@@ -17,9 +17,15 @@ apps=(
 )
 
 fullApps=(
+    infisical-bin
     1password
+    bruno-bin
     claude-code
-    arc-gtk-theme
+    filen-desktop-bin
+    catppuccin-gtk-theme-mocha
+    # pdfcraft-bin
+    # wordcraft-bin
+    # gridcraft-bin
 )
 
 pentestApps=(
