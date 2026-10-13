@@ -15,20 +15,23 @@ nvm install --lts node
 
 yarn config set prefix ~/.yarn
 
-yarn global add \
-    tree-sitter-cli \
-    vscode-langservers-extracted \
-    vscode-json-languageserver \
-    bash-language-server \
-    dockerfile-language-server-nodejs \
-    intelephense \
-    pyright \
-    svelte-language-server \
-    # sql-language-server \
-    yaml-language-server \
-    twiggy-language-server \
-    vim-language-server \
-    @vtsls/language-server \
-    @vue/language-server \
-    # @postgres-language-server/cli \
+yarnPackages=(
+    tree-sitter-cli
+    vscode-langservers-extracted
+    vscode-json-languageserver
+    bash-language-server
+    dockerfile-language-server-nodejs
+    intelephense
+    pyright
+    svelte-language-server
+    # sql-language-server
+    yaml-language-server
+    twiggy-language-server
+    vim-language-server
+    @vtsls/language-server
+    @vue/language-server
+    # @postgres-language-server/cli
     @agentclientprotocol/claude-agent-acp
+)
+
+yarn global add "${yarnPackages[@]}"
