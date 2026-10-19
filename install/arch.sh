@@ -1,5 +1,21 @@
 #!/bin/bash
 
+ask() {
+    printf '%s [y/N] ' "$1"
+    read -r "$2"
+}
+
+ask "Full install (desktop apps, keyring, extra AUR packages)?" FULL_INSTALL
+ask "Install Hyprland apps?" HYPR
+ask "Install Sway apps?" SWAY
+ask "Install i3 apps?" I3
+ask "Install i3 blocklets?" I3BLOCKLETS
+ask "Install pentest tools?" PENTEST
+ask "Install wordlists?" WORDLISTS
+ask "Install Laravel installer?" LARAVEL
+ask "Install the SDDM theme?" SDDM
+ask "Set up Filen sync (Claude Code sessions, zsh history)?" CLAUDE_SYNC
+
 . "$HOME/.dotfiles/install/arch/pacman.sh"
 . "$HOME/.dotfiles/install/arch/yay.sh"
 . "$HOME/.dotfiles/install/common/nodejs.sh"
@@ -26,32 +42,22 @@ sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 sudo systemctl enable bluetooth.service
 
-echo "Do you want to install Laravel Installer? [y/n]"
-read LARAVEL
 if [ "$LARAVEL" = "y" ]; then
     . "$HOME/.dotfiles/install/common/laravel-installer.sh"
 fi
 
-echo "Do you want to install i3 blocklets? [y/N]"
-read I3BLOCKLETS
 if [ "$I3BLOCKLETS" = "y" ]; then
     . "$HOME/.dotfiles/install/common/i3-blocklets.sh"
 fi
 
-echo "Do you want to install wordlists? [y/N]"
-read WORDLISTS
 if [ "$WORDLISTS" = "y" ]; then
     . "$HOME/.dotfiles/install/common/wordlists.sh"
 fi
 
-echo "Do you want to install the SDDM theme? [y/N]"
-read SDDM
 if [ "$SDDM" = "y" ]; then
     sudo "$HOME/.dotfiles/install/arch/sddm-theme.sh" "$HOME/.dotfiles"
 fi
 
-echo "Do you want to set up Filen sync (Claude Code sessions, zsh history)? [y/N]"
-read CLAUDE_SYNC
 if [ "$CLAUDE_SYNC" = "y" ]; then
     "$HOME/.dotfiles/install/common/filen-sync.sh"
 fi

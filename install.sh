@@ -3,12 +3,6 @@
 # Update dotfiles itself first
 [ -d "$HOME/.dotfiles/.git" ] && git --work-tree="$HOME/.dotfiles" --git-dir="$HOME/.dotfiles/.git" pull origin master
 
-export FULL_INSTALL=false
-
-if [[ $1 == "full" ]]; then
-    FULL_INSTALL=true
-fi
-
 # Create config directory if it does not exist
 [[ ! -d "$HOME/.config" ]] && mkdir "$HOME/.config"
 [[ ! -d "$HOME/.local/bin" ]] && mkdir -p "$HOME/.local/bin"

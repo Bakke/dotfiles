@@ -148,24 +148,18 @@ fullApps=(
 sudo pacman -S --needed --noconfirm "${apps[@]}"
 systemctl --user enable --now gcr-ssh-agent.socket
 
-if [[ $FULL_INSTALL == true ]]; then
+if [ "$FULL_INSTALL" = "y" ]; then
     sudo pacman -S --needed --noconfirm "${fullApps[@]}"
 fi
 
-echo "Do you want to install Hyprland apps? [y/N]"
-read HYPR
 if [ "$HYPR" = "y" ]; then
     sudo pacman -S --needed --noconfirm "${hyprApps[@]}"
 fi
 
-echo "Do you want to install Sway apps? [y/N]"
-read SWAY
 if [ "$SWAY" = "y" ]; then
     sudo pacman -S --needed --noconfirm "${swayApps[@]}"
 fi
 
-echo "Do you want to install i3 apps? [y/N]"
-read I3
 if [ "$I3" = "y" ]; then
     sudo pacman -S --needed --noconfirm "${i3Apps[@]}"
 fi

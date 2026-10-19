@@ -41,12 +41,10 @@ pentestApps=(
 yay --save --answerdiff None --answerclean None --removemake
 yay -S --needed --noconfirm "${apps[@]}"
 
-if [[ $FULL_INSTALL == true ]]; then
+if [ "$FULL_INSTALL" = "y" ]; then
     yay -S --needed --noconfirm "${fullApps[@]}"
 fi
 
-echo "Do you want to install pentest tools? [y/N]"
-read PENTEST
 if [ "$PENTEST" = "y" ]; then
     yay -S --needed --noconfirm "${pentestApps[@]}"
 fi
