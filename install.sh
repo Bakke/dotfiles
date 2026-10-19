@@ -42,8 +42,8 @@ fi
 # Change shell to ZSH
 chsh -s /bin/zsh
 
-# Install vim-plug
-source "$HOME/.dotfiles/install/common/plug.sh"
+# Install Neovim plugins
+command -v nvim > /dev/null && nvim --headless "+Lazy! restore" +qa
 
 # Update submodules
 git submodule update --init --recursive
