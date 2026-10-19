@@ -8,22 +8,18 @@
 # . "$HOME/.dotfiles/install/common/vscode-php-debug.sh"
 . "$HOME/.dotfiles/install/common/sfmono-font.sh"
 
-[[ -e "$HOME/.config/hypr" ]] && rm -rf ~/.config/hypr
-[[ -e "$HOME/.config/sway" ]] && rm -rf ~/.config/sway
-[[ -e "$HOME/.config/i3" ]] && rm -rf ~/.config/i3
-
 [[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
 
-ln -sfv "$HOME/.dotfiles/config/waybar" "${HOME}/.config/waybar"
-ln -sfv "$HOME/.dotfiles/config/hypr/" "${HOME}/.config/hypr"
-ln -sfv "$HOME/.dotfiles/config/sway/" "${HOME}/.config/sway"
-ln -sfv "$HOME/.dotfiles/config/i3/" "${HOME}/.config/i3"
-ln -sfv "$HOME/.dotfiles/config/rofi/" "${HOME}/.config/rofi"
-ln -sfv "$HOME/.dotfiles/config/xkb/" "${HOME}/.config/xkb"
-ln -sfv "$HOME/.dotfiles/config/sesh/" "${HOME}/.config/sesh"
-ln -sfv "$HOME/.dotfiles/config/alacritty/" "${HOME}/.config/alacritty"
-ln -sfv "$HOME/.dotfiles/config/sql-language-server/" "${HOME}/.config/sql-language-server"
-ln -sfv "$HOME/.dotfiles/config/mimeapps.list" "${HOME}/.config/mimeapps.list"
+link "$HOME/.dotfiles/config/waybar" "$HOME/.config/waybar"
+link "$HOME/.dotfiles/config/hypr" "$HOME/.config/hypr"
+link "$HOME/.dotfiles/config/sway" "$HOME/.config/sway"
+link "$HOME/.dotfiles/config/i3" "$HOME/.config/i3"
+link "$HOME/.dotfiles/config/rofi" "$HOME/.config/rofi"
+link "$HOME/.dotfiles/config/xkb" "$HOME/.config/xkb"
+link "$HOME/.dotfiles/config/sesh" "$HOME/.config/sesh"
+link "$HOME/.dotfiles/config/alacritty" "$HOME/.config/alacritty"
+link "$HOME/.dotfiles/config/sql-language-server" "$HOME/.config/sql-language-server"
+link "$HOME/.dotfiles/config/mimeapps.list" "$HOME/.config/mimeapps.list"
 
 if ! getent group docker > /dev/null 2>&1; then
     sudo groupadd docker

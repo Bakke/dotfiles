@@ -14,14 +14,19 @@ fi
 [[ ! -d "$HOME/.local/bin" ]] && mkdir -p "$HOME/.local/bin"
 [[ ! -d "$HOME/.vim/undo-dir" ]] && mkdir -p "$HOME/.vim/undo-dir"
 
-# Bunch of symlinks
-ln -sfv "$HOME/.dotfiles/runcom/.zshrc" ~/.zshrc
-ln -sfv "$HOME/.dotfiles/runcom/.inputrc" ~/.inputrc
-ln -sfv "$HOME/.dotfiles/config/git/.gitconfig" ~/.gitconfig
-ln -sfv "$HOME/.dotfiles/scripts/functions/" ~/.local/bin/functions
-ln -sfv "$HOME/.dotfiles/config/nvim/" ~/.config/nvim
-ln -sfv "$HOME/.dotfiles/config/yazi/" ~/.config/yazi
-ln -sfv "$HOME/.dotfiles/config/tmux/.tmux.conf" ~/.tmux.conf
+# Symlink into place, replacing an existing link and backing up a real file or directory
+link() {
+    [ -e "$2" ] && [ ! -L "$2" ] && mv -vT "$2" "$2.bak"
+    ln -sfnv "$1" "$2"
+}
+
+link "$HOME/.dotfiles/runcom/.zshrc" ~/.zshrc
+link "$HOME/.dotfiles/runcom/.inputrc" ~/.inputrc
+link "$HOME/.dotfiles/config/git/.gitconfig" ~/.gitconfig
+link "$HOME/.dotfiles/scripts/functions" ~/.local/bin/functions
+link "$HOME/.dotfiles/config/nvim" ~/.config/nvim
+link "$HOME/.dotfiles/config/yazi" ~/.config/yazi
+link "$HOME/.dotfiles/config/tmux/.tmux.conf" ~/.tmux.conf
 
 # LINUX_DISTRO=$(cat /etc/issue | awk '{print tolower($1)}')
 LINUX_DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)
