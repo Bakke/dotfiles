@@ -88,6 +88,7 @@ apps=(
     bluez # Bluetooth protocol stack
     bluez-utils # bluetoothctl utility
     blueman # Bluetooth GUI manager
+    gcr-4 # SSH agent, see env.arch
 )
 
 hyprApps=(
@@ -142,16 +143,13 @@ fullApps=(
     libsecret
     gnome-keyring
     seahorse
-    gcr-4
 )
 
 sudo pacman -S --noconfirm "${apps[@]}"
+systemctl --user enable --now gcr-ssh-agent.socket
 
 if [[ $FULL_INSTALL == true ]]; then
     sudo pacman -S --noconfirm "${fullApps[@]}"
-
-    systemctl --user enable gcr-ssh-agent.service
-    systemctl --user start gcr-ssh-agent.service
 fi
 
 echo "Do you want to install Hyprland apps? [y/N]"
