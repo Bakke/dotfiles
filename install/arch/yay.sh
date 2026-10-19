@@ -1,11 +1,13 @@
 #!/bin/bash
 
-if [ ! -x "$(command -v yay)" ]; then
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si
-    cd ..
-    rm -rf ~/yay
+if ! command -v yay > /dev/null; then
+    (
+        tmp=$(mktemp -d)
+        git clone --depth 1 https://aur.archlinux.org/yay.git "$tmp/yay" \
+            && cd "$tmp/yay" \
+            && makepkg -si --noconfirm
+        rm -rf "$tmp"
+    )
 fi
 
 apps=(
