@@ -4,7 +4,6 @@
 . "$HOME/.dotfiles/install/arch/yay.sh"
 . "$HOME/.dotfiles/install/common/nodejs.sh"
 . "$HOME/.dotfiles/install/common/dotnet.sh"
-# . "$HOME/.dotfiles/install/common/vscode-php-debug.sh"
 
 link "$HOME/.dotfiles/config/waybar" "$HOME/.config/waybar"
 link "$HOME/.dotfiles/config/hypr" "$HOME/.config/hypr"
