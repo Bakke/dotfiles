@@ -8,8 +8,6 @@
 # . "$HOME/.dotfiles/install/common/vscode-php-debug.sh"
 . "$HOME/.dotfiles/install/common/sfmono-font.sh"
 
-sudo "$HOME/.dotfiles/install/arch/sddm-theme.sh" "${HOME}/.dotfiles"
-
 [[ -e "$HOME/.config/hypr" ]] && rm -rf ~/.config/hypr
 [[ -e "$HOME/.config/sway" ]] && rm -rf ~/.config/sway
 [[ -e "$HOME/.config/i3" ]] && rm -rf ~/.config/i3
@@ -59,6 +57,12 @@ echo "Do you want to install wordlists? [y/N]"
 read WORDLISTS
 if [ "$WORDLISTS" = "y" ]; then
     . "$HOME/.dotfiles/install/common/wordlists.sh"
+fi
+
+echo "Do you want to install the SDDM theme? [y/N]"
+read SDDM
+if [ "$SDDM" = "y" ]; then
+    sudo "$HOME/.dotfiles/install/arch/sddm-theme.sh" "$HOME/.dotfiles"
 fi
 
 echo "Do you want to set up Filen sync (Claude Code sessions, zsh history)? [y/N]"
