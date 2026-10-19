@@ -40,7 +40,7 @@ elif [[ $LINUX_DISTRO == "kali" ]]; then
 fi
 
 # Change shell to ZSH
-chsh -s /bin/zsh
+[ "$(basename "$SHELL")" != zsh ] && chsh -s "$(command -v zsh)"
 
 # Install Neovim plugins
 command -v nvim > /dev/null && nvim --headless "+Lazy! restore" +qa
