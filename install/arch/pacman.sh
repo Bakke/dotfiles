@@ -5,18 +5,15 @@ sudo pacman -Syu
 
 apps=(
     base-devel
-    gcc
-    make
     cmake
     cpio
     meson
-    man
+    man-db
+    man-pages
     git
-    grep
-    python3
+    python
     python-pip
     ripgrep
-    vi
     vim
     neovim
     python-pynvim
@@ -47,7 +44,7 @@ apps=(
     vlc
     vlc-plugins-all
     ksnip # Annotate Screenshots
-    p7zip
+    7zip
     unzip
     rust
     alacritty
