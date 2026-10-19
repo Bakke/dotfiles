@@ -143,7 +143,6 @@ fullApps=(
 
     # Gnome Keyring
     libsecret
-    libgnome-keyring
     gnome-keyring
     seahorse
     gcr-4
