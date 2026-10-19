@@ -91,13 +91,9 @@ apps=(
     gcr-4 # SSH agent, see env.arch
 )
 
-hyprApps=(
+waylandApps=(
     wev # Wayland event viewer (find keycodes etc)
     waybar
-    hyprlock
-    hypridle
-    hyprpaper
-    hyprpicker
     grim
     slurp
     swaync
@@ -107,19 +103,17 @@ hyprApps=(
     qt6-wayland
 )
 
+hyprApps=(
+    hyprlock
+    hypridle
+    hyprpaper
+    hyprpicker
+)
+
 swayApps=(
-    wev # Wayland event viewer (find keycodes etc)
-    waybar
     swaybg
     swayidle
     swaylock
-    grim
-    slurp
-    swaync
-    wtype
-    wl-clipboard
-    qt5-wayland
-    qt6-wayland
 )
 
 i3Apps=(
@@ -153,11 +147,11 @@ if [ "$FULL_INSTALL" = "y" ]; then
 fi
 
 if [ "$HYPR" = "y" ]; then
-    sudo pacman -S --needed --noconfirm "${hyprApps[@]}"
+    sudo pacman -S --needed --noconfirm "${waylandApps[@]}" "${hyprApps[@]}"
 fi
 
 if [ "$SWAY" = "y" ]; then
-    sudo pacman -S --needed --noconfirm "${swayApps[@]}"
+    sudo pacman -S --needed --noconfirm "${waylandApps[@]}" "${swayApps[@]}"
 fi
 
 if [ "$I3" = "y" ]; then
