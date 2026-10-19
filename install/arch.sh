@@ -8,8 +8,6 @@
 # . "$HOME/.dotfiles/install/common/vscode-php-debug.sh"
 . "$HOME/.dotfiles/install/common/sfmono-font.sh"
 
-[[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
-
 link "$HOME/.dotfiles/config/waybar" "$HOME/.config/waybar"
 link "$HOME/.dotfiles/config/hypr" "$HOME/.config/hypr"
 link "$HOME/.dotfiles/config/sway" "$HOME/.config/sway"

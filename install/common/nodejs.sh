@@ -1,13 +1,12 @@
 #!/bin/bash
 
-# wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+mkdir -p "$NVM_DIR"
 
-if [ "$ZSH_VERSION" ] && compctl; then # zsh
-    source ~/.zshrc
-elif [ "$BASH_VERSION" ] && complete; then # bash
-    source ~/.bashrc
-elif [ "$FISH_VERSION" ]; then # bash
-    source ~/.config/fish/config.fish
+if [ -s /usr/share/nvm/init-nvm.sh ]; then
+    . /usr/share/nvm/init-nvm.sh
+elif [ -s "$NVM_DIR/nvm.sh" ]; then
+    . "$NVM_DIR/nvm.sh"
 fi
 
 nvm install --lts node
