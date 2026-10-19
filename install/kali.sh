@@ -4,7 +4,6 @@
 . "$HOME/.dotfiles/install/common/nodejs.sh"
 . "$HOME/.dotfiles/install/common/cargo.sh"
 . "$HOME/.dotfiles/install/common/nerd-fonts.sh"
-# . "$HOME/.dotfiles/install/common/sfmono-font.sh"
 
 [[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
 

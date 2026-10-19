@@ -6,7 +6,6 @@
 . "$HOME/.dotfiles/install/common/nodejs.sh"
 . "$HOME/.dotfiles/install/common/dotnet.sh"
 # . "$HOME/.dotfiles/install/common/vscode-php-debug.sh"
-. "$HOME/.dotfiles/install/common/sfmono-font.sh"
 
 link "$HOME/.dotfiles/config/waybar" "$HOME/.config/waybar"
 link "$HOME/.dotfiles/config/hypr" "$HOME/.config/hypr"
