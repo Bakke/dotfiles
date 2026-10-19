@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Create wordlists directory
 sudo mkdir -p /usr/share/wordlists
 
-# Get SecLists
-sudo git clone https://github.com/danielmiessler/SecLists.git /usr/share/wordlists/seclists
+if [ ! -d /usr/share/wordlists/seclists ]; then
+    sudo git clone --depth 1 https://github.com/danielmiessler/SecLists.git /usr/share/wordlists/seclists
+fi
 
-# Get Kali wordlists
-wget https://github.com/3ndG4me/KaliLists/archive/refs/heads/master.zip
-unzip master.zip
-sudo mv KaliLists-master/* /usr/share/wordlists
-
-# Clean up
-rm -rf master.zip KaliLists-master
+(
+    tmp=$(mktemp -d)
+    wget -qO "$tmp/master.zip" https://github.com/3ndG4me/KaliLists/archive/refs/heads/master.zip \
+        && unzip -q "$tmp/master.zip" -d "$tmp" \
+        && sudo cp -rn "$tmp"/KaliLists-master/. /usr/share/wordlists/
+    rm -rf "$tmp"
+)
