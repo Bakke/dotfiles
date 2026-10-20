@@ -19,6 +19,7 @@ apps=(
 )
 
 fullApps=(
+    brave-bin
     infisical-bin
     1password
     bruno-bin
