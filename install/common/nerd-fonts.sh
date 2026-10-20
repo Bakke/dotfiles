@@ -1,9 +1,15 @@
 #!/bin/bash
 
-git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git .tmp-nerd-fonts
-cd .tmp-nerd-fonts
+fontDir="$HOME/.local/share/fonts/JetBrainsMono"
 
-./install.sh JetBrainsMono
-
-cd ..
-rm -rf .tmp-nerd-fonts
+if [ ! -d "$fontDir" ]; then
+    (
+        tmp=$(mktemp -d)
+        curl -fsSL -o "$tmp/JetBrainsMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip \
+            && unzip -q "$tmp/JetBrainsMono.zip" '*.ttf' -d "$tmp/fonts" \
+            && mkdir -p "$(dirname "$fontDir")" \
+            && mv "$tmp/fonts" "$fontDir" \
+            && fc-cache -f "$fontDir"
+        rm -rf "$tmp"
+    )
+fi
