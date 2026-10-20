@@ -8,8 +8,7 @@ git clone git@github.com:Bakke/dotfiles.git ~/.dotfiles
 
 # Run install script
 cd ~/.dotfiles
-source install.sh
-git submodule update --init --recursive
+./install.sh
 ```
 
 ## Filen sync (Claude Code sessions, zsh history)

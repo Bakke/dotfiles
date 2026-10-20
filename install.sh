@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+if [ "${BASH_SOURCE[0]:-}" != "$0" ]; then
+    echo "Run this as ./install.sh, not with source" >&2
+    return 1
+fi
+
+set -euo pipefail
+
 # Update dotfiles itself first
 [ -d "$HOME/.dotfiles/.git" ] && git --work-tree="$HOME/.dotfiles" --git-dir="$HOME/.dotfiles/.git" pull origin master
 
