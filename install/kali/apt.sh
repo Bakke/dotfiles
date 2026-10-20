@@ -24,6 +24,7 @@ apps=(
     tmux
     jq
     p7zip-full
+    unzip
     fonts-font-awesome
 )
 
