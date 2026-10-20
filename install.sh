@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 if [ "${BASH_SOURCE[0]:-}" != "$0" ]; then
-    echo "Run this as ./install.sh, not with source" >&2
+    echo "Run this as ~/.dotfiles/install.sh, not with source" >&2
     return 1
 fi
 
 set -euo pipefail
 
 # Update dotfiles itself first
-[ -d "$HOME/.dotfiles/.git" ] && git --work-tree="$HOME/.dotfiles" --git-dir="$HOME/.dotfiles/.git" pull origin master
+[ -d "$HOME/.dotfiles/.git" ] && git -C "$HOME/.dotfiles" pull origin master
 
 # Create config directory if it does not exist
 [[ ! -d "$HOME/.config" ]] && mkdir "$HOME/.config"
@@ -47,4 +47,4 @@ fi
 command -v nvim > /dev/null && nvim --headless "+Lazy! restore" +qa
 
 # Update submodules
-git submodule update --init --recursive
+git -C "$HOME/.dotfiles" submodule update --init --recursive

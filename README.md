@@ -7,8 +7,7 @@ Mainly for Arch Linux desktop, but also works for Ubuntu servers.
 git clone git@github.com:Bakke/dotfiles.git ~/.dotfiles
 
 # Run install script
-cd ~/.dotfiles
-./install.sh
+~/.dotfiles/install.sh
 ```
 
 ## Filen sync (Claude Code sessions, zsh history)
