@@ -10,10 +10,7 @@ set -euo pipefail
 # Update dotfiles itself first
 [ -d "$HOME/.dotfiles/.git" ] && git -C "$HOME/.dotfiles" pull origin master
 
-# Create config directory if it does not exist
-[[ ! -d "$HOME/.config" ]] && mkdir "$HOME/.config"
-[[ ! -d "$HOME/.local/bin" ]] && mkdir -p "$HOME/.local/bin"
-[[ ! -d "$HOME/.vim/undo-dir" ]] && mkdir -p "$HOME/.vim/undo-dir"
+mkdir -p "$HOME/.config" "$HOME/.local/bin" "$HOME/.vim/undo-dir"
 
 # Symlink into place, replacing an existing link and backing up a real file or directory
 link() {
