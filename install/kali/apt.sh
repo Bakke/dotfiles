@@ -1,33 +1,17 @@
 #!/bin/bash
 
-# Install packages
-apps=(
-    build-essential
-    zsh
-    git
-    vim
-    fzf
-    bat
-    ncdu
-    curl
-    lsof
-    whois
-    traceroute
-    wget
-    grep
-    python3
-    python3-pip
-    python-is-python3
-    ripgrep
+. "$HOME/.dotfiles/install/common/apt.sh"
+
+apps+=(
     alacritty
     neovim
-    tmux
-    jq
-    p7zip-full
-    unzip
+    nodejs
+    npm
     fonts-font-awesome
 )
 
 sudo apt update
 sudo apt install -y "${apps[@]}"
 
+ln -sfn "$(command -v fdfind)" "$HOME/.local/bin/fd"
+ln -sfn "$(command -v batcat)" "$HOME/.local/bin/bat"

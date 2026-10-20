@@ -1,0 +1,26 @@
+#!/bin/bash
+
+apps=(
+    build-essential
+    zsh
+    git
+    vim
+    fzf
+    bat
+    ncdu
+    curl
+    lsof
+    whois
+    traceroute
+    wget
+    python3
+    python3-pip
+    python-is-python3
+    ripgrep
+    fd-find
+    zoxide
+    tmux
+    jq
+    p7zip-full
+    unzip
+)

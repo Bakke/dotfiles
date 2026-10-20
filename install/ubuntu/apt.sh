@@ -1,26 +1,9 @@
-# Install packages
-apps=(
-    build-essential
-    zsh
-    git
-    vim
-    fzf
-    bat
-    ncdu
-    curl
-    lsof
-    whois
-    traceroute
-    wget
-    grep
-    python3
-    python3-pip
-    python-is-python3
-    ripgrep
-    tmux
-    jq
-    p7zip-full
-)
+#!/bin/bash
+
+. "$HOME/.dotfiles/install/common/apt.sh"
 
 sudo apt update
 sudo apt install -y "${apps[@]}"
+
+ln -sfn "$(command -v fdfind)" "$HOME/.local/bin/fd"
+ln -sfn "$(command -v batcat)" "$HOME/.local/bin/bat"
