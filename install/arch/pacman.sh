@@ -52,6 +52,8 @@ apps=(
     nautilus # File manager
     sushi # Preview files in Nautilus
     nwg-look # GTK theme and icons manager
+    rclone
+    fuse3 # For Filen mounting
     docker
     docker-compose
     postgresql-libs
@@ -131,6 +133,7 @@ i3Apps=(
 fullApps=(
     freerdp
     kubectl
+    signal-desktop
     solaar # Logitech devices manager
 
     # Gnome Keyring
