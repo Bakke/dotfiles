@@ -1,8 +1,24 @@
 #!/bin/bash
 
+# Answers are saved per machine; rerun with --ask to answer again
+ANSWERS="${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles-install.conf"
+
+if [ "$ASK_ALL" = 1 ]; then
+    rm -f "$ANSWERS"
+elif [ -f "$ANSWERS" ]; then
+    . "$ANSWERS"
+fi
+
 ask() {
+    [ -n "${!2:-}" ] && return
     printf '%s [y/N] ' "$1"
-    read -r "$2"
+    read -r REPLY
+    case $REPLY in
+        y|Y) REPLY=y ;;
+        *) REPLY=n ;;
+    esac
+    printf -v "$2" '%s' "$REPLY"
+    echo "$2=$REPLY" >> "$ANSWERS"
 }
 
 ask "Full install (desktop apps, keyring, extra AUR packages)?" FULL_INSTALL

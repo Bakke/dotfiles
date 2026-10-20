@@ -7,6 +7,9 @@ fi
 
 set -euo pipefail
 
+ASK_ALL=0
+[ "${1:-}" = "--ask" ] && ASK_ALL=1
+
 mkdir -p "$HOME/.config" "$HOME/.local/bin" "$HOME/.vim/undo-dir"
 
 # Symlink into place, replacing an existing link and backing up a real file or directory

@@ -11,6 +11,10 @@ git clone https://github.com/Bakke/dotfiles.git ~/.dotfiles
 
 # Rerun after changes (safe to repeat, only adds)
 git -C ~/.dotfiles pull && ~/.dotfiles/install.sh
+
+# Answers to the optional-groups questions are saved in
+# ~/.config/dotfiles-install.conf; pass --ask to answer them again
+~/.dotfiles/install.sh --ask
 ```
 
 ## Filen sync (Claude Code sessions, zsh history)
