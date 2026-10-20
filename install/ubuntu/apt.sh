@@ -22,4 +22,5 @@ apps=(
     p7zip-full
 )
 
-sudo apt update && sudo apt install -y "${apps[@]}"
+sudo apt update
+sudo apt install -y "${apps[@]}"

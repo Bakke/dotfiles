@@ -28,5 +28,6 @@ apps=(
     fonts-font-awesome
 )
 
-sudo apt update && sudo apt install -y "${apps[@]}"
+sudo apt update
+sudo apt install -y "${apps[@]}"
 
