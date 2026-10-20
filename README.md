@@ -4,7 +4,7 @@ Mainly for Arch Linux desktop, but also works for Ubuntu servers.
 ## Install
 ```
 # Clone repo
-git clone git@github.com:Bakke/dotfiles.git ~/.dotfiles
+git clone https://github.com/Bakke/dotfiles.git ~/.dotfiles
 
 # Run install script
 ~/.dotfiles/install.sh
