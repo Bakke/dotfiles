@@ -10,7 +10,7 @@ elif [ -s "$NVM_DIR/nvm.sh" ]; then
 fi
 
 nvm install --lts node
-# npm install --global yarn
+command -v yarn > /dev/null || npm install --global yarn
 
 yarn config set prefix ~/.yarn
 
