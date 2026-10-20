@@ -7,9 +7,6 @@ fi
 
 set -euo pipefail
 
-# Update dotfiles itself first
-[ -d "$HOME/.dotfiles/.git" ] && git -C "$HOME/.dotfiles" pull origin master
-
 mkdir -p "$HOME/.config" "$HOME/.local/bin" "$HOME/.vim/undo-dir"
 
 # Symlink into place, replacing an existing link and backing up a real file or directory

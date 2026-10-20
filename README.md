@@ -8,6 +8,9 @@ git clone https://github.com/Bakke/dotfiles.git ~/.dotfiles
 
 # Run install script
 ~/.dotfiles/install.sh
+
+# Rerun after changes (safe to repeat, only adds)
+git -C ~/.dotfiles pull && ~/.dotfiles/install.sh
 ```
 
 ## Filen sync (Claude Code sessions, zsh history)
