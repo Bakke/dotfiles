@@ -10,9 +10,7 @@ fi
 . "$HOME/.dotfiles/install/common/nodejs.sh"
 . "$HOME/.dotfiles/install/common/nerd-fonts.sh"
 
-[[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
-
-ln -sfv "$HOME/.dotfiles/config/alacritty/" "${HOME}/.config/alacritty"
-ln -sfv "$HOME/.dotfiles/config/xkb/" "${HOME}/.config/xkb"
+link "$HOME/.dotfiles/config/alacritty" "$HOME/.config/alacritty"
+link "$HOME/.dotfiles/config/xkb" "$HOME/.config/xkb"
 
 sudo ln -sfn "$HOME/.dotfiles/config/xkb/symbols/nocustom" /usr/share/X11/xkb/symbols/nocustom
