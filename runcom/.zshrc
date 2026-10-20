@@ -26,7 +26,14 @@ unset SCRIPT_PATH DOTFILE
 
 # if whence fzf >/dev/null; then
 if (( $+commands[fzf] )); then
-    source <(fzf --zsh)
+    if fzf --zsh > /dev/null 2>&1; then
+        eval "$(fzf --zsh)"
+    else # fzf < 0.48 (Debian/Ubuntu LTS)
+        for FZF_FILE in /usr/share/doc/fzf/examples/{key-bindings,completion}.zsh; do
+            [ -f "$FZF_FILE" ] && source "$FZF_FILE"
+        done
+        unset FZF_FILE
+    fi
 fi
 
 # if whence zoxide >/dev/null; then
