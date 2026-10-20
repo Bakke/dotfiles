@@ -9,17 +9,9 @@ for DOTFILE in "$HOME/.dotfiles"/system/{env,alias,function,prompt,keybind,compl
     [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
-if [ "${LINUX_DISTRO}" = "arch" ]; then
-    for DOTFILE in "$HOME"/.dotfiles/system/{env,alias,function,prompt,keybind,completion}.arch; do
-        [ -f "$DOTFILE" ] && . "$DOTFILE"
-    done
-fi
-
-if [ "${LINUX_DISTRO}" = "kali" ]; then
-    for DOTFILE in "$HOME"/.dotfiles/system/{env,alias,function,prompt,keybind,completion}.arch; do
-        [ -f "$DOTFILE" ] && . "$DOTFILE"
-    done
-fi
+for DOTFILE in "$HOME"/.dotfiles/system/{env,alias,function,prompt,keybind,completion}.${LINUX_DISTRO}; do
+    [ -f "$DOTFILE" ] && . "$DOTFILE"
+done
 
 if [ -f "$HOME/.env.local" ]; then
     source "$HOME/.env.local"
