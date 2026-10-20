@@ -34,6 +34,13 @@ ask "Set up Filen sync (Claude Code sessions, zsh history)?" CLAUDE_SYNC
 
 . "$HOME/.dotfiles/install/arch/pacman.sh"
 . "$HOME/.dotfiles/install/arch/yay.sh"
+
+# filen-desktop-bin links rclone one directory above where the app looks for it
+if [ -d /usr/lib/filen-desktop ]; then
+    sudo mkdir -p /usr/lib/filen-desktop/app.asar.unpacked/bin/rclone
+    sudo ln -sfn /usr/bin/rclone /usr/lib/filen-desktop/app.asar.unpacked/bin/rclone/rclone-linux-amd64
+fi
+
 . "$HOME/.dotfiles/install/common/nodejs.sh"
 . "$HOME/.dotfiles/install/common/dotnet.sh"
 
