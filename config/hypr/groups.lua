@@ -39,4 +39,16 @@ function M.toggleWorkspaceGroup()
     hl.dispatch(hl.dsp.focus({ window = base }))
 end
 
+-- Move the active window to a workspace. A grouped window leaves its group first, since
+-- window.move() would otherwise take the whole group along.
+function M.moveToWorkspace(workspace)
+    return function()
+        local w = hl.get_active_window()
+        if w and w.group and w.group.size > 1 then
+            hl.dispatch(hl.dsp.window.move({ out_of_group = true }))
+        end
+        hl.dispatch(hl.dsp.window.move({ workspace = workspace }))
+    end
+end
+
 return M

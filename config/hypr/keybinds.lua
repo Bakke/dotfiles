@@ -48,7 +48,7 @@ hl.bind(secondMod .. " + SHIFT + TAB", switcher.open("workspace", "prev"))
 hl.bind(mainMod .. " + TAB",         switcher.open("all", "next"))
 hl.bind(mainMod .. " + SHIFT + TAB", switcher.open("all", "prev"))
 
--- Move windows with mainMod + SHIFT + arrow keys or hjkl
+-- Move windows with mainMod + SHIFT + arrow keys or hjkl, in and out of groups
 -- Move focus with mainMod + arrow keys or hjkl
 -- Resize windows with mainMod + CTRL + arrow keys or hjkl
 local directions = {
@@ -60,7 +60,7 @@ local directions = {
 
 for _, d in ipairs(directions) do
     for _, key in ipairs({ d.arrow, d.letter }) do
-        hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ direction = d.dir }))
+        hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ direction = d.dir, group_aware = true }))
         hl.bind(mainMod .. " + CTRL + " .. key,
             hl.dsp.window.resize({ x = d.x, y = d.y, relative = true }), { repeating = true })
         hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ direction = d.dir }))
@@ -78,8 +78,8 @@ hl.bind("mouse:276", hl.dsp.focus({ workspace = "r+1" }))
 hl.bind("mouse:275", hl.dsp.focus({ workspace = "r-1" }))
 
 -- Move active window to a workspace with secondMod + ctrl + [H/L]
-hl.bind(secondMod .. " + CTRL + L", hl.dsp.window.move({ workspace = "r+1" }))
-hl.bind(secondMod .. " + CTRL + H", hl.dsp.window.move({ workspace = "r-1" }))
+hl.bind(secondMod .. " + CTRL + L", groups.moveToWorkspace("r+1"))
+hl.bind(secondMod .. " + CTRL + H", groups.moveToWorkspace("r-1"))
 
 -- Move active workspace to right/left monitor with mainMod + shift + ctrl + [H/L]
 hl.bind(mainMod .. " + CTRL + SHIFT + H", hl.dsp.workspace.move({ monitor = "l" }))
@@ -90,14 +90,14 @@ hl.bind(mainMod .. " + CTRL + SHIFT + L", hl.dsp.workspace.move({ monitor = "r" 
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
     hl.bind(mainMod .. " + " .. key,           hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. " + SHIFT + " .. key,   hl.dsp.window.move({ workspace = i }))
+    hl.bind(mainMod .. " + SHIFT + " .. key,   groups.moveToWorkspace(i))
 end
 
 -- Special workspace (scratchpad).
 -- Both binds must target the *unnamed* special workspace (id -99). Passing "special" to
 -- toggle_special would open the *named* `special:special` (id -98) instead, which is a
 -- different workspace than the one `move` sends windows to.
-hl.bind(mainMod .. " + S", hl.dsp.window.move({ workspace = "special" }))
+hl.bind(mainMod .. " + S", groups.moveToWorkspace("special"))
 hl.bind("CTRL + " .. secondMod .. " + space", hl.dsp.workspace.toggle_special())
 
 -- Tab navigation for all applications.
