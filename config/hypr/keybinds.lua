@@ -1,8 +1,9 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/
 
-local vars     = require("vars")
-local groups   = require("groups")
-local switcher = require("switcher")
+local vars      = require("vars")
+local groups    = require("lib.groups")
+local switcher  = require("lib.switcher")
+local shortcuts = require("lib.shortcuts")
 
 local mainMod   = vars.mainMod
 local secondMod = vars.secondMod
@@ -100,46 +101,17 @@ end
 hl.bind(mainMod .. " + S", groups.moveToWorkspace("special"))
 hl.bind("CTRL + " .. secondMod .. " + space", hl.dsp.workspace.toggle_special())
 
--- Tab navigation for all applications.
---
--- send_shortcut resolves its `key` by scanning the keymap with xkb_state_key_get_one_sym,
--- which honours whatever modifiers are physically held at dispatch time. While SHIFT is
--- down - as it always is for the ALT+SHIFT+H/L binds below - the Tab keycode reports
--- ISO_Left_Tab instead of Tab, so a "Tab" lookup fails with "send_shortcut: key not found".
--- Hyprland caches successful lookups per keyboard, which is why pressing a non-SHIFT tab
--- bind once used to "prime" the SHIFT ones for the rest of the session.
--- Retrying under the shifted keysym name makes them work from a cold session.
-local function tabSwitch(mods)
-    return function()
-        local r = hl.dispatch(hl.dsp.send_shortcut({ mods = mods, key = "Tab" }))
-        if not (r and r.ok) then
-            hl.dispatch(hl.dsp.send_shortcut({ mods = mods, key = "ISO_Left_Tab" }))
-        end
-    end
-end
-
-hl.bind(mainMod .. " + " .. secondMod .. " + right", tabSwitch("CTRL"))
-hl.bind(mainMod .. " + " .. secondMod .. " + left",  tabSwitch("CTRL + SHIFT"))
-hl.bind(secondMod .. " + SHIFT + L", tabSwitch("CTRL"))
-hl.bind(secondMod .. " + SHIFT + H", tabSwitch("CTRL + SHIFT"))
-
--- Send `key` to the active window, unless it is `exceptClass` - then send `altKey` instead.
-local function sendKeyUnless(mods, key, altMods, altKey, exceptClass)
-    return function()
-        local w = hl.get_active_window()
-        if w and w.class == exceptClass then
-            hl.dispatch(hl.dsp.send_shortcut({ mods = altMods, key = altKey }))
-        else
-            hl.dispatch(hl.dsp.send_shortcut({ mods = mods, key = key }))
-        end
-    end
-end
+-- Tab navigation for all applications
+hl.bind(mainMod .. " + " .. secondMod .. " + right", shortcuts.tabSwitch("CTRL"))
+hl.bind(mainMod .. " + " .. secondMod .. " + left",  shortcuts.tabSwitch("CTRL + SHIFT"))
+hl.bind(secondMod .. " + SHIFT + L", shortcuts.tabSwitch("CTRL"))
+hl.bind(secondMod .. " + SHIFT + H", shortcuts.tabSwitch("CTRL + SHIFT"))
 
 -- Use Alt+[H/J/K/L] for Left/Down/Up/Right in all applications (except Alacritty)
-hl.bind(secondMod .. " + K", sendKeyUnless("", "Up",    "ALT", "K", "Alacritty"), { repeating = true })
-hl.bind(secondMod .. " + J", sendKeyUnless("", "Down",  "ALT", "J", "Alacritty"), { repeating = true })
-hl.bind(secondMod .. " + H", sendKeyUnless("", "Left",  "ALT", "H", "Alacritty"), { repeating = true })
-hl.bind(secondMod .. " + L", sendKeyUnless("", "Right", "ALT", "L", "Alacritty"), { repeating = true })
+hl.bind(secondMod .. " + K", shortcuts.sendKeyUnless("", "Up",    "ALT", "K", "Alacritty"), { repeating = true })
+hl.bind(secondMod .. " + J", shortcuts.sendKeyUnless("", "Down",  "ALT", "J", "Alacritty"), { repeating = true })
+hl.bind(secondMod .. " + H", shortcuts.sendKeyUnless("", "Left",  "ALT", "H", "Alacritty"), { repeating = true })
+hl.bind(secondMod .. " + L", shortcuts.sendKeyUnless("", "Right", "ALT", "L", "Alacritty"), { repeating = true })
 
 -- Color picker
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("hyprpicker -f hex - | wl-copy -n"))
