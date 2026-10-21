@@ -38,6 +38,9 @@ hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("killall waybar || waybar"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
+-- Create a new window group with the active window
+hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
+
 -- Group all tiled windows on the active workspace into tabs, or ungroup them
 hl.bind(mainMod .. " + M", groups.toggleWorkspaceGroup)
 
