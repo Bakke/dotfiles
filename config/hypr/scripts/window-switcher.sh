@@ -27,8 +27,8 @@ count=$(jq 'length' <<< "$clients")
 
 index=$(jq -j ".[] | \"\(${label})\u0000icon\u001f\(.class)\n\"" <<< "$clients" | rofi -dmenu -i -no-custom \
     -p "$prompt" -format i -selected-row "$row" \
-    -kb-row-down "Alt+Tab,Super+Tab,Down,Control+n" \
-    -kb-row-up "Alt+ISO_Left_Tab,Alt+Shift+Tab,Super+ISO_Left_Tab,Super+Shift+Tab,Up,Control+p" \
+    -kb-row-down "Alt+Tab,Super+Tab,Alt+Down,Super+Down,Down,Control+n" \
+    -kb-row-up "Alt+ISO_Left_Tab,Alt+Shift+Tab,Super+ISO_Left_Tab,Super+Shift+Tab,Alt+Up,Super+Up,Up,Control+p" \
     -kb-accept-entry "!Alt_L,!Alt+Alt_L,!Super_L,!Super+Super_L,Return,KP_Enter")
 
 [[ -z $index ]] && exit 0
