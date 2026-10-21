@@ -62,6 +62,29 @@ hl.config({
     animations = {
         enabled = true,
     },
+
+    -- https://wiki.hypr.land/Configuring/Basics/Variables/#group
+    group = {
+        -- Windows moved to a grouped workspace (mainMod + SHIFT + [0-9]) join the group
+        group_on_movetoworkspace = true,
+
+        col = {
+            border_active   = "rgba(78cee995)",
+            border_inactive = "rgba(27313690)",
+        },
+
+        groupbar = {
+            font_size           = 13,
+            height              = 24,
+            gradients           = true,
+            text_color_inactive = "rgba(ffffff99)",
+
+            col = {
+                active   = "rgba(1793d1ff)", -- Arch blue
+                inactive = "rgba(27313690)",
+            },
+        },
+    },
 })
 
 -- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/

@@ -1,6 +1,7 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/
 
-local vars = require("vars")
+local vars   = require("vars")
+local groups = require("groups")
 
 local mainMod   = vars.mainMod
 local secondMod = vars.secondMod
@@ -34,6 +35,13 @@ hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("killall waybar || waybar"))
 -- Maximize window
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+
+-- Group all tiled windows on the active workspace into tabs, or ungroup them
+hl.bind(mainMod .. " + M", groups.toggleWorkspaceGroup)
+
+-- Cycle windows on the active workspace, or the tabs of the active group
+hl.bind(secondMod .. " + TAB",         groups.cycleWindows(true))
+hl.bind(secondMod .. " + SHIFT + TAB", groups.cycleWindows(false))
 
 -- Move windows with mainMod + SHIFT + arrow keys or hjkl
 -- Move focus with mainMod + arrow keys or hjkl
