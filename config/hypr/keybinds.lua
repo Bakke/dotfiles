@@ -41,8 +41,12 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen
 hl.bind(mainMod .. " + M", groups.toggleWorkspaceGroup)
 
 -- Switch between windows on the active workspace, most recent first
-hl.bind(secondMod .. " + TAB",         switcher.open("next"))
-hl.bind(secondMod .. " + SHIFT + TAB", switcher.open("prev"))
+hl.bind(secondMod .. " + TAB",         switcher.open("workspace", "next"))
+hl.bind(secondMod .. " + SHIFT + TAB", switcher.open("workspace", "prev"))
+
+-- Switch between windows on all workspaces
+hl.bind(mainMod .. " + TAB",         switcher.open("all", "next"))
+hl.bind(mainMod .. " + SHIFT + TAB", switcher.open("all", "prev"))
 
 -- Move windows with mainMod + SHIFT + arrow keys or hjkl
 -- Move focus with mainMod + arrow keys or hjkl

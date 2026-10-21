@@ -12,11 +12,11 @@ hl.define_submap("switcher", function()
     hl.bind(vars.mainMod .. " + ESCAPE", hl.dsp.submap("reset"))
 end)
 
--- Open the switcher on the active workspace; direction is "next" or "prev".
-function M.open(direction)
+-- Open the switcher; scope is "workspace" or "all", direction is "next" or "prev".
+function M.open(scope, direction)
     return function()
         hl.dispatch(hl.dsp.submap("switcher"))
-        hl.dispatch(hl.dsp.exec_cmd(script .. " " .. direction))
+        hl.dispatch(hl.dsp.exec_cmd(script .. " " .. scope .. " " .. direction))
     end
 end
 
