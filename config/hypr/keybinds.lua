@@ -44,6 +44,10 @@ hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
 -- Group all tiled windows on the active workspace into tabs, or ungroup them
 hl.bind(mainMod .. " + M", groups.toggleWorkspaceGroup)
 
+-- Next/previous tab in the active group
+hl.bind(secondMod .. " + SHIFT + J", hl.dsp.group.next())
+hl.bind(secondMod .. " + SHIFT + K", hl.dsp.group.prev())
+
 -- Switch between windows on the active workspace, most recent first
 hl.bind(secondMod .. " + TAB",         switcher.open("workspace", "next"))
 hl.bind(secondMod .. " + SHIFT + TAB", switcher.open("workspace", "prev"))
