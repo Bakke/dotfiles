@@ -56,6 +56,9 @@ hl.bind(secondMod .. " + SHIFT + TAB", switcher.open("workspace", "prev"))
 hl.bind(mainMod .. " + TAB",         switcher.open("all", "next"))
 hl.bind(mainMod .. " + SHIFT + TAB", switcher.open("all", "prev"))
 
+-- Search windows on all workspaces by typing
+hl.bind(mainMod .. " + SPACE", switcher.open("all", "search"))
+
 -- Move windows with mainMod + SHIFT + arrow keys or hjkl, in and out of groups
 -- Move focus with mainMod + arrow keys or hjkl
 -- Resize windows with mainMod + CTRL + arrow keys or hjkl
