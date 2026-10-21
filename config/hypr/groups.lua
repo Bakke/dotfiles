@@ -39,16 +39,4 @@ function M.toggleWorkspaceGroup()
     hl.dispatch(hl.dsp.focus({ window = base }))
 end
 
--- Cycle windows on the active workspace; inside a group, cycle its tabs.
-function M.cycleWindows(forward)
-    return function()
-        local w = hl.get_active_window()
-        if w and w.group and w.group.size > 1 then
-            hl.dispatch(forward and hl.dsp.group.next() or hl.dsp.group.prev())
-        else
-            hl.dispatch(hl.dsp.window.cycle_next({ next = forward }))
-        end
-    end
-end
-
 return M

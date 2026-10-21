@@ -1,7 +1,8 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Binds/
 
-local vars   = require("vars")
-local groups = require("groups")
+local vars     = require("vars")
+local groups   = require("groups")
+local switcher = require("switcher")
 
 local mainMod   = vars.mainMod
 local secondMod = vars.secondMod
@@ -39,9 +40,9 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen
 -- Group all tiled windows on the active workspace into tabs, or ungroup them
 hl.bind(mainMod .. " + M", groups.toggleWorkspaceGroup)
 
--- Cycle windows on the active workspace, or the tabs of the active group
-hl.bind(secondMod .. " + TAB",         groups.cycleWindows(true))
-hl.bind(secondMod .. " + SHIFT + TAB", groups.cycleWindows(false))
+-- Switch between windows on the active workspace, most recent first
+hl.bind(secondMod .. " + TAB",         switcher.open("next"))
+hl.bind(secondMod .. " + SHIFT + TAB", switcher.open("prev"))
 
 -- Move windows with mainMod + SHIFT + arrow keys or hjkl
 -- Move focus with mainMod + arrow keys or hjkl
