@@ -10,7 +10,7 @@ set -euo pipefail
 ASK_ALL=0
 [ "${1:-}" = "--ask" ] && ASK_ALL=1
 
-mkdir -p "$HOME/.config" "$HOME/.local/bin" "$HOME/.vim/undo-dir"
+mkdir -p "$HOME/.config" "$HOME/.local/bin" "$HOME/.vim/undo-dir" "$HOME/.claude/skills"
 
 # Symlink into place, replacing an existing link and backing up a real file or directory
 link() {
@@ -25,6 +25,11 @@ link "$HOME/.dotfiles/scripts/functions" ~/.local/bin/functions
 link "$HOME/.dotfiles/config/nvim" ~/.config/nvim
 link "$HOME/.dotfiles/config/yazi" ~/.config/yazi
 link "$HOME/.dotfiles/config/tmux/.tmux.conf" ~/.tmux.conf
+
+# One link per skill: Claude Code does not discover nested skill folders
+for skill in "$HOME"/.dotfiles/config/claude/skills/*/; do
+    link "${skill%/}" ~/.claude/skills/"$(basename "$skill")"
+done
 
 # LINUX_DISTRO=$(cat /etc/issue | awk '{print tolower($1)}')
 LINUX_DISTRO=$(awk -F= '$1=="ID" { print $2 ;}' /etc/os-release)
