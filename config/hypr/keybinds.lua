@@ -45,8 +45,8 @@ hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
 hl.bind(mainMod .. " + M", groups.toggleWorkspaceGroup)
 
 -- Next/previous tab in the active group
-hl.bind(secondMod .. " + SHIFT + J", hl.dsp.group.next())
-hl.bind(secondMod .. " + SHIFT + K", hl.dsp.group.prev())
+hl.bind(secondMod .. " + SHIFT + K", hl.dsp.group.next())
+hl.bind(secondMod .. " + SHIFT + J", hl.dsp.group.prev())
 
 -- Switch between windows on the active workspace, most recent first
 hl.bind(secondMod .. " + TAB",         switcher.open("workspace", "next"))
