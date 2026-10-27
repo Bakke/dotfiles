@@ -25,6 +25,7 @@ link "$HOME/.dotfiles/scripts/functions" ~/.local/bin/functions
 link "$HOME/.dotfiles/config/nvim" ~/.config/nvim
 link "$HOME/.dotfiles/config/yazi" ~/.config/yazi
 link "$HOME/.dotfiles/config/tmux/.tmux.conf" ~/.tmux.conf
+link "$HOME/.dotfiles/config/claude/CLAUDE.md" ~/.claude/CLAUDE.md
 
 # One link per skill: Claude Code does not discover nested skill folders
 for skill in "$HOME"/.dotfiles/config/claude/skills/*/; do
