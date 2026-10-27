@@ -65,6 +65,11 @@ sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 sudo systemctl enable bluetooth.service
 
+if [ "$FULL_INSTALL" = "y" ]; then
+    sudo ln -sfn "$HOME/.dotfiles/config/keyd/k4.conf" /etc/keyd/k4.conf
+    sudo systemctl enable keyd.service
+fi
+
 if [ "$LARAVEL" = "y" ]; then
     . "$HOME/.dotfiles/install/common/laravel-installer.sh"
 fi

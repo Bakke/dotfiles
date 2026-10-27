@@ -135,6 +135,7 @@ fullApps=(
     kubectl
     signal-desktop
     solaar # Logitech devices manager
+    keyd # Keyboard remapping daemon
 
     # Gnome Keyring
     libsecret
