@@ -18,7 +18,7 @@
   "log-highlight.nvim": { "branch": "main", "commit": "b2e00cfd41ca94338265a595f3f3f423d9f9322e" },
   "lspkind.nvim": { "branch": "master", "commit": "c7274c48137396526b59d86232eabcdc7fed8a32" },
   "lualine.nvim": { "branch": "master", "commit": "221ce6b2d999187044529f49da6554a92f740a96" },
-  "mini.comment": { "branch": "main", "commit": "7b6e37ad79a9d11ff08e6706d5d84eaf4c389213" },
+  "mini.comment": { "branch": "main", "commit": "3aa39b795c6dc54dbeaf2863aa91215850c4c8e0" },
   "nvim-autopairs": { "branch": "master", "commit": "3172f40c16563db871a58f20d205c710ad782311" },
   "nvim-cmp": { "branch": "main", "commit": "2ffe79f1f021def8dd1fcd81deb16f1bb0d989f3" },
   "nvim-tree.lua": { "branch": "master", "commit": "3be8cad084e79e84833ef98cef88116c26a224ff" },
@@ -40,5 +40,5 @@
   "vim-ripgrep": { "branch": "master", "commit": "2bb2425387b449a0cd65a54ceb85e123d7a320b8" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vim-tmux-navigator": { "branch": "master", "commit": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432" },
-  "yazi.nvim": { "branch": "main", "commit": "acf84fccc577b848357895848f5d15d8a3dec489" }
+  "yazi.nvim": { "branch": "main", "commit": "ca3470f3bbd0e857b687cd2de7ae0db2922190fe" }
 }
