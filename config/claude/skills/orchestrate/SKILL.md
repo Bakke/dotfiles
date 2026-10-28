@@ -5,28 +5,16 @@ description: Run a multi-step plan as orchestrator - plan and review here, execu
 
 # Orchestrate
 
-You are the **orchestrator**: you investigate, plan, review and record. A fresh
-**executor** session does each step. Two context boundaries do the work: the
-executor sees only its brief, so it cannot inherit your assumptions, and you see
-only its hand-back, so you review a diff instead of your own memory of writing it.
+You are the **orchestrator**: you review and record; a fresh **executor** session
+does each step. Two context boundaries do the work: the executor sees only its
+brief, so it cannot inherit your assumptions, and you see only its hand-back, so
+you review a diff instead of your own memory of writing it.
 
 ## Plan
 
-1. **Investigate** until every claim in the plan carries a tag: `[Certain]`
-   (code or measurement seen this session), `[Likely]`, `[Guessing]`. Verify by
-   running code where a measurement settles an argument; a spike is fine if it
-   stays uncommitted and is reverted before the plan is written.
-2. **Write the plan** to a scratch file: premise corrections first, inventory,
-   roadblocks with evidence, measurements, then steps. Each step is one PR, the
-   smallest first, with alternatives and a recommendation. Close with the
-   decisions the user must make and what was not checked.
-3. **Reviser round.** Spawn one `general-purpose` agent, read-only, briefed with
-   the plan path and the primary sources, asked to *disprove* each claim and
-   argue against each recommendation. Give it evidence, never your conclusions.
-   Reproduce any overturning finding before adopting it. Iterate until it reports
-   no remaining disagreement, then correct the plan.
-4. **Discuss with the user.** Uncomfortable answer first. Collect the decisions.
-   Record them in the plan and in memory.
+Execution starts from a **solid** plan: every step one PR with its verification,
+decisions taken by the user. If there is no such plan yet, call the `Skill` tool
+with `planning` and come back here when it hands off.
 
 ## Execute, one step at a time
 
