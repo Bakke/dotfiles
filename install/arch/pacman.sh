@@ -141,6 +141,20 @@ fullApps=(
     libsecret
     gnome-keyring
     seahorse
+
+    # Document and image tooling for Claude, see config/claude/CLAUDE.md
+    uv
+    pandoc-cli
+    typst
+    poppler
+    qpdf
+    tesseract
+    tesseract-data-eng
+    tesseract-data-nor
+    libreoffice-still
+    librsvg
+    graphviz
+    mermaid-cli
 )
 
 sudo pacman -S --needed --noconfirm "${apps[@]}"

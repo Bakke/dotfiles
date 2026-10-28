@@ -106,3 +106,14 @@ Comments state what the reader needs to know at that line, then stop.
   and the code before acting on them.
 - When a change spans another repository, do not edit it from this session: audit, write
   a markdown handoff, and hand it off.
+
+## Documents and images
+
+- Use the `pdf` and `xlsx` skills for those formats. Run Python libraries with
+  `uv run --with <pkg>`; never `pip install`.
+- PDF: read with `Read` (visual) or `pdftotext -layout`; OCR with `tesseract -l nor+eng`;
+  write with `pandoc --pdf-engine=typst` or `typst`.
+- DOCX: read and write with `pandoc` (`--reference-doc` for styling), not `docx-js`.
+- SVG and diagrams: write SVG, mermaid or dot; render to PNG (`rsvg-convert`,
+  `mmdc`, `dot -Tpng`) and `Read` the PNG to check it before calling it done.
+- No raster image generation is available; say so instead of faking it with SVG.
