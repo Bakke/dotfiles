@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# PreToolUse hook for mcp__atlassian__execute and executeWrite: only PR authoring is allowed.
+# Approve, request changes, commits, branches and pipeline runs stay with the human.
+set -euo pipefail
+
+allowed=(
+    createBitbucketRepoPullRequest
+    updateBitbucketRepoPullRequest
+    addBitbucketRepoPullRequestComment
+    updateBitbucketRepoPullRequestComment
+    resolveBitbucketRepoPullRequestComment
+    reopenBitbucketRepoPullRequestComment
+    createBitbucketRepoPullRequestTask
+    setBitbucketRepoPullRequestTaskState
+)
+
+input=$(cat)
+op=$(jq -r '.tool_input.name // ""' <<< "$input")
+
+if [ "$op" = createBitbucketRepoPullRequest ] \
+    && ! jq -e '.tool_input.inputs.closeSourceBranch == true' <<< "$input" > /dev/null; then
+    echo "Set inputs.closeSourceBranch to true when creating a pull request." >&2
+    exit 2
+fi
+if [ "$op" = updateBitbucketRepoPullRequest ] \
+    && jq -e '.tool_input.inputs | has("closeSourceBranch") and .closeSourceBranch != true' <<< "$input" > /dev/null 2>&1; then
+    echo "Do not turn off closeSourceBranch on a pull request." >&2
+    exit 2
+fi
+
+for a in "${allowed[@]}"; do
+    [ "$op" = "$a" ] && exit 0
+done
+
+echo "Blocked Atlassian write operation '$op': only PR creation, comments and tasks are allowed. Use executeRead for reads; ask the user for anything else." >&2
+exit 2

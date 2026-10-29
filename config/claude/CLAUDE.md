@@ -97,6 +97,9 @@ Comments state what the reader needs to know at that line, then stop.
 - Do not edit generated files (build caches, vendored dependencies, schema dumps).
   Change the source and regenerate.
 - Never commit secrets. Example env files are the only env files that belong in git.
+- Bitbucket (`bitbucket.org/ncl`): push with git, then open the PR with the `atlassian` MCP
+  (`discover`, then `executeWrite` with `closeSourceBranch: true`). Check the PR's pipeline; on failure read the failing
+  step's log before diagnosing. Merge, approve and pipeline runs are blocked: ask me.
 
 ## Working method
 

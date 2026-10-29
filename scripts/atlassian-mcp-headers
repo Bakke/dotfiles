@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Claude Code headersHelper for the Atlassian Rovo MCP server.
+# Keyring entry holds "email:api-token": secret-tool store --label 'Atlassian MCP' service atlassian-mcp
+set -euo pipefail
+
+creds=$(secret-tool lookup service atlassian-mcp)
+printf '{"Authorization":"Basic %s"}\n' "$(printf '%s' "$creds" | base64 -w0)"

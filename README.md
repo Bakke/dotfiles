@@ -56,6 +56,49 @@ The installer symlinks the script and units, enables a 2 min timer, and adds
 `FILEN_SYNC_MOUNT`, ...). Requires the same username and project paths on both
 machines, a systemd user instance, rsync and jq.
 
+## Atlassian MCP (Bitbucket PRs for Claude Code)
+Claude Code opens Bitbucket PRs and reads pipeline logs through the Atlassian
+Rovo MCP server (`https://mcp.atlassian.com/v2/mcp`). Merge is denied and other
+writes go through an allowlist hook that permits only PR creation, comments and
+tasks. The hook also requires new PRs to close the source branch after merge.
+Approve, request changes, commits, branches and pipeline runs stay manual.
+
+Files: `scripts/atlassian-mcp-headers` (auth header from the keyring),
+`config/claude/hooks/atlassian-write-allowlist`, `install/common/atlassian-mcp.sh`
+(installer, run by `install/arch.sh` on full installs).
+
+**Once per organization (org admin):** in admin.atlassian.com, check that the
+Bitbucket workspace is linked to the organization, then enable API token
+authentication under Rovo → Rovo MCP Server. This applies to all users. If the
+org has an IP allowlist, it also applies to MCP calls made with API tokens.
+
+**Per user and machine:**
+1. Create a token at
+   `https://id.atlassian.com/manage-profile/security/api-tokens?autofillToken&expiryDays=max&appId=mcp-v2&selectedScopes=all`.
+   That link preselects every product. Untick all scopes except
+   `read:bitbucket:agent-interface` and `write:bitbucket:agent-interface`.
+   Note the expiry date. The token is shown only once.
+2. Store it as `email:token` in the keyring:
+   ```
+   secret-tool store --label 'Atlassian MCP' service atlassian-mcp
+   ```
+3. Run the installer, then check the connection:
+   ```
+   ~/.dotfiles/install/common/atlassian-mcp.sh
+   claude mcp get atlassian                    # Status: Connected
+   ```
+
+The installer registers the server at user scope in `~/.claude.json`. It also
+adds the `executeDestructive` deny rule and the hook to `~/.claude/settings.json`
+(backup in `settings.json.pre-atlassian-mcp.bak`). Changes apply to new sessions.
+
+To rotate the token, create a new one, rerun step 2 (it overwrites the entry),
+then revoke the old token.
+
+If the server connects but `discover` finds no Bitbucket operations, the token
+has classic Bitbucket scopes instead of the agent-interface ones above, and
+needs to be recreated.
+
 # Update submodules
 ```
 git submodule update --remote
