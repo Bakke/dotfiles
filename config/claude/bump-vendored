@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Bump every skill in VENDORED.md to its upstream head: re-copy the folder and rewrite the pin.
+# Review the result with `git diff`, then commit.
+set -euo pipefail
+
+DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+TABLE="$DIR/VENDORED.md"
+TMP=$(mktemp -d)
+trap 'rm -rf "$TMP"' EXIT
+
+license_known() {
+    for f in "$DIR"/licenses/*; do cmp -s "$1" "$f" && return 0; done
+    return 1
+}
+
+# Rows: | name | https://github.com/owner/repo/tree/branch/path/to/skill | commit |
+grep -E '^\| [^|]+ \| https://github.com/' "$TABLE" > "$TMP/rows"
+while IFS='|' read -r _ name url pin _; do
+    name=${name// /} url=${url// /} pin=${pin// /}
+    [[ $url =~ ^https://github.com/([^/]+/[^/]+)/tree/([^/]+)/(.+)$ ]] \
+        || { echo "cannot parse upstream URL: $url" >&2; exit 1; }
+    repo=${BASH_REMATCH[1]} branch=${BASH_REMATCH[2]} path=${BASH_REMATCH[3]}
+    [ -d "$DIR/skills/$name" ] || { echo "no skill folder for $name" >&2; exit 1; }
+
+    clone="$TMP/${repo//\//_}"
+    if [ ! -d "$clone" ]; then
+        git clone -q --depth 1 --branch "$branch" "https://github.com/$repo" "$clone"
+        license_known "$clone/LICENSE" || echo "warning: $repo LICENSE changed, update licenses/" >&2
+    fi
+    [ -d "$clone/$path" ] || { echo "$name: $path no longer exists upstream" >&2; exit 1; }
+
+    head=$(git -C "$clone" rev-parse --short HEAD)
+    rsync -a --delete "$clone/$path/" "$DIR/skills/$name/"
+    sed -i "s#^| $name | $url | $pin |\$#| $name | $url | $head |#" "$TABLE"
+    echo "$name: $pin -> $head"
+done < "$TMP/rows"
