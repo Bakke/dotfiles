@@ -1,0 +1,5 @@
+interface:
+  display_name: "Walkthrough"
+  short_description: "Walk me through a PR, commit, diff or file, in Simplified Technical English"
+policy:
+  allow_implicit_invocation: false
