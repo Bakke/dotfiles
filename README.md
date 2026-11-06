@@ -23,9 +23,10 @@ Filen mount. Layout: `~/Filen/sync/<thing>/hosts/<host-id>/`. Each host mirrors
 its own data into its host folder and pulls from the others. If `~/Filen` is
 not mounted the run is a no-op.
 
-- `claude`: `~/.claude/{projects,file-history}` (newest file wins, missing files
-  created) and `history.jsonl` (union, ordered by timestamp). Sessions, per-project
-  memory, file history for /rewind and prompt history.
+- `claude`: `~/.claude/{projects,file-history,private}` (newest file wins, missing
+  files created) and `history.jsonl` (union, ordered by timestamp). Sessions,
+  per-project memory, file history for /rewind, prompt history and the
+  identity-leak block list.
 - `zsh`: `~/.zsh_history`, which needs `EXTENDED_HISTORY` (set in `system/env`).
   The result is the union of all hosts ordered by timestamp, minus entries any
   host has deleted since the previous run, capped to the newest `SAVEHIST`
@@ -98,6 +99,30 @@ then revoke the old token.
 If the server connects but `discover` finds no Bitbucket operations, the token
 has classic Bitbucket scopes instead of the agent-interface ones above, and
 needs to be recreated.
+
+## Identity-leak hook (Claude Code)
+A `PreToolUse` hook on `Bash`, `WebFetch` and `WebSearch` blocks any call whose
+command, URL, prompt or query contains a personal identifier: the claude.ai
+account email, the global and repo-local git `user.email`, and every line of
+`~/.claude/private/block-strings`. Matching ignores case, percent-encoding and
+`+`/space. It also blocks every call when it cannot check one (no `jq`,
+unreadable input or `~/.claude.json`). Values built at run time, such as
+`$(git config user.email)`, still get through.
+
+Files: `config/claude/hooks/block-identity-leak.sh`,
+`install/common/identity-leak-hook.sh` (installer, run by `install/arch.sh`).
+
+The block list lives outside the repo and the Filen `claude` module syncs it
+between machines. Create it once, one string per line, and don't paste the
+values into a Claude session:
+```
+nvim ~/.claude/private/block-strings
+```
+
+The installer creates `~/.claude/private` (mode 700) and adds the hook and a
+`Read` deny rule for that folder to
+`~/.claude/settings.json` (backup in `settings.json.pre-identity-leak-hook.bak`).
+Changes apply to new sessions.
 
 # Update submodules
 ```

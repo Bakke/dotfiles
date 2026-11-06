@@ -5,7 +5,7 @@
 # Layout on Filen:  <mount>/sync/<module>/hosts/<host-id>/...
 # Each host mirrors its own data into its own folder and pulls from every other
 # host's folder. Modules:
-#   claude  ~/.claude/{projects,file-history}: newest file wins, missing files
+#   claude  ~/.claude/{projects,file-history,private}: newest file wins, missing files
 #           are created. history.jsonl: union, ordered by timestamp.
 #   zsh     ~/.zsh_history (needs EXTENDED_HISTORY): union of all hosts, minus
 #           what any host deleted since the previous run, ordered by timestamp,
@@ -28,7 +28,7 @@ RSYNC_OPTS=(-t --no-perms --no-owner --no-group)
 RSYNC_TREE_OPTS=("${RSYNC_OPTS[@]}" -rO --modify-window=2 --exclude='*.tmp' --exclude='.*.swp')
 
 CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
-CLAUDE_TREES=(projects file-history)
+CLAUDE_TREES=(projects file-history private)
 
 ZSH_HISTFILE="${FILEN_SYNC_ZSH_HISTFILE:-$HOME/.zsh_history}"
 # entries to keep; follows SAVEHIST in the dotfiles zsh env so the sync and zsh agree on what is old

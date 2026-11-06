@@ -71,6 +71,8 @@ if [ "$FULL_INSTALL" = "y" ]; then
     "$HOME/.dotfiles/install/common/atlassian-mcp.sh"
 fi
 
+"$HOME/.dotfiles/install/common/identity-leak-hook.sh"
+
 if [ "$LARAVEL" = "y" ]; then
     . "$HOME/.dotfiles/install/common/laravel-installer.sh"
 fi
