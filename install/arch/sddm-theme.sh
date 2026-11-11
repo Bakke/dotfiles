@@ -14,13 +14,13 @@ die() {
     exit 1
 }
 
-TMP_DIR=$(mktemp -d)
-trap 'rm -rf "$TMP_DIR"' EXIT
+if [ ! -d "${SDDM_THEMES_DIR}/${THEME_DIR}" ]; then
+    TMP_DIR=$(mktemp -d)
+    trap 'rm -rf "$TMP_DIR"' EXIT
 
-git clone --depth 1 "$THEME_SOURCE" "$TMP_DIR/theme" || die "Failed to fetch git repo at $THEME_SOURCE."
-
-rm -rf "${SDDM_THEMES_DIR:?}/${THEME_DIR}"
-cp -r "$TMP_DIR/theme/${THEME_DIR}" "$SDDM_THEMES_DIR" || die "Failed to copy theme to $SDDM_THEMES_DIR."
+    git clone --depth 1 "$THEME_SOURCE" "$TMP_DIR/theme" || die "Failed to fetch git repo at $THEME_SOURCE."
+    cp -r "$TMP_DIR/theme/${THEME_DIR}" "$SDDM_THEMES_DIR" || die "Failed to copy theme to $SDDM_THEMES_DIR."
+fi
 
 cp "${DOTFILES_DIR}/config/sddm/theme.conf" "${SDDM_THEMES_DIR}/${THEME_DIR}/theme.conf"
 cp "${DOTFILES_DIR}/assets/wallpapers/forest.png" "${SDDM_THEMES_DIR}/${THEME_DIR}/forest.png"
