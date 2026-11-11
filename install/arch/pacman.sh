@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Install packages
-sudo pacman -Syu --noconfirm
-
 apps=(
     base-devel
     cmake
@@ -157,21 +154,26 @@ fullApps=(
     mermaid-cli
 )
 
-sudo pacman -S --needed --noconfirm "${apps[@]}"
-systemctl --user enable --now gcr-ssh-agent.socket
-
 if [ "$FULL_INSTALL" = "y" ]; then
-    sudo pacman -S --needed --noconfirm "${fullApps[@]}"
+    apps+=("${fullApps[@]}")
 fi
 
 if [ "$HYPR" = "y" ]; then
-    sudo pacman -S --needed --noconfirm "${waylandApps[@]}" "${hyprApps[@]}"
+    apps+=("${waylandApps[@]}" "${hyprApps[@]}")
 fi
 
 if [ "$SWAY" = "y" ]; then
-    sudo pacman -S --needed --noconfirm "${waylandApps[@]}" "${swayApps[@]}"
+    apps+=("${waylandApps[@]}" "${swayApps[@]}")
 fi
 
 if [ "$I3" = "y" ]; then
-    sudo pacman -S --needed --noconfirm "${i3Apps[@]}"
+    apps+=("${i3Apps[@]}")
 fi
+
+# Upgrade only when something is missing: installing against a stale database is a partial upgrade
+mapfile -t missing < <(pacman -T "${apps[@]}" || true)
+if [ ${#missing[@]} -gt 0 ]; then
+    sudo pacman -Syu --needed --noconfirm "${missing[@]}"
+fi
+
+systemctl --user enable --now gcr-ssh-agent.socket
