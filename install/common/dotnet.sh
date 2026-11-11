@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dotnet tool install --global csharp-ls
+dotnet tool list --global csharp-ls > /dev/null || dotnet tool install --global csharp-ls
