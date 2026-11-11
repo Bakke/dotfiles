@@ -15,6 +15,10 @@ git -C ~/.dotfiles pull && ~/.dotfiles/install.sh
 # Answers to the optional-groups questions are saved in
 # ~/.config/dotfiles-install.conf; pass --ask to answer them again
 ~/.dotfiles/install.sh --ask
+
+# Upgrade system and AUR packages, Node, yarn/dotnet/composer globals,
+# Neovim plugins and submodules (commit lazy-lock.json and submodules after)
+~/.dotfiles/update.sh
 ```
 
 ## Filen sync (Claude Code sessions, zsh history)
@@ -123,11 +127,6 @@ The installer creates `~/.claude/private` (mode 700) and adds the hook and a
 `Read` deny rule for that folder to
 `~/.claude/settings.json` (backup in `settings.json.pre-identity-leak-hook.bak`).
 Changes apply to new sessions.
-
-# Update submodules
-```
-git submodule update --remote
-```
 
 ### Temp fix for e1000e suspend issue
 https://bbs.archlinux.org/viewtopic.php?id=298146
