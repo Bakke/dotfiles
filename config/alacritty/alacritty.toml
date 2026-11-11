@@ -8,3 +8,8 @@ general.import = [
     "~/.dotfiles/config/alacritty/selection.toml",
     "~/.dotfiles/config/alacritty/custom.toml",
 ]
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
