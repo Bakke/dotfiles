@@ -9,7 +9,7 @@ elif [ -s "$NVM_DIR/nvm.sh" ]; then
     . "$NVM_DIR/nvm.sh"
 fi
 
-nvm install --lts node
+[ "$(nvm version 'lts/*')" != N/A ] || nvm install --lts node
 command -v yarn > /dev/null || npm install --global yarn
 
 yarn config set prefix ~/.yarn
@@ -33,4 +33,12 @@ yarnPackages=(
     @agentclientprotocol/claude-agent-acp
 )
 
-yarn global add "${yarnPackages[@]}"
+globalPackageJson="$(yarn global dir)/package.json"
+missing=()
+for package in "${yarnPackages[@]}"; do
+    jq -e --arg p "$package" '.dependencies[$p]' "$globalPackageJson" > /dev/null 2>&1 || missing+=("$package")
+done
+
+if [ ${#missing[@]} -gt 0 ]; then
+    yarn global add "${missing[@]}"
+fi
