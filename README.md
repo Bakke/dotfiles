@@ -61,6 +61,20 @@ The installer symlinks the script and units, enables a 2 min timer, and adds
 `FILEN_SYNC_MOUNT`, ...). Requires the same username and project paths on both
 machines, a systemd user instance, rsync and jq.
 
+DBeaver preferences (including keybindings) are copied by hand, never by the
+timer: `push:dbeaver` sends this machine's preference files to
+`~/Filen/sync/dbeaver/shared/`, `pull:dbeaver` copies them in. DBeaver must be
+closed. A pull keeps preference files only this machine has and first copies
+the local ones to `~/.local/state/filen-sync/dbeaver/prev/<timestamp>/`. Push
+refuses while another machine's push has not been pulled here. Saved passwords
+are never synced. Both machines need the same dotfiles revision. Details in
+[docs/dbeaver-filen-sync.md](docs/dbeaver-filen-sync.md).
+
+```
+filen-sync push:dbeaver [--force]           # --force overwrites an unpulled push
+filen-sync pull:dbeaver
+```
+
 ## Atlassian MCP (Bitbucket PRs for Claude Code)
 Claude Code opens Bitbucket PRs and reads pipeline logs through the Atlassian
 Rovo MCP server (`https://mcp.atlassian.com/v2/mcp`). Merge is denied and other

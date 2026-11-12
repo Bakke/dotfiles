@@ -12,6 +12,9 @@
 #           capped to SAVEHIST entries.
 #
 # Usage: filen-sync [--now] [module...]      (--now skips the throttle)
+#        filen-sync push:dbeaver [--force]   DBeaver preferences to Filen (DBeaver closed)
+#        filen-sync pull:dbeaver             Filen to DBeaver; old files kept in <state>/dbeaver/prev/
+#        See docs/dbeaver-filen-sync.md.
 set -euo pipefail
 
 # ---- configuration -----------------------------------------------------------
@@ -34,6 +37,9 @@ ZSH_HISTFILE="${FILEN_SYNC_ZSH_HISTFILE:-$HOME/.zsh_history}"
 # entries to keep; follows SAVEHIST in the dotfiles zsh env so the sync and zsh agree on what is old
 ZSH_KEEP="${FILEN_SYNC_ZSH_KEEP:-$(sed -n 's/^SAVEHIST=\([0-9]*\).*/\1/p' "$HOME/.dotfiles/system/env" 2>/dev/null | tail -1)}"
 ZSH_KEEP="${ZSH_KEEP:-10000}"
+
+DBEAVER_PREFS="${XDG_DATA_HOME:-$HOME/.local/share}/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings"
+DBEAVER_PROC="${FILEN_SYNC_DBEAVER_PROC:-dbeaver}"   # process name (pgrep -x) that means DBeaver is running
 
 # ---- helpers -----------------------------------------------------------------
 log() { printf '%s %s\n' "$(date '+%F %T')" "$*"; }
@@ -198,6 +204,84 @@ zsh_merge_history() {
         | sort_entries | tail -n "$ZSH_KEEP" | tr '\001' '\n'
 }
 
+# ---- dbeaver (manual: push:dbeaver, pull:dbeaver) ------------------------------
+# Marker in shared/pushed: "<format> <host-id> <date> <time> <prefs_hash>".
+DBEAVER_SHARED="$SYNC_ROOT/dbeaver/shared"
+DBEAVER_STATE="$STATE_DIR/dbeaver"
+
+die() { printf 'filen-sync: %s\n' "$*" >&2; exit 1; }
+
+has_prefs() { compgen -G "$1/*.prefs" >/dev/null; }
+
+# prefs_hash <dir>: hash of the names and content of <dir>/*.prefs, independent of <dir>
+prefs_hash() { (cd "$1" && LC_ALL=C sha256sum -- *.prefs) | sha256sum | cut -d' ' -f1; }
+
+dbeaver_check() {
+    if pgrep -x "$DBEAVER_PROC" >/dev/null; then die "DBeaver is running; close it first"; fi
+    if [ ! -d "$DBEAVER_PREFS" ]; then die "no DBeaver settings at $DBEAVER_PREFS"; fi
+}
+
+dbeaver_push() {
+    local marker fmt host day time hash
+    dbeaver_check
+    has_prefs "$DBEAVER_PREFS" || die "no .prefs files in $DBEAVER_PREFS"
+    if [ "$FORCE" = 0 ] && [ -f "$DBEAVER_SHARED/pushed" ]; then
+        marker=$(cat "$DBEAVER_SHARED/pushed")
+        read -r fmt host day time hash <<< "$marker" || true
+        if [ "$host" != "$HOST_ID" ] && [ "$marker" != "$(cat "$DBEAVER_STATE/pushed" 2>/dev/null)" ]; then
+            die "$host pushed on $day $time; pull first, or push --force"
+        fi
+    fi
+
+    mkdir -p "$DBEAVER_SHARED/prefs" "$DBEAVER_STATE"
+    hash=$(prefs_hash "$DBEAVER_PREFS")
+    rsync -t -c -d --delete --include='*.prefs' --exclude='*' --out-format='push:dbeaver: sent %n' --info=del \
+        "$DBEAVER_PREFS/" "$DBEAVER_SHARED/prefs/"
+    marker="1 $HOST_ID $(date '+%F %T') $hash"
+    printf '%s\n' "$marker" > "$DBEAVER_SHARED/pushed.tmp"
+    mv -f "$DBEAVER_SHARED/pushed.tmp" "$DBEAVER_SHARED/pushed"
+    printf '%s\n' "$marker" > "$DBEAVER_STATE/pushed"
+    echo "push:dbeaver: pushed as $HOST_ID; keep this laptop online for a moment while it uploads"
+    sleep "${FILEN_SYNC_PUSH_WAIT:-20}"
+}
+
+dbeaver_pull() {
+    local marker fmt host day time hash stage prev f local_f tmp changed=0
+    dbeaver_check
+    [ -f "$DBEAVER_SHARED/pushed" ] || die "nothing pushed yet: $DBEAVER_SHARED/pushed is missing"
+    marker=$(cat "$DBEAVER_SHARED/pushed")
+    read -r fmt host day time hash <<< "$marker" || true
+    [ "$fmt" = 1 ] || die "unknown marker format '$fmt' in $DBEAVER_SHARED/pushed; update the dotfiles on this laptop"
+    has_prefs "$DBEAVER_SHARED/prefs" || die "no .prefs files in $DBEAVER_SHARED/prefs"
+
+    # copy once from the mount and check what was copied, so a push in between cannot slip through
+    mkdir -p "$DBEAVER_STATE"
+    stage=$(mktemp -d "$DBEAVER_STATE/incoming.XXXXXX")
+    trap "rm -rf -- $(printf %q "$stage")" EXIT
+    cp -p -- "$DBEAVER_SHARED/prefs"/*.prefs "$stage/"
+    if [ "$(prefs_hash "$stage")" != "$hash" ]; then
+        die "shared copy does not match its marker: retry in a minute; if it persists, push again from $host, or push --force from here"
+    fi
+
+    prev="$DBEAVER_STATE/prev/$(date '+%Y%m%d-%H%M%S')"
+    [ -e "$prev" ] && prev="$prev-$$"
+    mkdir -p "$prev"
+    if has_prefs "$DBEAVER_PREFS"; then cp -p -- "$DBEAVER_PREFS"/*.prefs "$prev/"; fi
+
+    for f in "$stage"/*.prefs; do
+        local_f="$DBEAVER_PREFS/$(basename "$f")"
+        cmp -s "$f" "$local_f" && continue
+        tmp=$(mktemp "$DBEAVER_PREFS/.$(basename "$f").XXXXXX")
+        cp -- "$f" "$tmp"
+        if [ -f "$local_f" ]; then chmod --reference="$local_f" "$tmp"; fi
+        mv -f "$tmp" "$local_f"
+        echo "pull:dbeaver: updated $(basename "$f")"
+        changed=$((changed + 1))
+    done
+    printf '%s\n' "$marker" > "$DBEAVER_STATE/pushed"
+    echo "pull:dbeaver: $changed file(s) changed from $host's push of $day $time; previous files in $prev"
+}
+
 # ---- main --------------------------------------------------------------------
 args=()
 for a in "$@"; do
@@ -207,6 +291,28 @@ for a in "$@"; do
     esac
 done
 [ "${#args[@]}" -gt 0 ] && MODULES="${args[*]}"
+
+# Manual commands: own lock, no throttle, failures exit 1.
+manual=() FORCE=0
+for a in "${args[@]}"; do
+    case "$a" in
+        push:dbeaver|pull:dbeaver) manual+=("$a") ;;
+        --force) FORCE=1 ;;
+    esac
+done
+if [ "${#manual[@]}" -gt 0 ]; then
+    if [ "${#manual[@]}" -ne 1 ] || [ "${#args[@]}" -ne $(( 1 + FORCE )) ]; then
+        echo "usage: filen-sync push:dbeaver [--force] | pull:dbeaver" >&2
+        exit 2
+    fi
+    mkdir -p "$STATE_DIR"
+    exec 9>"$STATE_DIR/dbeaver.lock"
+    flock 9
+    mountpoint -q "$FILEN_MOUNT" || die "$FILEN_MOUNT is not mounted"
+    timeout 20 ls "$FILEN_MOUNT" >/dev/null 2>&1 || die "$FILEN_MOUNT is mounted but not responding"
+    "dbeaver_${manual[0]%%:*}"
+    exit
+fi
 
 mkdir -p "$STATE_DIR"
 exec 9>"$STATE_DIR/lock"
