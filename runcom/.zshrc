@@ -42,12 +42,23 @@ if (( $+commands[zoxide] )); then
 fi
 
 if [[ -e "$NVM_DIR" ]]; then
-    # source /usr/share/nvm/init-nvm.sh
+    # Put the newest install matching the default alias on PATH without loading nvm.sh
+    if [[ -s "$NVM_DIR/alias/default" ]]; then
+        NVM_DEFAULT="$(<"$NVM_DIR/alias/default")"
+        NVM_DEFAULT=( "$NVM_DIR"/versions/node/v${NVM_DEFAULT#v}(|.*)(N/nOn) )
+        (( $#NVM_DEFAULT )) && export PATH="$NVM_DEFAULT[1]/bin:$PATH"
+        unset NVM_DEFAULT
+    fi
 
     nvm() {
         unset -f nvm
-        [ -s "/usr/share/nvm/nvm.sh" ] && \. "/usr/share/nvm/nvm.sh" --no-use
-        [ -s "/usr/share/nvm/bash_completion" ] && \. "/usr/share/nvm/bash_completion"
+        if [ -s /usr/share/nvm/nvm.sh ]; then
+            . /usr/share/nvm/nvm.sh --no-use
+            . /usr/share/nvm/bash_completion
+        elif [ -s "$NVM_DIR/nvm.sh" ]; then
+            . "$NVM_DIR/nvm.sh" --no-use
+            . "$NVM_DIR/bash_completion"
+        fi
         nvm "$@"
     }
 fi
