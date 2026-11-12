@@ -20,7 +20,7 @@ MIN_INTERVAL="${FILEN_SYNC_MIN_INTERVAL:-60}"   # seconds between syncs; a kick 
 CONF="${XDG_CONFIG_HOME:-$HOME/.config}/filen-sync.conf"
 [ -f "$CONF" ] && . "$CONF"
 HOST_ID="${FILEN_SYNC_HOST_ID:-$(hostname)-$(cut -c1-6 /etc/machine-id)}"
-MODULES="${FILEN_SYNC_MODULES:-claude zsh}"
+MODULES="${FILEN_SYNC_MODULES:-zsh claude}"
 
 SYNC_ROOT="${FILEN_SYNC_ROOT:-$FILEN_MOUNT/sync}"
 STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/filen-sync"
