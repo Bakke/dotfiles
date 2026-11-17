@@ -25,6 +25,7 @@ fullApps=(
     bruno-bin
     claude-code
     filen-desktop-bin
+    dbeaver-ce-jre-bin
     catppuccin-gtk-theme-mocha
     # pdfcraft-bin
     # wordcraft-bin
