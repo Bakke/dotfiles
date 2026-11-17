@@ -19,6 +19,7 @@ apps=(
     curl
     tmux
     ncdu
+    btop
     yazi
     ueberzugpp # Image preview in Yazi
     rofi

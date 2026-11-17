@@ -24,6 +24,7 @@ link "$HOME/.dotfiles/config/git/.gitconfig" ~/.gitconfig
 link "$HOME/.dotfiles/scripts/functions" ~/.local/bin/functions
 link "$HOME/.dotfiles/config/nvim" ~/.config/nvim
 link "$HOME/.dotfiles/config/yazi" ~/.config/yazi
+link "$HOME/.dotfiles/config/btop" ~/.config/btop
 link "$HOME/.dotfiles/config/tmux/.tmux.conf" ~/.tmux.conf
 link "$HOME/.dotfiles/config/claude/CLAUDE.md" ~/.claude/CLAUDE.md
 
