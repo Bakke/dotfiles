@@ -9,12 +9,21 @@ report.
 
 1. **Where and how.** Repository path, then the instruction files the executor
    reads *first* and follows: the global one (`~/.claude/CLAUDE.md`) and the
-   project one (`<repo>/CLAUDE.md`), by absolute path, in that order. A fresh
+   project one (`<repo>/CLAUDE.md`), by absolute path, in that order. Where the
+   repository has none, say so, and say that an instruction file from any
+   other repository does not apply. A fresh
    session does not inherit yours, so say it in the brief every time. Then how
    commands run (containers, wrappers); branch naming; commit style; whether a
    PR can be created from the shell. With no PR CLI: push, then return the
    PR-creation link and a description for the user to paste.
 2. **Problem and goal** in two sentences.
+   Name the feature folder's `plan.md`, and its `design.md` when there is one,
+   by absolute path, with the phase and numbered changes this step implements.
+   Say what they are: the plan and the approved design, not verified facts.
+   Rows tagged `[Likely]` or `[Guessing]`, open questions and other phases are
+   context only. The folder is tracked: the executor changes it only where the
+   scope says so. In the brief of the step that ships the design's last phase,
+   add to the scope: set `status: implemented` in `design.md`.
 3. **Facts to rely on**, each one verified by you this session, with the file or
    measurement behind it. Mark the executor's starting hypotheses as hypotheses.
    Anything you are guessing stays out or is labelled.

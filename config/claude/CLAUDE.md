@@ -94,6 +94,8 @@ Comments state what the reader needs to know at that line, then stop.
   `chore/<short-description>`.
 - Focused commits with imperative messages (e.g. `Add booking export filter`).
 - Rebase or merge main into the branch before opening a PR.
+- A docs-only PR always has `[skip ci]` on its head commit; the head commit of a
+  branch that carries code never does.
 - Do not edit generated files (build caches, vendored dependencies, schema dumps).
   Change the source and regenerate.
 - Never commit secrets. Example env files are the only env files that belong in git.
@@ -109,6 +111,10 @@ Comments state what the reader needs to know at that line, then stop.
   and the code before acting on them.
 - When a change spans another repository, do not edit it from this session: audit, write
   a markdown handoff, and hand it off.
+- Plans and blueprints live in `docs/plans/<date>-<slug>/`; I read them in Obsidian.
+  The folder is committed as the first PR of the feature. The `blueprint` skill runs
+  only when I ask for it. To plan or implement from a folder, read its markdown and
+  mermaid text; a rendered image is only for checking a diagram.
 
 ## Documents and images
 

@@ -9,31 +9,45 @@ A plan is a set of claims plus a sequence of PRs. The work is making every claim
 **certain** before the user sees it. Nothing is implemented in this phase: a spike
 is allowed, uncommitted, and reverted before the plan is written.
 
+The method for sections 1, 2, 3 and 5 is [`evidence.md`](evidence.md), shared
+with the `blueprint` skill. Read it before starting.
+
+**Feature folder.** Every plan lives in a feature folder (**Folder** in
+`evidence.md`). Before section 1, find out if the `blueprint` skill already
+designed this change. Use an existing folder under `docs/plans/` only in one of
+two cases: the user or the caller names it, or exactly one folder has
+`status: approved`, no `plan.md`, and a `design.md` that is plainly about this
+request. A folder that already holds a `plan.md` is in progress or finished:
+ask before you touch it. In every other case (two candidates, an uncertain
+match) ask the user. When no folder fits, create one for this plan. In a
+folder with a `design.md`, its status decides what the folder is:
+
+- `approved`: read `design.md` and `research.md` first, then test that the
+  design still fits the code: each existing node it names must still exist,
+  and `git log <commit>..HEAD` on the files it touches, with `commit` from the
+  design's frontmatter, shows what changed since. Three outcomes:
+  - Nothing touches the design: the approved diagrams, measurements and phases
+    are settled. Sections 1 to 3 then cover only what the design leaves open,
+    and what a step needs that a design does not hold (files, tests,
+    verification commands).
+  - Names or places changed but the flow is the same (a rename, a moved file):
+    tell the user and propose a short revision, the corrected names and a
+    rerun of the measurements.
+  - The flow changed: tell the user that the design needs the `blueprint`
+    skill again.
+
+  In the last two cases write no plan. The user decides, and the change goes
+  through the `blueprint` gate.
+- `draft`: not a basis for a plan. Tell the user.
+- `implemented`: history. Treat it as an old doc, a lead and not a fact.
+
+`design.md` is not yours to change. If the plan needs a different design, stop
+and tell the user; the `blueprint` gate decides.
+
 ## 1. Explore
 
-Map the territory before forming an opinion. Read the entry points yourself
-(config, build/CI files, the base classes everything extends). For broad sweeps
-across many files, spawn `Explore` agents and keep only their conclusions. Grep for
-string-literal references as well as symbols. Stale notes and old docs are
-**leads**, never facts: check them against git history and the code.
-
-Map the **reach** of the change: every place it must touch (callers, tests,
-fixtures, factories, config, scripts, CI, docs, other repositories) and every
-reader of what it touches that is not in this codebase (a BI tool reading a view,
-a pipeline reading a report file, a developer's local cache). Then the **side
-effects**: what each step could break or destroy, which data it exposes, which
-behaviour it silently changes for someone who did not ask. A cache clear that
-also flushes a developer's Redis, a lock-file change that triggers a different
-build step, a commit marker that silences a whole pipeline: each is a line in the
-plan before it is a surprise in execution.
-
-Hunt for **roadblocks** while you map: anything that would make a later step fail
-or be unverifiable. A dependency present in `vendor/` but not in the lock file, a
-flag the tool silently ignores, shared state between the things you will run in
-parallel, a flaky or order-sensitive test, a drifted version, stale caches, a
-doc that is wrong. Each one is written down with its evidence the moment it is
-found; most are small and all are cheaper to remove before the main change than
-inside it.
+Follow **Explore** in `evidence.md`: the territory, the reach, the side effects,
+the roadblocks.
 
 Done when you can name every component the change touches, every outside reader
 of those components, every side effect with who it lands on, and every roadblock
@@ -41,24 +55,14 @@ in the way.
 
 ## 2. Understand the mechanism
 
-Trace *how it works*, down into vendor code when the behaviour lives there (a
-framework hook, a runner, a parser). Every factual claim carries a tag:
-`[Certain]` from code or a measurement seen this session, `[Likely]` strong
-inference, `[Guessing]`. A `[Guessing]` claim on the critical path is a task, not a
-footnote.
+Follow **Tags and mechanism** in `evidence.md`.
 
 Done when the mechanism behind each roadblock is a sentence you could defend with
 a file:line.
 
 ## 3. Verify with code
 
-Prefer a measurement to an argument. Run the command, time it, count the rows,
-reproduce the failure. A scratch spike that proves a design (a hook fires, a flag
-is honoured) is cheap; a wrong assumption that reaches the executor is not.
-External facts (a vendor's limits, a service's sizes) come from the primary
-documentation, fetched now, not from memory. Record every number with its
-conditions (hardware, worker count, date): numbers travel without context and
-mislead later.
+Follow **Test with code** in `evidence.md`.
 
 Done when each `[Likely]` on the critical path is `[Certain]` or explicitly
 accepted as a risk, and every scratch edit is reverted and every scratch artefact
@@ -66,7 +70,8 @@ accepted as a risk, and every scratch edit is reverted and every scratch artefac
 
 ## 4. Write the plan
 
-One scratch file, shaped by [`plan-template.md`](plan-template.md): premise
+`plan.md` in the feature folder, shaped by
+[`plan-template.md`](plan-template.md): premise
 corrections first, the inventory, roadblocks with evidence, measurements, then
 the steps. Each step is one PR, smallest first, independently shippable.
 **Roadblocks go first**: phase 0 is one PR per roadblock, each green on its own
@@ -77,20 +82,18 @@ ways reach a goal, list the **alternatives** with the specific downside of each
 and give one **recommendation**. Close with the decisions only the user can make
 and what was not checked.
 
+With a `design.md`, group the steps under the design's phases and name in
+each step the numbered changes it implements. A roadblock the design did not
+place in a phase still goes first, and the user must approve it as an addition
+to the design.
+
 ## 5. Review until solid
 
-- If an `advisor` tool is available, call it before writing the plan and again
-  before declaring it done; when it conflicts with your evidence, say so to it
-  and let the constraint, not the rank, decide.
-- Spawn one `general-purpose` **reviser** agent, read-only, briefed with the plan
-  path and the primary sources, told to *disprove* each claim and argue against
-  each recommendation. Give it evidence, never conclusions. Reproduce an
-  overturning finding before adopting it; a reproduced finding changes the plan,
-  a plausible one is tagged and kept visible.
-- Iterate until the reviser reports no remaining disagreement.
+Follow **Disprove** in `evidence.md`, with `plan.md` as the document.
 
 **Solid** means: every claim tagged, nothing `[Guessing]` on the critical path, the
-reviser has nothing left, and every step has a verification the executor can run.
+reviser has nothing left or the user ended the loop, and every step has a
+verification the executor can run.
 
 ## 6. Discuss, then hand off
 
@@ -102,6 +105,10 @@ with two labelled lines, as a review does:
 - `Uncertain:` every claim still `[Likely]` or `[Guessing]` that the plan rests on.
 
 Nothing left on either line is written as `Not checked: nothing.` so the absence
-is a statement, not an omission. Record the decisions in the plan and in memory.
-Then execution is the orchestrate skill's job: call the `Skill` tool with
+is a statement, not an omission. Record the user's decisions in section 6 of
+the plan, as **Record** in `evidence.md` says, and in memory.
+
+When the user approves the plan, open the plan PR as **Folder** in
+`evidence.md` says, and stop. After the user confirms that it has merged,
+execution is the orchestrate skill's job: call the `Skill` tool with
 `orchestrate` and run the plan one executor per PR.

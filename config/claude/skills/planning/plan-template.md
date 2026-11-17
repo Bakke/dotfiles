@@ -1,8 +1,18 @@
 # Plan file
 
-One scratch file, outside the repository, versioned in its heading (`v1`, `v2 after
+`plan.md` in the feature folder, versioned in its heading (`v1`, `v2 after
 review round 1`). Sections in this order; a section with nothing to say is deleted,
 not left empty.
+
+The plan is the record the user reads later (**Record** in `evidence.md`).
+Sections 0 to 4 are its findings: each one carries its source or proof and its
+tag. Section 6 is its decisions.
+
+With a `design.md` in the folder, that file already holds the inventory,
+measurements and mechanism. Sections 1 to 4 then hold only what the design
+lacks, with a link to it. Section 5 uses the design's phases and their numbers;
+"Phase 0" is only for a roadblock the design did not place, marked as an
+addition for the user to approve.
 
 ## 0. Corrections to the premise
 
@@ -44,9 +54,11 @@ after and depends on them by name:
 Mark steps that depend on another step's merge. Mark optional steps as optional,
 with the condition that would make them worth doing.
 
-## 6. Decisions for the user
+## 6. Decisions
 
-Numbered, each with the recommended answer.
+Open: numbered, each with the recommended answer. Taken: the decision, who made
+it and when, the alternative rejected and its specific downside. An answered
+question moves from open to taken; it is not deleted.
 
 ## 7. Not checked
 

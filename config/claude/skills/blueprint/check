@@ -1,0 +1,215 @@
+#!/usr/bin/env node
+// Render every mermaid block of a markdown file with Obsidian's own renderer (Pele).
+// Usage: check <file.md> <out-dir>   |   check --selftest
+
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const vm = require('vm');
+const assert = require('assert');
+const { execFileSync } = require('child_process');
+
+const ASAR = process.env.OBSIDIAN_ASAR || '/usr/lib/obsidian/obsidian.asar';
+
+function loadPele() {
+    if (!fs.existsSync(ASAR)) {
+        throw new Error(`Obsidian not found at ${ASAR}: set OBSIDIAN_ASAR to its obsidian.asar`);
+    }
+    const fd = fs.openSync(ASAR, 'r');
+    try {
+        const head = Buffer.alloc(16);
+        fs.readSync(fd, head, 0, 16, 0);
+        const headerSize = head.readUInt32LE(4);
+        const index = Buffer.alloc(head.readUInt32LE(12));
+        fs.readSync(fd, index, 0, index.length, 16);
+        const entry = JSON.parse(index.toString()).files.lib?.files?.['pele.min.js'];
+        if (!entry) {
+            throw new Error(`${ASAR} has no lib/pele.min.js: this check needs Obsidian 1.15 or later`);
+        }
+        const source = Buffer.alloc(entry.size);
+        fs.readSync(fd, source, 0, entry.size, 8 + headerSize + Number(entry.offset));
+        const context = vm.createContext({});
+        vm.runInContext(source.toString(), context);
+        return context.pele;
+    } finally {
+        fs.closeSync(fd);
+    }
+}
+
+// librsvg does not resolve CSS variables, so each var() becomes its defined value
+function flatten(svg) {
+    const values = {};
+    for (const [, name, value] of svg.matchAll(/(--[\w-]+)\s*:\s*([^;"]+)/g)) {
+        values[name] = value.trim();
+    }
+    const pattern = /var\((--[\w-]+)\s*(?:,\s*([^()]*(?:\([^()]*\)[^()]*)*))?\)/g;
+    let previous;
+    do {
+        previous = svg;
+        svg = svg.replace(pattern, (match, name, fallback) => values[name] ?? fallback ?? match);
+    } while (svg !== previous);
+    return svg;
+}
+
+async function renderSvg(pele, source) {
+    const result = await pele.render(source);
+    return flatten(typeof result === 'string' ? result : result.svg);
+}
+
+// Follows the enclosing fence, so a diagram under a list item or in a blockquote
+// counts and a mermaid example inside another code block does not
+function mermaidBlocks(markdown) {
+    const blocks = [];
+    const errors = [];
+    let open = null;
+    markdown.split(/\r?\n/).forEach((text, index) => {
+        const fence = text.match(/^((?:[ \t]*>)*[ \t]*)(`{3,}|~{3,})[ \t]*(.*)$/);
+        if (!open) {
+            if (fence) {
+                const info = fence[3].trim();
+                open = { prefix: fence[1], mark: fence[2], mermaid: info === 'mermaid', line: index + 1, lines: [] };
+                if (!open.mermaid && /^mermaid\b/i.test(info)) {
+                    errors.push(`line ${index + 1}: fence "${info}" is not drawn as a diagram: write exactly mermaid`);
+                }
+            }
+            return;
+        }
+        const closes = fence && fence[2][0] === open.mark[0] && fence[2].length >= open.mark.length && fence[3].trim() === '';
+        if (!closes) {
+            open.lines.push(text.startsWith(open.prefix) ? text.slice(open.prefix.length) : text.replace(/^(?:[ \t]*>)*[ \t]*/, ''));
+            return;
+        }
+        if (open.mermaid) {
+            blocks.push({ line: open.line, source: open.lines.join('\n') });
+        }
+        open = null;
+    });
+    if (open && open.mermaid) {
+        errors.push(`line ${open.line}: mermaid fence is not closed`);
+    }
+    return { blocks, errors };
+}
+
+async function check(markdown, outDir) {
+    const { blocks, errors } = mermaidBlocks(markdown);
+    for (const file of fs.readdirSync(outDir)) {
+        if (/^\d+\.(png|svg)$/.test(file)) {
+            fs.rmSync(path.join(outDir, file));
+        }
+    }
+    if (blocks.length === 0) {
+        errors.push('no mermaid blocks found');
+        return { count: 0, images: [], errors };
+    }
+    let pele;
+    try {
+        pele = loadPele();
+    } catch (error) {
+        return { count: blocks.length, images: [], errors: [...errors, error.message] };
+    }
+    const images = [];
+    for (const [i, block] of blocks.entries()) {
+        const where = `block ${i + 1} (line ${block.line})`;
+        const base = path.join(outDir, String(i + 1));
+        try {
+            fs.writeFileSync(`${base}.svg`, await renderSvg(pele, block.source));
+        } catch (error) {
+            errors.push(`${where}: mermaid error: ${error.message}`);
+            continue;
+        }
+        try {
+            execFileSync('rsvg-convert', ['-b', 'white', '-z', '2', '-o', `${base}.png`, `${base}.svg`], { stdio: 'pipe' });
+            images.push(`${base}.png`);
+        } catch (error) {
+            const reason = error.code === 'ENOENT'
+                ? 'rsvg-convert is not installed'
+                : `${String(error.stderr || error.message).trim().split('\n')[0]} (if the diagram is too large, split it)`;
+            errors.push(`${where}: the mermaid is valid, but the PNG was not made: ${reason}`);
+        } finally {
+            fs.rmSync(`${base}.svg`, { force: true });
+        }
+    }
+    return { count: blocks.length, images, errors };
+}
+
+async function selftest() {
+    const pele = loadPele();
+    const fence = '```';
+    const good = `${fence}mermaid\nflowchart LR\n  A[Job<br/>x] -->|runs| B[Batch]\n  classDef changed fill:#fde68a\n  class B changed\n${fence}\n`;
+    const bad = `${fence}mermaid\nflowchart LR\n  A -->\n${fence}\n`;
+    const indent = (text, prefix) => text.replace(/^(?=.)/gm, prefix);
+    const counts = result => [result.count, result.images.length, result.errors.length];
+
+    const svg = await renderSvg(pele, 'flowchart LR\n  A --> B\n  classDef changed fill:#fde68a\n  class B changed');
+    assert(!svg.includes('var(--'), 'CSS variables left in SVG');
+    assert(svg.includes('fde68a'), 'classDef colour missing');
+
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'blueprint-check-'));
+    try {
+        let result = await check(good, dir);
+        assert.deepStrictEqual(counts(result), [1, 1, 0]);
+        assert(fs.statSync(result.images[0]).size > 1000, 'PNG is empty');
+        assert(!fs.existsSync(path.join(dir, '1.svg')), 'SVG left behind');
+
+        result = await check(good + bad, dir);
+        assert.deepStrictEqual(counts(result), [2, 1, 1]);
+        assert(/block 2 \(line 7\): mermaid error/.test(result.errors[0]), 'syntax error not labelled with its line');
+
+        result = await check(bad, dir);
+        assert.deepStrictEqual(fs.readdirSync(dir), [], 'stale output survived a failing run');
+
+        result = await check('# no diagrams\n', dir);
+        assert.deepStrictEqual(counts(result), [0, 0, 1]);
+
+        for (const [name, text] of [
+            ['tilde fence', good.replaceAll(fence, '~~~')],
+            ['four-backtick fence', good.replaceAll(fence, '````')],
+            ['list item', `1. step\n\n${indent(good, '   ')}`],
+            ['blockquote', indent(good, '> ')],
+            ['CRLF', good.replaceAll('\n', '\r\n')],
+        ]) {
+            assert.deepStrictEqual(counts(await check(text, dir)), [1, 1, 0], `${name} not rendered`);
+        }
+
+        result = await check(`${good}\n\`\`\`\`markdown\n${bad}\`\`\`\`\n`, dir);
+        assert.deepStrictEqual(counts(result), [1, 1, 0], 'example inside another fence was rendered');
+
+        result = await check(good.replace('mermaid', 'Mermaid'), dir);
+        assert(result.errors.some(error => /line 1: fence "Mermaid"/.test(error)), 'wrong-case fence not reported');
+
+        result = await check(`${fence}mermaid\nflowchart LR\n  A --> B\n`, dir);
+        assert(result.errors.some(error => /not closed/.test(error)), 'open fence not reported');
+
+        let chain = '';
+        for (let i = 0; i < 400; i++) {
+            chain += `  N${i} --> N${i + 1}\n`;
+        }
+        result = await check(`${fence}mermaid\nflowchart TD\n${chain}${fence}\n`, dir);
+        assert(result.errors.length === 1 && /mermaid is valid, but the PNG was not made/.test(result.errors[0]), 'conversion failure not told apart from a syntax error');
+    } finally {
+        fs.rmSync(dir, { recursive: true, force: true });
+    }
+    console.log('selftest ok');
+}
+
+async function main() {
+    const [file, outDir] = process.argv.slice(2);
+    if (file === '--selftest') {
+        return selftest();
+    }
+    if (!file || !outDir) {
+        console.error('Usage: check <file.md> <out-dir> | check --selftest');
+        process.exit(2);
+    }
+    fs.mkdirSync(outDir, { recursive: true });
+    const result = await check(fs.readFileSync(file, 'utf8'), outDir);
+    console.log(`${result.count} mermaid blocks`);
+    result.images.forEach(image => console.log(image));
+    result.errors.forEach(error => console.error(`ERROR ${error}`));
+    process.exit(result.errors.length ? 1 : 0);
+}
+
+main().catch(error => {
+    console.error(error instanceof assert.AssertionError ? error : `ERROR ${error.message}`);
+    process.exit(1);
+});

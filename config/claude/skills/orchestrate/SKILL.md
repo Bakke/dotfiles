@@ -13,7 +13,13 @@ you review a diff instead of your own memory of writing it.
 ## Plan
 
 Execution starts from a **solid** plan: every step one PR with its verification,
-decisions taken by the user. If there is no such plan yet, call the `Skill` tool
+decisions taken by the user. The plan is `plan.md` in a feature folder
+(`docs/plans/<date>-<slug>/`), beside an approved `design.md` when the
+`blueprint` skill made one. The folder is committed by the plan PR, the first
+PR of the feature: start the first step only when that PR has merged, so every
+executor branches from a main that holds the plan.
+
+If there is no such plan yet, call the `Skill` tool
 with `planning` and come back here when it hands off.
 
 ## Execute, one step at a time
@@ -40,7 +46,17 @@ Per step:
    `SendMessage`, so it keeps its context; a new step gets a new executor.
 4. **Hand over** to the user: what the branch does, what was verified and what
    was not, the PR link and a ready-to-paste description. Record the step in
-   memory and the project docs.
+   memory and the project docs. The feature folder is tracked, so a change to
+   it ships in a step's PR and you never edit it in the working tree yourself:
+   - If the code had to deviate from an approved diagram in `design.md`, say
+     so first and propose the change. On the user's word, resume the executor
+     to make it on the step's branch. Then run
+     `${CLAUDE_SKILL_DIR}/../blueprint/check <folder>/design.md <scratch-dir>`
+     on that branch, read the PNGs, and ask the user to approve the file again.
+   - The brief of the step that ships the design's last phase tells the
+     executor to set `status: implemented` in `design.md`, so the status merges
+     with the code that earns it. While a phase is still unplanned or
+     unshipped, no step sets it.
 5. **Stop.** Wait for the merge or an explicit "launch next". Pipeline results
    the executor cannot see come back through the user as logs; read them, decide,
    and resume the executor with the numbers.
