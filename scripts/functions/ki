@@ -9,8 +9,8 @@ resultRaw=$(eval ${baseCommand} ${resourceType})
 resourceList=$(echo "${resultRaw}" | sed 1d)
 headerText=$(echo "${resultRaw}" | head -1)
 labelText="Ctrl-R: Reload, Ctrl-I: Describe, Ctrl-L: Logs, Ctrl-V: Events, Ctrl-E: Edit, Ctrl-T: Terminal, Ctrl-X: Delete, Enter: Preview describe"
-labelListText="Alt-O: Pods, Alt-S: Services, Alt-Z: Secrets, Alt-C: Certificates, Alt-R: CertificateRequests"
-labelList="--list-label='${labelListText}'"
+labelListText="Alt-O: Pods, Alt-D: Deployments, Alt-S: Services, Alt-Z: Secrets, Alt-C: Certificates, Alt-R: CertificateRequests"
+labelList="--list-border=top --list-label='${labelListText}'"
 
 height="--height=100%"
 prompt="--prompt='${resourceType} > '"
